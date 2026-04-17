@@ -44,7 +44,7 @@ export default function CTASection() {
             className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl"
           >
             <Image
-              src="/images/solar-3d.png"
+              src="/images/cta-solar.png"
               alt="Sistema solar"
               width={800}
               height={500}

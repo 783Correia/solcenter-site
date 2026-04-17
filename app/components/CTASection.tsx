@@ -1,0 +1,53 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { MessageCircle } from "lucide-react";
+import { site } from "../data/site";
+
+export default function CTASection() {
+  return (
+    <section className="relative py-24 bg-[#f0faf5] overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative bg-white/80 backdrop-blur-sm rounded-3xl px-8 py-14 shadow-xl shadow-green-100 border border-green-100"
+        >
+          <h2 className="text-4xl md:text-5xl font-black text-[#0a1a0f] mb-4">
+            Vamos conversar
+          </h2>
+          <p className="text-gray-500 text-lg mb-8 max-w-md mx-auto">
+            Tenha a energia do futuro e faça parte de um mundo mais econômico e
+            sustentável. Análise gratuita, sem compromisso.
+          </p>
+          <a
+            href={site.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#0a1a0f] text-white font-black px-10 py-4 rounded-xl hover:bg-[#0f2818] transition-all hover:-translate-y-0.5 text-base"
+          >
+            <MessageCircle size={20} />
+            Fale conosco
+          </a>
+        </motion.div>
+      </div>
+
+      {/* 3D solar image */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none hidden lg:block"
+      >
+        <Image
+          src="/images/solar-3d.png"
+          alt=""
+          fill
+          className="object-contain object-bottom-right"
+        />
+      </motion.div>
+    </section>
+  );
+}

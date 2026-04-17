@@ -50,7 +50,7 @@ export default function Testimonials() {
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#00a651] flex items-center justify-center text-white font-bold text-sm shrink-0">
                     {t.name.charAt(0)}
                   </div>
                   <div>

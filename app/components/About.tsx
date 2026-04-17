@@ -49,7 +49,7 @@ export default function About() {
               href={site.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#0d1f3c] transition-all"
+              className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#00c060] transition-all"
             >
               Saiba mais sobre nós
             </a>

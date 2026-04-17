@@ -36,7 +36,7 @@ export default function HowItWorks() {
               href={site.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#0d1f3c] transition-all"
+              className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#00c060] transition-all"
             >
               Começar agora
             </a>
@@ -54,7 +54,7 @@ export default function HowItWorks() {
                 className="flex gap-6 py-7 border-b border-gray-200 last:border-0 group"
               >
                 <div className="shrink-0 flex flex-col items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#0a1628] text-white flex items-center justify-center group-hover:bg-[#00a651] transition-colors duration-300">
+                  <div className="w-10 h-10 rounded-full bg-[#00a651] text-white flex items-center justify-center group-hover:bg-[#f5c518] transition-colors duration-300">
                     {iconMap[step.icon]}
                   </div>
                   <span className="text-[11px] text-gray-300 font-bold tabular-nums">

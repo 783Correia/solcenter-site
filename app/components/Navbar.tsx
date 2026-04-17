@@ -23,18 +23,18 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-[#060d18]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+      scrolled ? "bg-white shadow-sm border-b border-gray-100" : "bg-transparent"
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <a href="#inicio" className="flex items-center gap-1">
           <span className="text-[#f5c518] font-black text-lg tracking-tight">SOL</span>
-          <span className="text-white font-bold text-lg tracking-tight">CENTER</span>
+          <span className={`font-bold text-lg tracking-tight transition-colors ${scrolled ? "text-[#0a1628]" : "text-white"}`}>CENTER</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a key={l.href} href={l.href}
-              className="text-[13px] text-white/50 hover:text-white transition-colors font-medium">
+              className={`text-[13px] font-medium transition-colors ${scrolled ? "text-gray-500 hover:text-[#0a1628]" : "text-white/70 hover:text-white"}`}>
               {l.label}
             </a>
           ))}
@@ -45,16 +45,16 @@ export default function Navbar() {
           Faça uma simulação
         </a>
 
-        <button className="md:hidden text-white/70 hover:text-white" onClick={() => setOpen(!open)}>
+        <button className={`md:hidden hover:opacity-70 ${scrolled ? "text-[#0a1628]" : "text-white"}`} onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-[#060d18] border-t border-white/8 px-6 py-5 flex flex-col gap-5">
+        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-5 flex flex-col gap-5 shadow-lg">
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="text-white/60 hover:text-white font-medium transition-colors text-sm">
+              className="text-gray-600 hover:text-[#0a1628] font-medium transition-colors text-sm">
               {l.label}
             </a>
           ))}

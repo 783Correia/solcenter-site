@@ -94,7 +94,7 @@ export default function Contact() {
                 </select>
               </div>
               <button type="submit"
-                className="w-full bg-[#0a1628] text-white font-bold py-3.5 rounded-xl hover:bg-[#0d1f3c] transition-all text-sm mt-1">
+                className="w-full bg-[#00a651] text-white font-bold py-3.5 rounded-xl hover:bg-[#00c060] transition-all text-sm mt-1">
                 Quero meu orçamento grátis
               </button>
             </form>

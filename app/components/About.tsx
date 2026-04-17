@@ -22,22 +22,22 @@ export default function About() {
             transition={{ duration: 0.55 }}
             className="pb-20"
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-6">
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               A Solcenter
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-[-0.03em] mb-7">
+            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-white leading-[1.1] tracking-[-0.03em] mb-4">
               Eficiência energética,{" "}
               <span className="text-white/40">sustentabilidade</span> e{" "}
               <span className="text-white/40">muita economia</span>{" "}
               para os nossos clientes.
             </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-10 max-w-md font-light">
+            <p className="text-white/50 text-base leading-relaxed mb-8 max-w-md font-light">
               Nascemos em Santo Cristo/RS e hoje atendemos mais de 60 cidades no
               Noroeste Gaúcho. Cada projeto é tratado com a mesma atenção desde
               o orçamento até o monitoramento contínuo.
             </p>
 
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            <div className="grid grid-cols-3 gap-3 mb-8">
               {pillars.map((p) => (
                 <div key={p.label} className="border border-white/10 rounded-xl p-4">
                   <div className="text-xl font-black text-white">{p.number}</div>
@@ -56,7 +56,7 @@ export default function About() {
             </a>
           </motion.div>
 
-          {/* Image — ancorada ao fundo */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

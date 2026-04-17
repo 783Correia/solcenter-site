@@ -10,7 +10,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-45" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
 
-      <div className="relative z-10 flex flex-col flex-1 justify-end px-6 pb-36 pt-32 max-w-6xl mx-auto w-full">
+      {/* Main content — centered */}
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center text-center px-6 pt-32 pb-16 max-w-5xl mx-auto w-full">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -24,7 +25,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] max-w-4xl mb-7"
+          className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] mb-7"
         >
           O futuro<br />já é agora.
         </motion.h1>
@@ -44,7 +45,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.24 }}
-          className="flex flex-wrap gap-3"
+          className="flex flex-wrap gap-3 justify-center"
         >
           <a
             href={site.whatsappLink}
@@ -64,19 +65,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Stats bar */}
+      {/* Stats bar — parte do fluxo, flush ao fundo */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="absolute bottom-0 left-0 right-0 z-20"
+        className="relative z-20 w-full"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-white/95 backdrop-blur-sm rounded-t-2xl grid grid-cols-2 md:grid-cols-4">
+          <div className="bg-white rounded-t-2xl grid grid-cols-2 md:grid-cols-4 shadow-xl">
             {site.stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`flex flex-col items-center justify-center py-5 px-4 text-center ${
+                className={`flex flex-col items-center justify-center py-6 px-4 text-center ${
                   i < site.stats.length - 1 ? "border-r border-gray-100" : ""
                 }`}
               >

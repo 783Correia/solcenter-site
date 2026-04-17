@@ -34,7 +34,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-5 uppercase tracking-widest">Soluções</h4>
+            <h4 className="text-white font-bold text-sm mb-5 uppercase tracking-widest">Navegação</h4>
             <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.href}>

@@ -60,13 +60,14 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="relative h-[520px]"
+            className="relative h-[300px] lg:h-[520px]"
           >
             <div className="absolute inset-0 rounded-t-2xl overflow-hidden">
               <Image
                 src="/images/fachada.jpg"
                 alt="Loja Solcenter"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />

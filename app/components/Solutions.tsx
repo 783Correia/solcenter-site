@@ -42,6 +42,7 @@ export default function Solutions() {
                 src={solution.image}
                 alt={solution.title}
                 fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Gradient overlay */}

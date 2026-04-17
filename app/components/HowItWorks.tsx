@@ -4,7 +4,7 @@ import { site } from "../data/site";
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-24 bg-[#0a1628]">
+    <section id="como-funciona" className="py-24 bg-[#0a1a0f]">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,7 +13,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <span className="text-[#f5c518] text-sm font-bold uppercase tracking-widest">
+          <span className="text-[#00a651] text-sm font-bold uppercase tracking-widest">
             Processo
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-3 mb-4">
@@ -36,8 +36,8 @@ export default function HowItWorks() {
               className="relative"
             >
               <div className="flex items-start gap-4">
-                <div className="shrink-0 w-12 h-12 bg-[#f5c518]/10 border border-[#f5c518]/20 rounded-xl flex items-center justify-center">
-                  <span className="text-[#f5c518] font-black text-lg">
+                <div className="shrink-0 w-12 h-12 bg-[#00a651]/10 border border-[#00a651]/20 rounded-xl flex items-center justify-center">
+                  <span className="text-[#00a651] font-black text-lg">
                     {step.number}
                   </span>
                 </div>
@@ -59,7 +59,7 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-14 p-8 bg-[#f5c518]/5 border border-[#f5c518]/15 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-14 p-8 bg-[#00a651]/5 border border-[#00a651]/15 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div>
             <h3 className="text-white font-bold text-xl mb-1">
@@ -73,7 +73,7 @@ export default function HowItWorks() {
             href={site.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-[#f5c518] text-[#0a1628] font-black px-8 py-4 rounded-xl hover:bg-[#ffd740] transition-all hover:-translate-y-0.5"
+            className="shrink-0 bg-[#00a651] text-[#0a1a0f] font-black px-8 py-4 rounded-xl hover:bg-[#00c060] transition-all hover:-translate-y-0.5"
           >
             Falar com especialista
           </a>

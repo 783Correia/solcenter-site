@@ -14,7 +14,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function Services() {
   return (
-    <section id="servicos" className="py-24 bg-[#0f2040]">
+    <section id="servicos" className="py-24 bg-[#0f2818]">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <span className="text-[#f5c518] text-sm font-bold uppercase tracking-widest">
+          <span className="text-[#00a651] text-sm font-bold uppercase tracking-widest">
             Soluções
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-3 mb-4">
@@ -44,9 +44,9 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="group bg-[#0a1628] border border-white/8 rounded-2xl p-7 hover:border-[#f5c518]/30 hover:bg-[#0d1e35] transition-all duration-300 cursor-default"
+              className="group bg-[#0a1a0f] border border-white/8 rounded-2xl p-7 hover:border-[#00a651]/30 hover:bg-[#0d1e35] transition-all duration-300 cursor-default"
             >
-              <div className="text-[#f5c518] mb-5 group-hover:scale-110 transition-transform inline-block">
+              <div className="text-[#00a651] mb-5 group-hover:scale-110 transition-transform inline-block">
                 {iconMap[service.icon]}
               </div>
               <h3 className="text-white font-bold text-xl mb-2">

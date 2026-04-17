@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #0a1628;
-  --color-navy-light: #0f2040;
+  --color-navy: #0a1a0f;
+  --color-navy-light: #0f2818;
+  --color-green: #00a651;
+  --color-green-light: #00c060;
   --color-yellow: #f5c518;
-  --color-yellow-light: #ffd740;
-  --color-muted: #8892a4;
+  --color-muted: #7a8f82;
 }
 
 * {
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-  background-color: #0a1628;
+  background-color: #0a1a0f;
   color: #ffffff;
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

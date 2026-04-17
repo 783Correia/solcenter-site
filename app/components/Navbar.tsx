@@ -24,12 +24,12 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0a1628]/95 backdrop-blur-md shadow-lg shadow-black/20" : "bg-transparent"
+        scrolled ? "bg-[#0a1a0f]/95 backdrop-blur-md shadow-lg shadow-black/20" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <a href="#inicio" className="flex items-center gap-2">
-          <span className="text-[#f5c518] font-black text-xl tracking-tight">SOL</span>
+          <span className="text-[#00a651] font-black text-xl tracking-tight">SOL</span>
           <span className="text-white font-bold text-xl tracking-tight">CENTER</span>
         </a>
 
@@ -38,7 +38,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-gray-300 hover:text-[#f5c518] transition-colors font-medium"
+              className="text-sm text-gray-300 hover:text-[#00a651] transition-colors font-medium"
             >
               {l.label}
             </a>
@@ -49,7 +49,7 @@ export default function Navbar() {
           href={site.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-2 bg-[#f5c518] text-[#0a1628] font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-[#ffd740] transition-all"
+          className="hidden md:inline-flex items-center gap-2 bg-[#00a651] text-[#0a1a0f] font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-[#00c060] transition-all"
         >
           Orçamento grátis
         </a>
@@ -64,13 +64,13 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-[#0f2040] border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#0f2818] border-t border-white/10 px-6 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-gray-300 hover:text-[#f5c518] font-medium transition-colors"
+              className="text-gray-300 hover:text-[#00a651] font-medium transition-colors"
             >
               {l.label}
             </a>
@@ -79,7 +79,7 @@ export default function Navbar() {
             href={site.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#f5c518] text-[#0a1628] font-bold px-5 py-2.5 rounded-lg text-center"
+            className="bg-[#00a651] text-[#0a1a0f] font-bold px-5 py-2.5 rounded-lg text-center"
           >
             Orçamento grátis
           </a>

@@ -1,23 +1,47 @@
 export const site = {
   name: "Solcenter",
   tagline: "O futuro já é agora.",
+  badge: "A N°1 do Noroeste Gaúcho — 10 anos de energia solar",
   description:
-    "Energia solar instalada, homologada e monitorada em Santo Cristo e região. Mais de 1400 projetos entregues no RS.",
+    "Energia solar instalada, homologada e monitorada em Santo Cristo e região. Mais de 1.400 projetos entregues no RS.",
   phone: "(55) 98449-1054",
   phoneGiovani: "(55) 98449-2001",
-  whatsapp: "5598449-1054",
   whatsappLink: "https://wa.me/5555984491054",
   email: "atendimento@solcenter.com.br",
   address: "Av. Dom Pedro II, 539 — Santo Cristo / RS",
-  instagram: "https://instagram.com/solcenter",
+  instagram: "https://instagram.com/solcenterenergia",
   facebook: "https://facebook.com/solcenterenergia",
   youtube: "https://youtube.com/@solcenter",
 
   stats: [
-    { value: "1400+", label: "Projetos instalados no RS" },
+    { value: "1.400+", label: "Projetos instalados no RS" },
     { value: "60+", label: "Cidades atendidas" },
-    { value: "95%", label: "Economia na fatura" },
-    { value: "25 anos", label: "Garantia do fabricante" },
+    { value: "10 anos", label: "A N°1 do Noroeste Gaúcho" },
+    { value: "95%", label: "Economia na conta de luz" },
+  ],
+
+  units: [
+    {
+      name: "Solcenter Energia",
+      description:
+        "A empresa original. Há 10 anos levando energia solar para centenas de clientes com excelência e compromisso.",
+      icon: "sun",
+      color: "green",
+    },
+    {
+      name: "Solcenter PRO",
+      description:
+        "Especializada em manutenção, suporte e monitoramento de sistemas solares — garantindo desempenho e segurança do seu investimento.",
+      icon: "shield",
+      color: "blue",
+    },
+    {
+      name: "Solcenter Mobi",
+      description:
+        "Mobilidade elétrica leve. Scooters, triciclos e quadriciclos elétricos. Liberdade, inovação e acessibilidade.",
+      icon: "zap",
+      color: "yellow",
+    },
   ],
 
   services: [
@@ -40,7 +64,7 @@ export const site = {
       icon: "tractor",
     },
     {
-      title: "Solcenter PRO",
+      title: "Monitoramento PRO",
       description:
         "Monitoramento ativo diário do seu sistema. A gente cuida da sua energia enquanto você cuida da sua vida.",
       icon: "monitor",
@@ -48,13 +72,13 @@ export const site = {
     {
       title: "Mobilidade Elétrica",
       description:
-        "Scooters e triciclos elétricos para quem quer economizar também no transporte.",
+        "Scooters, triciclos e quadriciclos elétricos. Economia também no transporte.",
       icon: "zap",
     },
     {
-      title: "Financiamento",
+      title: "Financiamento Sicredi",
       description:
-        "Linhas de crédito especiais para energia solar. Parcelas que cabem no bolso desde o primeiro mês.",
+        "Em parceria com a Sicredi União: mais segurança, vantagens e tranquilidade para você investir em energia solar.",
       icon: "creditCard",
     },
   ],
@@ -73,7 +97,7 @@ export const site = {
     {
       number: "03",
       title: "Aprovação e financiamento",
-      description: "Ajudamos na aprovação do financiamento com as melhores taxas do mercado.",
+      description: "Ajudamos na aprovação do financiamento — inclusive com a Sicredi União.",
     },
     {
       number: "04",
@@ -87,7 +111,7 @@ export const site = {
     },
     {
       number: "06",
-      title: "Monitoramento",
+      title: "Monitoramento contínuo",
       description: "Com a Solcenter PRO, acompanhamos sua geração todos os dias.",
     },
   ],

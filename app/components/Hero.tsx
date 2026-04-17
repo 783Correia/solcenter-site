@@ -10,12 +10,12 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f2040] to-[#0a1628]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1a0f] via-[#0f2818] to-[#0a1a0f]" />
       <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 70% 50%, #f5c518 0%, transparent 60%)",
+            "radial-gradient(circle at 70% 50%, #00a651 0%, transparent 60%)",
         }}
       />
       <div className="absolute inset-0 bg-[url('/images/solar-bg.jpg')] bg-cover bg-center opacity-15" />
@@ -26,10 +26,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#f5c518]/10 border border-[#f5c518]/20 text-[#f5c518] text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+            className="inline-flex items-center gap-2 bg-[#00a651]/10 border border-[#00a651]/20 text-[#00a651] text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
           >
-            <span className="w-2 h-2 bg-[#f5c518] rounded-full animate-pulse" />
-            +1400 projetos instalados no RS
+            <span className="w-2 h-2 bg-[#00a651] rounded-full animate-pulse" />
+            A N°1 do Noroeste Gaúcho — 10 anos de mercado
           </motion.div>
 
           <motion.h1
@@ -39,7 +39,7 @@ export default function Hero() {
             className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-white mb-6"
           >
             O futuro já <br />
-            <span className="text-[#f5c518]">é agora.</span>
+            <span className="text-[#00a651]">é agora.</span>
           </motion.h1>
 
           <motion.p
@@ -64,14 +64,14 @@ export default function Hero() {
               href={site.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#f5c518] text-[#0a1628] font-black px-8 py-4 rounded-xl text-base hover:bg-[#ffd740] transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/30"
+              className="inline-flex items-center justify-center gap-2 bg-[#00a651] text-[#0a1a0f] font-black px-8 py-4 rounded-xl text-base hover:bg-[#00c060] transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-500/30"
             >
               Quero meu orçamento grátis
               <ArrowRight size={18} />
             </a>
             <a
               href={`tel:${site.phone}`}
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl text-base hover:border-[#f5c518] hover:text-[#f5c518] transition-all"
+              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl text-base hover:border-[#00a651] hover:text-[#00a651] transition-all"
             >
               <Phone size={18} />
               {site.phone}
@@ -88,7 +88,7 @@ export default function Hero() {
         >
           {site.stats.map((stat) => (
             <div key={stat.label} className="text-center md:text-left">
-              <div className="text-3xl md:text-4xl font-black text-[#f5c518]">
+              <div className="text-3xl md:text-4xl font-black text-[#00a651]">
                 {stat.value}
               </div>
               <div className="text-sm text-gray-400 mt-1">{stat.label}</div>

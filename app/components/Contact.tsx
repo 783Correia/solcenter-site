@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 export default function Contact() {
   return (
-    <section id="contato" className="py-24 bg-[#0a1628]">
+    <section id="contato" className="py-24 bg-[#0a1a0f]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
@@ -13,7 +13,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-[#f5c518] text-sm font-bold uppercase tracking-widest">
+            <span className="text-[#00a651] text-sm font-bold uppercase tracking-widest">
               Contato
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-3 mb-6">
@@ -26,8 +26,8 @@ export default function Contact() {
 
             <div className="space-y-5">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#f5c518]/10 rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin size={18} className="text-[#f5c518]" />
+                <div className="w-10 h-10 bg-[#00a651]/10 rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin size={18} className="text-[#00a651]" />
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">Localização</div>
@@ -36,8 +36,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#f5c518]/10 rounded-xl flex items-center justify-center shrink-0">
-                  <Phone size={18} className="text-[#f5c518]" />
+                <div className="w-10 h-10 bg-[#00a651]/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Phone size={18} className="text-[#00a651]" />
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">Telefone</div>
@@ -46,8 +46,8 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#f5c518]/10 rounded-xl flex items-center justify-center shrink-0">
-                  <Mail size={18} className="text-[#f5c518]" />
+                <div className="w-10 h-10 bg-[#00a651]/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Mail size={18} className="text-[#00a651]" />
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">E-mail</div>
@@ -72,13 +72,13 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#0f2040] border border-white/8 rounded-2xl p-8"
+            className="bg-[#0f2818] border border-white/8 rounded-2xl p-8"
           >
             <h3 className="text-white font-bold text-xl mb-6">
               Solicite sua análise gratuita
             </h3>
             <form
-              action={`https://wa.me/${site.whatsapp}`}
+              action={site.whatsappLink}
               method="get"
               target="_blank"
               className="space-y-4"
@@ -99,7 +99,7 @@ export default function Contact() {
                   name="name"
                   required
                   placeholder="Seu nome completo"
-                  className="w-full bg-[#0a1628] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#f5c518]/50 transition-colors"
+                  className="w-full bg-[#0a1a0f] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651]/50 transition-colors"
                 />
               </div>
               <div>
@@ -108,7 +108,7 @@ export default function Contact() {
                   name="phone"
                   required
                   placeholder="(55) 99999-9999"
-                  className="w-full bg-[#0a1628] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#f5c518]/50 transition-colors"
+                  className="w-full bg-[#0a1a0f] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651]/50 transition-colors"
                 />
               </div>
               <div>
@@ -116,7 +116,7 @@ export default function Contact() {
                 <input
                   name="city"
                   placeholder="Sua cidade"
-                  className="w-full bg-[#0a1628] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#f5c518]/50 transition-colors"
+                  className="w-full bg-[#0a1a0f] border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651]/50 transition-colors"
                 />
               </div>
               <div>
@@ -125,7 +125,7 @@ export default function Contact() {
                 </label>
                 <select
                   name="type"
-                  className="w-full bg-[#0a1628] border border-white/10 text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#f5c518]/50 transition-colors"
+                  className="w-full bg-[#0a1a0f] border border-white/10 text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651]/50 transition-colors"
                 >
                   <option value="">Selecione...</option>
                   <option value="residencial">Residencial</option>
@@ -135,7 +135,7 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#f5c518] text-[#0a1628] font-black py-4 rounded-xl hover:bg-[#ffd740] transition-all hover:-translate-y-0.5 mt-2"
+                className="w-full bg-[#00a651] text-[#0a1a0f] font-black py-4 rounded-xl hover:bg-[#00c060] transition-all hover:-translate-y-0.5 mt-2"
               >
                 Quero meu orçamento grátis
               </button>

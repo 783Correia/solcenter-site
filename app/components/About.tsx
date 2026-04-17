@@ -64,8 +64,8 @@ export default function About() {
           >
             <div className="absolute inset-0 rounded-t-2xl overflow-hidden">
               <Image
-                src="/images/about.jpg"
-                alt="Equipe Solcenter"
+                src="/images/fachada.jpg"
+                alt="Loja Solcenter"
                 fill
                 className="object-cover object-top"
               />

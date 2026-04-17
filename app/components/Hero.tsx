@@ -70,10 +70,10 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="relative z-20 w-full"
+        className="relative z-20 w-full -mb-10"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-white rounded-t-2xl grid grid-cols-2 md:grid-cols-4 shadow-xl">
+          <div className="bg-white rounded-2xl grid grid-cols-2 md:grid-cols-4 shadow-xl">
             {site.stats.map((stat, i) => (
               <div
                 key={stat.label}

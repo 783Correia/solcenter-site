@@ -11,7 +11,7 @@ const pillars = [
 
 export default function About() {
   return (
-    <section id="sobre" className="bg-white pt-20 pb-0 overflow-hidden">
+    <section id="sobre" className="bg-white pt-28 pb-0 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-end">
           <motion.div

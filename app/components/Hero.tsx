@@ -6,83 +6,89 @@ import { site } from "../data/site";
 export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0a1628]" />
-      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+      <div className="absolute inset-0 bg-[#060d18]" />
+      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col flex-1 items-center justify-center text-center px-6 pt-24 pb-40">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      <div className="relative z-10 flex flex-col flex-1 justify-end px-6 pb-36 pt-32 max-w-6xl mx-auto w-full">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-8"
+          transition={{ duration: 0.4 }}
+          className="text-[#00a651] text-sm font-bold uppercase tracking-[0.2em] mb-5"
         >
-          <span className="w-2 h-2 bg-[#00a651] rounded-full animate-pulse" />
-          A N°1 do Noroeste Gaúcho — 10 anos fazendo história
-        </motion.div>
+          A N°1 do Noroeste Gaúcho · 10 anos de história
+        </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-black text-white leading-[1.05] max-w-3xl mb-6"
+          transition={{ duration: 0.5, delay: 0.08 }}
+          className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.95] tracking-tight max-w-4xl mb-7"
         >
-          O futuro já<br />é agora.
+          O futuro<br />já é agora.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed"
+          transition={{ duration: 0.5, delay: 0.16 }}
+          className="text-white/60 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-light"
         >
-          Transforme a luz solar em economia real. Reduza até{" "}
-          <strong className="text-white">95% da sua conta de luz</strong> com
-          quem instalou mais de 1.400 sistemas no RS.
+          Reduza até 95% da sua conta de luz. Mais de{" "}
+          <span className="text-white font-medium">1.400 sistemas instalados</span>{" "}
+          no Rio Grande do Sul.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4"
+          transition={{ duration: 0.5, delay: 0.24 }}
+          className="flex flex-wrap gap-3"
         >
           <a
             href={site.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#00a651] text-white font-black px-8 py-4 rounded-xl text-base hover:bg-[#00c060] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30"
+            className="inline-flex items-center gap-2.5 bg-[#00a651] text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#00c060] transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
           >
             Faça uma simulação grátis
-            <ArrowRight size={18} />
+            <ArrowRight size={16} />
           </a>
           <a
             href="#sobre"
-            className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-base hover:bg-white/20 transition-all"
+            className="inline-flex items-center gap-2 text-white/70 font-medium text-sm px-7 py-3.5 rounded-full border border-white/15 hover:border-white/40 hover:text-white transition-all"
           >
             Conhecer a Solcenter
           </a>
         </motion.div>
       </div>
 
-      {/* Floating stats bar */}
+      {/* Stats bar */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 w-full max-w-4xl px-6"
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="absolute bottom-0 left-0 right-0 z-20"
       >
-        <div className="bg-white rounded-2xl shadow-2xl shadow-black/20 grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
-          {site.stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center justify-center py-6 px-4 text-center">
-              <span className="text-2xl md:text-3xl font-black text-[#0a1628]">
-                {stat.value}
-              </span>
-              <span className="text-xs text-gray-500 mt-1 leading-tight">{stat.label}</span>
-            </div>
-          ))}
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="bg-white/95 backdrop-blur-sm rounded-t-2xl grid grid-cols-2 md:grid-cols-4">
+            {site.stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col items-center justify-center py-5 px-4 text-center ${
+                  i < site.stats.length - 1 ? "border-r border-gray-100" : ""
+                }`}
+              >
+                <span className="text-2xl md:text-3xl font-black text-[#0a1628] tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="text-[11px] text-gray-400 mt-0.5 font-medium uppercase tracking-wide">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

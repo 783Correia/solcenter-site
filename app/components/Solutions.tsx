@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "../data/site";
 
 export default function Solutions() {
@@ -12,18 +12,22 @@ export default function Solutions() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-[#0a1628] leading-snug">
-            <em className="not-italic text-[#00a651]">Soluções completas</em>{" "}
-            para você e para <br className="hidden md:block" />o seu negócio.
-          </h2>
-          <p className="text-gray-500 text-lg mt-4 max-w-xl mx-auto">
+          <div>
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+              Soluções
+            </p>
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-tight max-w-lg">
+              Completo para você e para o seu negócio.
+            </h2>
+          </div>
+          <p className="text-gray-400 text-sm max-w-xs md:text-right leading-relaxed">
             Da residência ao agronegócio — temos a solução certa para cada realidade.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {site.solutions.map((solution, i) => (
             <motion.a
               key={solution.title}
@@ -31,28 +35,31 @@ export default function Solutions() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              transition={{ duration: 0.35, delay: i * 0.06 }}
+              className="group relative overflow-hidden rounded-2xl aspect-[4/3] block"
             >
-              <div className="relative h-52 overflow-hidden">
-                <Image
-                  src={solution.image}
-                  alt={solution.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </div>
-              <div className="p-6">
-                <span className="text-[#00a651] text-xs font-bold uppercase tracking-widest">
+              <Image
+                src={solution.image}
+                alt={solution.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-5">
+                <p className="text-[#00a651] text-[10px] font-bold uppercase tracking-widest mb-1">
                   {solution.label}
-                </span>
-                <h3 className="text-[#0a1628] font-black text-xl mt-1 mb-3">
+                </p>
+                <h3 className="text-white font-bold text-base leading-tight">
                   {solution.title}
                 </h3>
-                <span className="inline-flex items-center gap-1 text-sm text-[#00a651] font-semibold group-hover:gap-2 transition-all">
-                  Saiba mais <ArrowRight size={14} />
-                </span>
+              </div>
+
+              {/* Arrow hover */}
+              <div className="absolute top-4 right-4 w-8 h-8 bg-white/0 group-hover:bg-white/10 rounded-full flex items-center justify-center transition-all">
+                <ArrowUpRight size={16} className="text-white/0 group-hover:text-white transition-all" />
               </div>
             </motion.a>
           ))}

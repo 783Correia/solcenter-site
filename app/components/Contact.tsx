@@ -5,32 +5,35 @@ import { site } from "../data/site";
 
 export default function Contact() {
   return (
-    <section id="contato" className="py-24 bg-[#f7f8f9]">
+    <section id="contato" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               Contato
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-5">
-              Vamos conversar sobre energia solar?
+            <h2 className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-4">
+              Vamos conversar<br />sobre energia solar?
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed mb-10">
+            <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-sm">
               Nossa equipe responde em minutos. Análise gratuita e sem compromisso.
             </p>
 
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 mb-10">
               {[
                 { icon: MapPin, value: site.address },
                 { icon: Phone, value: site.phone },
                 { icon: Mail, value: site.email },
               ].map(({ icon: Icon, value }) => (
                 <div key={value} className="flex items-center gap-3">
-                  <Icon size={15} className="text-[#00a651] shrink-0" />
+                  <div className="w-8 h-8 rounded-lg bg-[#f7f8f9] flex items-center justify-center shrink-0">
+                    <Icon size={14} className="text-[#00a651]" />
+                  </div>
                   <span className="text-gray-500 text-sm">{value}</span>
                 </div>
               ))}
@@ -43,16 +46,18 @@ export default function Contact() {
             </a>
           </motion.div>
 
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+            className="bg-[#f7f8f9] rounded-2xl p-8"
           >
-            <h3 className="text-[#0a1628] font-bold text-lg mb-6">
+            <h3 className="text-[#0a1628] font-bold text-lg mb-1">
               Solicite sua análise gratuita
             </h3>
+            <p className="text-gray-400 text-sm mb-6">Preencha e retornamos em até 24h.</p>
             <form className="space-y-4" onSubmit={(e) => {
               e.preventDefault();
               const f = e.currentTarget;
@@ -73,7 +78,7 @@ export default function Contact() {
                   </label>
                   <input name={field.name} type={field.type} required={field.required}
                     placeholder={field.placeholder}
-                    className="w-full bg-[#f7f8f9] border border-transparent text-[#0a1628] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] focus:bg-white transition-all" />
+                    className="w-full bg-white border border-gray-200 text-[#0a1628] placeholder-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-all" />
                 </div>
               ))}
               <div>
@@ -81,7 +86,7 @@ export default function Contact() {
                   Tipo
                 </label>
                 <select name="type"
-                  className="w-full bg-[#f7f8f9] border border-transparent text-gray-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] focus:bg-white transition-all">
+                  className="w-full bg-white border border-gray-200 text-gray-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-all">
                   <option value="">Selecione...</option>
                   <option value="residencial">Residencial</option>
                   <option value="empresarial">Empresarial</option>
@@ -92,7 +97,6 @@ export default function Contact() {
                 className="w-full bg-[#0a1628] text-white font-bold py-3.5 rounded-xl hover:bg-[#0d1f3c] transition-all text-sm mt-1">
                 Quero meu orçamento grátis
               </button>
-              <p className="text-gray-400 text-xs text-center">Respondemos em até 24h.</p>
             </form>
           </motion.div>
         </div>

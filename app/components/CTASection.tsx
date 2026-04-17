@@ -22,7 +22,7 @@ export default function CTASection() {
               alt="Sistema solar"
               width={720}
               height={520}
-              className="w-full object-contain object-bottom drop-shadow-2xl"
+              className="w-full object-contain object-bottom mix-blend-screen"
             />
           </motion.div>
 

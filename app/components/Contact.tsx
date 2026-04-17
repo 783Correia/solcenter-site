@@ -16,7 +16,7 @@ export default function Contact() {
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Contato
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-5">
               Vamos conversar sobre energia solar?
             </h2>
             <p className="text-gray-400 text-base leading-relaxed mb-10">

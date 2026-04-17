@@ -25,7 +25,7 @@ export default function About() {
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-6">
               A Solcenter
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-tight mb-7">
+            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-[-0.03em] mb-7">
               Eficiência energética,{" "}
               <span className="text-white/40">sustentabilidade</span> e{" "}
               <span className="text-white/40">muita economia</span>{" "}

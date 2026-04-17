@@ -24,7 +24,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.95] tracking-tight max-w-4xl mb-7"
+          className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] max-w-4xl mb-7"
         >
           O futuro<br />já é agora.
         </motion.h1>
@@ -80,7 +80,7 @@ export default function Hero() {
                   i < site.stats.length - 1 ? "border-r border-gray-100" : ""
                 }`}
               >
-                <span className="text-2xl md:text-3xl font-black text-[#0a1628] tracking-tight">
+                <span className="text-2xl md:text-3xl font-black text-[#0a1628] tracking-[-0.03em]">
                   {stat.value}
                 </span>
                 <span className="text-[11px] text-gray-400 mt-0.5 font-medium uppercase tracking-wide">

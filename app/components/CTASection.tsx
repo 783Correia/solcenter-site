@@ -37,7 +37,7 @@ export default function CTASection() {
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-5">
               Dê o primeiro passo
             </p>
-            <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-[1.0] tracking-tight mb-5">
+            <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-[1.0] tracking-[-0.03em] mb-5">
               Vamos<br />conversar.
             </h2>
             <p className="text-white/45 text-base leading-relaxed mb-10 max-w-sm font-light">

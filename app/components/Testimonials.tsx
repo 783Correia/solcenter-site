@@ -17,7 +17,7 @@ export default function Testimonials() {
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               Depoimentos
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-tight">
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em]">
               O que dizem<br />nossos clientes
             </h2>
           </div>

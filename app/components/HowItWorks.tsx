@@ -26,7 +26,7 @@ export default function HowItWorks() {
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Como contratar
             </p>
-            <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-6">
+            <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-6">
               Do primeiro contato até a economia na sua conta.
             </h2>
             <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-sm">

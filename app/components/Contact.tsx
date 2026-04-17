@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 export default function Contact() {
   return (
-    <section id="contato" className="py-24 bg-[#f5f7f5]">
+    <section id="contato" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
@@ -16,7 +16,7 @@ export default function Contact() {
             <span className="text-[#00a651] text-sm font-bold uppercase tracking-widest">
               Contato
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#0a1a0f] mt-3 mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-[#0a1628] mt-3 mb-6">
               Vamos conversar sobre energia solar?
             </h2>
             <p className="text-gray-500 text-lg mb-10">
@@ -34,7 +34,7 @@ export default function Contact() {
                     <Icon size={18} className="text-[#00a651]" />
                   </div>
                   <div>
-                    <div className="text-[#0a1a0f] font-semibold text-sm">{label}</div>
+                    <div className="text-[#0a1628] font-semibold text-sm">{label}</div>
                     <div className="text-gray-500 text-sm">{value}</div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm"
           >
-            <h3 className="text-[#0a1a0f] font-bold text-xl mb-6">
+            <h3 className="text-[#0a1628] font-bold text-xl mb-6">
               Solicite sua análise gratuita
             </h3>
             <form
@@ -81,7 +81,7 @@ export default function Contact() {
                   name="name"
                   required
                   placeholder="Seu nome completo"
-                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1a0f] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
+                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1628] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
                 />
               </div>
               <div>
@@ -90,7 +90,7 @@ export default function Contact() {
                   name="phone"
                   required
                   placeholder="(55) 99999-9999"
-                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1a0f] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
+                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1628] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
                 />
               </div>
               <div>
@@ -98,7 +98,7 @@ export default function Contact() {
                 <input
                   name="city"
                   placeholder="Sua cidade"
-                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1a0f] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
+                  className="w-full bg-gray-50 border border-gray-200 text-[#0a1628] placeholder-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-colors"
                 />
               </div>
               <div>

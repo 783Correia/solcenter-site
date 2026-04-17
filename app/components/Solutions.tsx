@@ -6,7 +6,7 @@ import { site } from "../data/site";
 
 export default function Solutions() {
   return (
-    <section id="servicos" className="py-24 bg-[#f5f7f5]">
+    <section id="servicos" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export default function Solutions() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-[#0a1a0f] leading-snug">
+          <h2 className="text-4xl md:text-5xl font-black text-[#0a1628] leading-snug">
             <em className="not-italic text-[#00a651]">Soluções completas</em>{" "}
             para você e para <br className="hidden md:block" />o seu negócio.
           </h2>
@@ -47,7 +47,7 @@ export default function Solutions() {
                 <span className="text-[#00a651] text-xs font-bold uppercase tracking-widest">
                   {solution.label}
                 </span>
-                <h3 className="text-[#0a1a0f] font-black text-xl mt-1 mb-3">
+                <h3 className="text-[#0a1628] font-black text-xl mt-1 mb-3">
                   {solution.title}
                 </h3>
                 <span className="inline-flex items-center gap-1 text-sm text-[#00a651] font-semibold group-hover:gap-2 transition-all">

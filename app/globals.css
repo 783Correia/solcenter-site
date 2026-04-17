@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #0a1a0f;
-  --color-navy-light: #0f2818;
+  --color-navy: #0a1628;
+  --color-navy-light: #0d1f3c;
   --color-green: #00a651;
   --color-green-light: #00c060;
   --color-yellow: #f5c518;
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  background-color: #0a1a0f;
+  background-color: #0a1628;
   color: #ffffff;
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

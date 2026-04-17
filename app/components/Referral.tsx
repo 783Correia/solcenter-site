@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 export default function Referral() {
   return (
-    <section className="py-20 bg-[#0f2818] overflow-hidden">
+    <section className="py-20 bg-[#0d1f3c] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="relative grid lg:grid-cols-2 gap-10 items-center">
           <motion.div
@@ -29,7 +29,7 @@ export default function Referral() {
               href={site.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#f5c518] text-[#0a1a0f] font-black px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-[#f5c518] text-[#0a1628] font-black px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all hover:-translate-y-0.5"
             >
               Quero saber mais
             </a>

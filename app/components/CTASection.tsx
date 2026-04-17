@@ -6,7 +6,7 @@ import { site } from "../data/site";
 
 export default function CTASection() {
   return (
-    <section className="relative py-24 bg-[#f0faf5] overflow-hidden">
+    <section className="relative py-24 bg-white overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="relative bg-white/80 backdrop-blur-sm rounded-3xl px-8 py-14 shadow-xl shadow-green-100 border border-green-100"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-[#0a1a0f] mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-[#0a1628] mb-4">
             Vamos conversar
           </h2>
           <p className="text-gray-500 text-lg mb-8 max-w-md mx-auto">
@@ -25,7 +25,7 @@ export default function CTASection() {
             href={site.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#0a1a0f] text-white font-black px-10 py-4 rounded-xl hover:bg-[#0f2818] transition-all hover:-translate-y-0.5 text-base"
+            className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-black px-10 py-4 rounded-xl hover:bg-[#0d1f3c] transition-all hover:-translate-y-0.5 text-base"
           >
             <MessageCircle size={20} />
             Fale conosco

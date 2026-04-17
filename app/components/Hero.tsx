@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#0a1a0f]" />
+      <div className="absolute inset-0 bg-[#0a1628]" />
       <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="bg-white rounded-2xl shadow-2xl shadow-black/20 grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
           {site.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center justify-center py-6 px-4 text-center">
-              <span className="text-2xl md:text-3xl font-black text-[#0a1a0f]">
+              <span className="text-2xl md:text-3xl font-black text-[#0a1628]">
                 {stat.value}
               </span>
               <span className="text-xs text-gray-500 mt-1 leading-tight">{stat.label}</span>

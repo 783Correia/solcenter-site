@@ -24,7 +24,7 @@ export default function HowItWorks() {
           <span className="text-[#f5c518] text-sm font-bold uppercase tracking-widest">
             Como contratar?
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0a1a0f] mt-3 max-w-xl leading-snug">
+          <h2 className="text-3xl md:text-4xl font-black text-[#0a1628] mt-3 max-w-xl leading-snug">
             Entenda como você pode contratar os serviços da Solcenter
           </h2>
         </motion.div>
@@ -38,14 +38,14 @@ export default function HowItWorks() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className={`flex gap-6 p-6 rounded-2xl transition-colors ${
-                i % 2 === 1 ? "bg-[#f0faf5]" : "bg-transparent"
+                i % 2 === 1 ? "bg-white" : "bg-transparent"
               }`}
             >
-              <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#0a1a0f]/20 flex items-center justify-center text-[#0a1a0f]">
+              <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#0a1628]/20 flex items-center justify-center text-[#0a1628]">
                 {iconMap[step.icon]}
               </div>
               <div>
-                <h3 className="text-[#0a1a0f] font-black text-xl mb-1">
+                <h3 className="text-[#0a1628] font-black text-xl mb-1">
                   Passo {i + 1} — {step.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed max-w-lg">

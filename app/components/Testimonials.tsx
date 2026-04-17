@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 export default function Testimonials() {
   return (
-    <section id="depoimentos" className="py-24 bg-[#0a1a0f]">
+    <section id="depoimentos" className="py-24 bg-[#0a1628]">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              className="bg-[#0f2818] border border-white/8 rounded-2xl p-8"
+              className="bg-[#0d1f3c] border border-white/8 rounded-2xl p-8"
             >
               <Quote size={32} className="text-[#00a651]/30 mb-4" />
               <p className="text-gray-300 text-base leading-relaxed mb-6">

@@ -5,7 +5,7 @@ import { site } from "../data/site";
 
 export default function About() {
   return (
-    <section id="sobre" className="py-32 bg-[#0f2818]">
+    <section id="sobre" className="py-32 bg-[#0d1f3c]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <motion.div

@@ -4,7 +4,6 @@ import About from "./components/About";
 import Solutions from "./components/Solutions";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "./components/Testimonials";
-import Referral from "./components/Referral";
 import CTASection from "./components/CTASection";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -19,7 +18,6 @@ export default function Home() {
       <Solutions />
       <HowItWorks />
       <Testimonials />
-      <Referral />
       <CTASection />
       <Contact />
       <Footer />

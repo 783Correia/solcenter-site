@@ -6,10 +6,10 @@ import { site } from "../data/site";
 
 export default function CTASection() {
   return (
-    <section className="bg-[#0a1628] overflow-hidden">
+    <section className="bg-[#f7f8f9] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1.1fr_1fr] items-end min-h-[520px]">
-          {/* Image — ancorada ao fundo */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -22,11 +22,11 @@ export default function CTASection() {
               alt="Sistema solar"
               width={720}
               height={520}
-              className="w-full object-contain object-bottom mix-blend-screen"
+              className="w-full object-contain object-bottom"
             />
           </motion.div>
 
-          {/* Text — direita */}
+          {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,10 +37,10 @@ export default function CTASection() {
             <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-5">
               Dê o primeiro passo
             </p>
-            <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-[1.0] tracking-[-0.03em] mb-5">
+            <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-[#0a1628] leading-[1.0] tracking-[-0.03em] mb-5">
               Vamos<br />conversar.
             </h2>
-            <p className="text-white/45 text-base leading-relaxed mb-10 max-w-sm font-light">
+            <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-sm font-light">
               Tenha a energia do futuro. Análise gratuita, sem compromisso. Nossa equipe responde em minutos.
             </p>
             <div className="flex flex-col gap-3">
@@ -55,7 +55,7 @@ export default function CTASection() {
               </a>
               <a
                 href="#contato"
-                className="inline-flex items-center gap-2 text-white/40 text-sm hover:text-white/70 transition-colors w-fit"
+                className="inline-flex items-center gap-2 text-gray-400 text-sm hover:text-[#0a1628] transition-colors w-fit"
               >
                 Ou preencha o formulário
               </a>

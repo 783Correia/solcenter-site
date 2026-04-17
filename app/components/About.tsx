@@ -11,10 +11,9 @@ const pillars = [
 
 export default function About() {
   return (
-    <section id="sobre" className="bg-[#0a1628] pt-20 pb-0 overflow-hidden">
+    <section id="sobre" className="bg-white pt-20 pb-0 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-end">
-          {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -25,13 +24,13 @@ export default function About() {
             <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               A Solcenter
             </p>
-            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-white leading-[1.1] tracking-[-0.03em] mb-4">
+            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-[#0a1628] leading-[1.1] tracking-[-0.03em] mb-4">
               Eficiência energética,{" "}
-              <span className="text-white/40">sustentabilidade</span> e{" "}
-              <span className="text-white/40">muita economia</span>{" "}
+              <span className="text-[#0a1628]/30">sustentabilidade</span> e{" "}
+              <span className="text-[#0a1628]/30">muita economia</span>{" "}
               para os nossos clientes.
             </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-8 max-w-md font-light">
+            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md font-light">
               Nascemos em Santo Cristo/RS e hoje atendemos mais de 60 cidades no
               Noroeste Gaúcho. Cada projeto é tratado com a mesma atenção desde
               o orçamento até o monitoramento contínuo.
@@ -39,9 +38,9 @@ export default function About() {
 
             <div className="grid grid-cols-3 gap-3 mb-8">
               {pillars.map((p) => (
-                <div key={p.label} className="border border-white/10 rounded-xl p-4">
-                  <div className="text-xl font-black text-white">{p.number}</div>
-                  <div className="text-[11px] text-white/40 mt-0.5 uppercase tracking-wide font-medium">{p.label}</div>
+                <div key={p.label} className="border border-gray-100 rounded-xl p-4 bg-[#f7f8f9]">
+                  <div className="text-xl font-black text-[#0a1628]">{p.number}</div>
+                  <div className="text-[11px] text-gray-400 mt-0.5 uppercase tracking-wide font-medium">{p.label}</div>
                 </div>
               ))}
             </div>
@@ -50,13 +49,12 @@ export default function About() {
               href={site.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-[#0a1628] font-bold px-6 py-3 rounded-full text-sm hover:bg-gray-100 transition-all"
+              className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#0d1f3c] transition-all"
             >
               Saiba mais sobre nós
             </a>
           </motion.div>
 
-          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +69,7 @@ export default function About() {
                 fill
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
             </div>
           </motion.div>
         </div>

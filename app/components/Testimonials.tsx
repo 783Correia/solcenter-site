@@ -14,7 +14,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="mb-14"
         >
-          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+          <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">
             Depoimentos
           </p>
           <div className="flex items-end justify-between gap-6">

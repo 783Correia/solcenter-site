@@ -27,7 +27,7 @@ export default function Navbar() {
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <a href="#inicio" className="flex items-center gap-1">
-          <span className="text-[#00a651] font-black text-lg tracking-tight">SOL</span>
+          <span className="text-[#f5c518] font-black text-lg tracking-tight">SOL</span>
           <span className="text-white font-bold text-lg tracking-tight">CENTER</span>
         </a>
 

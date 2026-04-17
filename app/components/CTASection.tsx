@@ -34,7 +34,7 @@ export default function CTASection() {
             transition={{ duration: 0.55, delay: 0.1 }}
             className="pb-20 pt-20 order-1 lg:order-2 pl-0 lg:pl-10"
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-5">
+            <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-5">
               Dê o primeiro passo
             </p>
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-[1.0] tracking-[-0.03em] mb-5">

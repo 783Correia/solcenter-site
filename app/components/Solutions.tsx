@@ -15,7 +15,7 @@ export default function Solutions() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div>
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+            <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               Soluções
             </p>
             <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] max-w-lg">

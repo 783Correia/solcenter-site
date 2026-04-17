@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#00a651] font-black text-2xl tracking-tight">SOL</span>
+              <span className="text-[#f5c518] font-black text-2xl tracking-tight">SOL</span>
               <span className="text-white font-bold text-2xl tracking-tight">CENTER</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">

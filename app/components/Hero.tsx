@@ -16,7 +16,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-[#00a651] text-sm font-bold uppercase tracking-[0.2em] mb-5"
+          className="text-[#f5c518] text-sm font-bold uppercase tracking-[0.2em] mb-5"
         >
           A N°1 do Noroeste Gaúcho · 10 anos de história
         </motion.p>

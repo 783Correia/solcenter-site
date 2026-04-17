@@ -22,7 +22,7 @@ export default function About() {
             transition={{ duration: 0.55 }}
             className="pb-20"
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+            <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               A Solcenter
             </p>
             <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-white leading-[1.1] tracking-[-0.03em] mb-4">

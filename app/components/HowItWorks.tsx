@@ -23,7 +23,7 @@ export default function HowItWorks() {
             viewport={{ once: true }}
             className="lg:sticky lg:top-28"
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
+            <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Como contratar
             </p>
             <h2 className="text-[clamp(2rem,3.5vw,2.75rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-6">

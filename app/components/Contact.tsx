@@ -14,7 +14,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+            <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               Contato
             </p>
             <h2 className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-black text-[#0a1628] leading-tight tracking-[-0.03em] mb-4">

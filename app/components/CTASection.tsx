@@ -33,19 +33,20 @@ export default function CTASection() {
         </motion.div>
       </div>
 
-      {/* 3D solar image */}
+      {/* 3D solar island */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none hidden lg:block"
+        transition={{ delay: 0.25 }}
+        className="relative mx-auto mt-10 max-w-2xl"
       >
         <Image
           src="/images/solar-3d.png"
-          alt=""
-          fill
-          className="object-contain object-bottom-right"
+          alt="Sistema solar flutuante"
+          width={900}
+          height={506}
+          className="w-full object-contain drop-shadow-2xl"
         />
       </motion.div>
     </section>

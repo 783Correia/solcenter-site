@@ -8,7 +8,7 @@ export default function Hero() {
     <section id="inicio" className="relative min-h-screen flex flex-col">
       {/* Background */}
       <div className="absolute inset-0 bg-[#0a1a0f]" />
-      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-40" />
+      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
       {/* Content */}

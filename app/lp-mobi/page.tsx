@@ -307,13 +307,12 @@ export default function LPMobi() {
               />
             </div>
           ))}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/95 via-[#0a1628]/55 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-[#0a1628]/30" />
+          <div className="absolute inset-0 bg-[#0a1628]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/20 to-[#0a1628]/40" />
         </div>
 
         <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-6 lg:px-14 pb-24 pt-32">
-            <div className="max-w-2xl">
+          <div className="max-w-4xl mx-auto px-6 lg:px-14 pb-24 pt-32 text-center flex flex-col items-center">
 
               <div className="inline-flex items-center gap-2 bg-[#00a651]/15 border border-[#00a651]/30 rounded-full px-3.5 py-1.5 mb-6">
                 <div className="w-1.5 h-1.5 bg-[#00a651] rounded-full animate-pulse" />
@@ -333,13 +332,13 @@ export default function LPMobi() {
                 1000W · 100% Elétrica
               </p>
 
-              <p className="text-white/60 text-lg leading-relaxed mb-6 max-w-lg">
+              <p className="text-white/60 text-lg leading-relaxed mb-6 max-w-xl">
                 A scooter elétrica <strong className="text-white/85">mais bonita, mais forte e mais completa</strong>{" "}
                 do mercado. Coloque na sua loja e entre no segmento que mais cresce no país.
               </p>
 
               {/* Diferenciais rápidos */}
-              <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
                 {[
                   { icon: IdCard, t: "Sem CNH" },
                   { icon: BadgeDollarSign, t: "Sem IPVA" },
@@ -356,7 +355,7 @@ export default function LPMobi() {
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-3 mb-16">
+              <div className="flex flex-wrap justify-center gap-3 mb-16">
                 <a
                   href="#formulario"
                   className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
@@ -374,7 +373,7 @@ export default function LPMobi() {
               </div>
 
               {/* Stats reais */}
-              <div className="flex flex-wrap gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {[
                   { v: "1000W", label: "motor brushless" },
                   { v: "40km", label: "de autonomia" },
@@ -389,10 +388,9 @@ export default function LPMobi() {
                   </div>
                 ))}
               </div>
-            </div>
 
             {/* Color picker */}
-            <div className="mt-16 flex items-center gap-5 flex-wrap">
+            <div className="mt-10 flex items-center justify-center gap-5 flex-wrap">
               <span className="text-white/30 text-xs uppercase tracking-widest font-bold">
                 Cor:
               </span>

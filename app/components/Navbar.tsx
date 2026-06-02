@@ -23,24 +23,26 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-white shadow-sm border-b border-gray-100" : "bg-transparent"
-    }`}>
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+    <header className="fixed top-4 inset-x-4 z-50 flex justify-center pointer-events-none">
+      <div className={`w-full max-w-5xl pointer-events-auto transition-all duration-300 rounded-2xl px-5 h-14 flex items-center justify-between ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-xl shadow-black/10 border border-gray-100"
+          : "bg-white/10 backdrop-blur-sm border border-white/20"
+      }`}>
         <a href="#inicio" className="flex items-center">
           <Image
             src={scrolled ? "/logo-dark.svg" : "/logo.svg"}
             alt="Sol Center"
-            width={140}
-            height={29}
+            width={130}
+            height={27}
             className="transition-all duration-300"
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <a key={l.href} href={l.href}
-              className={`text-[13px] font-medium transition-colors ${scrolled ? "text-gray-500 hover:text-[#0a1628]" : "text-white/70 hover:text-white"}`}>
+              className={`text-[13px] font-medium transition-colors ${scrolled ? "text-gray-500 hover:text-[#0a1628]" : "text-white/80 hover:text-white"}`}>
               {l.label}
             </a>
           ))}
@@ -51,13 +53,13 @@ export default function Navbar() {
           Faça uma simulação
         </a>
 
-        <button className={`md:hidden hover:opacity-70 ${scrolled ? "text-[#0a1628]" : "text-white"}`} onClick={() => setOpen(!open)}>
+        <button className={`md:hidden hover:opacity-70 transition-opacity ${scrolled ? "text-[#0a1628]" : "text-white"}`} onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-5 flex flex-col gap-5 shadow-lg">
+        <div className="absolute top-16 inset-x-0 md:hidden bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 mx-0 px-6 py-5 flex flex-col gap-4">
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
               className="text-gray-600 hover:text-[#0a1628] font-medium transition-colors text-sm">
@@ -65,7 +67,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer"
-            className="bg-[#00a651] text-white font-bold px-5 py-3 rounded-full text-center text-sm">
+            className="bg-[#00a651] text-white font-bold px-5 py-3 rounded-full text-center text-sm mt-1">
             Faça uma simulação
           </a>
         </div>

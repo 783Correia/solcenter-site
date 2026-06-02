@@ -365,13 +365,18 @@ export default function LPMobi() {
                   { icon: BadgeDollarSign, t: "Sem IPVA" },
                   { icon: Leaf, t: "Zero emissão" },
                   { icon: Battery, t: "Bateria de lítio" },
-                ].map(({ icon: Icon, t }) => (
+                ].map(({ icon: Icon, t }, i) => (
                   <div
                     key={t}
-                    className="flex items-center gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-2 text-white/70 text-xs font-semibold"
+                    className="badge-glow flex items-center gap-2 rounded-full px-3.5 py-2 text-white/75 text-xs font-semibold"
                   >
-                    <Icon size={12} className="text-[#00a651]" />
-                    {t}
+                    <span
+                      className="badge-shimmer"
+                      aria-hidden="true"
+                      style={{ animationDelay: `${i * 0.6}s` }}
+                    />
+                    <Icon size={12} className="text-[#00a651] relative z-10" />
+                    <span className="relative z-10">{t}</span>
                   </div>
                 ))}
               </div>

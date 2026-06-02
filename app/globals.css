@@ -57,3 +57,59 @@ body {
 .animate-hero-fade {
   animation: heroFade 0.6s ease-in-out forwards;
 }
+
+@keyframes badge-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes badge-shimmer {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
+
+.badge-glow {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.badge-glow::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 35%,
+    #00a651 55%,
+    #00c060 65%,
+    transparent 80%
+  );
+  border-radius: inherit;
+  animation: badge-rotate 3s linear infinite;
+  z-index: -2;
+}
+
+.badge-glow::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #0d1a2e;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.badge-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 198, 96, 0.15) 50%,
+    transparent 100%
+  );
+  animation: badge-shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}

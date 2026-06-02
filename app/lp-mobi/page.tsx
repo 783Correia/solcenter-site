@@ -308,46 +308,43 @@ export default function LPMobi() {
       <LPNav />
 
       {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+        {/* Background branded SVG */}
         <div className="absolute inset-0">
-          {COLORS.map((c) => (
-            <div
-              key={c.id}
-              className="absolute inset-0 transition-opacity duration-700"
-              style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
-            >
-              <Image
-                src={c.hero}
-                alt={`EVOX Sol Center Mobi ${c.label}`}
-                fill
-                className="object-cover object-center"
-                priority={c.id === "preta"}
-                sizes="100vw"
-              />
-            </div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050c1a]/75 via-[#050c1a]/25 to-[#050c1a]/85" />
+          <Image
+            src="/mobi/bg-hero.svg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Fade inferior para integrar com a próxima seção */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050c1a] to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full">
-          <div className="max-w-4xl mx-auto px-6 lg:px-14 pb-20 pt-28 md:pt-32 text-center flex flex-col items-center">
-            <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-2">
+        {/* Layout split: texto esquerda, moto direita */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 pt-24 pb-16 grid lg:grid-cols-2 gap-8 items-center">
+
+          {/* ESQUERDA — copy */}
+          <div className="flex flex-col items-start">
+            <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-3">
               Sol Center Mobi · EVOX
             </p>
-            <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-black text-white leading-[0.85] tracking-[-0.04em] mb-3">
+            <h1 className="text-[clamp(3.5rem,7vw,7rem)] font-black text-white leading-[0.82] tracking-[-0.04em] mb-4">
               EVOX
             </h1>
-            <p className="text-[clamp(1.4rem,3vw,2.2rem)] font-black text-[#00a651] leading-none tracking-tight mb-6">
+            <p className="text-[clamp(1.3rem,2.5vw,2rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
               1000W · 100% Elétrica
             </p>
-            <p className="text-white/60 text-lg leading-relaxed mb-6 max-w-xl">
+            <p className="text-white/60 text-base leading-relaxed mb-6 max-w-lg">
               A scooter elétrica{" "}
               <strong className="text-white/85">mais bonita, mais forte e mais completa</strong>{" "}
               do mercado. Coloque na sua loja e entre no segmento que mais cresce no país.
             </p>
 
             {/* Badges com brilho */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <div className="flex flex-wrap gap-2.5 mb-7">
               {[
                 { icon: IdCard, t: "Sem CNH" },
                 { icon: BadgeDollarSign, t: "Sem IPVA" },
@@ -358,75 +355,97 @@ export default function LPMobi() {
                   key={t}
                   className="badge-glow flex items-center gap-2 rounded-full px-3.5 py-2 text-white/75 text-xs font-semibold"
                 >
-                  <span
-                    className="badge-shimmer"
-                    aria-hidden="true"
-                    style={{ animationDelay: `${i * 0.6}s` }}
-                  />
+                  <span className="badge-shimmer" aria-hidden="true" style={{ animationDelay: `${i * 0.6}s` }} />
                   <Icon size={12} className="text-[#00a651] relative z-10" />
                   <span className="relative z-10">{t}</span>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3 mb-16">
+            <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href="#formulario"
-                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
+                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-7 py-3.5 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
               >
                 Quero ser revendedor
                 <ArrowRight size={15} />
               </a>
               <a
                 href="#galeria"
-                className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-white/15 transition"
+                className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-white/15 transition"
               >
                 Ver o produto
                 <ChevronRight size={15} />
               </a>
             </div>
 
-            <div className="hidden sm:flex flex-wrap justify-center gap-8">
+            {/* Stats */}
+            <div className="flex flex-wrap gap-6">
               {[
                 { v: "1000W", label: "motor brushless" },
-                { v: "40km", label: "de autonomia" },
-                { v: "200kg", label: "peso suportado" },
-                { v: "4", label: "cores disponíveis" },
+                { v: "40km", label: "autonomia" },
+                { v: "200kg", label: "carga máx." },
+                { v: "4", label: "cores" },
               ].map((s) => (
                 <div key={s.label} className="border-l-2 border-[#00a651]/40 pl-3">
-                  <div className="text-2xl font-black text-white leading-none">{s.v}</div>
-                  <div className="text-[11px] text-white/35 uppercase tracking-wide mt-0.5">{s.label}</div>
+                  <div className="text-xl font-black text-white leading-none">{s.v}</div>
+                  <div className="text-[10px] text-white/35 uppercase tracking-wide mt-0.5">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* DIREITA — moto recortada */}
+          <div className="relative flex flex-col items-center justify-center">
+            {/* Glow sutil embaixo da moto */}
+            <div
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-full blur-2xl"
+              style={{ background: "radial-gradient(ellipse, rgba(0,166,81,0.25) 0%, transparent 70%)" }}
+            />
+
+            {/* Imagens empilhadas com fade */}
+            <div className="relative w-full max-w-lg aspect-square">
+              {COLORS.map((c) => (
+                <div
+                  key={c.id}
+                  className="absolute inset-0 transition-opacity duration-700 flex items-center justify-center"
+                  style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
+                >
+                  <Image
+                    src={`/mobi/cutout/${c.id}-1.png`}
+                    alt={`EVOX Sol Center Mobi ${c.label}`}
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    priority={c.id === "preta"}
+                    sizes="(max-width: 1024px) 80vw, 45vw"
+                  />
                 </div>
               ))}
             </div>
 
             {/* Color picker */}
-            <div className="mt-8 flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
+            <div className="flex items-center gap-4 mt-4 flex-wrap justify-center">
               <span className="text-white/30 text-xs uppercase tracking-widest font-bold">Cor:</span>
               {COLORS.map((c) => (
                 <button
                   key={c.id}
                   onClick={() => setActiveColor(c)}
                   aria-label={`Ver EVOX ${c.label}`}
-                  className="flex flex-col items-center gap-1.5 min-w-[44px]"
+                  className="flex flex-col items-center gap-1 min-w-[44px]"
                 >
                   <div
-                    className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
+                    className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
                       activeColor.id === c.id
                         ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
                         : "border-white/30 hover:border-white/60 hover:scale-105"
                     }`}
                     style={{ backgroundColor: c.hex }}
                   />
-                  <span
-                    className={`hidden sm:block text-[10px] font-semibold transition leading-tight text-center max-w-[60px] ${
-                      activeColor.id === c.id ? "text-white" : "text-white/30"
-                    }`}
-                  >
+                  <span className={`text-[9px] font-semibold transition leading-tight text-center max-w-[58px] ${activeColor.id === c.id ? "text-white" : "text-white/30"}`}>
                     {c.label}
                   </span>
                   {c.badge && (
-                    <span className="hidden sm:block text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
+                    <span className="text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
                       {c.badge}
                     </span>
                   )}
@@ -434,6 +453,7 @@ export default function LPMobi() {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 

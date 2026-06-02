@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -8,7 +8,6 @@ import {
   CheckCircle,
   Phone,
   Zap,
-  TrendingDown,
   Package,
   Users,
   Battery,
@@ -17,13 +16,15 @@ import {
   Wrench,
   ChevronRight,
   ChevronLeft,
-  Star,
   MapPin,
   Leaf,
-  Calculator,
   IdCard,
   BadgeDollarSign,
   Cpu,
+  TrendingUp,
+  Store,
+  Menu,
+  X,
 } from "lucide-react";
 import { site } from "../data/site";
 
@@ -100,79 +101,87 @@ const DETAILS = [
   "/mobi/real/detalhe-10.jpg",
 ];
 
-function SavingsCalc() {
-  const [qty, setQty] = useState(5);
-  const monthly = qty * 740;
-  const yearly = monthly * 12;
+function LPNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   return (
-    <div className="bg-[#0a1628] rounded-3xl p-8 lg:p-10 border border-white/10">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-10 h-10 bg-[#00a651]/20 rounded-xl flex items-center justify-center">
-          <Calculator size={18} className="text-[#00a651]" />
-        </div>
-        <div>
-          <p className="font-black text-white text-lg leading-none">Calculadora de economia</p>
-          <p className="text-white/40 text-xs mt-1">Baseado em 2.000 km/mês por moto</p>
-        </div>
-      </div>
+    <header className="fixed top-4 inset-x-4 z-50 flex justify-center pointer-events-none">
+      <div
+        className={`w-full max-w-5xl pointer-events-auto transition-all duration-300 rounded-2xl px-5 h-14 flex items-center justify-between ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-xl shadow-black/10 border border-gray-100"
+            : "bg-white/8 backdrop-blur-sm border border-white/15"
+        }`}
+      >
+        {/* Logo */}
+        <a href="#" className="flex items-center">
+          <Image
+            src="/logo-mobi.svg"
+            alt="Sol Center Mobi"
+            width={140}
+            height={34}
+            className={`transition-all duration-300 ${scrolled ? "brightness-100" : "brightness-0 invert"}`}
+          />
+        </a>
 
-      <div className="mb-8">
-        <label className="block text-white/50 text-xs uppercase tracking-wider font-bold mb-4">
-          Quantas motos na frota?
-        </label>
-        <div className="flex items-center gap-5 mb-4">
-          <button
-            onClick={() => setQty(Math.max(1, qty - 1))}
-            className="w-11 h-11 bg-white/10 hover:bg-white/20 rounded-full text-white font-black text-xl flex items-center justify-center transition"
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href={`tel:${site.phone}`}
+            className={`flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full transition ${
+              scrolled
+                ? "text-gray-500 hover:text-[#0a1628]"
+                : "text-white/70 hover:text-white bg-white/8 hover:bg-white/15"
+            }`}
           >
-            −
-          </button>
-          <span className="text-[#00a651] font-black text-5xl w-20 text-center tabular-nums">
-            {qty}
-          </span>
-          <button
-            onClick={() => setQty(Math.min(100, qty + 1))}
-            className="w-11 h-11 bg-white/10 hover:bg-white/20 rounded-full text-white font-black text-xl flex items-center justify-center transition"
+            <Phone size={12} />
+            {site.phone}
+          </a>
+          <a
+            href="#formulario"
+            className="inline-flex items-center gap-1.5 bg-[#00a651] text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-[#00c060] transition-all"
           >
-            +
-          </button>
+            Seja revendedor
+            <ArrowRight size={12} />
+          </a>
         </div>
-        <input
-          type="range"
-          min={1}
-          max={50}
-          value={qty}
-          onChange={(e) => setQty(Number(e.target.value))}
-          className="w-full accent-[#00a651] h-2"
-        />
-        <div className="flex justify-between text-white/20 text-xs mt-2">
-          <span>1 moto</span>
-          <span>50 motos</span>
-        </div>
+
+        {/* Mobile menu toggle */}
+        <button
+          className={`md:hidden transition-colors ${scrolled ? "text-[#0a1628]" : "text-white"}`}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-white/5 rounded-2xl p-5">
-          <p className="text-white/40 text-xs uppercase tracking-wide mb-2">Economia mensal</p>
-          <p className="text-[#00a651] font-black text-2xl tabular-nums">
-            R${" "}
-            {monthly.toLocaleString("pt-BR")}
-          </p>
+      {open && (
+        <div className="absolute top-16 inset-x-0 md:hidden bg-white/97 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 px-6 py-5 flex flex-col gap-4">
+          <a
+            href={`tel:${site.phone}`}
+            className="text-gray-600 font-medium text-sm flex items-center gap-2"
+            onClick={() => setOpen(false)}
+          >
+            <Phone size={14} className="text-[#00a651]" />
+            {site.phone}
+          </a>
+          <a
+            href="#formulario"
+            onClick={() => setOpen(false)}
+            className="bg-[#00a651] text-white font-bold px-5 py-3 rounded-full text-center text-sm"
+          >
+            Quero ser revendedor
+          </a>
         </div>
-        <div className="bg-[#00a651]/15 border border-[#00a651]/30 rounded-2xl p-5">
-          <p className="text-[#00a651]/60 text-xs uppercase tracking-wide mb-2">Economia anual</p>
-          <p className="text-[#00a651] font-black text-2xl tabular-nums">
-            R${" "}
-            {yearly.toLocaleString("pt-BR")}
-          </p>
-        </div>
-      </div>
-
-      <p className="text-white/20 text-xs mt-5 text-center">
-        R$860/mês (combustão) vs R$120/mês (elétrica) por unidade
-      </p>
-    </div>
+      )}
+    </header>
   );
 }
 
@@ -188,7 +197,7 @@ function LeadForm() {
     const company = (f.elements.namedItem("company") as HTMLInputElement).value;
     const type = (f.elements.namedItem("type") as HTMLSelectElement).value;
     const msg = encodeURIComponent(
-      `Olá! Me chamo ${name}, da empresa ${company}. Tenho interesse em ${type} com motos elétricas Sol Center Mobi. WhatsApp: ${phone}`
+      `Olá! Me chamo ${name}, da empresa ${company}. Tenho interesse em ${type}. WhatsApp: ${phone}`
     );
     window.open(`${WA}?text=${msg}`, "_blank");
     setSent(true);
@@ -221,7 +230,7 @@ function LeadForm() {
           name="company"
           type="text"
           required
-          placeholder="Empresa"
+          placeholder="Nome da loja / empresa"
           className="w-full bg-[#f7f8f9] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#0a1628] placeholder-gray-300 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
         />
         <input
@@ -237,25 +246,29 @@ function LeadForm() {
         required
         className="w-full bg-[#f7f8f9] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-gray-500 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
       >
-        <option value="">Selecione seu interesse</option>
-        <option value="revenda — quero ter modelos na minha loja">
-          Revenda — quero ter modelos na minha loja
+        <option value="">Tipo de negócio</option>
+        <option value="revenda — quero ter modelos EVOX na minha loja">
+          Loja de motos / bicicletas / multi-marcas
         </option>
-        <option value="frota — preciso de motos para minha operação">
-          Frota — motos para minha operação
+        <option value="revendedor — loja de eletrônicos e equipamentos">
+          Loja de eletrônicos ou equipamentos
         </option>
-        <option value="distribuição regional dos modelos">Distribuição regional</option>
-        <option value="mais informações sobre os modelos">Quero mais informações</option>
+        <option value="distribuição regional dos modelos EVOX">
+          Distribuição regional
+        </option>
+        <option value="mais informações sobre como ser revendedor EVOX">
+          Quero mais informações
+        </option>
       </select>
       <button
         type="submit"
         className="w-full bg-[#00a651] text-white font-black py-4 rounded-xl hover:bg-[#00c060] active:scale-[0.98] transition text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-green-500/25"
       >
-        Falar com consultor agora
+        Quero ser revendedor EVOX
         <ArrowRight size={16} />
       </button>
       <p className="text-center text-[11px] text-gray-400">
-        Atendimento B2B exclusivo · Retorno em até 24h
+        Atendimento comercial B2B · Retorno em até 24h
       </p>
     </form>
   );
@@ -273,36 +286,10 @@ export default function LPMobi() {
   return (
     <div className="min-h-screen bg-white font-sans antialiased">
 
-      {/* ── NAV ─────────────────────────────────────────────── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1628]/90 backdrop-blur-md border-b border-white/5 px-5 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-[#00a651] rounded-lg flex items-center justify-center">
-            <Zap size={15} className="text-white" />
-          </div>
-          <span className="text-white font-black text-sm tracking-tight">
-            Sol Center <span className="text-[#00a651]">Mobi</span>
-          </span>
-        </div>
-        <div className="flex items-center gap-3">
-          <a
-            href="#formulario"
-            className="hidden sm:inline-flex items-center gap-1.5 bg-[#00a651]/10 border border-[#00a651]/30 text-[#00a651] text-xs font-bold px-4 py-2 rounded-full hover:bg-[#00a651]/20 transition"
-          >
-            Seja revendedor
-          </a>
-          <a
-            href={`tel:${site.phone}`}
-            className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white text-xs font-medium px-4 py-2 rounded-full transition"
-          >
-            <Phone size={12} />
-            {site.phone}
-          </a>
-        </div>
-      </nav>
+      <LPNav />
 
       {/* ── HERO — fullbleed foto real ───────────────────────── */}
       <section className="relative min-h-screen flex items-end overflow-hidden">
-        {/* Fotos empilhadas com fade */}
         <div className="absolute inset-0">
           {COLORS.map((c) => (
             <div
@@ -312,7 +299,7 @@ export default function LPMobi() {
             >
               <Image
                 src={c.hero}
-                alt={`Moto elétrica Sol Center Mobi ${c.label}`}
+                alt={`EVOX Sol Center Mobi ${c.label}`}
                 fill
                 className="object-cover object-center"
                 priority={c.id === "preta"}
@@ -320,29 +307,25 @@ export default function LPMobi() {
               />
             </div>
           ))}
-          {/* Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/95 via-[#0a1628]/55 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-[#0a1628]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-[#0a1628]/30" />
         </div>
 
-        {/* Conteúdo */}
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-6 lg:px-14 pb-24 pt-32">
             <div className="max-w-2xl">
-              {/* Badge */}
+
               <div className="inline-flex items-center gap-2 bg-[#00a651]/15 border border-[#00a651]/30 rounded-full px-3.5 py-1.5 mb-6">
                 <div className="w-1.5 h-1.5 bg-[#00a651] rounded-full animate-pulse" />
                 <span className="text-[#00a651] text-[11px] font-bold uppercase tracking-[0.15em]">
-                  B2B · Revendas & Frotas
+                  O mercado que mais cresce no Brasil
                 </span>
               </div>
 
-              {/* Model name */}
               <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-2">
-                Sol Center Mobi
+                Sol Center Mobi · EVOX
               </p>
 
-              {/* Headline */}
               <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-black text-white leading-[0.85] tracking-[-0.04em] mb-3">
                 EVOX
               </h1>
@@ -350,29 +333,29 @@ export default function LPMobi() {
                 1000W · 100% Elétrica
               </p>
 
-              <p className="text-white/60 text-base leading-relaxed mb-6 max-w-lg">
-                A scooter elétrica ideal para{" "}
-                <strong className="text-white/85">
-                  revendas, frotas e operações delivery
-                </strong>{" "}
-                no Sul do Brasil. Motor 1000W, bateria de lítio removível e zero custo de combustível.
+              <p className="text-white/60 text-lg leading-relaxed mb-6 max-w-lg">
+                A scooter elétrica <strong className="text-white/85">mais bonita, mais forte e mais completa</strong>{" "}
+                do mercado. Coloque na sua loja e entre no segmento que mais cresce no país.
               </p>
 
-              {/* Diferenciais-chave */}
+              {/* Diferenciais rápidos */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {[
-                  { icon: IdCard, t: "Sem carteira de motorista" },
-                  { icon: BadgeDollarSign, t: "Sem IPVA nem emplacamento" },
+                  { icon: IdCard, t: "Sem CNH" },
+                  { icon: BadgeDollarSign, t: "Sem IPVA" },
                   { icon: Leaf, t: "Zero emissão" },
+                  { icon: Battery, t: "Bateria removível" },
                 ].map(({ icon: Icon, t }) => (
-                  <div key={t} className="flex items-center gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-2 text-white/70 text-xs font-semibold">
-                    <Icon size={13} className="text-[#00a651]" />
+                  <div
+                    key={t}
+                    className="flex items-center gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-2 text-white/70 text-xs font-semibold"
+                  >
+                    <Icon size={12} className="text-[#00a651]" />
                     {t}
                   </div>
                 ))}
               </div>
 
-              {/* CTAs */}
               <div className="flex flex-wrap gap-3 mb-16">
                 <a
                   href="#formulario"
@@ -390,7 +373,7 @@ export default function LPMobi() {
                 </a>
               </div>
 
-              {/* Stats */}
+              {/* Stats reais */}
               <div className="flex flex-wrap gap-8">
                 {[
                   { v: "1000W", label: "motor brushless" },
@@ -417,8 +400,8 @@ export default function LPMobi() {
                 <button
                   key={c.id}
                   onClick={() => setActiveColor(c)}
-                  aria-label={`Ver moto ${c.label}`}
-                  className="flex flex-col items-center gap-1.5 group"
+                  aria-label={`Ver EVOX ${c.label}`}
+                  className="flex flex-col items-center gap-1.5"
                 >
                   <div
                     className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
@@ -429,7 +412,7 @@ export default function LPMobi() {
                     style={{ backgroundColor: c.hex }}
                   />
                   <span
-                    className={`text-[10px] font-semibold transition ${
+                    className={`text-[10px] font-semibold transition leading-tight text-center ${
                       activeColor.id === c.id ? "text-white" : "text-white/30"
                     }`}
                   >
@@ -447,24 +430,6 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── TRUST BAR ───────────────────────────────────────── */}
-      <section className="bg-[#060d18] px-6 py-5 border-y border-white/5">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          {[
-            { icon: Shield, t: "10 anos de operação" },
-            { icon: MapPin, t: "Santo Cristo — RS" },
-            { icon: Wrench, t: "Suporte técnico incluso" },
-            { icon: Leaf, t: "Zero emissão de CO₂" },
-            { icon: Star, t: "Parceiro de negócio real" },
-          ].map(({ icon: Icon, t }) => (
-            <div key={t} className="flex items-center gap-2 text-white/40 text-xs font-medium">
-              <Icon size={13} className="text-[#00a651]" />
-              {t}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── GALERIA DE DETALHES ──────────────────────────────── */}
       <section id="galeria" className="px-6 py-20 bg-[#f7f8f9]">
         <div className="max-w-6xl mx-auto">
@@ -473,14 +438,13 @@ export default function LPMobi() {
               Produto de verdade
             </p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
-              Qualidade que você pode ver.
+              Qualidade que vende sozinha.
             </h2>
             <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">
-              Fotos reais da Sol Center Mobi — sem filtro, sem render. O que você vende é exatamente isso.
+              Fotos reais da EVOX. Sem filtro, sem render. O produto que você vai ter na sua loja.
             </p>
           </div>
 
-          {/* Foto principal do detalhe */}
           <div className="relative w-full aspect-[16/10] lg:aspect-[21/9] rounded-3xl overflow-hidden mb-4 bg-[#dfe5ec]">
             {DETAILS.map((src, i) => (
               <div
@@ -490,7 +454,7 @@ export default function LPMobi() {
               >
                 <Image
                   src={src}
-                  alt={`Detalhe moto elétrica Sol Center ${i + 1}`}
+                  alt={`Detalhe EVOX ${i + 1}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 90vw"
@@ -500,14 +464,14 @@ export default function LPMobi() {
             <button
               onClick={prevDetail}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full flex items-center justify-center transition z-10"
-              aria-label="Foto anterior"
+              aria-label="Anterior"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={nextDetail}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full flex items-center justify-center transition z-10"
-              aria-label="Próxima foto"
+              aria-label="Próxima"
             >
               <ChevronRight size={18} />
             </button>
@@ -516,26 +480,19 @@ export default function LPMobi() {
             </div>
           </div>
 
-          {/* Thumbnails */}
           <div className="grid grid-cols-5 md:grid-cols-10 gap-2">
             {DETAILS.map((src, i) => (
               <button
                 key={src}
                 onClick={() => setActiveDetailIdx(i)}
-                aria-label={`Ver detalhe ${i + 1}`}
+                aria-label={`Detalhe ${i + 1}`}
                 className={`relative aspect-square rounded-xl overflow-hidden transition-all duration-200 ${
                   activeDetailIdx === i
                     ? "ring-2 ring-[#00a651] ring-offset-1 scale-105"
                     : "opacity-50 hover:opacity-90 hover:scale-105"
                 }`}
               >
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
+                <Image src={src} alt="" fill className="object-cover" sizes="80px" />
               </button>
             ))}
           </div>
@@ -554,7 +511,6 @@ export default function LPMobi() {
             </h2>
           </div>
 
-          {/* Tabs de cor */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {COLORS.map((c) => (
               <button
@@ -580,7 +536,6 @@ export default function LPMobi() {
             ))}
           </div>
 
-          {/* Grid de fotos da cor ativa */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px] md:auto-rows-[220px]">
             {[activeColor.hero, ...activeColor.gallery].slice(0, 4).map((src, i) => (
               <div
@@ -591,7 +546,7 @@ export default function LPMobi() {
               >
                 <Image
                   src={src}
-                  alt={`Moto Sol Center Mobi ${activeColor.label} ${i + 1}`}
+                  alt={`EVOX ${activeColor.label} ${i + 1}`}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 50vw, 25vw"
@@ -618,7 +573,7 @@ export default function LPMobi() {
             {SPECS.map(({ icon: Icon, label, value, sub }) => (
               <div
                 key={label}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#00a651]/30 transition group"
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#00a651]/30 transition"
               >
                 <div className="w-10 h-10 bg-[#00a651]/15 rounded-xl flex items-center justify-center mb-4">
                   <Icon size={18} className="text-[#00a651]" />
@@ -636,7 +591,7 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── DIFERENCIAIS DO PRODUTO ─────────────────────────── */}
+      {/* ── DIFERENCIAIS DO PRODUTO ──────────────────────────── */}
       <section className="px-6 py-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -647,68 +602,63 @@ export default function LPMobi() {
               Vantagens que vendem sozinhas.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {[
               {
                 icon: IdCard,
                 title: "Sem carteira de motorista",
-                desc: "Qualquer pessoa pode pilota — não exige CNH. Amplia muito o público comprador.",
-                highlight: true,
+                desc: "Não exige CNH. Qualquer pessoa pode pilota — amplia muito o público.",
+                dark: true,
               },
               {
                 icon: BadgeDollarSign,
                 title: "Sem IPVA nem emplacamento",
                 desc: "Zero burocracia e zero custo anual com documentação. Só ligar e usar.",
-                highlight: true,
+                dark: true,
               },
               {
                 icon: Battery,
                 title: "Bateria de lítio removível",
-                desc: "Carrega em casa ou no trabalho. Sem precisar de tomada na garagem.",
-                highlight: false,
+                desc: "Carrega em casa, no trabalho, em qualquer tomada 110/220V.",
+                dark: false,
               },
               {
                 icon: Shield,
-                title: "Freio a disco dianteiro",
-                desc: "Mais segurança na frenagem para uso urbano diário com carga.",
-                highlight: false,
+                title: "Freio a disco + Full LED",
+                desc: "Mais segurança na frenagem e na visibilidade. Produto completo.",
+                dark: false,
               },
-            ].map(({ icon: Icon, title, desc, highlight }) => (
+            ].map(({ icon: Icon, title, desc, dark }) => (
               <div
                 key={title}
                 className={`rounded-2xl p-6 border transition-all hover:shadow-md ${
-                  highlight
+                  dark
                     ? "bg-[#0a1628] border-[#00a651]/30"
                     : "bg-[#f7f8f9] border-gray-100 hover:border-[#00a651]/30"
                 }`}
               >
                 <div
                   className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${
-                    highlight ? "bg-[#00a651]/20" : "bg-[#00a651]/10"
+                    dark ? "bg-[#00a651]/20" : "bg-[#00a651]/10"
                   }`}
                 >
                   <Icon size={20} className="text-[#00a651]" />
                 </div>
                 <h3
-                  className={`font-black text-base mb-2 ${
-                    highlight ? "text-white" : "text-[#0a1628]"
-                  }`}
+                  className={`font-black text-base mb-2 ${dark ? "text-white" : "text-[#0a1628]"}`}
                 >
                   {title}
                 </h3>
-                <p
-                  className={`text-sm leading-relaxed ${
-                    highlight ? "text-white/50" : "text-gray-500"
-                  }`}
-                >
+                <p className={`text-sm leading-relaxed ${dark ? "text-white/50" : "text-gray-500"}`}>
                   {desc}
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Specs detalhados */}
-          <div className="mt-10 bg-[#f7f8f9] rounded-2xl p-6 border border-gray-100">
+          {/* Ficha técnica completa */}
+          <div className="bg-[#f7f8f9] rounded-2xl p-6 border border-gray-100">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">
               Ficha técnica completa
             </p>
@@ -721,9 +671,9 @@ export default function LPMobi() {
                 ["Velocidade máxima", "32 km/h"],
                 ["Transmissão", "3 velocidades"],
                 ["Suspensão", "Dianteira e traseira"],
-                ["Pesos suportado", "200 kg"],
+                ["Peso suportado", "200 kg"],
                 ["Pneus", "3.00 – 10 pol."],
-                ["Distância entre eixos", "1.350 mm"],
+                ["Entre eixos", "1.350 mm"],
                 ["Iluminação", "Full LED"],
                 ["Freios", "Disco dianteiro e traseiro"],
               ].map(([k, v]) => (
@@ -739,200 +689,157 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── PARA QUEM É ─────────────────────────────────────── */}
-      <section className="px-6 py-20 bg-white">
+      {/* ── OPORTUNIDADE DE MERCADO ──────────────────────────── */}
+      <section className="px-6 py-20 bg-[#0a1628]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
-              Para quem é
+              Por que agora
             </p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
-              Dois modelos de negócio.<br />Um produto comprovado.
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
+              O mercado que você não pode ignorar.
             </h2>
+            <p className="text-white/40 text-sm mt-3 max-w-lg mx-auto">
+              A mobilidade elétrica cresce mais rápido do que qualquer outro segmento de veículos no Brasil.
+              Quem entrar agora, entra cedo.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Revendas */}
-            <div className="rounded-3xl overflow-hidden border border-gray-100 hover:border-[#00a651]/30 hover:shadow-2xl transition-all duration-300 group">
-              <div className="relative bg-gradient-to-br from-[#0a1628] to-[#14253d] p-8 min-h-[220px] overflow-hidden">
-                <div className="relative z-10">
-                  <div className="w-12 h-12 bg-[#00a651] rounded-2xl flex items-center justify-center mb-4">
-                    <Package size={22} className="text-white" />
-                  </div>
-                  <h3 className="font-black text-white text-2xl leading-tight mb-2">
-                    Para Revendas
-                  </h3>
-                  <p className="text-white/40 text-sm">
-                    Amplie seu portfólio sem dor de cabeça
-                  </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {[
+              {
+                icon: TrendingUp,
+                stat: "+40%",
+                label: "ao ano",
+                desc: "crescimento do mercado de mobilidade elétrica no Brasil",
+              },
+              {
+                icon: Leaf,
+                stat: "Zero",
+                label: "emissão",
+                desc: "tendência regulatória e de consumo que só vai aumentar",
+              },
+              {
+                icon: IdCard,
+                stat: "CNH",
+                label: "não precisa",
+                desc: "público comprador muito maior que moto convencional",
+              },
+              {
+                icon: Store,
+                stat: "4",
+                label: "cores",
+                desc: "modelos prontos pra sair da caixa diretamente na sua loja",
+              },
+            ].map(({ icon: Icon, stat, label, desc }) => (
+              <div
+                key={stat + label}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#00a651]/30 transition"
+              >
+                <div className="w-10 h-10 bg-[#00a651]/15 rounded-xl flex items-center justify-center mb-4">
+                  <Icon size={18} className="text-[#00a651]" />
                 </div>
-                <div className="absolute right-0 bottom-0 w-48 h-full overflow-hidden opacity-20 group-hover:opacity-30 transition-opacity">
-                  <Image
-                    src="/mobi/real/preta-2.jpg"
-                    alt=""
-                    fill
-                    className="object-cover object-left"
-                    sizes="200px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628] to-transparent" />
-                </div>
+                <p className="text-white font-black text-3xl leading-none">{stat}</p>
+                <p className="text-[#00a651] text-sm font-bold mb-2">{label}</p>
+                <p className="text-white/30 text-xs leading-relaxed">{desc}</p>
               </div>
-              <div className="p-7 bg-white">
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                  Tem uma loja de motos, bicicletas ou multi-marcas? Adicione motos elétricas ao portfólio. A Sol Center Mobi cuida do suporte técnico e pós-venda — você só vende.
-                </p>
-                <ul className="space-y-2.5 mb-6">
-                  {[
-                    "Modelos testados no mercado sul-brasileiro",
-                    "Suporte técnico pós-venda pela Sol Center",
-                    "Margem atrativa por unidade vendida",
-                    "Treinamento da equipe de vendas incluso",
-                    "Sem investimento em grande estoque inicial",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
-                      <CheckCircle
-                        size={14}
-                        className="text-[#00a651] shrink-0 mt-0.5"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#formulario"
-                  className="flex items-center gap-1.5 text-[#00a651] text-sm font-black hover:gap-3 transition-all"
-                >
-                  Quero ser revendedor <ArrowRight size={15} />
-                </a>
-              </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Frotas */}
-            <div className="rounded-3xl overflow-hidden border border-gray-100 hover:border-[#00a651]/30 hover:shadow-2xl transition-all duration-300 group">
-              <div className="relative bg-gradient-to-br from-[#003d1f] to-[#006b34] p-8 min-h-[220px] overflow-hidden">
-                <div className="relative z-10">
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
-                    <TrendingDown size={22} className="text-white" />
-                  </div>
-                  <h3 className="font-black text-white text-2xl leading-tight mb-2">
-                    Para Frotas
-                  </h3>
-                  <p className="text-white/60 text-sm">86% de redução no custo por km</p>
-                </div>
-                <div className="absolute right-0 bottom-0 w-48 h-full overflow-hidden opacity-20 group-hover:opacity-30 transition-opacity">
-                  <Image
-                    src="/mobi/real/azul-2.jpg"
-                    alt=""
-                    fill
-                    className="object-cover object-left"
-                    sizes="200px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#003d1f] to-transparent" />
-                </div>
-              </div>
-              <div className="p-7 bg-white">
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                  Delivery, logística urbana ou mobilidade de equipe? Motos elétricas reduzem custo operacional por km em até 86%. Sem gasolina, sem óleo, sem complicação.
-                </p>
-                <ul className="space-y-2.5 mb-6">
-                  {[
-                    "Custo por km até 86% menor que moto a combustão",
-                    "Zero gasolina — carrega na tomada 110/220V",
-                    "Manutenção muito mais simples (sem óleo, velas)",
-                    "Suporte técnico dedicado para sua frota",
-                    "Condições especiais por volume e pagamento",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
-                      <CheckCircle
-                        size={14}
-                        className="text-[#00a651] shrink-0 mt-0.5"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#formulario"
-                  className="flex items-center gap-1.5 text-[#00a651] text-sm font-black hover:gap-3 transition-all"
-                >
-                  Montar frota elétrica <ArrowRight size={15} />
-                </a>
-              </div>
-            </div>
+          <div className="bg-[#00a651]/10 border border-[#00a651]/25 rounded-2xl p-8 text-center">
+            <p className="text-white/60 text-sm mb-3">
+              Os modelos mais bonitos, mais fortes e mais completos do segmento.
+            </p>
+            <p className="text-[clamp(1.4rem,2.5vw,2rem)] font-black text-white leading-tight">
+              A EVOX é o produto certo, no momento certo,{" "}
+              <span className="text-[#00a651]">para quem quer entrar no mercado elétrico com o pé direito.</span>
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── CALCULADORA ─────────────────────────────────────── */}
-      <section className="px-6 py-20 bg-[#f7f8f9]">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-              Vantagem financeira
-            </p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight leading-tight mb-5">
-              Quanto você vai<br />economizar por mês?
-            </h2>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              Baseado em 2.000 km rodados por moto ao mês. A diferença entre R$860 (combustão) e R$120 (elétrica) se traduz em economia real desde o primeiro mês de operação.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-2xl p-5 border border-gray-100">
-                <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Combustão</p>
-                <p className="font-black text-2xl text-red-500">R$ 860</p>
-                <p className="text-gray-400 text-xs mt-0.5">por moto / mês</p>
-              </div>
-              <div className="bg-[#00a651] rounded-2xl p-5">
-                <p className="text-white/70 text-xs uppercase tracking-wide mb-1">
-                  Sol Center Mobi
-                </p>
-                <p className="font-black text-2xl text-white">R$ 120</p>
-                <p className="text-white/60 text-xs mt-0.5">por moto / mês</p>
-              </div>
-            </div>
-          </div>
-          <SavingsCalc />
-        </div>
-      </section>
-
-      {/* ── POR QUE SOL CENTER ──────────────────────────────── */}
+      {/* ── COMO SER REVENDEDOR ──────────────────────────────── */}
       <section className="px-6 py-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
-              Por que a Sol Center Mobi
+              Como funciona
             </p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
-              Você vende. A gente cuida do resto.
+              Você compra, coloca na loja, vende.
             </h2>
+            <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">
+              Modelo simples de revenda: você adquire as unidades, expõe na sua loja e vende.
+              A Sol Center Mobi cuida de tudo o que vem depois.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+
+          <div className="grid md:grid-cols-3 gap-5 mb-10">
+            {[
+              {
+                step: "01",
+                icon: Package,
+                title: "Compre as unidades",
+                desc: "Você adquire um lote de EVOXs da Sol Center Mobi. Produto entregue na caixa, pronto pra vender. Condições e quantidade mínima sob consulta.",
+              },
+              {
+                step: "02",
+                icon: Store,
+                title: "Exponha na sua loja",
+                desc: "Coloque em exposição, treine sua equipe com o suporte da Sol Center Mobi e comece a vender. Produto diferenciado chama atenção por si só.",
+              },
+              {
+                step: "03",
+                icon: Wrench,
+                title: "Pós-venda com a gente",
+                desc: "Seu cliente comprou — o suporte técnico e o pós-venda são responsabilidade da Sol Center Mobi. Você fecha a venda com respaldo total.",
+              },
+            ].map(({ step, icon: Icon, title, desc }) => (
+              <div
+                key={step}
+                className="bg-[#f7f8f9] rounded-2xl p-7 border border-gray-100 hover:border-[#00a651]/30 hover:shadow-md transition-all"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <span className="text-[#00a651]/30 font-black text-4xl leading-none">{step}</span>
+                  <div className="w-11 h-11 bg-[#00a651]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Icon size={20} className="text-[#00a651]" />
+                  </div>
+                </div>
+                <h3 className="font-black text-[#0a1628] text-base mb-3">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
             {[
               {
                 icon: Users,
                 title: "10 anos em mobilidade elétrica",
-                desc: "Operamos no Sul do Brasil há mais de uma década. Conhecemos os modelos, os fornecedores e as necessidades de cada perfil de cliente.",
+                desc: "Operamos no Sul do Brasil há mais de uma década com produto testado e aprovado.",
               },
               {
                 icon: Wrench,
-                title: "Suporte técnico pós-venda",
-                desc: "Seu cliente comprou na sua loja — mas o suporte técnico é responsabilidade da Sol Center Mobi. Você fecha a venda com respaldo total.",
+                title: "Suporte técnico incluído",
+                desc: "Treinamento da equipe de vendas e suporte pós-venda para o consumidor final.",
               },
               {
                 icon: Package,
-                title: "Logística e reposição",
-                desc: "A Sol Center Mobi cuida da logística de entrega e reposição. Sem dor de cabeça com armazenagem ou controle de estoque.",
+                title: "Logística gerenciada",
+                desc: "Entrega e reposição gerenciadas pela Sol Center Mobi. Sem dor de cabeça.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="bg-[#f7f8f9] rounded-2xl p-7 border border-gray-100 hover:border-[#00a651]/30 hover:shadow-md transition-all"
+                className="flex gap-4 p-5 bg-white border border-gray-100 rounded-2xl hover:border-[#00a651]/30 transition"
               >
-                <div className="w-11 h-11 bg-[#00a651]/10 rounded-xl flex items-center justify-center mb-5">
-                  <Icon size={20} className="text-[#00a651]" />
+                <div className="w-10 h-10 bg-[#00a651]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Icon size={18} className="text-[#00a651]" />
                 </div>
-                <h3 className="font-black text-[#0a1628] text-base mb-3">{title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <div>
+                  <h3 className="font-black text-[#0a1628] text-sm mb-1">{title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -947,16 +854,16 @@ export default function LPMobi() {
               Atendimento comercial
             </p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.6rem)] font-black text-white tracking-tight leading-tight mb-5">
-              Pronto para ampliar seu portfólio ou montar uma frota?
+              Pronto para entrar no mercado elétrico?
             </h2>
             <p className="text-white/50 text-sm leading-relaxed mb-8">
-              Nossa equipe atende exclusivamente B2B — revendas, frotas e operadores. Sem enrolação, com respostas objetivas e proposta real para o seu volume.
+              Fale com nossa equipe comercial. Vamos apresentar as condições de revenda, o lote mínimo e tudo que você precisa saber para ter a EVOX na sua loja.
             </p>
             <div className="space-y-4 mb-10">
               {[
-                "Atendimento dedicado ao seu perfil de negócio",
+                "Condições reais para o seu perfil de negócio",
                 "Retorno em até 24 horas úteis",
-                "Proposta com condições reais para seu volume",
+                "Produto na caixa, pronto pra expor e vender",
               ].map((t) => (
                 <div key={t} className="flex items-center gap-3 text-sm text-white/60">
                   <CheckCircle size={16} className="text-[#00a651] shrink-0" />
@@ -964,7 +871,6 @@ export default function LPMobi() {
                 </div>
               ))}
             </div>
-            {/* Mini galeria de fotos reais */}
             <div className="grid grid-cols-3 gap-2 rounded-2xl overflow-hidden">
               {[
                 "/mobi/real/vermelha-1.jpg",
@@ -972,20 +878,16 @@ export default function LPMobi() {
                 "/mobi/real/azul-1.jpg",
               ].map((src, i) => (
                 <div key={i} className="relative aspect-square">
-                  <Image
-                    src={src}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="150px"
-                  />
+                  <Image src={src} alt="" fill className="object-cover" sizes="150px" />
                 </div>
               ))}
             </div>
           </div>
 
           <div className="bg-white rounded-3xl p-8 shadow-2xl">
-            <p className="text-[#0a1628] font-black text-xl mb-1">Fale com um consultor</p>
+            <p className="text-[#0a1628] font-black text-xl mb-1">
+              Fale com um consultor
+            </p>
             <p className="text-gray-400 text-sm mb-6">
               Preencha abaixo e abrimos o WhatsApp direto.
             </p>
@@ -997,14 +899,13 @@ export default function LPMobi() {
       {/* ── FOOTER ──────────────────────────────────────────── */}
       <footer className="bg-[#040a12] px-6 py-8 border-t border-white/5">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 bg-[#00a651] rounded-lg flex items-center justify-center">
-              <Zap size={13} className="text-white" />
-            </div>
-            <span className="text-white/50 text-sm">
-              Sol Center <strong className="text-white/70">Mobi</strong>
-            </span>
-          </div>
+          <Image
+            src="/logo-mobi.svg"
+            alt="Sol Center Mobi"
+            width={110}
+            height={27}
+            className="brightness-0 invert opacity-40"
+          />
           <p className="text-white/20 text-xs text-center">
             {site.address} · {site.phone}
           </p>
@@ -1033,7 +934,7 @@ export default function LPMobi() {
           className="flex-[2] flex items-center justify-center gap-2 bg-[#00a651] text-white text-xs font-black py-3.5 rounded-xl hover:bg-[#00c060] transition"
         >
           <ArrowRight size={14} />
-          Falar com consultor
+          Quero ser revendedor
         </a>
       </div>
       <div className="h-16 md:hidden" />

@@ -154,7 +154,7 @@ export default function LPEnergia() {
       </div>
 
       {/* HERO — full background */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
         {/* Background image */}
         <Image
           src="/images/solar-residencial.jpg"
@@ -167,7 +167,7 @@ export default function LPEnergia() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/92 via-[#0a1628]/70 to-[#0a1628]/40" />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-14 py-16 flex flex-col lg:flex-row items-center gap-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 py-20 lg:py-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
           {/* LEFT — copy */}
           <div className="flex-1 flex flex-col justify-center">
@@ -177,7 +177,7 @@ export default function LPEnergia() {
             <h1 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-white leading-[1.05] tracking-[-0.02em] mb-5">
               Reduza sua conta de energia com um projeto solar feito para o seu imóvel.
             </h1>
-            <p className="text-white/70 text-base leading-relaxed mb-7 max-w-md">
+            <p className="text-white/70 text-base leading-relaxed mb-7 max-w-md lg:max-w-md">
               Analisamos seu consumo, indicamos o sistema ideal e cuidamos da instalação do início ao fim, com segurança, garantia e suporte técnico.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
@@ -203,7 +203,7 @@ export default function LPEnergia() {
           {/* RIGHT — form card */}
           <div
             id="formulario"
-            className="w-full lg:w-[320px] shrink-0 bg-white rounded-2xl shadow-2xl p-6"
+            className="w-full lg:w-[340px] shrink-0 bg-white rounded-2xl shadow-2xl p-6"
           >
             <h3 className="font-black text-[#0a1628] text-lg leading-tight mb-1">
               Solicite sua simulação gratuita

@@ -317,7 +317,7 @@ export default function LPMobi() {
       <LPNav />
 
       {/* ── HERO — fullbleed foto real ───────────────────────── */}
-      <section className="relative min-h-screen flex items-end overflow-hidden">
+      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <div key={activeColor.id} className="absolute inset-0 animate-hero-fade">
             <Image
@@ -334,7 +334,7 @@ export default function LPMobi() {
         </div>
 
         <div className="relative z-10 w-full">
-          <div className="max-w-4xl mx-auto px-6 lg:px-14 pb-24 pt-32 text-center flex flex-col items-center">
+          <div className="max-w-4xl mx-auto px-6 lg:px-14 pb-20 pt-28 md:pt-32 text-center flex flex-col items-center">
 
               <div className="inline-flex items-center gap-2 bg-[#00a651]/15 border border-[#00a651]/30 rounded-full px-3.5 py-1.5 mb-6">
                 <div className="w-1.5 h-1.5 bg-[#00a651] rounded-full animate-pulse" />
@@ -395,7 +395,7 @@ export default function LPMobi() {
               </div>
 
               {/* Stats reais */}
-              <div className="flex flex-wrap justify-center gap-8">
+              <div className="hidden sm:flex flex-wrap justify-center gap-8">
                 {[
                   { v: "1000W", label: "motor brushless" },
                   { v: "40km", label: "de autonomia" },
@@ -412,7 +412,7 @@ export default function LPMobi() {
               </div>
 
             {/* Color picker */}
-            <div className="mt-10 flex items-center justify-center gap-5 flex-wrap">
+            <div className="mt-8 flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
               <span className="text-white/30 text-xs uppercase tracking-widest font-bold">
                 Cor:
               </span>
@@ -421,7 +421,7 @@ export default function LPMobi() {
                   key={c.id}
                   onClick={() => setActiveColor(c)}
                   aria-label={`Ver EVOX ${c.label}`}
-                  className="flex flex-col items-center gap-1.5"
+                  className="flex flex-col items-center gap-1.5 min-w-[44px]"
                 >
                   <div
                     className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
@@ -432,14 +432,14 @@ export default function LPMobi() {
                     style={{ backgroundColor: c.hex }}
                   />
                   <span
-                    className={`text-[10px] font-semibold transition leading-tight text-center ${
+                    className={`hidden sm:block text-[10px] font-semibold transition leading-tight text-center max-w-[60px] ${
                       activeColor.id === c.id ? "text-white" : "text-white/30"
                     }`}
                   >
                     {c.label}
                   </span>
                   {c.badge && (
-                    <span className="text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
+                    <span className="hidden sm:block text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
                       {c.badge}
                     </span>
                   )}

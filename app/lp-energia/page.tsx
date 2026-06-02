@@ -7,7 +7,8 @@ import {
   ArrowRight,
   CheckCircle,
   Star,
-  Phone,
+  MessageCircle,
+  MapPin,
   ShieldCheck,
   TrendingDown,
 } from "lucide-react";
@@ -100,19 +101,34 @@ export default function LPEnergia() {
     <div className="min-h-screen bg-white font-sans antialiased">
 
       {/* NAV */}
-      <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <Image src="/logo-dark.svg" alt="Sol Center" width={130} height={27} />
-        <a
-          href={`tel:${site.phone}`}
-          className="flex items-center gap-1.5 text-gray-500 text-xs font-medium hover:text-[#0a1628] transition"
-        >
-          <Phone size={13} />
-          {site.phone}
-        </a>
-      </nav>
+      <div className="fixed top-4 inset-x-0 z-50 flex justify-center pointer-events-none">
+        <nav className="pointer-events-auto flex items-center gap-4 bg-white/90 backdrop-blur-md shadow-lg shadow-black/8 border border-gray-100 rounded-full px-5 py-2.5">
+          <Image src="/logo-dark.svg" alt="Sol Center" width={110} height={23} />
+          <div className="w-px h-4 bg-gray-200" />
+          <a
+            href={site.whatsappLinkGiovani}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-gray-500 hover:text-[#25D366] transition text-xs font-medium"
+          >
+            <MessageCircle size={14} />
+            WhatsApp
+          </a>
+          <div className="w-px h-4 bg-gray-200" />
+          <a
+            href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-gray-500 hover:text-[#0a1628] transition text-xs font-medium"
+          >
+            <MapPin size={14} />
+            Santo Cristo, RS
+          </a>
+        </nav>
+      </div>
 
       {/* HERO — full background */}
-      <section className="relative min-h-[calc(100vh-57px)] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background image */}
         <Image
           src="/images/solar-residencial.jpg"
@@ -362,17 +378,6 @@ export default function LPEnergia() {
       {/* CTA FINAL */}
       <section className="bg-white px-6 py-20">
         <div className="max-w-3xl mx-auto flex flex-col items-center gap-8 text-center">
-
-          {/* Imagem flutuando */}
-          <div className="w-56 lg:w-64 shrink-0 animate-float drop-shadow-2xl">
-            <Image
-              src="/images/cta-solar.png"
-              alt="Energia solar"
-              width={256}
-              height={256}
-              className="object-contain w-full"
-            />
-          </div>
 
           {/* Texto e botões */}
           <div className="flex flex-col items-center text-center">

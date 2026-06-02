@@ -342,13 +342,6 @@ export default function LPMobi() {
         <div className="relative z-10 w-full">
           <div className="max-w-4xl mx-auto px-6 lg:px-14 pb-20 pt-28 md:pt-32 text-center flex flex-col items-center">
 
-              <div className="inline-flex items-center gap-2 bg-[#00a651]/15 border border-[#00a651]/30 rounded-full px-3.5 py-1.5 mb-6">
-                <div className="w-1.5 h-1.5 bg-[#00a651] rounded-full animate-pulse" />
-                <span className="text-[#00a651] text-[11px] font-bold uppercase tracking-[0.15em]">
-                  O mercado que mais cresce no Brasil
-                </span>
-              </div>
-
               <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-2">
                 Sol Center Mobi · EVOX
               </p>

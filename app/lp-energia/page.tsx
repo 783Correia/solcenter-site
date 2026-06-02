@@ -119,82 +119,64 @@ export default function LPEnergia() {
         </a>
       </nav>
 
-      {/* HERO */}
-      <section className="bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[48%_52%] min-h-[680px] lg:min-h-[calc(100vh-57px)]">
+      {/* HERO — full background */}
+      <section className="relative min-h-[calc(100vh-57px)] flex items-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/solar-residencial.jpg"
+          alt="Casa com painéis solares instalados pela Sol Center"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/80 via-[#0a1628]/50 to-[#0a1628]/20" />
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-14 py-16 flex flex-col lg:flex-row items-center gap-12">
 
           {/* LEFT — copy */}
-          <div className="flex flex-col justify-center px-8 lg:px-14 py-14">
-            <p className="text-gray-500 text-sm mb-5">
+          <div className="flex-1 flex flex-col justify-center">
+            <p className="text-white/60 text-sm mb-5">
               Energia Solar para Casas e Empresas.
             </p>
-            <h1 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-[-0.02em] mb-5">
+            <h1 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-white leading-[1.05] tracking-[-0.02em] mb-5">
               Reduza sua conta de energia com um projeto solar feito para o seu imóvel.
             </h1>
-            <p className="text-gray-500 text-base leading-relaxed mb-7 max-w-md">
+            <p className="text-white/70 text-base leading-relaxed mb-7 max-w-md">
               Analisamos seu consumo, indicamos o sistema ideal e cuidamos da instalação do início ao fim, com segurança, garantia e suporte técnico.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               <a
                 href="#formulario"
-                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#00b85a] transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-500/20"
+                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#00b85a] transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-500/30"
               >
                 Solicitar simulação
                 <ArrowRight size={14} />
               </a>
               <a
                 href="#como-funciona"
-                className="inline-flex items-center gap-2 border border-gray-200 text-[#0a1628] font-medium px-6 py-3 rounded-full text-sm hover:border-gray-300 hover:bg-gray-50 transition"
+                className="inline-flex items-center gap-2 border border-white/30 text-white font-medium px-6 py-3 rounded-full text-sm hover:bg-white/10 transition"
               >
                 Como Funciona
               </a>
             </div>
-            <p className="text-gray-400 text-xs">
+            <p className="text-white/40 text-xs">
               Projetos residenciais, comerciais e rurais com análise personalizada.
             </p>
           </div>
 
-          {/* RIGHT — image + floating form */}
-          <div className="relative hidden lg:block">
-            <Image
-              src="/images/solar-residencial.jpg"
-              alt="Casa com painéis solares instalados pela Sol Center"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* overlay sutil */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
-
-            {/* form card flutuante */}
-            <div
-              id="formulario"
-              className="absolute top-8 right-8 bottom-8 w-[300px] bg-white rounded-2xl shadow-2xl flex flex-col p-6 overflow-y-auto"
-            >
-              <h3 className="font-black text-[#0a1628] text-lg leading-tight mb-1">
-                Solicite sua simulação gratuita
-              </h3>
-              <p className="text-gray-400 text-xs mb-5 leading-relaxed">
-                Responda em 1 minuto e receba uma análise personalizada.
-              </p>
-              <LeadForm />
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile: imagem + form abaixo do copy */}
-        <div className="lg:hidden">
-          <div className="relative h-56 w-full">
-            <Image
-              src="/images/solar-residencial.jpg"
-              alt="Casa com painéis solares"
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-          <div id="formulario" className="px-6 py-8 bg-white">
-            <h3 className="font-black text-[#0a1628] text-xl mb-1">Solicite sua simulação gratuita</h3>
-            <p className="text-gray-400 text-sm mb-5">Responda em 1 minuto e receba uma análise personalizada.</p>
+          {/* RIGHT — form card */}
+          <div
+            id="formulario"
+            className="w-full lg:w-[320px] shrink-0 bg-white rounded-2xl shadow-2xl p-6"
+          >
+            <h3 className="font-black text-[#0a1628] text-lg leading-tight mb-1">
+              Solicite sua simulação gratuita
+            </h3>
+            <p className="text-gray-400 text-xs mb-5 leading-relaxed">
+              Responda em 1 minuto e receba uma análise personalizada.
+            </p>
             <LeadForm />
           </div>
         </div>

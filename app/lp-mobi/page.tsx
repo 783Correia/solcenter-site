@@ -428,72 +428,95 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── GALERIA DE DETALHES ──────────────────────────────── */}
-      <section id="galeria" className="px-6 py-20 bg-[#f7f8f9]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+      {/* ── GALERIA DE DETALHES — carrossel ─────────────────── */}
+      <section id="galeria" className="py-20 bg-[#111] overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-10 lg:gap-0">
+
+          {/* Coluna esquerda — texto */}
+          <div className="flex-shrink-0 w-full lg:w-80 xl:w-96 px-8 lg:pl-14 lg:pr-8 flex flex-col justify-center">
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Produto de verdade
             </p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
+            <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-black text-white tracking-tight leading-tight mb-4">
               Qualidade que vende sozinha.
             </h2>
-            <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">
-              Fotos reais da EVOX. Sem filtro, sem render. O produto que você vai ter na sua loja.
+            <p className="text-white/45 text-sm leading-relaxed mb-8">
+              Fotos reais da EVOX — sem filtro, sem render. O produto que você vai ter na sua loja.
             </p>
-          </div>
 
-          <div className="relative w-full aspect-[16/10] lg:aspect-[21/9] rounded-3xl overflow-hidden mb-4 bg-[#dfe5ec]">
-            {DETAILS.map((src, i) => (
-              <div
-                key={src}
-                className="absolute inset-0 transition-opacity duration-500"
-                style={{ opacity: activeDetailIdx === i ? 1 : 0 }}
+            {/* Navegação */}
+            <div className="flex items-center gap-4 mb-6">
+              <button
+                onClick={prevDetail}
+                className="w-11 h-11 bg-white/10 hover:bg-white/20 border border-white/15 text-white rounded-full flex items-center justify-center transition"
+                aria-label="Anterior"
               >
-                <Image
-                  src={src}
-                  alt={`Detalhe EVOX ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 90vw"
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={nextDetail}
+                className="w-11 h-11 bg-[#00a651] hover:bg-[#00c060] text-white rounded-full flex items-center justify-center transition"
+                aria-label="Próxima"
+              >
+                <ChevronRight size={18} />
+              </button>
+              <span className="text-white/30 text-sm font-bold tabular-nums">
+                {String(activeDetailIdx + 1).padStart(2, "0")} /{" "}
+                {String(DETAILS.length).padStart(2, "0")}
+              </span>
+            </div>
+
+            {/* Dots */}
+            <div className="flex gap-1.5 flex-wrap">
+              {DETAILS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveDetailIdx(i)}
+                  aria-label={`Ir para foto ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    activeDetailIdx === i
+                      ? "w-6 h-2 bg-[#00a651]"
+                      : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                  }`}
                 />
-              </div>
-            ))}
-            <button
-              onClick={prevDetail}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full flex items-center justify-center transition z-10"
-              aria-label="Anterior"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={nextDetail}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full flex items-center justify-center transition z-10"
-              aria-label="Próxima"
-            >
-              <ChevronRight size={18} />
-            </button>
-            <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
-              {activeDetailIdx + 1} / {DETAILS.length}
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-5 md:grid-cols-10 gap-2">
-            {DETAILS.map((src, i) => (
-              <button
-                key={src}
-                onClick={() => setActiveDetailIdx(i)}
-                aria-label={`Detalhe ${i + 1}`}
-                className={`relative aspect-square rounded-xl overflow-hidden transition-all duration-200 ${
-                  activeDetailIdx === i
-                    ? "ring-2 ring-[#00a651] ring-offset-1 scale-105"
-                    : "opacity-50 hover:opacity-90 hover:scale-105"
-                }`}
-              >
-                <Image src={src} alt="" fill className="object-cover" sizes="80px" />
-              </button>
-            ))}
+          {/* Coluna direita — carrossel deslizante */}
+          <div className="w-full lg:flex-1 overflow-hidden">
+            <div
+              className="flex gap-4 transition-transform duration-500 ease-in-out pl-4 lg:pl-6"
+              style={{
+                transform: `translateX(calc(-${activeDetailIdx} * (min(360px, 72vw) + 16px)))`,
+              }}
+            >
+              {DETAILS.map((src, i) => (
+                <div
+                  key={src}
+                  onClick={() => setActiveDetailIdx(i)}
+                  className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                    activeDetailIdx === i
+                      ? "opacity-100 scale-100"
+                      : "opacity-50 scale-[0.97] hover:opacity-75"
+                  }`}
+                  style={{
+                    width: "min(360px, 72vw)",
+                    height: "min(280px, 56vw)",
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Detalhe EVOX ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="360px"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 

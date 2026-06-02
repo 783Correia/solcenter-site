@@ -100,8 +100,8 @@ export default function LPEnergia() {
   return (
     <div className="min-h-screen bg-white font-sans antialiased">
 
-      {/* NAV */}
-      <div className="fixed top-4 inset-x-0 z-50 flex justify-center pointer-events-none">
+      {/* NAV — desktop: pill topo | mobile: pill fundo só ícones */}
+      <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
         <nav className="pointer-events-auto flex items-center gap-4 bg-white/90 backdrop-blur-md shadow-lg shadow-black/8 border border-gray-100 rounded-full px-5 py-2.5">
           <Image src="/logo-dark.svg" alt="Sol Center" width={110} height={23} />
           <div className="w-px h-4 bg-gray-200" />
@@ -123,6 +123,32 @@ export default function LPEnergia() {
           >
             <MapPin size={14} />
             Santo Cristo, RS
+          </a>
+        </nav>
+      </div>
+
+      {/* NAV mobile — bottom pill só ícones */}
+      <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
+        <nav className="flex items-center gap-1 bg-white/95 backdrop-blur-md shadow-2xl shadow-black/15 border border-gray-100 rounded-full px-3 py-3">
+          <div className="px-3">
+            <Image src="/logo-dark.svg" alt="Sol Center" width={80} height={17} />
+          </div>
+          <div className="w-px h-5 bg-gray-200 mx-1" />
+          <a
+            href={site.whatsappLinkGiovani}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition"
+          >
+            <MessageCircle size={20} className="text-[#25D366]" />
+          </a>
+          <a
+            href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+          >
+            <MapPin size={20} className="text-[#FFB100]" />
           </a>
         </nav>
       </div>

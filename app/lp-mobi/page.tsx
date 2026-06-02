@@ -37,11 +37,14 @@ const COLORS = [
     hex: "#1a1a1a",
     badge: "Mais vendida" as string | null,
     hero: "/mobi/real/preta-1.jpg",
-    gallery: [
+    photos: [
+      "/mobi/real/preta-1.jpg",
       "/mobi/real/preta-2.jpg",
       "/mobi/real/preta-3.jpg",
       "/mobi/real/preta-4.jpg",
       "/mobi/real/preta-5.jpg",
+      "/mobi/real/preta-6.jpg",
+      "/mobi/real/preta-7.jpg",
     ],
   },
   {
@@ -50,11 +53,15 @@ const COLORS = [
     hex: "#1e4d8c",
     badge: null,
     hero: "/mobi/real/azul-1.jpg",
-    gallery: [
+    photos: [
+      "/mobi/real/azul-1.jpg",
       "/mobi/real/azul-2.jpg",
       "/mobi/real/azul-3.jpg",
       "/mobi/real/azul-4.jpg",
       "/mobi/real/azul-5.jpg",
+      "/mobi/real/azul-6.jpg",
+      "/mobi/real/azul-7.jpg",
+      "/mobi/real/azul-8.jpg",
     ],
   },
   {
@@ -63,10 +70,16 @@ const COLORS = [
     hex: "#c0392b",
     badge: "Novidade" as string | null,
     hero: "/mobi/real/vermelha-1.jpg",
-    gallery: [
+    photos: [
+      "/mobi/real/vermelha-1.jpg",
       "/mobi/real/vermelha-2.jpg",
       "/mobi/real/vermelha-3.jpg",
       "/mobi/real/vermelha-4.jpg",
+      "/mobi/real/vermelha-5.jpg",
+      "/mobi/real/vermelha-6.jpg",
+      "/mobi/real/vermelha-7.jpg",
+      "/mobi/real/vermelha-8.jpg",
+      "/mobi/real/vermelha-9.jpg",
     ],
   },
   {
@@ -75,7 +88,16 @@ const COLORS = [
     hex: "#e0e0e0",
     badge: null,
     hero: "/mobi/real/branca-1.jpg",
-    gallery: ["/mobi/real/branca-2.jpg", "/mobi/real/branca-3.jpg"],
+    photos: [
+      "/mobi/real/branca-1.jpg",
+      "/mobi/real/branca-2.jpg",
+      "/mobi/real/branca-3.jpg",
+      "/mobi/real/branca-4.jpg",
+      "/mobi/real/branca-5.jpg",
+      "/mobi/real/branca-6.jpg",
+      "/mobi/real/branca-7.jpg",
+      "/mobi/real/branca-8.jpg",
+    ],
   },
 ];
 
@@ -277,6 +299,12 @@ function LeadForm() {
 export default function LPMobi() {
   const [activeColor, setActiveColor] = useState(COLORS[0]);
   const [activeDetailIdx, setActiveDetailIdx] = useState(0);
+  const [colorPhotoIdx, setColorPhotoIdx] = useState(0);
+
+  function selectColor(c: typeof COLORS[0]) {
+    setActiveColor(c);
+    setColorPhotoIdx(0);
+  }
 
   const prevDetail = () =>
     setActiveDetailIdx((i) => (i - 1 + DETAILS.length) % DETAILS.length);
@@ -521,30 +549,55 @@ export default function LPMobi() {
       </section>
 
       {/* ── GALERIA POR COR ─────────────────────────────────── */}
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
-              4 opções
-            </p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
-              Disponível em 4 cores.
-            </h2>
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <div>
+              <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+                4 opções
+              </p>
+              <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
+                Disponível em 4 cores.
+              </h2>
+            </div>
+            {/* Setas */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setColorPhotoIdx(Math.max(0, colorPhotoIdx - 1))}
+                disabled={colorPhotoIdx === 0}
+                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 disabled:opacity-30 rounded-full flex items-center justify-center transition"
+                aria-label="Anterior"
+              >
+                <ChevronLeft size={18} className="text-[#0a1628]" />
+              </button>
+              <span className="text-gray-400 text-sm font-bold tabular-nums">
+                {String(colorPhotoIdx + 1).padStart(2, "0")} / {String(activeColor.photos.length).padStart(2, "0")}
+              </span>
+              <button
+                onClick={() => setColorPhotoIdx(Math.min(activeColor.photos.length - 1, colorPhotoIdx + 1))}
+                disabled={colorPhotoIdx === activeColor.photos.length - 1}
+                className="w-10 h-10 bg-[#0a1628] hover:bg-[#14253d] disabled:opacity-30 rounded-full flex items-center justify-center transition"
+                aria-label="Próxima"
+              >
+                <ChevronRight size={18} className="text-white" />
+              </button>
+            </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {/* Tabs de cor */}
+          <div className="flex flex-wrap gap-2 mt-6">
             {COLORS.map((c) => (
               <button
                 key={c.id}
-                onClick={() => setActiveColor(c)}
+                onClick={() => selectColor(c)}
                 className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
                   activeColor.id === c.id
-                    ? "bg-[#0a1628] text-white shadow-lg scale-105"
+                    ? "bg-[#0a1628] text-white shadow-lg"
                     : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                 }`}
               >
                 <div
-                  className="w-4 h-4 rounded-full border border-black/10"
+                  className="w-4 h-4 rounded-full border border-black/10 flex-shrink-0"
                   style={{ backgroundColor: c.hex }}
                 />
                 {c.label}
@@ -556,21 +609,36 @@ export default function LPMobi() {
               </button>
             ))}
           </div>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px] md:auto-rows-[220px]">
-            {[activeColor.hero, ...activeColor.gallery].slice(0, 4).map((src, i) => (
+        {/* Carrossel de fotos da cor */}
+        <div className="overflow-hidden pl-6">
+          <div
+            className="flex gap-4 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(calc(-${colorPhotoIdx} * (min(480px, 85vw) + 16px)))`,
+            }}
+          >
+            {activeColor.photos.map((src, i) => (
               <div
                 key={`${activeColor.id}-${i}`}
-                className={`relative rounded-2xl overflow-hidden bg-[#edf1f5] transition-all duration-300 ${
-                  i === 0 ? "col-span-2 row-span-1" : ""
+                onClick={() => setColorPhotoIdx(i)}
+                className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 bg-[#edf1f5] ${
+                  colorPhotoIdx === i
+                    ? "opacity-100"
+                    : "opacity-55 hover:opacity-80"
                 }`}
+                style={{
+                  width: "min(480px, 85vw)",
+                  height: "min(380px, 67vw)",
+                }}
               >
                 <Image
                   src={src}
                   alt={`EVOX ${activeColor.label} ${i + 1}`}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover object-center"
+                  sizes="480px"
                 />
               </div>
             ))}

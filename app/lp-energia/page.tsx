@@ -9,7 +9,6 @@ import {
   Star,
   Phone,
   ShieldCheck,
-  Zap,
   TrendingDown,
 } from "lucide-react";
 import { site } from "../data/site";
@@ -38,8 +37,8 @@ function LeadForm() {
   if (sent) {
     return (
       <div className="text-center py-6">
-        <div className="w-12 h-12 bg-[#00a651]/10 rounded-full flex items-center justify-center mx-auto mb-3">
-          <CheckCircle size={24} className="text-[#00a651]" />
+        <div className="w-12 h-12 bg-[#FFB100]/10 rounded-full flex items-center justify-center mx-auto mb-3">
+          <CheckCircle size={24} className="text-[#FFB100]" />
         </div>
         <p className="font-bold text-[#0a1628] text-base">Recebido!</p>
         <p className="text-gray-400 text-sm mt-1">Abrimos o WhatsApp. Retornamos em minutos.</p>
@@ -54,26 +53,26 @@ function LeadForm() {
         type="text"
         required
         placeholder="Nome completo"
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
+        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#FFB100] focus:bg-white transition"
       />
       <input
         name="phone"
         type="tel"
         required
         placeholder="WhatsApp"
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
+        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#FFB100] focus:bg-white transition"
       />
       <input
         name="city"
         type="text"
         required
         placeholder="Cidade"
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
+        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#0a1628] placeholder-gray-400 focus:outline-none focus:border-[#FFB100] focus:bg-white transition"
       />
       <select
         name="bill"
         required
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-500 focus:outline-none focus:border-[#00a651] focus:bg-white transition"
+        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-500 focus:outline-none focus:border-[#FFB100] focus:bg-white transition"
       >
         <option value="">Valor da conta de luz</option>
         <option value="entre R$300 e R$500">R$ 300 – R$ 500</option>
@@ -83,7 +82,7 @@ function LeadForm() {
       </select>
       <button
         type="submit"
-        className="w-full bg-[#00a651] text-white font-bold py-3.5 rounded-xl hover:bg-[#00b85a] transition text-sm flex items-center justify-center gap-2"
+        className="w-full bg-[#FFB100] text-white font-bold py-3.5 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2"
       >
         Solicitar simulação
         <ArrowRight size={15} />
@@ -102,14 +101,7 @@ export default function LPEnergia() {
 
       {/* NAV */}
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-[#00a651] rounded-lg flex items-center justify-center">
-            <Zap size={13} className="text-white" />
-          </div>
-          <span className="text-[#0a1628] font-black text-base tracking-tight">
-            Sol Center <span className="text-[#00a651]">Energia</span>
-          </span>
-        </div>
+        <Image src="/logo.svg" alt="Sol Center" width={130} height={27} />
         <a
           href={`tel:${site.phone}`}
           className="flex items-center gap-1.5 text-gray-500 text-xs font-medium hover:text-[#0a1628] transition"
@@ -149,7 +141,7 @@ export default function LPEnergia() {
             <div className="flex flex-wrap gap-3 mb-8">
               <a
                 href="#formulario"
-                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#00b85a] transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-500/30"
+                className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-500/30"
               >
                 Solicitar simulação
                 <ArrowRight size={14} />
@@ -196,8 +188,8 @@ export default function LPEnergia() {
               <strong>R$ 47</strong>. São mais de R$ 7.500 que ficam na minha conta todo ano."
             </blockquote>
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#00a651]/10 rounded-full flex items-center justify-center">
-                <span className="text-[#00a651] font-black text-sm">A</span>
+              <div className="w-9 h-9 bg-[#FFB100]/10 rounded-full flex items-center justify-center">
+                <span className="text-[#FFB100] font-black text-sm">A</span>
               </div>
               <div>
                 <p className="font-bold text-[#0a1628] text-sm">Andrieli e Leonardo Espindola</p>
@@ -211,7 +203,7 @@ export default function LPEnergia() {
       {/* COMO FUNCIONA */}
       <section id="como-funciona" className="px-6 py-16 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
+          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
             Como funciona
           </p>
           <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-12 tracking-tight">
@@ -241,7 +233,7 @@ export default function LPEnergia() {
               },
             ].map((s) => (
               <div key={s.n}>
-                <div className="text-4xl font-black text-[#00a651]/15 mb-3 leading-none">{s.n}</div>
+                <div className="text-4xl font-black text-[#FFB100]/15 mb-3 leading-none">{s.n}</div>
                 <h3 className="font-bold text-[#0a1628] mb-2 text-sm">{s.t}</h3>
                 <p className="text-gray-400 text-xs leading-relaxed">{s.d}</p>
               </div>
@@ -253,7 +245,7 @@ export default function LPEnergia() {
       {/* OBJEÇÕES */}
       <section className="bg-[#f7f8f9] px-6 py-16">
         <div className="max-w-4xl mx-auto">
-          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
+          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
             Dúvidas comuns
           </p>
           <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
@@ -298,7 +290,7 @@ export default function LPEnergia() {
       {/* DEPOIMENTOS */}
       <section className="px-6 py-16 bg-white">
         <div className="max-w-4xl mx-auto">
-          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
+          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
             Quem já instalou
           </p>
           <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
@@ -355,8 +347,8 @@ export default function LPEnergia() {
             },
           ].map(({ icon: Icon, t, d }) => (
             <div key={t} className="flex gap-4 bg-white rounded-2xl p-5 border border-gray-100">
-              <div className="w-10 h-10 bg-[#00a651]/10 rounded-xl flex items-center justify-center shrink-0">
-                <Icon size={18} className="text-[#00a651]" />
+              <div className="w-10 h-10 bg-[#FFB100]/10 rounded-xl flex items-center justify-center shrink-0">
+                <Icon size={18} className="text-[#FFB100]" />
               </div>
               <div>
                 <p className="font-bold text-[#0a1628] text-sm mb-1">{t}</p>
@@ -386,7 +378,7 @@ export default function LPEnergia() {
             Dê o primeiro passo
           </p>
           <h2 className="text-[clamp(2.2rem,5vw,3.5rem)] font-black text-white leading-tight tracking-tight mb-4">
-            Vamos <span className="text-[#00a651]">conversar</span>
+            Vamos <span className="text-[#FFB100]">conversar</span>
           </h2>
           <p className="text-white/70 text-base mb-10 max-w-lg mx-auto leading-relaxed">
             Tenha energia solar com análise gratuita e sem compromisso.
@@ -397,7 +389,7 @@ export default function LPEnergia() {
               href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+um+or%C3%A7amento+de+energia+solar`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#00b85a] transition hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5"
             >
               Fale conosco
               <ArrowRight size={16} />

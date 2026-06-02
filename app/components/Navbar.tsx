@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { site } from "../data/site";
 
 const links = [
@@ -26,9 +27,14 @@ export default function Navbar() {
       scrolled ? "bg-white shadow-sm border-b border-gray-100" : "bg-transparent"
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <a href="#inicio" className="flex items-center gap-1">
-          <span className="text-[#f5c518] font-black text-lg tracking-tight">SOL</span>
-          <span className={`font-bold text-lg tracking-tight transition-colors ${scrolled ? "text-[#0a1628]" : "text-white"}`}>CENTER</span>
+        <a href="#inicio" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="Sol Center"
+            width={140}
+            height={29}
+            className={`transition-all duration-300 ${scrolled ? "brightness-0" : "brightness-100"}`}
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

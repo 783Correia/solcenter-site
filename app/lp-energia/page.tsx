@@ -386,30 +386,47 @@ export default function LPEnergia() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="relative bg-[#0a1628] px-6 py-20 overflow-hidden">
-        {/* Imagem de fundo */}
-        <div className="absolute right-0 bottom-0 w-[420px] max-w-[50%] opacity-20 pointer-events-none select-none">
-          <Image
-            src="/images/cta-solar.png"
-            alt=""
-            width={420}
-            height={420}
-            className="object-contain"
-          />
-        </div>
-        <div className="relative max-w-2xl mx-auto text-center">
-          <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">Pronto para decidir?</p>
-          <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white leading-tight tracking-tight mb-4">
-            Cada mês sem energia solar é mais um mês pagando pra distribuidora.
+      <section className="relative min-h-[480px] flex items-center justify-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/cta-solar.png"
+          alt="Energia solar"
+          fill
+          className="object-cover object-center scale-110"
+          priority
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/40 to-[#0a1628]/30" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
+          <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-4">
+            Dê o primeiro passo
+          </p>
+          <h2 className="text-[clamp(2.2rem,5vw,3.5rem)] font-black text-white leading-tight tracking-tight mb-4">
+            Vamos <span className="text-[#00a651]">conversar</span>
           </h2>
-          <p className="text-white/50 text-sm mb-8">Simulação gratuita. Sem compromisso.</p>
-          <a
-            href="#formulario"
-            className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#00b85a] transition hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5"
-          >
-            Quero minha simulação agora
-            <ArrowRight size={16} />
-          </a>
+          <p className="text-white/70 text-base mb-10 max-w-lg mx-auto leading-relaxed">
+            Tenha energia solar com análise gratuita e sem compromisso.
+            Nossa equipe responde em minutos.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a
+              href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+um+or%C3%A7amento+de+energia+solar`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#00a651] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#00b85a] transition hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5"
+            >
+              Fale conosco
+              <ArrowRight size={16} />
+            </a>
+            <a
+              href="#formulario"
+              className="inline-flex items-center gap-2 bg-transparent text-white font-bold px-8 py-4 rounded-full text-sm border-2 border-white hover:bg-white hover:text-[#0a1628] transition"
+            >
+              Preencher formulário
+            </a>
+          </div>
         </div>
       </section>
 

@@ -29,11 +29,11 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <a href="#inicio" className="flex items-center">
           <Image
-            src="/logo.svg"
+            src={scrolled ? "/logo-dark.svg" : "/logo.svg"}
             alt="Sol Center"
             width={140}
             height={29}
-            className={`transition-all duration-300 ${scrolled ? "brightness-0" : "brightness-100"}`}
+            className="transition-all duration-300"
           />
         </a>
 

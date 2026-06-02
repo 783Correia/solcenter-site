@@ -101,7 +101,7 @@ export default function LPEnergia() {
 
       {/* NAV */}
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <Image src="/logo.svg" alt="Sol Center" width={130} height={27} />
+        <Image src="/logo-dark.svg" alt="Sol Center" width={130} height={27} />
         <a
           href={`tel:${site.phone}`}
           className="flex items-center gap-1.5 text-gray-500 text-xs font-medium hover:text-[#0a1628] transition"
@@ -360,46 +360,49 @@ export default function LPEnergia() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="relative min-h-[480px] flex items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <Image
-          src="/images/cta-solar.png"
-          alt="Energia solar"
-          fill
-          className="object-cover object-center scale-110"
-          priority
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/40 to-[#0a1628]/30" />
+      <section className="bg-white px-6 py-20">
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
 
-        {/* Content */}
-        <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
-          <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-            Dê o primeiro passo
-          </p>
-          <h2 className="text-[clamp(2.2rem,5vw,3.5rem)] font-black text-white leading-tight tracking-tight mb-4">
-            Vamos <span className="text-[#FFB100]">conversar</span>
-          </h2>
-          <p className="text-white/70 text-base mb-10 max-w-lg mx-auto leading-relaxed">
-            Tenha energia solar com análise gratuita e sem compromisso.
-            Nossa equipe responde em minutos.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+um+or%C3%A7amento+de+energia+solar`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5"
-            >
-              Fale conosco
-              <ArrowRight size={16} />
-            </a>
-            <a
-              href="#formulario"
-              className="inline-flex items-center gap-2 bg-transparent text-white font-bold px-8 py-4 rounded-full text-sm border-2 border-white hover:bg-white hover:text-[#0a1628] transition"
-            >
-              Preencher formulário
-            </a>
+          {/* Imagem flutuando */}
+          <div className="w-64 lg:w-72 shrink-0 drop-shadow-2xl">
+            <Image
+              src="/images/cta-solar.png"
+              alt="Energia solar"
+              width={288}
+              height={288}
+              className="object-contain w-full"
+            />
+          </div>
+
+          {/* Texto e botões */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+              Dê o primeiro passo
+            </p>
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-4">
+              Vamos <span className="text-[#FFB100]">conversar</span>
+            </h2>
+            <p className="text-gray-500 text-base mb-8 max-w-md leading-relaxed">
+              Tenha energia solar com análise gratuita e sem compromisso.
+              Nossa equipe responde em minutos.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+um+or%C3%A7amento+de+energia+solar`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-lg hover:-translate-y-0.5"
+              >
+                Fale conosco
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="#formulario"
+                className="inline-flex items-center gap-2 bg-transparent text-[#0a1628] font-bold px-8 py-4 rounded-full text-sm border-2 border-[#0a1628] hover:bg-[#0a1628] hover:text-white transition"
+              >
+                Preencher formulário
+              </a>
+            </div>
           </div>
         </div>
       </section>

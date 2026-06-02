@@ -361,21 +361,21 @@ export default function LPEnergia() {
 
       {/* CTA FINAL */}
       <section className="bg-white px-6 py-20">
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+        <div className="max-w-3xl mx-auto flex flex-col items-center gap-8 text-center">
 
           {/* Imagem flutuando */}
-          <div className="w-64 lg:w-72 shrink-0 drop-shadow-2xl">
+          <div className="w-56 lg:w-64 shrink-0 animate-float drop-shadow-2xl">
             <Image
               src="/images/cta-solar.png"
               alt="Energia solar"
-              width={288}
-              height={288}
+              width={256}
+              height={256}
               className="object-contain w-full"
             />
           </div>
 
           {/* Texto e botões */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-center text-center">
             <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               Dê o primeiro passo
             </p>
@@ -386,7 +386,7 @@ export default function LPEnergia() {
               Tenha energia solar com análise gratuita e sem compromisso.
               Nossa equipe responde em minutos.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+um+or%C3%A7amento+de+energia+solar`}
                 target="_blank"

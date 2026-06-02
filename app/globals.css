@@ -41,3 +41,11 @@ body {
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #060d18; }
 ::-webkit-scrollbar-thumb { background: #00a651; border-radius: 999px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}

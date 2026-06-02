@@ -319,18 +319,24 @@ export default function LPMobi() {
       {/* ── HERO — fullbleed foto real ───────────────────────── */}
       <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <div key={activeColor.id} className="absolute inset-0 animate-hero-fade">
-            <Image
-              src={activeColor.hero}
-              alt={`EVOX Sol Center Mobi ${activeColor.label}`}
-              fill
-              className="object-cover object-center"
-              priority
-              sizes="100vw"
-            />
-          </div>
-          <div className="absolute inset-0 bg-[#0a1628]/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/20 to-[#0a1628]/40" />
+          {COLORS.map((c) => (
+            <div
+              key={c.id}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
+            >
+              <Image
+                src={c.hero}
+                alt={`EVOX Sol Center Mobi ${c.label}`}
+                fill
+                className="object-cover object-center"
+                priority={c.id === "preta"}
+                sizes="100vw"
+              />
+            </div>
+          ))}
+          {/* overlay leve no centro, escuro só em cima e embaixo para legibilidade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/70 via-[#0a1628]/30 to-[#0a1628]/80" />
         </div>
 
         <div className="relative z-10 w-full">

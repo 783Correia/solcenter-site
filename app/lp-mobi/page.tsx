@@ -103,7 +103,7 @@ const COLORS = [
 
 const SPECS = [
   { icon: Cpu, label: "Motor", value: "1000W", sub: "brushless sem escovas" },
-  { icon: Battery, label: "Bateria", value: "60v/20Ah", sub: "lítio removível" },
+  { icon: Battery, label: "Bateria", value: "60v/20Ah", sub: "bateria de lítio" },
   { icon: Gauge, label: "Velocidade", value: "32 km/h", sub: "velocidade máxima" },
   { icon: Zap, label: "Recarga", value: "6–8 h", sub: "tomada 110/220V" },
   { icon: Package, label: "Carga", value: "200 kg", sub: "peso suportado" },
@@ -365,7 +365,7 @@ export default function LPMobi() {
                   { icon: IdCard, t: "Sem CNH" },
                   { icon: BadgeDollarSign, t: "Sem IPVA" },
                   { icon: Leaf, t: "Zero emissão" },
-                  { icon: Battery, t: "Bateria removível" },
+                  { icon: Battery, t: "Bateria de lítio" },
                 ].map(({ icon: Icon, t }) => (
                   <div
                     key={t}
@@ -702,8 +702,8 @@ export default function LPMobi() {
               },
               {
                 icon: Battery,
-                title: "Bateria de lítio removível",
-                desc: "Carrega em casa, no trabalho, em qualquer tomada 110/220V.",
+                title: "Bateria de lítio 60v/20Ah",
+                desc: "Alta capacidade para o dia a dia urbano. Carrega em qualquer tomada 110/220V.",
                 dark: false,
               },
               {

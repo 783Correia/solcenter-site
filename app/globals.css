@@ -49,3 +49,11 @@ body {
 .animate-float {
   animation: float 3.5s ease-in-out infinite;
 }
+
+@keyframes heroFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-hero-fade {
+  animation: heroFade 0.6s ease-in-out forwards;
+}

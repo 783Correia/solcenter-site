@@ -130,7 +130,7 @@ export default function LPEnergia() {
           priority
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/80 via-[#0a1628]/50 to-[#0a1628]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/92 via-[#0a1628]/70 to-[#0a1628]/40" />
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-14 py-16 flex flex-col lg:flex-row items-center gap-12">

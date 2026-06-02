@@ -21,6 +21,9 @@ import {
   MapPin,
   Leaf,
   Calculator,
+  IdCard,
+  BadgeDollarSign,
+  Cpu,
 } from "lucide-react";
 import { site } from "../data/site";
 
@@ -42,7 +45,7 @@ const COLORS = [
   },
   {
     id: "azul",
-    label: "Azul",
+    label: "Azul / Prata",
     hex: "#1e4d8c",
     badge: null,
     hero: "/mobi/real/azul-1.jpg",
@@ -55,7 +58,7 @@ const COLORS = [
   },
   {
     id: "vermelha",
-    label: "Vermelha",
+    label: "Vermelha / Prata",
     hex: "#c0392b",
     badge: "Novidade" as string | null,
     hero: "/mobi/real/vermelha-1.jpg",
@@ -76,10 +79,12 @@ const COLORS = [
 ];
 
 const SPECS = [
-  { icon: Battery, label: "Autonomia", value: "120 km", sub: "por carga completa" },
-  { icon: Gauge, label: "Velocidade", value: "70 km/h", sub: "velocidade máxima" },
-  { icon: Zap, label: "Recarga", value: "4–6 h", sub: "tomada 110/220V" },
-  { icon: Package, label: "Carga", value: "150 kg", sub: "capacidade máxima" },
+  { icon: Cpu, label: "Motor", value: "1000W", sub: "brushless sem escovas" },
+  { icon: Battery, label: "Bateria", value: "60v/20Ah", sub: "lítio removível" },
+  { icon: Gauge, label: "Velocidade", value: "32 km/h", sub: "velocidade máxima" },
+  { icon: Zap, label: "Recarga", value: "6–8 h", sub: "tomada 110/220V" },
+  { icon: Package, label: "Carga", value: "200 kg", sub: "peso suportado" },
+  { icon: MapPin, label: "Autonomia", value: "40 km", sub: "por carga completa" },
 ];
 
 const DETAILS = [
@@ -332,20 +337,40 @@ export default function LPMobi() {
                 </span>
               </div>
 
-              {/* Headline */}
-              <h1 className="text-[clamp(2.8rem,6vw,5.5rem)] font-black text-white leading-[0.88] tracking-[-0.03em] mb-6">
-                A moto elétrica<br />
-                que faz o seu<br />
-                <span className="text-[#00a651]">negócio andar.</span>
-              </h1>
+              {/* Model name */}
+              <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-2">
+                Sol Center Mobi
+              </p>
 
-              <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
-                Sol Center Mobi fornece motos elétricas para{" "}
+              {/* Headline */}
+              <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-black text-white leading-[0.85] tracking-[-0.04em] mb-3">
+                EVOX
+              </h1>
+              <p className="text-[clamp(1.4rem,3vw,2.2rem)] font-black text-[#00a651] leading-none tracking-tight mb-6">
+                1000W · 100% Elétrica
+              </p>
+
+              <p className="text-white/60 text-base leading-relaxed mb-6 max-w-lg">
+                A scooter elétrica ideal para{" "}
                 <strong className="text-white/85">
                   revendas, frotas e operações delivery
                 </strong>{" "}
-                no Sul do Brasil. R$120/mês de operação vs R$860 na combustão.
+                no Sul do Brasil. Motor 1000W, bateria de lítio removível e zero custo de combustível.
               </p>
+
+              {/* Diferenciais-chave */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {[
+                  { icon: IdCard, t: "Sem carteira de motorista" },
+                  { icon: BadgeDollarSign, t: "Sem IPVA nem emplacamento" },
+                  { icon: Leaf, t: "Zero emissão" },
+                ].map(({ icon: Icon, t }) => (
+                  <div key={t} className="flex items-center gap-2 bg-white/8 border border-white/15 rounded-full px-3.5 py-2 text-white/70 text-xs font-semibold">
+                    <Icon size={13} className="text-[#00a651]" />
+                    {t}
+                  </div>
+                ))}
+              </div>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3 mb-16">
@@ -368,10 +393,10 @@ export default function LPMobi() {
               {/* Stats */}
               <div className="flex flex-wrap gap-8">
                 {[
-                  { v: "10+", label: "anos em mobilidade" },
+                  { v: "1000W", label: "motor brushless" },
+                  { v: "40km", label: "de autonomia" },
+                  { v: "200kg", label: "peso suportado" },
                   { v: "4", label: "cores disponíveis" },
-                  { v: "86%", label: "menos custo/km" },
-                  { v: "B2B", label: "foco comercial" },
                 ].map((s) => (
                   <div key={s.label} className="border-l-2 border-[#00a651]/40 pl-3">
                     <div className="text-2xl font-black text-white leading-none">{s.v}</div>
@@ -585,11 +610,11 @@ export default function LPMobi() {
               Especificações
             </p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
-              Feita para trabalhar todo dia.
+              EVOX — feita para trabalhar todo dia.
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {SPECS.map(({ icon: Icon, label, value, sub }) => (
               <div
                 key={label}
@@ -608,6 +633,109 @@ export default function LPMobi() {
           <p className="text-center text-white/20 text-xs">
             * Especificações técnicas completas disponíveis com nosso consultor comercial
           </p>
+        </div>
+      </section>
+
+      {/* ── DIFERENCIAIS DO PRODUTO ─────────────────────────── */}
+      <section className="px-6 py-20 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+              Por que a EVOX
+            </p>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] tracking-tight">
+              Vantagens que vendem sozinhas.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                icon: IdCard,
+                title: "Sem carteira de motorista",
+                desc: "Qualquer pessoa pode pilota — não exige CNH. Amplia muito o público comprador.",
+                highlight: true,
+              },
+              {
+                icon: BadgeDollarSign,
+                title: "Sem IPVA nem emplacamento",
+                desc: "Zero burocracia e zero custo anual com documentação. Só ligar e usar.",
+                highlight: true,
+              },
+              {
+                icon: Battery,
+                title: "Bateria de lítio removível",
+                desc: "Carrega em casa ou no trabalho. Sem precisar de tomada na garagem.",
+                highlight: false,
+              },
+              {
+                icon: Shield,
+                title: "Freio a disco dianteiro",
+                desc: "Mais segurança na frenagem para uso urbano diário com carga.",
+                highlight: false,
+              },
+            ].map(({ icon: Icon, title, desc, highlight }) => (
+              <div
+                key={title}
+                className={`rounded-2xl p-6 border transition-all hover:shadow-md ${
+                  highlight
+                    ? "bg-[#0a1628] border-[#00a651]/30"
+                    : "bg-[#f7f8f9] border-gray-100 hover:border-[#00a651]/30"
+                }`}
+              >
+                <div
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${
+                    highlight ? "bg-[#00a651]/20" : "bg-[#00a651]/10"
+                  }`}
+                >
+                  <Icon size={20} className="text-[#00a651]" />
+                </div>
+                <h3
+                  className={`font-black text-base mb-2 ${
+                    highlight ? "text-white" : "text-[#0a1628]"
+                  }`}
+                >
+                  {title}
+                </h3>
+                <p
+                  className={`text-sm leading-relaxed ${
+                    highlight ? "text-white/50" : "text-gray-500"
+                  }`}
+                >
+                  {desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Specs detalhados */}
+          <div className="mt-10 bg-[#f7f8f9] rounded-2xl p-6 border border-gray-100">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">
+              Ficha técnica completa
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3">
+              {[
+                ["Motor", "1000W brushless sem escovas"],
+                ["Bateria", "60v / 20Ah de lítio"],
+                ["Tempo de carga", "6 a 8 horas"],
+                ["Autonomia", "Até 40 km"],
+                ["Velocidade máxima", "32 km/h"],
+                ["Transmissão", "3 velocidades"],
+                ["Suspensão", "Dianteira e traseira"],
+                ["Pesos suportado", "200 kg"],
+                ["Pneus", "3.00 – 10 pol."],
+                ["Distância entre eixos", "1.350 mm"],
+                ["Iluminação", "Full LED"],
+                ["Freios", "Disco dianteiro e traseiro"],
+              ].map(([k, v]) => (
+                <div key={k} className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-gray-400 uppercase tracking-wider font-bold">
+                    {k}
+                  </span>
+                  <span className="text-sm font-semibold text-[#0a1628]">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

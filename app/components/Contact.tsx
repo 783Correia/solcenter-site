@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { site } from "../data/site";
 
 export default function Contact() {
+  const router = useRouter();
   return (
     <section id="contato" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -65,7 +67,8 @@ export default function Contact() {
               const city = (f.elements.namedItem("city") as HTMLInputElement).value;
               const type = (f.elements.namedItem("type") as HTMLSelectElement).value;
               const msg = encodeURIComponent(`Olá! Me chamo ${name}, sou de ${city} e tenho interesse em energia solar${type ? ` (${type})` : ""}. Gostaria de um orçamento gratuito.`);
-              window.open(`${site.whatsappLink}?text=${msg}`, "_blank");
+              window.open(`${site.whatsappLinkGiovani}?text=${msg}`, "_blank");
+              router.push("/obrigado");
             }}>
               {[
                 { name: "name", label: "Nome", placeholder: "Seu nome completo", type: "text", required: true },

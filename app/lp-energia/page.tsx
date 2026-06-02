@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -13,10 +14,11 @@ import {
 } from "lucide-react";
 import { site } from "../data/site";
 
-const WHATSAPP = site.whatsappLink;
+const WHATSAPP = site.whatsappLinkGiovani;
 
 function LeadForm() {
   const [sent, setSent] = useState(false);
+  const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,6 +32,7 @@ function LeadForm() {
     );
     window.open(`${WHATSAPP}?text=${msg}`, "_blank");
     setSent(true);
+    router.push("/obrigado");
   }
 
   if (sent) {

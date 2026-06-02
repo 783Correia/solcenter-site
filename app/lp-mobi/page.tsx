@@ -36,15 +36,13 @@ const COLORS = [
     label: "Preta",
     hex: "#1a1a1a",
     badge: "Mais vendida" as string | null,
-    hero: "/mobi/real/preta-1.jpg",
-    photos: [
-      "/mobi/real/preta-1.jpg",
-      "/mobi/real/preta-2.jpg",
-      "/mobi/real/preta-3.jpg",
-      "/mobi/real/preta-4.jpg",
-      "/mobi/real/preta-5.jpg",
-      "/mobi/real/preta-6.jpg",
-      "/mobi/real/preta-7.jpg",
+    glow: "rgba(80,80,80,0.12)",
+    cutouts: [
+      "/mobi/cutout/preta-1.png",
+      "/mobi/cutout/preta-2.png",
+      "/mobi/cutout/preta-3.png",
+      "/mobi/cutout/preta-4.png",
+      "/mobi/cutout/preta-5.png",
     ],
   },
   {
@@ -52,16 +50,13 @@ const COLORS = [
     label: "Azul / Prata",
     hex: "#1e4d8c",
     badge: null,
-    hero: "/mobi/real/azul-1.jpg",
-    photos: [
-      "/mobi/real/azul-1.jpg",
-      "/mobi/real/azul-2.jpg",
-      "/mobi/real/azul-3.jpg",
-      "/mobi/real/azul-4.jpg",
-      "/mobi/real/azul-5.jpg",
-      "/mobi/real/azul-6.jpg",
-      "/mobi/real/azul-7.jpg",
-      "/mobi/real/azul-8.jpg",
+    glow: "rgba(30,77,140,0.18)",
+    cutouts: [
+      "/mobi/cutout/azul-1.png",
+      "/mobi/cutout/azul-2.png",
+      "/mobi/cutout/azul-3.png",
+      "/mobi/cutout/azul-4.png",
+      "/mobi/cutout/azul-5.png",
     ],
   },
   {
@@ -69,17 +64,13 @@ const COLORS = [
     label: "Vermelha / Prata",
     hex: "#c0392b",
     badge: "Novidade" as string | null,
-    hero: "/mobi/real/vermelha-1.jpg",
-    photos: [
-      "/mobi/real/vermelha-1.jpg",
-      "/mobi/real/vermelha-2.jpg",
-      "/mobi/real/vermelha-3.jpg",
-      "/mobi/real/vermelha-4.jpg",
-      "/mobi/real/vermelha-5.jpg",
-      "/mobi/real/vermelha-6.jpg",
-      "/mobi/real/vermelha-7.jpg",
-      "/mobi/real/vermelha-8.jpg",
-      "/mobi/real/vermelha-9.jpg",
+    glow: "rgba(192,57,43,0.15)",
+    cutouts: [
+      "/mobi/cutout/vermelha-1.png",
+      "/mobi/cutout/vermelha-2.png",
+      "/mobi/cutout/vermelha-3.png",
+      "/mobi/cutout/vermelha-4.png",
+      "/mobi/cutout/vermelha-5.png",
     ],
   },
   {
@@ -87,16 +78,13 @@ const COLORS = [
     label: "Branca",
     hex: "#e0e0e0",
     badge: null,
-    hero: "/mobi/real/branca-1.jpg",
-    photos: [
-      "/mobi/real/branca-1.jpg",
-      "/mobi/real/branca-2.jpg",
-      "/mobi/real/branca-3.jpg",
-      "/mobi/real/branca-4.jpg",
-      "/mobi/real/branca-5.jpg",
-      "/mobi/real/branca-6.jpg",
-      "/mobi/real/branca-7.jpg",
-      "/mobi/real/branca-8.jpg",
+    glow: "rgba(220,220,220,0.08)",
+    cutouts: [
+      "/mobi/cutout/branca-1.png",
+      "/mobi/cutout/branca-2.png",
+      "/mobi/cutout/branca-3.png",
+      "/mobi/cutout/branca-4.png",
+      "/mobi/cutout/branca-5.png",
     ],
   },
 ];
@@ -547,11 +535,11 @@ export default function LPMobi() {
                 <ChevronLeft size={18} />
               </button>
               <span className="text-white/40 text-sm font-bold tabular-nums">
-                {String(colorPhotoIdx + 1).padStart(2, "0")} / {String(activeColor.photos.length).padStart(2, "0")}
+                {String(colorPhotoIdx + 1).padStart(2, "0")} / {String(activeColor.cutouts.length).padStart(2, "0")}
               </span>
               <button
-                onClick={() => setColorPhotoIdx(Math.min(activeColor.photos.length - 1, colorPhotoIdx + 1))}
-                disabled={colorPhotoIdx === activeColor.photos.length - 1}
+                onClick={() => setColorPhotoIdx(Math.min(activeColor.cutouts.length - 1, colorPhotoIdx + 1))}
+                disabled={colorPhotoIdx === activeColor.cutouts.length - 1}
                 className="w-10 h-10 bg-[#00a651] hover:bg-[#00c060] disabled:opacity-30 rounded-full flex items-center justify-center text-white transition"
                 aria-label="Próxima"
               >
@@ -586,16 +574,31 @@ export default function LPMobi() {
             className="flex gap-4 transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(calc(-${colorPhotoIdx} * (min(480px, 85vw) + 16px)))` }}
           >
-            {activeColor.photos.map((src, i) => (
+            {activeColor.cutouts.map((src, i) => (
               <div
                 key={`${activeColor.id}-${i}`}
                 onClick={() => setColorPhotoIdx(i)}
-                className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 bg-white/5 ${
-                  colorPhotoIdx === i ? "opacity-100" : "opacity-40 hover:opacity-70"
+                className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${
+                  colorPhotoIdx === i ? "opacity-100 scale-100" : "opacity-35 scale-[0.97] hover:opacity-65"
                 }`}
-                style={{ width: "min(480px, 85vw)", height: "min(380px, 67vw)" }}
+                style={{
+                  width: "min(480px, 85vw)",
+                  height: "min(420px, 74vw)",
+                  background: `radial-gradient(ellipse at center bottom, ${activeColor.glow} 0%, rgba(5,12,26,0.95) 70%)`,
+                }}
               >
-                <Image src={src} alt={`EVOX ${activeColor.label} ${i + 1}`} fill className="object-cover object-center" sizes="480px" />
+                {/* Glow embaixo da moto */}
+                <div
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3 h-10 rounded-full blur-xl opacity-60"
+                  style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace("0.", "0.5")} 0%, transparent 70%)` }}
+                />
+                <Image
+                  src={src}
+                  alt={`EVOX ${activeColor.label} ${i + 1}`}
+                  fill
+                  className="object-contain object-center p-6"
+                  sizes="480px"
+                />
               </div>
             ))}
           </div>

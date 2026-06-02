@@ -386,11 +386,21 @@ export default function LPEnergia() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-[#0a1628] px-6 py-16">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="relative bg-[#0a1628] px-6 py-20 overflow-hidden">
+        {/* Imagem de fundo */}
+        <div className="absolute right-0 bottom-0 w-[420px] max-w-[50%] opacity-20 pointer-events-none select-none">
+          <Image
+            src="/images/cta-solar.png"
+            alt=""
+            width={420}
+            height={420}
+            className="object-contain"
+          />
+        </div>
+        <div className="relative max-w-2xl mx-auto text-center">
           <p className="text-[#f5c518] text-xs font-bold uppercase tracking-[0.2em] mb-3">Pronto para decidir?</p>
           <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white leading-tight tracking-tight mb-4">
-            Cada mês sem solar é mais um mês pagando pra distribuidora.
+            Cada mês sem energia solar é mais um mês pagando pra distribuidora.
           </h2>
           <p className="text-white/50 text-sm mb-8">Simulação gratuita. Sem compromisso.</p>
           <a

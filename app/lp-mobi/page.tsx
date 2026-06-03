@@ -37,7 +37,9 @@ const COLORS = [
     hex: "#1a1a1a",
     badge: "Mais vendida" as string | null,
     glow: "rgba(80,80,80,0.12)",
-    cutouts: [
+    hero: "/mobi/real/preta-1.jpg",
+    cutout: "/mobi/cutout/preta-hero.png",
+    gallery: [
       "/mobi/cutout/preta-hero.png",
       "/mobi/cutout/preta-a.png",
       "/mobi/cutout/preta-b.png",
@@ -50,7 +52,9 @@ const COLORS = [
     hex: "#1e4d8c",
     badge: null,
     glow: "rgba(30,77,140,0.18)",
-    cutouts: [
+    hero: "/mobi/real/azul-1.jpg",
+    cutout: "/mobi/cutout/azul-hero.png",
+    gallery: [
       "/mobi/cutout/azul-hero.png",
       "/mobi/cutout/azul-a.png",
       "/mobi/cutout/azul-b.png",
@@ -64,7 +68,9 @@ const COLORS = [
     hex: "#c0392b",
     badge: "Novidade" as string | null,
     glow: "rgba(192,57,43,0.15)",
-    cutouts: [
+    hero: "/mobi/real/vermelha-1.jpg",
+    cutout: "/mobi/cutout/vermelha-hero.png",
+    gallery: [
       "/mobi/cutout/vermelha-hero.png",
       "/mobi/cutout/vermelha-a.png",
       "/mobi/cutout/vermelha-b.png",
@@ -77,7 +83,9 @@ const COLORS = [
     hex: "#e0e0e0",
     badge: null,
     glow: "rgba(220,220,220,0.08)",
-    cutouts: [
+    hero: "/mobi/real/branca-1.jpg",
+    cutout: "/mobi/cutout/branca-hero.png",
+    gallery: [
       "/mobi/cutout/branca-hero.png",
       "/mobi/cutout/branca-a.png",
       "/mobi/cutout/branca-b.png",
@@ -292,23 +300,10 @@ export default function LPMobi() {
 
       <LPNav />
 
-      {/* ── HERO ────────────────────────────────────────────── */}
-      <section
-        className="relative min-h-[100dvh] flex items-end overflow-hidden"
-        style={{
-          background: [
-            "radial-gradient(ellipse at 72% 55%, rgba(0,166,81,0.13) 0%, transparent 50%)",
-            "radial-gradient(ellipse at 18% 25%, rgba(0,50,25,0.18) 0%, transparent 45%)",
-            "radial-gradient(ellipse at 50% 100%, rgba(0,100,50,0.08) 0%, transparent 40%)",
-            "#050c1a",
-          ].join(", "),
-        }}
-      >
-        {/* Fade inferior para integrar com próxima seção */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050c1a] to-transparent pointer-events-none" />
-
-        {/* Moto recortada — grande, ancorada direita */}
-        <div className="absolute bottom-0 right-0 lg:right-[-2%] w-[95vw] sm:w-[70vw] lg:w-[56vw] max-w-[980px]">
+      {/* ── HERO — foto real de fundo (original) ────────────── */}
+      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+        {/* Fotos reais empilhadas com fade */}
+        <div className="absolute inset-0">
           {COLORS.map((c) => (
             <div
               key={c.id}
@@ -316,22 +311,17 @@ export default function LPMobi() {
               style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
             >
               <Image
-                src={`/mobi/cutout/${c.id}-hero.png`}
+                src={c.hero}
                 alt={`EVOX Sol Center Mobi ${c.label}`}
                 fill
-                className="object-contain object-bottom"
+                className="object-cover object-center"
                 priority={c.id === "preta"}
-                sizes="(max-width: 768px) 85vw, 48vw"
+                sizes="100vw"
               />
             </div>
           ))}
-          {/* Glow de chão embaixo da moto */}
-          <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-12 blur-2xl rounded-full"
-            style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.5)")} 0%, transparent 70%)` }}
-          />
-          {/* Espaçador para manter o aspect ratio */}
-          <div className="w-full" style={{ paddingBottom: "120%" }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050c1a]/92 via-[#050c1a]/55 to-[#050c1a]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050c1a] via-transparent to-[#050c1a]/35" />
         </div>
 
         {/* Conteúdo — texto + CTAs */}
@@ -507,125 +497,128 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── GALERIA POR COR — carrossel estilo Harley ───────── */}
-      <section className="py-20 section-sep">
-        {/* Header */}
-        <div className="text-center mb-10 px-6">
-          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">4 opções</p>
-          <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
-            Escolha a sua cor.
-          </h2>
-        </div>
+      {/* ── PRODUCT CARD — showcase estilo referência ─────── */}
+      <section className="px-4 sm:px-6 py-20 section-sep">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">4 opções</p>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
+              Escolha a sua EVOX.
+            </h2>
+          </div>
 
-        {/* Seletor de cor */}
-        <div className="flex justify-center gap-3 mb-8 px-6 flex-wrap">
-          {COLORS.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => { selectColor(c); }}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
-                activeColor.id === c.id
-                  ? "bg-white/15 text-white border border-white/20 scale-105"
-                  : "glass-card text-white/50 hover:text-white/80"
-              }`}
+          <div className="glass-card rounded-3xl overflow-hidden">
+            {/* Área da moto */}
+            <div
+              className="relative flex items-center justify-center overflow-hidden transition-all duration-500"
+              style={{
+                height: "clamp(300px, 48vw, 520px)",
+                background: `radial-gradient(ellipse at 50% 85%, ${activeColor.glow.replace(/[\d.]+\)$/, "0.4)")} 0%, rgba(5,12,26,0.7) 65%)`,
+              }}
             >
-              <div className="w-4 h-4 rounded-full border border-white/20 flex-shrink-0" style={{ backgroundColor: c.hex }} />
-              {c.label}
-              {c.badge && (
-                <span className="bg-[#f5c518] text-[#0a1628] text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                  {c.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+              {/* Grid dot sutil */}
+              <div className="absolute inset-0 opacity-15" style={{
+                backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px)",
+                backgroundSize: "30px 30px",
+              }} />
 
-        {/* Carrossel — track deslizante simples */}
-        <div className="relative overflow-hidden w-full" style={{ height: "clamp(300px, 52vw, 580px)" }}>
-          {/* Track: todos os itens em linha, desliza para centralizar o ativo */}
-          <div
-            className="absolute top-0 flex items-end transition-transform duration-500 ease-in-out"
-            style={{
-              // Cada item ocupa 54vw. Centralizar o ativo: offset = 50vw - (idx * 54 + 27)vw
-              transform: `translateX(${50 - colorPhotoIdx * 54 - 27}vw)`,
-            }}
-          >
-            {activeColor.cutouts.map((src, i) => {
-              const isActive = i === colorPhotoIdx;
-              return (
+              {/* Nome da cor como watermark */}
+              <span
+                className="absolute inset-x-0 text-center font-black text-white/5 select-none pointer-events-none leading-none"
+                style={{ fontSize: "clamp(5rem,15vw,12rem)" }}
+              >
+                {activeColor.label.split(" /")[0].toUpperCase()}
+              </span>
+
+              {/* Motos empilhadas */}
+              {COLORS.map((c) => (
                 <div
-                  key={`${activeColor.id}-${i}`}
-                  onClick={() => setColorPhotoIdx(i)}
-                  className="relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-in-out"
-                  style={{
-                    width: "54vw",
-                    height: "clamp(300px, 52vw, 580px)",
-                    transform: isActive ? "scale(1)" : "scale(0.72)",
-                    opacity: isActive ? 1 : 0.35,
-                  }}
+                  key={c.id}
+                  className="absolute inset-0 transition-opacity duration-500"
+                  style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
                 >
-                  {/* Glow de chão */}
-                  {isActive && (
-                    <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-8 rounded-full blur-2xl"
-                      style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.55)")} 0%, transparent 70%)` }}
-                    />
-                  )}
                   <Image
-                    src={src}
-                    alt={`EVOX ${activeColor.label} ${i + 1}`}
+                    src={c.cutout}
+                    alt={`EVOX ${c.label}`}
                     fill
-                    className="object-contain object-bottom"
-                    sizes="54vw"
+                    className="object-contain object-bottom p-4"
+                    sizes="(max-width: 768px) 90vw, 50vw"
                   />
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Label + navegação */}
-        <div className="flex flex-col items-center gap-5 mt-6 px-6">
-          <p className="text-white font-black text-xl tracking-tight">
-            EVOX{" "}
-            <span style={{ color: activeColor.id === "branca" ? "#aaa" : activeColor.hex }}>
-              {activeColor.label}
-            </span>
-          </p>
-          <div className="flex items-center gap-5">
-            <button
-              onClick={() => setColorPhotoIdx(Math.max(0, colorPhotoIdx - 1))}
-              disabled={colorPhotoIdx === 0}
-              className="w-11 h-11 glass-card disabled:opacity-25 rounded-full flex items-center justify-center text-white transition"
-              aria-label="Anterior"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            {/* Dots */}
-            <div className="flex gap-2">
-              {activeColor.cutouts.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setColorPhotoIdx(i)}
-                  aria-label={`Foto ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    colorPhotoIdx === i ? "w-6 h-2.5 bg-[#00a651]" : "w-2.5 h-2.5 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
               ))}
+
+              {activeColor.badge && (
+                <div className="absolute top-4 right-4 bg-[#f5c518] text-[#0a1628] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest z-10">
+                  {activeColor.badge}
+                </div>
+              )}
             </div>
-            <button
-              onClick={() => setColorPhotoIdx(Math.min(activeColor.cutouts.length - 1, colorPhotoIdx + 1))}
-              disabled={colorPhotoIdx === activeColor.cutouts.length - 1}
-              className="w-11 h-11 bg-[#00a651] hover:bg-[#00c060] disabled:opacity-25 rounded-full flex items-center justify-center text-white transition"
-              aria-label="Próxima"
-            >
-              <ChevronRight size={20} />
-            </button>
+
+            {/* Info */}
+            <div className="p-6 sm:p-8 border-t border-white/8">
+              <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
+                <div>
+                  <p className="text-white/35 text-[10px] font-bold uppercase tracking-widest mb-1">Sol Center Mobi</p>
+                  <h3 className="text-white font-black text-2xl leading-none">
+                    EVOX{" "}
+                    <span style={{ color: activeColor.id === "branca" ? "#bbb" : activeColor.hex }}>
+                      {activeColor.label}
+                    </span>
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  {COLORS.map((c) => (
+                    <button
+                      key={c.id}
+                      onClick={() => selectColor(c)}
+                      aria-label={`Cor ${c.label}`}
+                      className={`w-8 h-8 rounded-full border-2 transition-all duration-200 ${
+                        activeColor.id === c.id
+                          ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#0d1a2e]"
+                          : "border-white/25 hover:border-white/60 hover:scale-105"
+                      }`}
+                      style={{ backgroundColor: c.hex }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                {[
+                  { label: "Motor", value: "1000W" },
+                  { label: "Bateria", value: "60v / 20Ah" },
+                  { label: "Autonomia", value: "40 km" },
+                  { label: "Velocidade", value: "32 km/h" },
+                  { label: "Carga máx.", value: "200 kg" },
+                  { label: "Recarga", value: "6–8 h" },
+                ].map(({ label, value }) => (
+                  <div key={label} className="glass-card rounded-xl px-4 py-3">
+                    <p className="text-white/35 text-[10px] uppercase tracking-wider font-bold mb-0.5">{label}</p>
+                    <p className="text-white font-black text-base leading-none">{value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-3 flex-wrap">
+                <a
+                  href="#formulario"
+                  className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 bg-[#00a651] text-white font-black py-3.5 rounded-xl text-sm hover:bg-[#00c060] transition"
+                >
+                  Quero ser revendedor
+                  <ArrowRight size={15} />
+                </a>
+                <a
+                  href="#galeria"
+                  className="inline-flex items-center justify-center gap-2 glass-card text-white/70 font-bold py-3.5 px-5 rounded-xl text-sm hover:text-white transition"
+                >
+                  Ver fotos
+                  <ChevronRight size={15} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
       {/* ── SPECS ────────────────────────────────────────────── */}
       <section className="px-6 py-20 section-sep">
         <div className="max-w-5xl mx-auto">

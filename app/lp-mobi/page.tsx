@@ -422,52 +422,30 @@ export default function LPMobi() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#050c1a] via-transparent to-[#050c1a]/35" />
         </div>
 
-        {/* Color picker vertical — desktop esquerda, mobile oculto aqui */}
-        <div className="absolute left-5 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-1">
-          <span className="text-white/25 text-[9px] uppercase tracking-widest font-bold mb-2" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>Cor</span>
-          {COLORS.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => selectColor(c)}
-              aria-label={`Ver EVOX ${c.label}`}
-              className="flex flex-col items-center gap-1 group"
-            >
-              <div
-                className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
-                  activeColor.id === c.id
-                    ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
-                    : "border-white/25 hover:border-white/60 hover:scale-105"
-                }`}
-                style={{ backgroundColor: c.hex }}
-              />
-              {c.badge && (
-                <span className="text-[7px] bg-[#f5c518] text-[#0a1628] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide leading-none">
-                  {c.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
 
-        {/* Conteúdo centralizado */}
-        <div className="relative z-10 w-full pb-14 pt-28">
-          <div className="max-w-2xl mx-auto px-6 text-center flex flex-col items-center">
-            <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-3">
+        {/* Conteúdo */}
+        <div className="relative z-10 w-full pb-16 pt-32">
+          <div className="max-w-6xl mx-auto px-6 lg:px-14 flex flex-col items-center lg:items-start text-center lg:text-left">
+
+            <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-4">
               Sol Center Mobi · Revenda
             </p>
-            <h1 className="text-[clamp(1.9rem,5.5vw,5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] mb-4 max-w-xl">
+
+            <h1 className="text-[clamp(2rem,4.8vw,5.5rem)] font-black text-white leading-[0.9] tracking-[-0.03em] mb-6 max-w-3xl">
               A scooter elétrica que qualquer pessoa pode comprar.
             </h1>
-            <p className="text-[clamp(1.1rem,2vw,1.4rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
+
+            <p className="text-[clamp(1rem,1.6vw,1.25rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
               EVOX 1000W · Sem CNH · Sem IPVA · Sem emplacamento
             </p>
-            <p className="text-white/65 text-base leading-relaxed mb-6 max-w-lg">
+
+            <p className="text-white/65 text-base leading-relaxed mb-8 max-w-lg">
               Existe um mercado enorme de pessoas que querem mobilidade mas não têm carteira de motorista.{" "}
               <strong className="text-white/90">Coloque a EVOX na sua loja e comece a atender esse público hoje.</strong>
             </p>
 
             {/* Badges */}
-            <div className="flex flex-wrap justify-center gap-2.5 mb-7">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 mb-9">
               {[
                 { icon: IdCard, t: "Sem CNH" },
                 { icon: BadgeDollarSign, t: "Sem IPVA" },
@@ -486,7 +464,7 @@ export default function LPMobi() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
               <a
                 href="#formulario"
                 className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
@@ -503,8 +481,8 @@ export default function LPMobi() {
               </a>
             </div>
 
-            {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-7 mb-10">
+            {/* Stats + color picker numa linha */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-7">
               {[
                 { v: "1000W", label: "motor brushless" },
                 { v: "40km", label: "autonomia" },
@@ -516,34 +494,38 @@ export default function LPMobi() {
                   <div className="text-[10px] text-white/35 uppercase tracking-wide mt-0.5">{s.label}</div>
                 </div>
               ))}
+
+              {/* Divisor */}
+              <div className="hidden lg:block w-px h-8 bg-white/10" />
+
+              {/* Color picker inline */}
+              <div className="flex items-center gap-3">
+                <span className="text-white/25 text-[10px] uppercase tracking-widest font-bold">Cor</span>
+                {COLORS.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => selectColor(c)}
+                    aria-label={`Ver EVOX ${c.label}`}
+                    className="flex flex-col items-center gap-1"
+                  >
+                    <div
+                      className={`rounded-full border-2 transition-all duration-200 ${
+                        activeColor.id === c.id
+                          ? "w-8 h-8 border-white ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
+                          : "w-6 h-6 border-white/30 hover:border-white/60 hover:scale-110"
+                      }`}
+                      style={{ backgroundColor: c.hex }}
+                    />
+                    {c.badge && activeColor.id === c.id && (
+                      <span className="text-[7px] bg-[#f5c518] text-[#0a1628] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide leading-none">
+                        {c.badge}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Color picker mobile — horizontal, só aparece em mobile */}
-            <div className="flex lg:hidden items-center justify-center gap-4 flex-wrap">
-              <span className="text-white/30 text-xs uppercase tracking-widest font-bold">Cor:</span>
-              {COLORS.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => selectColor(c)}
-                  aria-label={`Ver EVOX ${c.label}`}
-                  className="flex flex-col items-center gap-1"
-                >
-                  <div
-                    className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
-                      activeColor.id === c.id
-                        ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
-                        : "border-white/30 hover:border-white/60"
-                    }`}
-                    style={{ backgroundColor: c.hex }}
-                  />
-                  {c.badge && (
-                    <span className="text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                      {c.badge}
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       </section>

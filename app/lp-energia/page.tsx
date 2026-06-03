@@ -250,9 +250,9 @@ export default function LPEnergia() {
             {/* Photo stat cards — estilo editorial */}
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { img: "/images/solar-residencial.jpg", stat: "↑ 102%", label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
-                { img: "/images/solar-agro.jpg",        stat: "R$ 7.500", label: "Economia anual média de um cliente Sol Center" },
-                { img: "/images/manutencao.jpg",        stat: "4–5 anos", label: "Retorno do investimento. O sistema dura 25 anos" },
+                { img: "/images/lp-conta-energia.jpg", stat: "↑ 102%",   label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
+                { img: "/images/lp-economia.jpg",       stat: "R$ 7.500", label: "Economia anual média de um cliente Sol Center" },
+                { img: "/images/lp-retorno.jpg",        stat: "4–5 anos", label: "Retorno do investimento. O sistema dura 25 anos" },
               ].map((card) => (
                 <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
                   <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />

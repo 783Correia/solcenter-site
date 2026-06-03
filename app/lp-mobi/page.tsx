@@ -635,12 +635,21 @@ export default function LPMobi() {
                   className="absolute inset-0 transition-opacity duration-300"
                   style={{ opacity: colorPhotoIdx === i ? 1 : 0 }}
                 >
+                  {/* Fundo desfocado — mesma imagem, sem barra preta */}
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    aria-hidden
+                    className="object-cover scale-110 blur-xl opacity-60"
+                    sizes="32px"
+                  />
+                  {/* Moto inteira sem corte */}
                   <Image
                     src={src}
                     alt={`EVOX ${activeColor.label} — foto ${i + 1}`}
                     fill
-                    className="object-cover"
-                    style={{ objectPosition: "center top" }}
+                    className="object-contain relative"
                     sizes="(max-width: 1024px) 95vw, 60vw"
                     priority={i === 0}
                   />

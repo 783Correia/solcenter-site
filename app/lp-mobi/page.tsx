@@ -293,23 +293,19 @@ export default function LPMobi() {
       <LPNav />
 
       {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
-
-        {/* Background fullscreen */}
-        <div className="absolute inset-0">
-          <Image
-            src="/mobi/bg-hero-ai.jpg"
-            alt=""
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          {/* Overlay esquerdo para legibilidade do texto */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050c1a]/90 via-[#050c1a]/50 to-transparent" />
-          {/* Fade inferior */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050c1a] to-transparent" />
-        </div>
+      <section
+        className="relative min-h-[100dvh] flex items-end overflow-hidden"
+        style={{
+          background: [
+            "radial-gradient(ellipse at 72% 55%, rgba(0,166,81,0.13) 0%, transparent 50%)",
+            "radial-gradient(ellipse at 18% 25%, rgba(0,50,25,0.18) 0%, transparent 45%)",
+            "radial-gradient(ellipse at 50% 100%, rgba(0,100,50,0.08) 0%, transparent 40%)",
+            "#050c1a",
+          ].join(", "),
+        }}
+      >
+        {/* Fade inferior para integrar com próxima seção */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050c1a] to-transparent pointer-events-none" />
 
         {/* Moto recortada — grande, ancorada direita */}
         <div className="absolute bottom-0 right-0 lg:right-[-2%] w-[95vw] sm:w-[70vw] lg:w-[56vw] max-w-[980px]">
@@ -544,48 +540,48 @@ export default function LPMobi() {
           ))}
         </div>
 
-        {/* Carrossel — moto central grande, laterais aparecendo */}
-        <div className="relative overflow-hidden" style={{ height: "clamp(340px, 55vw, 600px)" }}>
-          {activeColor.cutouts.map((src, i) => {
-            const offset = i - colorPhotoIdx;
-            const isActive = offset === 0;
-            const isAdjacent = Math.abs(offset) === 1;
-            if (Math.abs(offset) > 1) return null;
-            return (
-              <div
-                key={src}
-                onClick={() => setColorPhotoIdx(i)}
-                className="absolute top-0 cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  width: isActive ? "clamp(300px, 50vw, 580px)" : "clamp(200px, 32vw, 380px)",
-                  height: "100%",
-                  left: "50%",
-                  transform: isActive
-                    ? "translateX(-50%) scale(1)"
-                    : offset < 0
-                    ? `translateX(calc(-50% - clamp(260px, 42vw, 520px))) scale(0.75)`
-                    : `translateX(calc(-50% + clamp(260px, 42vw, 520px))) scale(0.75)`,
-                  opacity: isActive ? 1 : isAdjacent ? 0.35 : 0,
-                  zIndex: isActive ? 10 : 5,
-                }}
-              >
-                {/* Glow de chão */}
+        {/* Carrossel — track deslizante simples */}
+        <div className="relative overflow-hidden w-full" style={{ height: "clamp(300px, 52vw, 580px)" }}>
+          {/* Track: todos os itens em linha, desliza para centralizar o ativo */}
+          <div
+            className="absolute top-0 flex items-end transition-transform duration-500 ease-in-out"
+            style={{
+              // Cada item ocupa 54vw. Centralizar o ativo: offset = 50vw - (idx * 54 + 27)vw
+              transform: `translateX(${50 - colorPhotoIdx * 54 - 27}vw)`,
+            }}
+          >
+            {activeColor.cutouts.map((src, i) => {
+              const isActive = i === colorPhotoIdx;
+              return (
                 <div
-                  className="absolute bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-2xl"
-                  style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.6)")} 0%, transparent 70%)` }}
-                />
-                <div className="relative w-full h-full">
+                  key={`${activeColor.id}-${i}`}
+                  onClick={() => setColorPhotoIdx(i)}
+                  className="relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-in-out"
+                  style={{
+                    width: "54vw",
+                    height: "clamp(300px, 52vw, 580px)",
+                    transform: isActive ? "scale(1)" : "scale(0.72)",
+                    opacity: isActive ? 1 : 0.35,
+                  }}
+                >
+                  {/* Glow de chão */}
+                  {isActive && (
+                    <div
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-8 rounded-full blur-2xl"
+                      style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.55)")} 0%, transparent 70%)` }}
+                    />
+                  )}
                   <Image
                     src={src}
-                    alt={`EVOX ${activeColor.label}`}
+                    alt={`EVOX ${activeColor.label} ${i + 1}`}
                     fill
                     className="object-contain object-bottom"
-                    sizes="(max-width: 768px) 80vw, 50vw"
+                    sizes="54vw"
                   />
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Label + navegação */}

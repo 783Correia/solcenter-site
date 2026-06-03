@@ -312,7 +312,7 @@ export default function LPMobi() {
         </div>
 
         {/* Moto recortada — grande, ancorada direita */}
-        <div className="absolute bottom-0 right-0 lg:right-[2%] w-[85vw] sm:w-[60vw] lg:w-[48vw] max-w-[860px]">
+        <div className="absolute bottom-0 right-0 lg:right-[-2%] w-[95vw] sm:w-[70vw] lg:w-[56vw] max-w-[980px]">
           {COLORS.map((c) => (
             <div
               key={c.id}
@@ -511,92 +511,121 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── GALERIA POR COR ──────────────────────────────────── */}
-      <section className="py-20 section-sep overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-            <div>
-              <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">4 opções</p>
-              <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
-                Disponível em 4 cores.
-              </h2>
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setColorPhotoIdx(Math.max(0, colorPhotoIdx - 1))}
-                disabled={colorPhotoIdx === 0}
-                className="w-10 h-10 glass-card disabled:opacity-30 rounded-full flex items-center justify-center text-white transition"
-                aria-label="Anterior"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <span className="text-white/40 text-sm font-bold tabular-nums">
-                {String(colorPhotoIdx + 1).padStart(2, "0")} / {String(activeColor.cutouts.length).padStart(2, "0")}
-              </span>
-              <button
-                onClick={() => setColorPhotoIdx(Math.min(activeColor.cutouts.length - 1, colorPhotoIdx + 1))}
-                disabled={colorPhotoIdx === activeColor.cutouts.length - 1}
-                className="w-10 h-10 bg-[#00a651] hover:bg-[#00c060] disabled:opacity-30 rounded-full flex items-center justify-center text-white transition"
-                aria-label="Próxima"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-2 mt-6">
-            {COLORS.map((c) => (
-              <button
-                key={c.id}
-                onClick={() => selectColor(c)}
-                className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
-                  activeColor.id === c.id
-                    ? "bg-white/15 text-white border border-white/20"
-                    : "glass-card text-white/50 hover:text-white/80"
-                }`}
-              >
-                <div className="w-4 h-4 rounded-full border border-white/20 flex-shrink-0" style={{ backgroundColor: c.hex }} />
-                {c.label}
-                {c.badge && (
-                  <span className="bg-[#f5c518] text-[#0a1628] text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                    {c.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
+      {/* ── GALERIA POR COR — carrossel estilo Harley ───────── */}
+      <section className="py-20 section-sep">
+        {/* Header */}
+        <div className="text-center mb-10 px-6">
+          <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">4 opções</p>
+          <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
+            Escolha a sua cor.
+          </h2>
         </div>
-        <div className="overflow-hidden pl-6">
-          <div
-            className="flex gap-4 transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(calc(-${colorPhotoIdx} * (min(480px, 85vw) + 16px)))` }}
-          >
-            {activeColor.cutouts.map((src, i) => (
+
+        {/* Seletor de cor */}
+        <div className="flex justify-center gap-3 mb-8 px-6 flex-wrap">
+          {COLORS.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => { selectColor(c); }}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
+                activeColor.id === c.id
+                  ? "bg-white/15 text-white border border-white/20 scale-105"
+                  : "glass-card text-white/50 hover:text-white/80"
+              }`}
+            >
+              <div className="w-4 h-4 rounded-full border border-white/20 flex-shrink-0" style={{ backgroundColor: c.hex }} />
+              {c.label}
+              {c.badge && (
+                <span className="bg-[#f5c518] text-[#0a1628] text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                  {c.badge}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Carrossel — moto central grande, laterais aparecendo */}
+        <div className="relative overflow-hidden" style={{ height: "clamp(340px, 55vw, 600px)" }}>
+          {activeColor.cutouts.map((src, i) => {
+            const offset = i - colorPhotoIdx;
+            const isActive = offset === 0;
+            const isAdjacent = Math.abs(offset) === 1;
+            if (Math.abs(offset) > 1) return null;
+            return (
               <div
-                key={`${activeColor.id}-${i}`}
+                key={src}
                 onClick={() => setColorPhotoIdx(i)}
-                className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${
-                  colorPhotoIdx === i ? "opacity-100 scale-100" : "opacity-35 scale-[0.97] hover:opacity-65"
-                }`}
+                className="absolute top-0 cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
-                  width: "min(480px, 85vw)",
-                  height: "min(420px, 74vw)",
-                  background: `radial-gradient(ellipse at center bottom, ${activeColor.glow} 0%, rgba(5,12,26,0.95) 70%)`,
+                  width: isActive ? "clamp(300px, 50vw, 580px)" : "clamp(200px, 32vw, 380px)",
+                  height: "100%",
+                  left: "50%",
+                  transform: isActive
+                    ? "translateX(-50%) scale(1)"
+                    : offset < 0
+                    ? `translateX(calc(-50% - clamp(260px, 42vw, 520px))) scale(0.75)`
+                    : `translateX(calc(-50% + clamp(260px, 42vw, 520px))) scale(0.75)`,
+                  opacity: isActive ? 1 : isAdjacent ? 0.35 : 0,
+                  zIndex: isActive ? 10 : 5,
                 }}
               >
-                {/* Glow embaixo da moto */}
+                {/* Glow de chão */}
                 <div
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3 h-10 rounded-full blur-xl opacity-60"
-                  style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace("0.", "0.5")} 0%, transparent 70%)` }}
+                  className="absolute bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-2xl"
+                  style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.6)")} 0%, transparent 70%)` }}
                 />
-                <Image
-                  src={src}
-                  alt={`EVOX ${activeColor.label} ${i + 1}`}
-                  fill
-                  className="object-contain object-center p-6"
-                  sizes="480px"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={src}
+                    alt={`EVOX ${activeColor.label}`}
+                    fill
+                    className="object-contain object-bottom"
+                    sizes="(max-width: 768px) 80vw, 50vw"
+                  />
+                </div>
               </div>
-            ))}
+            );
+          })}
+        </div>
+
+        {/* Label + navegação */}
+        <div className="flex flex-col items-center gap-5 mt-6 px-6">
+          <p className="text-white font-black text-xl tracking-tight">
+            EVOX{" "}
+            <span style={{ color: activeColor.id === "branca" ? "#aaa" : activeColor.hex }}>
+              {activeColor.label}
+            </span>
+          </p>
+          <div className="flex items-center gap-5">
+            <button
+              onClick={() => setColorPhotoIdx(Math.max(0, colorPhotoIdx - 1))}
+              disabled={colorPhotoIdx === 0}
+              className="w-11 h-11 glass-card disabled:opacity-25 rounded-full flex items-center justify-center text-white transition"
+              aria-label="Anterior"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            {/* Dots */}
+            <div className="flex gap-2">
+              {activeColor.cutouts.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setColorPhotoIdx(i)}
+                  aria-label={`Foto ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    colorPhotoIdx === i ? "w-6 h-2.5 bg-[#00a651]" : "w-2.5 h-2.5 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => setColorPhotoIdx(Math.min(activeColor.cutouts.length - 1, colorPhotoIdx + 1))}
+              disabled={colorPhotoIdx === activeColor.cutouts.length - 1}
+              className="w-11 h-11 bg-[#00a651] hover:bg-[#00c060] disabled:opacity-25 rounded-full flex items-center justify-center text-white transition"
+              aria-label="Próxima"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
       </section>

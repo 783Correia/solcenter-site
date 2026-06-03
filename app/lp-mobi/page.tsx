@@ -617,15 +617,23 @@ export default function LPMobi() {
               className="relative overflow-hidden"
               style={{ minHeight: "clamp(300px, 50vw, 560px)", background: "#050c1a" }}
             >
-              {/* Foto ativa */}
-              <Image
-                key={activeColor.photos[colorPhotoIdx]}
-                src={activeColor.photos[colorPhotoIdx]}
-                alt={`EVOX ${activeColor.label}`}
-                fill
-                className="object-cover object-center transition-opacity duration-500"
-                sizes="(max-width: 1024px) 95vw, 60vw"
-              />
+              {/* Todas as fotos da cor ativa empilhadas — troca por opacity */}
+              {activeColor.photos.map((src, i) => (
+                <div
+                  key={src}
+                  className="absolute inset-0 transition-opacity duration-300"
+                  style={{ opacity: colorPhotoIdx === i ? 1 : 0 }}
+                >
+                  <Image
+                    src={src}
+                    alt={`EVOX ${activeColor.label} — foto ${i + 1}`}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 95vw, 60vw"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
 
               {/* Gradient inferior */}
               <div className="absolute inset-0 pointer-events-none" style={{

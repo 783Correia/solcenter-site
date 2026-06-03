@@ -128,7 +128,9 @@ export default function LPEnergia() {
       {/* ─── NAV DESKTOP ─────────────────────────────── */}
       <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
         <nav className="pointer-events-auto flex items-center gap-4 bg-white/80 backdrop-blur-md shadow-sm shadow-black/5 border border-white/80 rounded-full px-5 py-2.5">
-          <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="cursor-pointer">
+            <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+          </a>
           <div className="w-px h-4 bg-gray-200" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-gray-500 hover:text-[#25D366] transition text-xs font-medium cursor-pointer">
@@ -145,9 +147,9 @@ export default function LPEnergia() {
       {/* ─── NAV MOBILE ──────────────────────────────── */}
       <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
         <nav className="flex items-center gap-1 bg-white/90 backdrop-blur-md shadow-lg shadow-black/10 border border-white/80 rounded-full px-3 py-3">
-          <div className="px-3">
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="px-3 cursor-pointer">
             <Image src="/logo-dark.svg" alt="SolCenter" width={80} height={17} />
-          </div>
+          </a>
           <div className="w-px h-5 bg-gray-200 mx-1" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
             className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer">

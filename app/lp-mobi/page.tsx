@@ -711,7 +711,7 @@ export default function LPMobi() {
             <div className="p-6 sm:p-7 border-t border-white/8 lg:border-t-0 lg:border-l lg:border-white/8 flex flex-col gap-4">
               <div>
                 <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest mb-1">Sol Center Mobi</p>
-                <div className="mb-3">
+                <div className="mb-4">
                   <h3 className="text-white font-black text-3xl leading-none mb-1">EVOX</h3>
                   <p
                     className="font-black text-xl leading-none"
@@ -721,24 +721,8 @@ export default function LPMobi() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 mb-2">
-                  {[
-                    { label: "Motor", value: "1000W" },
-                    { label: "Bateria", value: "60v / 20Ah" },
-                    { label: "Autonomia", value: "120 km" },
-                    { label: "Velocidade", value: "32 km/h" },
-                    { label: "Carga máx.", value: "200 kg" },
-                    { label: "Recarga", value: "6–8 h" },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="glass-card rounded-xl px-3.5 py-3">
-                      <p className="text-white/30 text-[10px] uppercase tracking-wider font-bold mb-0.5">{label}</p>
-                      <p className="text-white font-black text-sm leading-none">{value}</p>
-                    </div>
-                  ))}
-                </div>
-
                 {/* Cor picker */}
-                <div className="flex items-center gap-2.5 mt-1">
+                <div className="flex items-center gap-2.5 mb-3">
                   <span className="text-white/30 text-[11px] font-bold uppercase tracking-wider">Cor:</span>
                   {COLORS.map((c) => (
                     <button
@@ -757,7 +741,7 @@ export default function LPMobi() {
                 </div>
 
                 {/* Miniaturas das fotos da cor ativa */}
-                <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide mt-3">
+                <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide mb-4">
                   {activeColor.photos.map((src, i) => (
                     <button
                       key={src}
@@ -772,6 +756,23 @@ export default function LPMobi() {
                     >
                       <Image src={src} alt={`Foto ${i + 1}`} fill className="object-cover" sizes="56px" />
                     </button>
+                  ))}
+                </div>
+
+                {/* Specs */}
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { label: "Motor", value: "1000W" },
+                    { label: "Bateria", value: "60v / 20Ah" },
+                    { label: "Autonomia", value: "120 km" },
+                    { label: "Velocidade", value: "32 km/h" },
+                    { label: "Carga máx.", value: "200 kg" },
+                    { label: "Recarga", value: "6–8 h" },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="glass-card rounded-xl px-3.5 py-3">
+                      <p className="text-white/30 text-[10px] uppercase tracking-wider font-bold mb-0.5">{label}</p>
+                      <p className="text-white font-black text-sm leading-none">{value}</p>
+                    </div>
                   ))}
                 </div>
               </div>

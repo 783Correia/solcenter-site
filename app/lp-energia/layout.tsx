@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.solcenter.com.br/images/solar-residencial.jpg",
+        url: "https://www.solcenter.com.br/og-lp-energia.png",
         width: 1200,
         height: 630,
-        alt: "Instalação de energia solar residencial pela Solcenter em Santo Cristo RS",
+        alt: "Solcenter — Energia Solar em Santo Cristo RS",
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Reduza até 95% da conta de luz com energia solar — Solcenter",
     description: "Cliente reduziu de R$680 para R$47/mês. Orçamento grátis em Santo Cristo e região do RS.",
-    images: ["https://www.solcenter.com.br/images/solar-residencial.jpg"],
+    images: ["https://www.solcenter.com.br/og-lp-energia.png"],
   },
   alternates: {
     canonical: "https://www.solcenter.com.br/lp-energia",

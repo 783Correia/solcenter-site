@@ -300,7 +300,7 @@ export default function LPMobi() {
         {/* Background branded SVG */}
         <div className="absolute inset-0">
           <Image
-            src="/mobi/bg-hero.svg"
+            src="/mobi/bg-hero-ai.jpg"
             alt=""
             fill
             className="object-cover object-center"

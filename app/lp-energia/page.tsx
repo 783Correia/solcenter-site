@@ -233,28 +233,34 @@ export default function LPEnergia() {
 
         {/* ─── 2. PROBLEMA ────────────────────────────── */}
         <section className="relative px-6 py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
-              A conta de energia subiu mais de{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10">100%</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3 bg-[#FFB100]/25 -z-0 rounded" />
-              </span>{" "}
-              nos últimos 10 anos.
-            </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-2xl mx-auto mb-12">
-              Bandeiras tarifárias, inflação energética, taxas escondidas. A concessionária cobra mais a cada ciclo — e você não tem controle sobre isso. Até agora.
-            </p>
-            <div className="grid md:grid-cols-3 gap-4 text-left">
+          <div className="max-w-5xl mx-auto">
+            {/* Heading assimétrico */}
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-12">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
+                <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  A conta de energia<br />não para de subir.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                Bandeiras tarifárias, inflação energética, taxas escondidas. A concessionária cobra mais a cada ciclo — e você não tem controle sobre isso.
+              </p>
+            </div>
+
+            {/* Photo stat cards — estilo editorial */}
+            <div className="grid md:grid-cols-3 gap-4">
               {[
-                { n: "↑ 102%", label: "Aumento médio na tarifa de energia no Brasil entre 2014 e 2024.", color: "text-red-500" },
-                { n: "R$ 7.500", label: "Economia anual média de um cliente Sol Center após a instalação.", color: "text-green-600" },
-                { n: "4–5 anos", label: "Tempo de retorno do investimento. O sistema dura 25 anos.", color: "text-[#0a1628]" },
-              ].map((item) => (
-                <div key={item.n} className="glass-light rounded-2xl p-6">
-                  <p className={`text-2xl font-black mb-2 ${item.color}`}>{item.n}</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.label}</p>
+                { img: "/images/solar-residencial.jpg", stat: "↑ 102%", label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
+                { img: "/images/solar-agro.jpg",        stat: "R$ 7.500", label: "Economia anual média de um cliente Sol Center" },
+                { img: "/images/manutencao.jpg",        stat: "4–5 anos", label: "Retorno do investimento. O sistema dura 25 anos" },
+              ].map((card) => (
+                <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
+                  <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-5">
+                    <p className="text-white text-3xl font-black leading-none mb-1">{card.stat}</p>
+                    <p className="text-white/65 text-xs leading-snug">{card.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -264,10 +270,17 @@ export default function LPEnergia() {
         {/* ─── 3. TRANSFORMAÇÃO — Bento glass ─────────── */}
         <section ref={bentoRef} className="relative px-6 py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">A virada</p>
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-              Com energia solar, você para de pagar<br className="hidden md:block" /> pra concessionária.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-10">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">A virada</p>
+                <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  Com solar, você para<br />de pagar pra deles.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                Resultados reais de clientes Sol Center — números verificados após a instalação.
+              </p>
+            </div>
 
             <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 transition-all duration-700 ${bentoInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
 
@@ -331,10 +344,17 @@ export default function LPEnergia() {
         {/* ─── 4. COMO FUNCIONA ───────────────────────── */}
         <section id="como-funciona" className="relative px-6 py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Do contato à economia</p>
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-14 tracking-tight">
-              4 passos. Você não precisa<br className="hidden md:block" /> se preocupar com nada.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-14">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Do contato à economia</p>
+                <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  4 passos.<br />Você não faz nada.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                A Sol Center cuida de tudo — do projeto à homologação. Você só precisa aprovar e esperar a conta cair.
+              </p>
+            </div>
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 { n: "1", t: "Simulação gratuita", d: "Você preenche o formulário. Mostramos o retorno exato no seu caso — sem compromisso." },
@@ -366,10 +386,17 @@ export default function LPEnergia() {
         {/* ─── 5. PROVA SOCIAL ────────────────────────── */}
         <section ref={proofRef} className="relative px-6 py-16">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Clientes Sol Center</p>
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-              Quem instalou, não voltou atrás.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-10">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Clientes Sol Center</p>
+                <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  Quem instalou,<br />não voltou atrás.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                Mais de 1.400 sistemas instalados no RS desde 2013. Nota 5.0 no Google.
+              </p>
+            </div>
 
             {/* Depoimento destaque */}
             <div className={`glass-light rounded-3xl overflow-hidden mb-4 transition-all duration-700 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
@@ -417,10 +444,17 @@ export default function LPEnergia() {
         {/* ─── 6. PARA QUEM É ─────────────────────────── */}
         <section className="relative px-6 py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Atendemos</p>
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-              Do sítio ao galpão, do apartamento à indústria.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-10">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Atendemos</p>
+                <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  Do sítio ao galpão,<br />do apto à indústria.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                Projetos dimensionados para cada tipo de consumo — residencial, rural ou empresarial.
+              </p>
+            </div>
             <div className="grid md:grid-cols-3 gap-4">
               {[
                 { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. Sistema dimensionado pro seu consumo real." },
@@ -448,10 +482,17 @@ export default function LPEnergia() {
         {/* ─── 7. CONFIANÇA ───────────────────────────── */}
         <section ref={trustRef} className="relative px-6 py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Segurança em cada detalhe</p>
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-12 tracking-tight">
-              Você investe. A gente garante.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end gap-6 mb-12">
+              <div className="flex-1">
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Segurança</p>
+                <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                  Você investe.<br />A gente garante.
+                </h2>
+              </div>
+              <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
+                Equipamentos certificados, financiamento facilitado e suporte técnico após a instalação.
+              </p>
+            </div>
             <div className={`grid md:grid-cols-2 gap-6 items-start transition-all duration-700 ${trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
 
               {/* Financiamento — card horizontal */}
@@ -498,10 +539,12 @@ export default function LPEnergia() {
         {/* ─── 8. FAQ ─────────────────────────────────── */}
         <section className="relative px-6 py-16">
           <div className="max-w-3xl mx-auto">
-            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Perguntas frequentes</p>
-            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-              Tira suas dúvidas antes de falar com a gente.
-            </h2>
+            <div className="mb-10">
+              <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Perguntas frequentes</p>
+              <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
+                Tira as dúvidas<br />antes de ligar.
+              </h2>
+            </div>
             <div className="flex flex-col gap-3">
               {[
                 { q: "Vale a pena no meu caso?", a: "A simulação gratuita mostra o retorno exato para o seu consumo. Como regra geral: contas acima de R$ 300/mês já têm payback excelente de 4 a 5 anos." },

@@ -302,7 +302,7 @@ export default function LPEnergia() {
                   </div>
                 </div>
                 <p className="text-gray-500 text-sm mt-5 leading-relaxed">
-                  Andrieli e Leonardo economizam <span className="text-[#0a1628] font-semibold">R$ 633 todo mês</span> — mais de <span className="text-[#FFB100] font-semibold">R$ 7.500 por ano</span>.
+                  Daniel e Neide economizam <span className="text-[#0a1628] font-semibold">R$ 633 todo mês</span> — mais de <span className="text-[#FFB100] font-semibold">R$ 7.500 por ano</span>.
                 </p>
               </div>
 
@@ -403,10 +403,10 @@ export default function LPEnergia() {
             <div className={`glass-light rounded-3xl overflow-hidden mb-4 transition-all duration-700 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               <div className="bg-[#FFB100] px-7 py-5 flex items-center gap-3">
                 <div className="w-9 h-9 bg-white/25 rounded-full flex items-center justify-center shrink-0">
-                  <span className="text-white font-black text-xs">A</span>
+                  <span className="text-white font-black text-xs">D</span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-white font-semibold text-sm">Andrieli e Leonardo Espindola</p>
+                  <p className="text-white font-semibold text-sm">Daniel e Neide Wermuth</p>
                   <p className="text-white/70 text-xs">Santo Cristo, RS</p>
                 </div>
                 <div className="flex gap-0.5">

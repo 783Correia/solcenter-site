@@ -438,6 +438,7 @@ export default function LPEnergia() {
                   </div>
                 </div>
               ))}
+            </div>
             {/* Badge Google */}
             <a
               href="https://www.google.com/maps/place/Solcenter+Soluções+em+Energia/@-27.8286,-54.3358,17z"

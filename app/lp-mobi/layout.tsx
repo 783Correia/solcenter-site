@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "EVOX Scooter Elétrica — Seja Revendedor | Sol Center Mobi",
+  title: "EVOX Scooter Elétrica 1000W — Revenda sem CNH e sem IPVA | Sol Center Mobi",
   description:
-    "Revenda a EVOX, a scooter elétrica 1000W que não exige CNH nem IPVA. Entre no mercado que mais cresce no Brasil. Atendimento B2B para revendedores no Sul do Brasil.",
+    "Revenda a EVOX: scooter elétrica 1000W que não exige CNH, não paga IPVA e não precisa de emplacamento. Produto pronto para a sua loja. Atendimento B2B para revendedores no Sul do Brasil.",
   keywords:
-    "scooter elétrica revendedor, moto elétrica revenda, EVOX elétrica, mobilidade elétrica RS, Sol Center Mobi, distribuidora moto elétrica Sul Brasil",
+    "scooter elétrica sem CNH, moto elétrica revenda, scooter elétrica revendedor, EVOX elétrica, mobilidade elétrica RS, Sol Center Mobi, distribuidora scooter elétrica Sul Brasil, scooter 1000W sem habilitação",
   openGraph: {
-    title: "EVOX Scooter Elétrica 1000W — Seja Revendedor | Sol Center Mobi",
+    title: "EVOX Scooter Elétrica 1000W — Qualquer pessoa pode comprar | Sol Center Mobi",
     description:
-      "Revenda a scooter elétrica mais bonita do mercado. 1000W, bateria de lítio 60v/20Ah, sem CNH, sem IPVA. Atendimento B2B para revendedores no Sul do Brasil.",
+      "Scooter elétrica EVOX: 1000W, sem CNH, sem IPVA, sem emplacamento. Abre um mercado que as motos convencionais não alcançam. Seja revendedor — Sul do Brasil.",
     url: "https://www.solcenter.com.br/lp-mobi",
     siteName: "Sol Center Mobi",
     locale: "pt_BR",
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     canonical: "https://www.solcenter.com.br/lp-mobi",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 

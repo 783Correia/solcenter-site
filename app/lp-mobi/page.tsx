@@ -38,12 +38,14 @@ const COLORS = [
     badge: "Mais vendida" as string | null,
     glow: "rgba(80,80,80,0.12)",
     hero: "/mobi/real/preta-1.jpg",
-    cutout: "/mobi/cutout/preta-hero.png",
-    gallery: [
-      "/mobi/cutout/preta-hero.png",
-      "/mobi/cutout/preta-a.png",
-      "/mobi/cutout/preta-b.png",
-      "/mobi/cutout/preta-c.png",
+    photos: [
+      "/mobi/real/preta-1.jpg",
+      "/mobi/real/preta-2.jpg",
+      "/mobi/real/preta-3.jpg",
+      "/mobi/real/preta-4.jpg",
+      "/mobi/real/preta-5.jpg",
+      "/mobi/real/preta-6.jpg",
+      "/mobi/real/preta-7.jpg",
     ],
   },
   {
@@ -53,13 +55,15 @@ const COLORS = [
     badge: null,
     glow: "rgba(30,77,140,0.18)",
     hero: "/mobi/real/azul-1.jpg",
-    cutout: "/mobi/cutout/azul-hero.png",
-    gallery: [
-      "/mobi/cutout/azul-hero.png",
-      "/mobi/cutout/azul-a.png",
-      "/mobi/cutout/azul-b.png",
-      "/mobi/cutout/azul-c.png",
-      "/mobi/cutout/azul-d.png",
+    photos: [
+      "/mobi/real/azul-1.jpg",
+      "/mobi/real/azul-2.jpg",
+      "/mobi/real/azul-3.jpg",
+      "/mobi/real/azul-4.jpg",
+      "/mobi/real/azul-5.jpg",
+      "/mobi/real/azul-6.jpg",
+      "/mobi/real/azul-7.jpg",
+      "/mobi/real/azul-8.jpg",
     ],
   },
   {
@@ -69,12 +73,16 @@ const COLORS = [
     badge: "Novidade" as string | null,
     glow: "rgba(192,57,43,0.15)",
     hero: "/mobi/real/vermelha-1.jpg",
-    cutout: "/mobi/cutout/vermelha-hero.png",
-    gallery: [
-      "/mobi/cutout/vermelha-hero.png",
-      "/mobi/cutout/vermelha-a.png",
-      "/mobi/cutout/vermelha-b.png",
-      "/mobi/cutout/vermelha-c.png",
+    photos: [
+      "/mobi/real/vermelha-1.jpg",
+      "/mobi/real/vermelha-2.jpg",
+      "/mobi/real/vermelha-3.jpg",
+      "/mobi/real/vermelha-4.jpg",
+      "/mobi/real/vermelha-5.jpg",
+      "/mobi/real/vermelha-6.jpg",
+      "/mobi/real/vermelha-7.jpg",
+      "/mobi/real/vermelha-8.jpg",
+      "/mobi/real/vermelha-9.jpg",
     ],
   },
   {
@@ -84,12 +92,15 @@ const COLORS = [
     badge: null,
     glow: "rgba(220,220,220,0.08)",
     hero: "/mobi/real/branca-1.jpg",
-    cutout: "/mobi/cutout/branca-hero.png",
-    gallery: [
-      "/mobi/cutout/branca-hero.png",
-      "/mobi/cutout/branca-a.png",
-      "/mobi/cutout/branca-b.png",
-      "/mobi/cutout/branca-c.png",
+    photos: [
+      "/mobi/real/branca-1.jpg",
+      "/mobi/real/branca-2.jpg",
+      "/mobi/real/branca-3.jpg",
+      "/mobi/real/branca-4.jpg",
+      "/mobi/real/branca-5.jpg",
+      "/mobi/real/branca-6.jpg",
+      "/mobi/real/branca-7.jpg",
+      "/mobi/real/branca-8.jpg",
     ],
   },
 ];
@@ -115,6 +126,82 @@ const DETAILS = [
   "/mobi/real/detalhe-9.jpg",
   "/mobi/real/detalhe-10.jpg",
 ];
+
+function Lightbox({
+  images,
+  index,
+  onClose,
+  onPrev,
+  onNext,
+}: {
+  images: string[];
+  index: number;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
+  }, [onClose, onPrev, onNext]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white/40 text-sm font-bold tabular-nums pointer-events-none">
+        {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+      </div>
+
+      <button
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"
+        onClick={onClose}
+        aria-label="Fechar"
+      >
+        <X size={20} />
+      </button>
+
+      <button
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition z-10"
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        aria-label="Anterior"
+      >
+        <ChevronLeft size={20} />
+      </button>
+
+      <div
+        className="relative w-[90vw] h-[82vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image
+          src={images[index]}
+          alt={`Detalhe EVOX ${index + 1}`}
+          fill
+          className="object-contain"
+          sizes="90vw"
+        />
+      </div>
+
+      <button
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition z-10"
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        aria-label="Próxima"
+      >
+        <ChevronRight size={20} />
+      </button>
+    </div>
+  );
+}
 
 function LPNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -284,8 +371,9 @@ export default function LPMobi() {
   const [activeColor, setActiveColor] = useState(COLORS[0]);
   const [activeDetailIdx, setActiveDetailIdx] = useState(0);
   const [colorPhotoIdx, setColorPhotoIdx] = useState(0);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
-  function selectColor(c: typeof COLORS[0]) {
+  function selectColor(c: (typeof COLORS)[0]) {
     setActiveColor(c);
     setColorPhotoIdx(0);
   }
@@ -297,6 +385,16 @@ export default function LPMobi() {
 
   return (
     <div className="lp-dark min-h-screen font-sans antialiased">
+
+      {lightboxIdx !== null && (
+        <Lightbox
+          images={DETAILS}
+          index={lightboxIdx}
+          onClose={() => setLightboxIdx(null)}
+          onPrev={() => setLightboxIdx((i) => (i! - 1 + DETAILS.length) % DETAILS.length)}
+          onNext={() => setLightboxIdx((i) => (i! + 1) % DETAILS.length)}
+        />
+      )}
 
       <LPNav />
 
@@ -314,7 +412,7 @@ export default function LPMobi() {
                 src={c.hero}
                 alt={`EVOX Sol Center Mobi ${c.label}`}
                 fill
-                className="object-cover object-center"
+                className={`object-cover object-center${c.id === "branca" ? " [transform:scaleX(-1)]" : ""}`}
                 priority={c.id === "preta"}
                 sizes="100vw"
               />
@@ -330,7 +428,7 @@ export default function LPMobi() {
           {COLORS.map((c) => (
             <button
               key={c.id}
-              onClick={() => setActiveColor(c)}
+              onClick={() => selectColor(c)}
               aria-label={`Ver EVOX ${c.label}`}
               className="flex flex-col items-center gap-1 group"
             >
@@ -355,18 +453,17 @@ export default function LPMobi() {
         <div className="relative z-10 w-full pb-14 pt-28">
           <div className="max-w-2xl mx-auto px-6 text-center flex flex-col items-center">
             <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-3">
-              Sol Center Mobi · EVOX
+              Sol Center Mobi · Revenda
             </p>
-            <h1 className="text-[clamp(4.5rem,9vw,9rem)] font-black text-white leading-[0.82] tracking-[-0.04em] mb-4">
-              EVOX
+            <h1 className="text-[clamp(1.9rem,5.5vw,5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] mb-4 max-w-xl">
+              A scooter elétrica que qualquer pessoa pode comprar.
             </h1>
-            <p className="text-[clamp(1.4rem,2.5vw,2rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
-              1000W · 100% Elétrica
+            <p className="text-[clamp(1.1rem,2vw,1.4rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
+              EVOX 1000W · Sem CNH · Sem IPVA · Sem emplacamento
             </p>
             <p className="text-white/65 text-base leading-relaxed mb-6 max-w-lg">
-              A scooter elétrica{" "}
-              <strong className="text-white/90">mais bonita, mais forte e mais completa</strong>{" "}
-              do mercado. Coloque na sua loja e entre no segmento que mais cresce no país.
+              Existe um mercado enorme de pessoas que querem mobilidade mas não têm carteira de motorista.{" "}
+              <strong className="text-white/90">Coloque a EVOX na sua loja e comece a atender esse público hoje.</strong>
             </p>
 
             {/* Badges */}
@@ -401,7 +498,7 @@ export default function LPMobi() {
                 href="#galeria"
                 className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-white/15 transition"
               >
-                Ver o produto
+                Ver a scooter
                 <ChevronRight size={15} />
               </a>
             </div>
@@ -427,7 +524,7 @@ export default function LPMobi() {
               {COLORS.map((c) => (
                 <button
                   key={c.id}
-                  onClick={() => setActiveColor(c)}
+                  onClick={() => selectColor(c)}
                   aria-label={`Ver EVOX ${c.label}`}
                   className="flex flex-col items-center gap-1"
                 >
@@ -456,13 +553,13 @@ export default function LPMobi() {
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-10 lg:gap-0">
           <div className="flex-shrink-0 w-full lg:w-80 xl:w-96 px-8 lg:pl-14 lg:pr-8 flex flex-col justify-center">
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-              Produto de verdade
+              Sem filtro, sem render
             </p>
             <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-black text-white tracking-tight leading-tight mb-4">
-              Qualidade que vende sozinha.
+              O produto exatamente como você vai receber.
             </h2>
             <p className="text-white/45 text-sm leading-relaxed mb-8">
-              Fotos reais da EVOX — sem filtro, sem render. O produto que você vai ter na sua loja.
+              Fotos reais da EVOX, tiradas aqui no nosso estoque. Sem edição, sem promessa vazia.
             </p>
             <div className="flex items-center gap-4 mb-6">
               <button
@@ -507,8 +604,8 @@ export default function LPMobi() {
               {DETAILS.map((src, i) => (
                 <div
                   key={src}
-                  onClick={() => setActiveDetailIdx(i)}
-                  className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 bg-white/5 ${
+                  onClick={() => { setActiveDetailIdx(i); setLightboxIdx(i); }}
+                  className={`relative flex-shrink-0 rounded-2xl overflow-hidden cursor-zoom-in transition-all duration-300 bg-white/5 ${
                     activeDetailIdx === i ? "opacity-100 scale-100" : "opacity-40 scale-[0.97] hover:opacity-70"
                   }`}
                   style={{ width: "min(360px, 72vw)", height: "min(280px, 56vw)" }}
@@ -521,7 +618,7 @@ export default function LPMobi() {
         </div>
       </section>
 
-      {/* ── PRODUCT CARD — showcase estilo referência ─────── */}
+      {/* ── PRODUCT CARD ─────────────────────────────────── */}
       <section className="px-4 sm:px-6 py-20 section-sep">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
@@ -531,115 +628,139 @@ export default function LPMobi() {
             </h2>
           </div>
 
-          <div className="glass-card rounded-3xl overflow-hidden">
-            {/* Área da moto */}
+          <div className="glass-card rounded-3xl overflow-hidden lg:grid lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_340px]">
+
+            {/* ── Showcase da moto ── */}
             <div
-              className="relative flex items-center justify-center overflow-hidden transition-all duration-500"
-              style={{
-                height: "clamp(300px, 48vw, 520px)",
-                background: `radial-gradient(ellipse at 50% 85%, ${activeColor.glow.replace(/[\d.]+\)$/, "0.4)")} 0%, rgba(5,12,26,0.7) 65%)`,
-              }}
+              className="relative overflow-hidden"
+              style={{ minHeight: "clamp(300px, 50vw, 560px)", background: "#050c1a" }}
             >
-              {/* Grid dot sutil */}
-              <div className="absolute inset-0 opacity-15" style={{
-                backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px)",
-                backgroundSize: "30px 30px",
+              {/* Foto ativa */}
+              <Image
+                key={activeColor.photos[colorPhotoIdx]}
+                src={activeColor.photos[colorPhotoIdx]}
+                alt={`EVOX ${activeColor.label}`}
+                fill
+                className="object-cover object-center transition-opacity duration-500"
+                sizes="(max-width: 1024px) 95vw, 60vw"
+              />
+
+              {/* Gradient inferior */}
+              <div className="absolute inset-0 pointer-events-none" style={{
+                background: "linear-gradient(to bottom, transparent 55%, rgba(5,12,26,0.65) 100%)"
               }} />
 
-              {/* Nome da cor como watermark */}
-              <span
-                className="absolute inset-x-0 text-center font-black text-white/5 select-none pointer-events-none leading-none"
-                style={{ fontSize: "clamp(5rem,15vw,12rem)" }}
-              >
-                {activeColor.label.split(" /")[0].toUpperCase()}
-              </span>
-
-              {/* Motos empilhadas */}
-              {COLORS.map((c) => (
-                <div
-                  key={c.id}
-                  className="absolute inset-0 transition-opacity duration-500"
-                  style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
-                >
-                  <Image
-                    src={c.cutout}
-                    alt={`EVOX ${c.label}`}
-                    fill
-                    className="object-contain object-bottom p-4"
-                    sizes="(max-width: 768px) 90vw, 50vw"
-                  />
-                </div>
-              ))}
-
+              {/* Badge */}
               {activeColor.badge && (
-                <div className="absolute top-4 right-4 bg-[#f5c518] text-[#0a1628] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest z-10">
+                <div className="absolute top-4 left-4 bg-[#f5c518] text-[#0a1628] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest z-10">
                   {activeColor.badge}
                 </div>
               )}
+
+              {/* Contador de foto */}
+              <div className="absolute bottom-4 left-4 text-white/40 text-xs font-bold tabular-nums z-10">
+                {String(colorPhotoIdx + 1).padStart(2, "0")} / {String(activeColor.photos.length).padStart(2, "0")}
+              </div>
+
+              {/* Setas de navegação */}
+              {colorPhotoIdx > 0 && (
+                <button
+                  onClick={() => setColorPhotoIdx((i) => i - 1)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition z-10"
+                  aria-label="Foto anterior"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+              )}
+              {colorPhotoIdx < activeColor.photos.length - 1 && (
+                <button
+                  onClick={() => setColorPhotoIdx((i) => i + 1)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition z-10"
+                  aria-label="Próxima foto"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              )}
             </div>
 
-            {/* Info */}
-            <div className="p-6 sm:p-8 border-t border-white/8">
-              <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
-                <div>
-                  <p className="text-white/35 text-[10px] font-bold uppercase tracking-widest mb-1">Sol Center Mobi</p>
-                  <h3 className="text-white font-black text-2xl leading-none">
-                    EVOX{" "}
-                    <span style={{ color: activeColor.id === "branca" ? "#bbb" : activeColor.hex }}>
-                      {activeColor.label}
-                    </span>
-                  </h3>
+            {/* ── Painel de info ── */}
+            <div className="p-6 sm:p-7 border-t border-white/8 lg:border-t-0 lg:border-l lg:border-white/8 flex flex-col gap-4">
+              <div>
+                <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest mb-1">Sol Center Mobi</p>
+                <div className="mb-3">
+                  <h3 className="text-white font-black text-3xl leading-none mb-1">EVOX</h3>
+                  <p
+                    className="font-black text-xl leading-none"
+                    style={{ color: activeColor.id === "branca" ? "#c0c0c0" : activeColor.hex }}
+                  >
+                    {activeColor.label}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2.5">
+
+                <div className="grid grid-cols-2 gap-2 mb-2">
+                  {[
+                    { label: "Motor", value: "1000W" },
+                    { label: "Bateria", value: "60v / 20Ah" },
+                    { label: "Autonomia", value: "40 km" },
+                    { label: "Velocidade", value: "32 km/h" },
+                    { label: "Carga máx.", value: "200 kg" },
+                    { label: "Recarga", value: "6–8 h" },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="glass-card rounded-xl px-3.5 py-3">
+                      <p className="text-white/30 text-[10px] uppercase tracking-wider font-bold mb-0.5">{label}</p>
+                      <p className="text-white font-black text-sm leading-none">{value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Cor picker */}
+                <div className="flex items-center gap-2.5 mt-1">
+                  <span className="text-white/30 text-[11px] font-bold uppercase tracking-wider">Cor:</span>
                   {COLORS.map((c) => (
                     <button
                       key={c.id}
                       onClick={() => selectColor(c)}
                       aria-label={`Cor ${c.label}`}
-                      className={`w-8 h-8 rounded-full border-2 transition-all duration-200 ${
+                      title={c.label}
+                      className={`rounded-full border-2 transition-all duration-200 flex-shrink-0 ${
                         activeColor.id === c.id
-                          ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#0d1a2e]"
-                          : "border-white/25 hover:border-white/60 hover:scale-105"
+                          ? "w-8 h-8 border-white ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#0d1a2e]"
+                          : "w-6 h-6 border-white/25 hover:border-white/60 hover:scale-110"
                       }`}
                       style={{ backgroundColor: c.hex }}
                     />
                   ))}
                 </div>
+
+                {/* Miniaturas das fotos da cor ativa */}
+                <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide mt-3">
+                  {activeColor.photos.map((src, i) => (
+                    <button
+                      key={src}
+                      onClick={() => setColorPhotoIdx(i)}
+                      aria-label={`Foto ${i + 1}`}
+                      className={`relative flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200 border-2 ${
+                        colorPhotoIdx === i
+                          ? "border-[#00a651] scale-105"
+                          : "border-white/10 opacity-50 hover:opacity-80 hover:border-white/30"
+                      }`}
+                      style={{ width: 56, height: 44 }}
+                    >
+                      <Image src={src} alt={`Foto ${i + 1}`} fill className="object-cover" sizes="56px" />
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                {[
-                  { label: "Motor", value: "1000W" },
-                  { label: "Bateria", value: "60v / 20Ah" },
-                  { label: "Autonomia", value: "40 km" },
-                  { label: "Velocidade", value: "32 km/h" },
-                  { label: "Carga máx.", value: "200 kg" },
-                  { label: "Recarga", value: "6–8 h" },
-                ].map(({ label, value }) => (
-                  <div key={label} className="glass-card rounded-xl px-4 py-3">
-                    <p className="text-white/35 text-[10px] uppercase tracking-wider font-bold mb-0.5">{label}</p>
-                    <p className="text-white font-black text-base leading-none">{value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex gap-3 flex-wrap">
-                <a
-                  href="#formulario"
-                  className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 bg-[#00a651] text-white font-black py-3.5 rounded-xl text-sm hover:bg-[#00c060] transition"
-                >
-                  Quero ser revendedor
-                  <ArrowRight size={15} />
-                </a>
-                <a
-                  href="#galeria"
-                  className="inline-flex items-center justify-center gap-2 glass-card text-white/70 font-bold py-3.5 px-5 rounded-xl text-sm hover:text-white transition"
-                >
-                  Ver fotos
-                  <ChevronRight size={15} />
-                </a>
-              </div>
+              <a
+                href="#formulario"
+                className="inline-flex items-center justify-center gap-2 bg-[#00a651] text-white font-black py-4 rounded-xl text-sm hover:bg-[#00c060] active:scale-[0.98] transition shadow-lg shadow-green-500/15"
+              >
+                Quero ser revendedor
+                <ArrowRight size={15} />
+              </a>
             </div>
+
           </div>
         </div>
       </section>
@@ -676,15 +797,15 @@ export default function LPMobi() {
           <div className="text-center mb-12">
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-3">Por que a EVOX</p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white tracking-tight">
-              Vantagens que vendem sozinhas.
+              Por que ela se vende sozinha.
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {[
-              { icon: IdCard, title: "Sem carteira de motorista", desc: "Não exige CNH. Qualquer pessoa pode pilota — amplia muito o público.", highlight: true },
-              { icon: BadgeDollarSign, title: "Sem IPVA nem emplacamento", desc: "Zero burocracia e zero custo anual com documentação. Só ligar e usar.", highlight: true },
-              { icon: Battery, title: "Bateria de lítio 60v/20Ah", desc: "Alta capacidade para o dia a dia urbano. Carrega em qualquer tomada 110/220V.", highlight: false },
-              { icon: Shield, title: "Freio a disco + Full LED", desc: "Mais segurança na frenagem e na visibilidade. Produto completo.", highlight: false },
+              { icon: IdCard, title: "Sem carteira de motorista", desc: "Não exige CNH. Qualquer pessoa pode pilotar — o público da sua loja aumenta do dia pra noite.", highlight: true },
+              { icon: BadgeDollarSign, title: "Sem IPVA nem emplacamento", desc: "Zero burocracia para o comprador final. Ninguém vai deixar de comprar por causa de documentação.", highlight: true },
+              { icon: Battery, title: "Bateria de lítio 60v/20Ah", desc: "40km por carga completa, recarga em qualquer tomada 110/220V. Serve pra rotina urbana sem adaptação.", highlight: false },
+              { icon: Shield, title: "Freio a disco + Full LED", desc: "Produto completo saindo da caixa. Freio a disco dianteiro e traseiro, iluminação Full LED de série.", highlight: false },
             ].map(({ icon: Icon, title, desc, highlight }) => (
               <div
                 key={title}
@@ -760,11 +881,11 @@ export default function LPMobi() {
           </div>
           <div className="glass-card rounded-2xl p-8 text-center border-[#00a651]/20">
             <p className="text-white/50 text-sm mb-3">
-              Os modelos mais bonitos, mais fortes e mais completos do segmento.
+              Produto validado. Mercado em crescimento. Modelo de negócio simples.
             </p>
             <p className="text-[clamp(1.4rem,2.5vw,2rem)] font-black text-white leading-tight">
-              A EVOX é o produto certo, no momento certo,{" "}
-              <span className="text-[#00a651]">para quem quer entrar no mercado elétrico com o pé direito.</span>
+              Quem entra agora no mercado de scooters elétricas{" "}
+              <span className="text-[#00a651]">vai estar anos à frente de quem esperar.</span>
             </p>
           </div>
         </div>
@@ -826,16 +947,16 @@ export default function LPMobi() {
           <div>
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.2em] mb-4">Atendimento comercial</p>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.6rem)] font-black text-white tracking-tight leading-tight mb-5">
-              Pronto para entrar no mercado elétrico?
+              Quer ter a EVOX na sua loja?
             </h2>
             <p className="text-white/50 text-sm leading-relaxed mb-8">
-              Fale com nossa equipe comercial. Vamos apresentar as condições de revenda, o lote mínimo e tudo que você precisa saber para ter a EVOX na sua loja.
+              Fale com nosso comercial. Em até 24h você recebe as condições de revenda, lote mínimo e tudo que precisa saber para começar a vender.
             </p>
             <div className="space-y-4 mb-10">
               {[
-                "Condições reais para o seu perfil de negócio",
-                "Retorno em até 24 horas úteis",
-                "Produto na caixa, pronto pra expor e vender",
+                "Condições sob medida para o seu tipo de loja",
+                "Resposta em até 24 horas úteis",
+                "Produto entregue na caixa, pronto para expor",
               ].map((t) => (
                 <div key={t} className="flex items-center gap-3 text-sm text-white/60">
                   <CheckCircle size={16} className="text-[#00a651] shrink-0" />

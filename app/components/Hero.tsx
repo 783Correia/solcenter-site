@@ -18,7 +18,7 @@ export default function Hero() {
           transition={{ duration: 0.4 }}
           className="text-[#f5c518] text-sm font-bold uppercase tracking-[0.2em] mb-5"
         >
-          A N°1 do Noroeste Gaúcho · 10 anos de história
+          Santo Cristo, RS · +1.400 projetos · 10 anos
         </motion.p>
 
         <motion.h1
@@ -27,7 +27,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.92] tracking-[-0.03em] mb-7"
         >
-          O futuro<br />já é agora.
+          Energia solar<br />no Noroeste Gaúcho.
         </motion.h1>
 
         <motion.p

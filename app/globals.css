@@ -131,6 +131,25 @@ body {
   100% { transform: translateX(150%); }
 }
 
+/* ── Light glass cards ──────────────────────────────────── */
+.glass-light {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0,0,0,0.04);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.glass-light:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* ── Warm page background ───────────────────────────────── */
+.lp-warm {
+  background: linear-gradient(135deg, #fdf8ef 0%, #fffdf8 50%, #faf6ec 100%);
+}
+
 @keyframes pulse-amber {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,177,0,0.5); }
   50%       { box-shadow: 0 0 0 10px rgba(255,177,0,0); }

@@ -24,7 +24,7 @@ import { site } from "../data/site";
 
 const WHATSAPP = site.whatsappLinkGiovani;
 
-function useInView(threshold = 0.2) {
+function useInView(threshold = 0.15) {
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -83,7 +83,7 @@ function LeadForm() {
       </select>
       <button
         type="submit"
-        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:shadow-[#FFB100]/50 hover:-translate-y-0.5 animate-pulse-amber"
+        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
       >
         Solicitar simulação gratuita
         <ArrowRight size={15} />
@@ -101,12 +101,12 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   return (
     <button
       onClick={() => setOpen(!open)}
-      className="w-full text-left bg-white rounded-2xl border border-gray-100 px-6 py-5 hover:border-gray-200 transition group"
+      className="w-full text-left glass-light rounded-2xl px-6 py-5 hover:shadow-md transition group cursor-pointer"
     >
       <div className="flex items-center justify-between gap-4">
         <p className="font-semibold text-[#0a1628] text-sm leading-snug">{q}</p>
-        <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-[#FFB100] group-hover:text-[#FFB100] transition">
-          {open ? <Minus size={12} /> : <Plus size={12} />}
+        <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-[#FFB100] group-hover:text-[#FFB100] transition text-gray-400">
+          {open ? <Minus size={11} /> : <Plus size={11} />}
         </div>
       </div>
       {open && (
@@ -117,15 +117,16 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function LPEnergia() {
-  const { ref: bentoRef, inView: bentoInView } = useInView(0.15);
-  const { ref: proofRef, inView: proofInView } = useInView(0.15);
+  const { ref: bentoRef, inView: bentoInView } = useInView();
+  const { ref: proofRef, inView: proofInView } = useInView();
+  const { ref: trustRef, inView: trustInView } = useInView();
 
   return (
-    <div className="min-h-screen bg-[#060d18] font-sans antialiased">
+    <div className="min-h-screen font-sans antialiased">
 
-      {/* ─── NAV DESKTOP ───────────────────────────────────────── */}
+      {/* ─── NAV DESKTOP ─────────────────────────────── */}
       <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
-        <nav className="pointer-events-auto flex items-center gap-4 bg-white/90 backdrop-blur-md shadow-lg shadow-black/8 border border-gray-100 rounded-full px-5 py-2.5">
+        <nav className="pointer-events-auto flex items-center gap-4 bg-white/80 backdrop-blur-md shadow-sm shadow-black/5 border border-white/80 rounded-full px-5 py-2.5">
           <Image src="/logo-dark.svg" alt="Sol Center" width={110} height={23} />
           <div className="w-px h-4 bg-gray-200" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
@@ -140,9 +141,9 @@ export default function LPEnergia() {
         </nav>
       </div>
 
-      {/* ─── NAV MOBILE BOTTOM ─────────────────────────────────── */}
+      {/* ─── NAV MOBILE ──────────────────────────────── */}
       <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
-        <nav className="flex items-center gap-1 bg-white/95 backdrop-blur-md shadow-2xl shadow-black/15 border border-gray-100 rounded-full px-3 py-3">
+        <nav className="flex items-center gap-1 bg-white/90 backdrop-blur-md shadow-lg shadow-black/10 border border-white/80 rounded-full px-3 py-3">
           <div className="px-3">
             <Image src="/logo-dark.svg" alt="Sol Center" width={80} height={17} />
           </div>
@@ -152,22 +153,20 @@ export default function LPEnergia() {
             <MessageCircle size={20} className="text-[#25D366]" />
           </a>
           <a href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS" target="_blank" rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-gray-100 transition cursor-pointer">
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer">
             <MapPin size={20} className="text-[#FFB100]" />
           </a>
         </nav>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 1. HERO — Hook + Form                                  */}
-      {/* ═══════════════════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════════ */}
+      {/* 1. HERO — dark, inalterado                     */}
+      {/* ═══════════════════════════════════════════════ */}
       <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
         <Image
           src="/images/solar-residencial.jpg"
           alt="Casa com painéis solares instalados pela Sol Center"
-          fill
-          className="object-cover object-center"
-          priority
+          fill className="object-cover object-center" priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />
         <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#FFB100]/5 rounded-full blur-3xl pointer-events-none animate-glow-amber" />
@@ -182,14 +181,12 @@ export default function LPEnergia() {
               Reduza até <span className="text-[#FFB100]">95%</span> da sua conta de energia.
             </h1>
             <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
-              Sistema solar projetado, instalado e homologado do começo ao fim.
-              Sem burocracia, sem surpresa — com garantia real e suporte técnico.
+              Sistema solar projetado, instalado e homologado do começo ao fim. Sem burocracia, sem surpresa — com garantia real e suporte técnico.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a href="#formulario"
                 className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-7 py-3.5 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/25 cursor-pointer">
-                Simular agora — grátis
-                <ArrowRight size={14} />
+                Simular agora — grátis <ArrowRight size={14} />
               </a>
               <a href="#como-funciona"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/75 font-medium px-7 py-3.5 rounded-full text-sm hover:bg-white/8 transition cursor-pointer">
@@ -203,8 +200,7 @@ export default function LPEnergia() {
                 { icon: BarChart2, label: "Monitoramento em tempo real" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-1.5 text-white/35 text-xs">
-                  <Icon size={12} className="text-[#FFB100]/50" />
-                  {label}
+                  <Icon size={12} className="text-[#FFB100]/50" />{label}
                 </div>
               ))}
             </div>
@@ -225,359 +221,339 @@ export default function LPEnergia() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 2. PROBLEMA — A conta não para de subir               */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section className="bg-white px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
-          <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
-            A conta de energia subiu <span className="relative inline-block">
-              <span className="relative z-10">mais de 100%</span>
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-[#FFB100]/20 -z-0 rounded" />
-            </span>{" "}
-            nos últimos 10 anos.
-          </h2>
-          <p className="text-gray-500 text-base leading-relaxed max-w-2xl mx-auto mb-10">
-            Bandeiras tarifárias, inflação energética, taxas escondidas. A concessionária cobra mais a cada ciclo
-            — e você não tem controle sobre isso. Até agora.
-          </p>
-          <div className="grid md:grid-cols-3 gap-4 text-left">
-            {[
-              { n: "↑ 102%", label: "Aumento médio na tarifa de energia no Brasil entre 2014 e 2024", color: "text-red-500" },
-              { n: "R$ 7.500", label: "Economia anual média de um cliente Sol Center após a instalação", color: "text-green-600" },
-              { n: "4–5 anos", label: "Tempo de retorno do investimento. O sistema dura 25 anos.", color: "text-[#0a1628]" },
-            ].map((item) => (
-              <div key={item.n} className="bg-[#f7f8f9] rounded-2xl p-6 border border-gray-100">
-                <p className={`text-2xl font-black mb-2 ${item.color}`}>{item.n}</p>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ═══════════════════════════════════════════════ */}
+      {/* GLASSMORPHISM WRAPPER — tudo abaixo do hero    */}
+      {/* ═══════════════════════════════════════════════ */}
+      <div className="lp-warm relative">
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 3. TRANSFORMAÇÃO — Bento grid antes/depois             */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section
-        ref={bentoRef}
-        className="bg-[#060d18] px-6 py-16"
-        style={{ backgroundImage: "radial-gradient(circle, rgba(255,177,0,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">A virada</p>
-          <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-white text-center mb-10 tracking-tight">
-            Com energia solar, você para de pagar<br className="hidden md:block" /> pra concessionária.
-          </h2>
+        {/* Blobs decorativos globais */}
+        <div className="fixed top-[110vh] left-[-10vw] w-[600px] h-[600px] bg-[#FFB100]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="fixed top-[160vh] right-[-10vw] w-[500px] h-[500px] bg-[#FFB100]/6 rounded-full blur-3xl pointer-events-none" />
+        <div className="fixed top-[230vh] left-[20vw] w-[400px] h-[400px] bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
 
-          {/* BENTO GRID */}
-          <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 transition-all duration-700 ${bentoInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-
-            {/* Card principal — antes/depois */}
-            <div className="col-span-2 glass-card rounded-2xl p-7 flex flex-col justify-between min-h-[200px]">
-              <p className="text-white/40 text-xs font-medium mb-4 uppercase tracking-widest">Caso real — Santo Cristo, RS</p>
-              <div className="flex items-end gap-6 flex-wrap">
-                <div>
-                  <p className="text-white/30 text-xs mb-1">Antes</p>
-                  <p className="text-4xl font-black text-red-400 line-through decoration-2">R$ 680</p>
-                  <p className="text-white/30 text-xs mt-1">por mês</p>
+        {/* ─── 2. PROBLEMA ────────────────────────────── */}
+        <section className="relative px-6 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
+              A conta de energia subiu mais de{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">100%</span>
+                <span className="absolute bottom-1 left-0 right-0 h-3 bg-[#FFB100]/25 -z-0 rounded" />
+              </span>{" "}
+              nos últimos 10 anos.
+            </h2>
+            <p className="text-gray-500 text-base leading-relaxed max-w-2xl mx-auto mb-12">
+              Bandeiras tarifárias, inflação energética, taxas escondidas. A concessionária cobra mais a cada ciclo — e você não tem controle sobre isso. Até agora.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 text-left">
+              {[
+                { n: "↑ 102%", label: "Aumento médio na tarifa de energia no Brasil entre 2014 e 2024.", color: "text-red-500" },
+                { n: "R$ 7.500", label: "Economia anual média de um cliente Sol Center após a instalação.", color: "text-green-600" },
+                { n: "4–5 anos", label: "Tempo de retorno do investimento. O sistema dura 25 anos.", color: "text-[#0a1628]" },
+              ].map((item) => (
+                <div key={item.n} className="glass-light rounded-2xl p-6">
+                  <p className={`text-2xl font-black mb-2 ${item.color}`}>{item.n}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.label}</p>
                 </div>
-                <ArrowRight size={20} className="text-[#FFB100] mb-3" />
-                <div>
-                  <p className="text-white/30 text-xs mb-1">Depois</p>
-                  <p className="text-4xl font-black text-green-400">R$ 47</p>
-                  <p className="text-white/30 text-xs mt-1">por mês</p>
-                </div>
-              </div>
-              <p className="text-white/50 text-sm mt-5 leading-relaxed">
-                Andrieli e Leonardo economizam <span className="text-white/90 font-semibold">R$ 633 todo mês</span> — mais de <span className="text-[#FFB100] font-semibold">R$ 7.500 por ano</span>.
-              </p>
-            </div>
-
-            {/* Card — payback */}
-            <div className="glass-card rounded-2xl p-6 flex flex-col justify-between">
-              <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center mb-4">
-                <TrendingDown size={16} className="text-[#FFB100]" />
-              </div>
-              <div>
-                <p className="text-3xl font-black text-white mb-1">4–5<span className="text-lg font-medium text-white/40"> anos</span></p>
-                <p className="text-white/40 text-xs leading-relaxed">Retorno do investimento. O sistema gera por 25 anos.</p>
-              </div>
-            </div>
-
-            {/* Card — imagem real */}
-            <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
-              <Image src="/images/solar-empresarial.jpg" alt="Instalação Sol Center" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#060d18]/80 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-5">
-                <p className="text-white font-bold text-sm">Mais de 1.400 instalações no RS</p>
-                <p className="text-white/50 text-xs">Em operação desde 2013</p>
-              </div>
-            </div>
-
-            {/* Card — redução */}
-            <div className="glass-card rounded-2xl p-6 flex flex-col justify-between">
-              <div className="w-9 h-9 bg-green-500/10 rounded-xl flex items-center justify-center mb-4">
-                <BarChart2 size={16} className="text-green-400" />
-              </div>
-              <div>
-                <p className="text-3xl font-black text-white mb-1">95<span className="text-lg font-medium text-white/40">%</span></p>
-                <p className="text-white/40 text-xs leading-relaxed">Redução média na conta de luz dos nossos clientes.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 4. COMO FUNCIONA — 4 passos                           */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section id="como-funciona" className="bg-white px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Do contato à economia</p>
-          <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-14 tracking-tight">
-            4 passos. Você não precisa<br className="hidden md:block" /> se preocupar com nada.
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            {[
-              { n: "1", t: "Simulação gratuita", d: "Você preenche o formulário. Analisamos sua conta e mostramos o retorno exato no seu caso — sem compromisso." },
-              { n: "2", t: "Projeto e aprovação", d: "Cuidamos do projeto técnico e de toda a homologação junto à concessionária. Você só assina." },
-              { n: "3", t: "Instalação", d: "Equipe técnica da Sol Center instala em 1 a 2 dias, no prazo combinado. Sem surpresa, sem obra." },
-              { n: "4", t: "Economizando", d: "No primeiro mês você já vê na conta. Monitoramento em tempo real disponível via aplicativo." },
-            ].map((s, i) => (
-              <div key={s.n} className="relative">
-                <div className="w-10 h-10 rounded-full bg-[#FFB100] flex items-center justify-center mb-4 text-white font-black text-sm">
-                  {s.n}
-                </div>
-                <h3 className="font-bold text-[#0a1628] text-sm mb-2">{s.t}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{s.d}</p>
-                {i < 3 && (
-                  <div className="hidden md:block absolute top-5 left-[calc(100%-0px)] w-full h-px border-t border-dashed border-gray-200" />
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <a href="#formulario"
-              className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#0d1f3c] transition hover:-translate-y-0.5 cursor-pointer">
-              Começar agora — simulação grátis
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 5. PROVA SOCIAL — Depoimentos reais                   */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section ref={proofRef} className="bg-[#f7f8f9] px-6 py-16">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Clientes Sol Center</p>
-          <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-            Quem instalou, não voltou atrás.
-          </h2>
-
-          {/* Featured testimonial */}
-          <div className={`bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm mb-4 transition-all duration-700 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <div className="bg-[#0a1628] px-7 py-5 flex items-center gap-3">
-              <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                <span className="text-white font-black text-xs">A</span>
-              </div>
-              <div className="flex-1">
-                <p className="text-white font-semibold text-sm">Andrieli e Leonardo Espindola</p>
-                <p className="text-white/40 text-xs">Santo Cristo, RS</p>
-              </div>
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} size={13} className="fill-[#FFB100] text-[#FFB100]" />
-                ))}
-              </div>
-            </div>
-            <div className="px-7 py-8">
-              <blockquote className="text-[#0a1628] text-lg md:text-xl font-medium leading-snug mb-3">
-                "Antes pagava <span className="font-black text-red-500 line-through">R$ 680/mês</span>. Depois da instalação, a conta caiu pra <span className="font-black text-green-600">R$ 47</span>. São mais de <span className="font-black">R$ 7.500 que ficam na nossa conta todo ano."</span>
-              </blockquote>
-              <p className="text-gray-400 text-xs">Sistema instalado pela Sol Center — Santo Cristo, RS.</p>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* Secondary testimonials */}
-          <div className={`grid md:grid-cols-2 gap-4 transition-all duration-700 delay-150 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            {[
-              { name: "Patrick Fernandes", city: "Santo Cristo, RS", text: "Atendimento impecável, preço competitivo e pontualidade na instalação. Recomendo sem hesitar." },
-              { name: "Rogério Antes", city: "Três de Maio, RS", text: "Processo simples do começo ao fim. A equipe resolveu tudo, eu não precisei me preocupar com nada." },
-            ].map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl p-6 border border-gray-100">
-                <div className="flex gap-1 mb-3">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} size={12} className="fill-[#FFB100] text-[#FFB100]" />
-                  ))}
-                </div>
-                <p className="text-[#0a1628] text-sm leading-relaxed mb-4">"{t.text}"</p>
-                <div>
-                  <p className="font-semibold text-[#0a1628] text-sm">{t.name}</p>
-                  <p className="text-gray-400 text-xs">{t.city}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* ─── 3. TRANSFORMAÇÃO — Bento glass ─────────── */}
+        <section ref={bentoRef} className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">A virada</p>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
+              Com energia solar, você para de pagar<br className="hidden md:block" /> pra concessionária.
+            </h2>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 6. PARA QUEM É — Residencial / Empresarial / Agro      */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section className="bg-[#060d18] px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Atendemos</p>
-          <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-white text-center mb-10 tracking-tight">
-            Do sítio ao galpão, do apartamento à indústria.
-          </h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. Sistema dimensionado pro seu consumo real." },
-              { img: "/images/solar-empresarial.jpg", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Redução real de custo operacional." },
-              { img: "/images/solar-agro.jpg", icon: Tractor, title: "Agronegócio", desc: "Propriedades rurais, silos e cooperativas. Projetos de grande porte." },
-            ].map((s) => (
-              <a key={s.title} href="#formulario" className="group relative rounded-2xl overflow-hidden cursor-pointer block">
-                <div className="relative h-64">
-                  <Image src={s.img} alt={s.title} fill className="object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060d18] via-[#060d18]/30 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <s.icon size={13} className="text-[#FFB100]" />
-                    <p className="text-white font-bold text-sm">{s.title}</p>
+            <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 transition-all duration-700 ${bentoInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+
+              {/* Card principal antes/depois */}
+              <div className="col-span-2 glass-light rounded-2xl p-7 flex flex-col justify-between min-h-[200px]">
+                <p className="text-gray-400 text-xs font-medium mb-4 uppercase tracking-widest">Caso real — Santo Cristo, RS</p>
+                <div className="flex items-end gap-6 flex-wrap">
+                  <div>
+                    <p className="text-gray-400 text-xs mb-1">Antes</p>
+                    <p className="text-4xl font-black text-red-400 line-through decoration-2">R$ 680</p>
+                    <p className="text-gray-400 text-xs mt-1">por mês</p>
                   </div>
-                  <p className="text-white/55 text-xs leading-relaxed">{s.desc}</p>
+                  <ArrowRight size={20} className="text-[#FFB100] mb-3" />
+                  <div>
+                    <p className="text-gray-400 text-xs mb-1">Depois</p>
+                    <p className="text-4xl font-black text-green-600">R$ 47</p>
+                    <p className="text-gray-400 text-xs mt-1">por mês</p>
+                  </div>
                 </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 7. CONFIANÇA — Sicredi + Garantias                    */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section className="bg-white px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Segurança em cada detalhe</p>
-          <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-12 tracking-tight">
-            Você investe. A gente garante.
-          </h2>
-
-          {/* Financiamento + Garantias lado a lado */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Sicredi */}
-            <div className="relative rounded-2xl overflow-hidden bg-[#0a1628] flex flex-col">
-              <div className="relative h-44 shrink-0">
-                <Image src="/images/financiamento.jpg" alt="Financiamento Sicredi" fill className="object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a1628]" />
-              </div>
-              <div className="p-6 flex-1">
-                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-widest mb-2">Financiamento</p>
-                <h3 className="text-white font-black text-lg mb-3 leading-tight">Financie junto aos nossos parceiros.</h3>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Condições especiais para clientes Sol Center. A economia mensal costuma superar a parcela do financiamento.
+                <p className="text-gray-500 text-sm mt-5 leading-relaxed">
+                  Andrieli e Leonardo economizam <span className="text-[#0a1628] font-semibold">R$ 633 todo mês</span> — mais de <span className="text-[#FFB100] font-semibold">R$ 7.500 por ano</span>.
                 </p>
               </div>
+
+              {/* Card payback */}
+              <div className="glass-light rounded-2xl p-6 flex flex-col justify-between">
+                <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center mb-4">
+                  <TrendingDown size={16} className="text-[#FFB100]" />
+                </div>
+                <div>
+                  <p className="text-3xl font-black text-[#0a1628] mb-1">4–5<span className="text-base font-medium text-gray-400"> anos</span></p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Sistema gera por 25 anos.</p>
+                </div>
+              </div>
+
+              {/* Card foto real */}
+              <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
+                <Image src="/images/solar-empresarial.jpg" alt="Instalação Sol Center" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-5">
+                  <p className="text-white font-bold text-sm">Mais de 1.400 instalações no RS</p>
+                  <p className="text-white/60 text-xs">Em operação desde 2013</p>
+                </div>
+              </div>
+
+              {/* Card redução */}
+              <div className="glass-light rounded-2xl p-6 flex flex-col justify-between">
+                <div className="w-9 h-9 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                  <BarChart2 size={16} className="text-green-600" />
+                </div>
+                <div>
+                  <p className="text-3xl font-black text-[#0a1628] mb-1">95<span className="text-base font-medium text-gray-400">%</span></p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Redução média na conta de luz dos clientes.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 4. COMO FUNCIONA ───────────────────────── */}
+        <section id="como-funciona" className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Do contato à economia</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-14 tracking-tight">
+              4 passos. Você não precisa<br className="hidden md:block" /> se preocupar com nada.
+            </h2>
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { n: "1", t: "Simulação gratuita", d: "Você preenche o formulário. Mostramos o retorno exato no seu caso — sem compromisso." },
+                { n: "2", t: "Projeto e aprovação", d: "Cuidamos do projeto técnico e de toda a homologação junto à concessionária. Você só assina." },
+                { n: "3", t: "Instalação", d: "Equipe técnica instala em 1 a 2 dias, no prazo combinado. Sem obra, sem surpresa." },
+                { n: "4", t: "Economizando", d: "No primeiro mês você já vê na conta. Monitoramento via app disponível." },
+              ].map((s, i) => (
+                <div key={s.n} className="relative">
+                  <div className="w-10 h-10 rounded-full bg-[#FFB100] flex items-center justify-center mb-4 text-white font-black text-sm shadow-md shadow-[#FFB100]/30">
+                    {s.n}
+                  </div>
+                  <h3 className="font-bold text-[#0a1628] text-sm mb-2">{s.t}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed">{s.d}</p>
+                  {i < 3 && (
+                    <div className="hidden md:block absolute top-5 left-[calc(100%)] w-full h-px border-t border-dashed border-gray-300" />
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="mt-12 text-center">
+              <a href="#formulario"
+                className="inline-flex items-center gap-2 bg-[#0a1628] text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-[#0d1f3c] transition hover:-translate-y-0.5 shadow-lg shadow-black/10 cursor-pointer">
+                Começar agora — simulação grátis <ArrowRight size={15} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 5. PROVA SOCIAL ────────────────────────── */}
+        <section ref={proofRef} className="relative px-6 py-16">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Clientes Sol Center</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
+              Quem instalou, não voltou atrás.
+            </h2>
+
+            {/* Depoimento destaque */}
+            <div className={`glass-light rounded-3xl overflow-hidden mb-4 transition-all duration-700 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              <div className="bg-[#FFB100] px-7 py-5 flex items-center gap-3">
+                <div className="w-9 h-9 bg-white/25 rounded-full flex items-center justify-center shrink-0">
+                  <span className="text-white font-black text-xs">A</span>
+                </div>
+                <div className="flex-1">
+                  <p className="text-white font-semibold text-sm">Andrieli e Leonardo Espindola</p>
+                  <p className="text-white/70 text-xs">Santo Cristo, RS</p>
+                </div>
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((i) => <Star key={i} size={13} className="fill-white/90 text-white/90" />)}
+                </div>
+              </div>
+              <div className="px-7 py-8">
+                <blockquote className="text-[#0a1628] text-lg md:text-xl font-medium leading-snug mb-3">
+                  "Antes pagava <span className="font-black text-red-500 line-through">R$ 680/mês</span>. Depois da instalação, a conta caiu pra <span className="font-black text-green-600">R$ 47</span>. São mais de <span className="font-black">R$ 7.500 que ficam na nossa conta todo ano."</span>
+                </blockquote>
+                <p className="text-gray-400 text-xs">Sistema instalado pela Sol Center — Santo Cristo, RS.</p>
+              </div>
             </div>
 
-            {/* Garantias */}
-            <div className="flex flex-col gap-3">
+            {/* Depoimentos secundários */}
+            <div className={`grid md:grid-cols-2 gap-4 transition-all duration-700 delay-100 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               {[
-                { icon: ShieldCheck, t: "25 anos de garantia de desempenho", d: "As placas são garantidas pelo fabricante por 25 anos. Inversores: 5 a 12 anos." },
-                { icon: CheckCircle, t: "Projeto homologado e regularizado", d: "A Sol Center cuida de toda a burocracia com a concessionária. Você não precisa fazer nada." },
-                { icon: TrendingDown, t: "Redução garantida na conta", d: "Os sistemas são dimensionados para reduzir em até 95% o valor da sua fatura." },
-                { icon: Zap, t: "Suporte técnico pós-instalação", d: "Monitoramento contínuo disponível com a Solcenter PRO. Qualquer problema, a gente resolve." },
-              ].map(({ icon: Icon, t, d }) => (
-                <div key={t} className="flex gap-4 bg-[#f7f8f9] rounded-2xl p-5 border border-gray-100">
-                  <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
-                    <Icon size={16} className="text-[#FFB100]" />
+                { name: "Patrick Fernandes", city: "Santo Cristo, RS", text: "Atendimento impecável, preço competitivo e pontualidade na instalação. Recomendo sem hesitar." },
+                { name: "Rogério Antes", city: "Três de Maio, RS", text: "Processo simples do começo ao fim. A equipe resolveu tudo, eu não precisei me preocupar com nada." },
+              ].map((t) => (
+                <div key={t.name} className="glass-light rounded-2xl p-6">
+                  <div className="flex gap-1 mb-3">
+                    {[1,2,3,4,5].map((i) => <Star key={i} size={12} className="fill-[#FFB100] text-[#FFB100]" />)}
                   </div>
+                  <p className="text-[#0a1628] text-sm leading-relaxed mb-4">"{t.text}"</p>
                   <div>
-                    <p className="font-semibold text-[#0a1628] text-sm mb-0.5">{t}</p>
-                    <p className="text-gray-400 text-xs leading-relaxed">{d}</p>
+                    <p className="font-semibold text-[#0a1628] text-sm">{t.name}</p>
+                    <p className="text-gray-400 text-xs">{t.city}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 8. FAQ — Objeções                                     */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section className="bg-[#f7f8f9] px-6 py-16">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Perguntas frequentes</p>
-          <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
-            Tira suas dúvidas antes de falar com a gente.
-          </h2>
-          <div className="flex flex-col gap-3">
-            {[
-              { q: "Vale a pena no meu caso?", a: "A simulação gratuita mostra o retorno exato para o seu consumo. Como regra geral: contas acima de R$ 300/mês já têm payback excelente de 4 a 5 anos." },
-              { q: "E se não tiver sol suficiente aqui?", a: "O Rio Grande do Sul tem índice solar muito bom o ano todo — inclusive no inverno. A tecnologia moderna gera mesmo em dias nublados." },
-              { q: "Preciso fazer obra na casa?", a: "Não. A instalação leva 1 a 2 dias e não exige obra. Nossa equipe faz tudo com organização e sem bagunça." },
-              { q: "Tem financiamento disponível?", a: "Sim. Trabalhamos com o Sicredi com condições facilitadas. Muitos clientes financiam o sistema e já economizam desde o primeiro mês — a parcela sai mais barata que a conta atual." },
-              { q: "Quanto tempo demora do contrato até gerar energia?", a: "A instalação leva 1 a 2 dias. A homologação junto à concessionária pode levar entre 30 e 60 dias após a aprovação — e a Sol Center cuida de tudo isso pra você." },
-            ].map((item) => (
-              <FAQItem key={item.q} q={item.q} a={item.a} />
-            ))}
+        {/* ─── 6. PARA QUEM É ─────────────────────────── */}
+        <section className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Atendemos</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
+              Do sítio ao galpão, do apartamento à indústria.
+            </h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. Sistema dimensionado pro seu consumo real." },
+                { img: "/images/solar-empresarial.jpg", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Redução real de custo operacional." },
+                { img: "/images/solar-agro.jpg", icon: Tractor, title: "Agronegócio", desc: "Propriedades rurais, silos e cooperativas. Projetos de grande porte." },
+              ].map((s) => (
+                <a key={s.title} href="#formulario" className="group relative rounded-2xl overflow-hidden cursor-pointer block shadow-md shadow-black/5">
+                  <div className="relative h-64">
+                    <Image src={s.img} alt={s.title} fill className="object-cover group-hover:scale-105 transition duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <div className="flex items-center gap-2 mb-1">
+                      <s.icon size={13} className="text-[#FFB100]" />
+                      <p className="text-white font-bold text-sm">{s.title}</p>
+                    </div>
+                    <p className="text-white/65 text-xs leading-relaxed">{s.desc}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/* 9. CTA FINAL — Fechamento                             */}
-      {/* ═══════════════════════════════════════════════════════ */}
-      <section className="relative bg-[#060d18] px-6 py-24 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[700px] h-[700px] bg-[#FFB100]/5 rounded-full blur-3xl animate-glow-amber" />
-        </div>
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle, rgba(255,177,0,0.05) 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+        {/* ─── 7. CONFIANÇA ───────────────────────────── */}
+        <section ref={trustRef} className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Segurança em cada detalhe</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-12 tracking-tight">
+              Você investe. A gente garante.
+            </h2>
+            <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 ${trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
 
-        <div className="relative max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-[#FFB100]/10 border border-[#FFB100]/20 rounded-full px-4 py-1.5 mb-6">
-            <Sun size={13} className="text-[#FFB100]" />
-            <span className="text-[#FFB100] text-xs font-bold">Análise gratuita, sem compromisso</span>
+              {/* Sicredi */}
+              <div className="glass-light rounded-2xl overflow-hidden flex flex-col">
+                <div className="relative h-44 shrink-0">
+                  <Image src="/images/financiamento.jpg" alt="Financiamento junto aos parceiros" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90" />
+                </div>
+                <div className="p-6 flex-1">
+                  <p className="text-[#FFB100] text-xs font-bold uppercase tracking-widest mb-2">Financiamento</p>
+                  <h3 className="text-[#0a1628] font-black text-lg mb-3 leading-tight">Financie junto aos nossos parceiros.</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">Condições especiais para clientes Sol Center. A economia mensal costuma superar a parcela do financiamento.</p>
+                </div>
+              </div>
+
+              {/* Garantias */}
+              <div className="flex flex-col gap-3">
+                {[
+                  { icon: ShieldCheck, t: "25 anos de garantia de desempenho", d: "Placas garantidas pelo fabricante por 25 anos. Inversores: 5 a 12 anos." },
+                  { icon: CheckCircle, t: "Projeto homologado e regularizado", d: "A Sol Center cuida de toda a burocracia com a concessionária. Você não faz nada." },
+                  { icon: TrendingDown, t: "Redução garantida na conta", d: "Sistemas dimensionados para reduzir em até 95% o valor da sua fatura." },
+                  { icon: Zap, t: "Suporte técnico pós-instalação", d: "Monitoramento contínuo com a Solcenter PRO. Qualquer problema, a gente resolve." },
+                ].map(({ icon: Icon, t, d }) => (
+                  <div key={t} className="glass-light rounded-2xl p-5 flex gap-4">
+                    <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
+                      <Icon size={16} className="text-[#FFB100]" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-[#0a1628] text-sm mb-0.5">{t}</p>
+                      <p className="text-gray-400 text-xs leading-relaxed">{d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-black text-white leading-tight tracking-tight mb-5">
-            Pare de pagar pra<br />
-            <span className="text-[#FFB100]">concessionária.</span>
-          </h2>
-          <p className="text-white/45 text-base mb-10 max-w-md mx-auto leading-relaxed">
-            Fale com um especialista da Sol Center agora. Respondemos em minutos e te mostramos quanto você pode economizar.
+        </section>
+
+        {/* ─── 8. FAQ ─────────────────────────────────── */}
+        <section className="relative px-6 py-16">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Perguntas frequentes</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-10 tracking-tight">
+              Tira suas dúvidas antes de falar com a gente.
+            </h2>
+            <div className="flex flex-col gap-3">
+              {[
+                { q: "Vale a pena no meu caso?", a: "A simulação gratuita mostra o retorno exato para o seu consumo. Como regra geral: contas acima de R$ 300/mês já têm payback excelente de 4 a 5 anos." },
+                { q: "E se não tiver sol suficiente aqui?", a: "O Rio Grande do Sul tem índice solar muito bom o ano todo — inclusive no inverno. A tecnologia moderna gera mesmo em dias nublados." },
+                { q: "Preciso fazer obra na casa?", a: "Não. A instalação leva 1 a 2 dias e não exige obra. Nossa equipe faz tudo com organização e sem bagunça." },
+                { q: "Tem financiamento disponível?", a: "Sim. Trabalhamos com parceiros financeiros com condições facilitadas. Muitos clientes financiam e já economizam desde o primeiro mês." },
+                { q: "Quanto tempo demora até gerar energia?", a: "A instalação leva 1 a 2 dias. A homologação junto à concessionária pode levar 30 a 60 dias — e a Sol Center cuida de tudo isso pra você." },
+              ].map((item) => (
+                <FAQItem key={item.q} q={item.q} a={item.a} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 9. CTA FINAL ───────────────────────────── */}
+        <section className="relative px-6 py-24 overflow-hidden">
+          {/* Blob central */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[700px] h-[500px] bg-[#FFB100]/10 rounded-full blur-3xl animate-glow-amber" />
+          </div>
+
+          <div className="relative max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-[#FFB100]/10 border border-[#FFB100]/25 rounded-full px-4 py-1.5 mb-6">
+              <Sun size={13} className="text-[#FFB100]" />
+              <span className="text-[#FFB100] text-xs font-bold">Análise gratuita, sem compromisso</span>
+            </div>
+            <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
+              Pare de pagar pra<br />
+              <span className="text-[#FFB100]">concessionária.</span>
+            </h2>
+            <p className="text-gray-500 text-base mb-10 max-w-md mx-auto leading-relaxed">
+              Fale com um especialista da Sol Center agora. Respondemos em minutos e mostramos quanto você pode economizar.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <a
+                href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+uma+simula%C3%A7%C3%A3o+de+energia+solar`}
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-9 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-xl hover:shadow-[#FFB100]/25 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
+              >
+                Fale com um especialista <ArrowRight size={16} />
+              </a>
+              <a href="#formulario"
+                className="inline-flex items-center gap-2 border border-[#0a1628]/15 text-[#0a1628]/60 font-medium px-9 py-4 rounded-full text-sm hover:bg-[#0a1628]/5 transition cursor-pointer">
+                Preencher formulário
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="px-6 py-6 text-center border-t border-black/5">
+          <p className="text-gray-400 text-xs">
+            Sol Center Energia · {site.address} · {site.phone}
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+uma+simula%C3%A7%C3%A3o+de+energia+solar`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-9 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-2xl hover:shadow-[#FFB100]/25 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
-            >
-              Fale com um especialista
-              <ArrowRight size={16} />
-            </a>
-            <a href="#formulario"
-              className="inline-flex items-center gap-2 border border-white/15 text-white/70 font-medium px-9 py-4 rounded-full text-sm hover:bg-white/5 transition cursor-pointer">
-              Preencher formulário
-            </a>
-          </div>
-        </div>
-      </section>
+        </footer>
 
-      {/* FOOTER */}
-      <footer className="bg-[#040a12] px-6 py-6 text-center border-t border-white/5">
-        <p className="text-white/20 text-xs">
-          Sol Center Energia · {site.address} · {site.phone}
-        </p>
-      </footer>
+      </div>{/* end lp-warm */}
     </div>
   );
 }

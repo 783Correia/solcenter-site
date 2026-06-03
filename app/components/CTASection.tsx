@@ -55,10 +55,10 @@ export default function CTASection() {
               <ArrowRight size={16} />
             </a>
             <a
-              href="#contato"
+              href="/lp-energia"
               className="inline-flex items-center gap-2.5 border-2 border-[#0a1628] text-[#0a1628] font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#0a1628] hover:text-white transition-all"
             >
-              Preencher formulário
+              Ver simulação completa
             </a>
           </div>
         </motion.div>

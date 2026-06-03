@@ -48,9 +48,7 @@ export default function Hero() {
           className="flex flex-wrap gap-3 justify-center"
         >
           <a
-            href={site.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/lp-energia"
             className="inline-flex items-center gap-2.5 bg-[#00a651] text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#00c060] transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
           >
             Faça uma simulação grátis

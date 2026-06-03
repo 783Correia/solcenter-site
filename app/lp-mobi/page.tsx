@@ -38,11 +38,10 @@ const COLORS = [
     badge: "Mais vendida" as string | null,
     glow: "rgba(80,80,80,0.12)",
     cutouts: [
-      "/mobi/cutout/preta-1.png",
-      "/mobi/cutout/preta-2.png",
-      "/mobi/cutout/preta-3.png",
-      "/mobi/cutout/preta-4.png",
-      "/mobi/cutout/preta-5.png",
+      "/mobi/cutout/preta-hero.png",
+      "/mobi/cutout/preta-a.png",
+      "/mobi/cutout/preta-b.png",
+      "/mobi/cutout/preta-c.png",
     ],
   },
   {
@@ -52,11 +51,11 @@ const COLORS = [
     badge: null,
     glow: "rgba(30,77,140,0.18)",
     cutouts: [
-      "/mobi/cutout/azul-1.png",
-      "/mobi/cutout/azul-2.png",
-      "/mobi/cutout/azul-3.png",
-      "/mobi/cutout/azul-4.png",
-      "/mobi/cutout/azul-5.png",
+      "/mobi/cutout/azul-hero.png",
+      "/mobi/cutout/azul-a.png",
+      "/mobi/cutout/azul-b.png",
+      "/mobi/cutout/azul-c.png",
+      "/mobi/cutout/azul-d.png",
     ],
   },
   {
@@ -66,11 +65,10 @@ const COLORS = [
     badge: "Novidade" as string | null,
     glow: "rgba(192,57,43,0.15)",
     cutouts: [
-      "/mobi/cutout/vermelha-1.png",
-      "/mobi/cutout/vermelha-2.png",
-      "/mobi/cutout/vermelha-3.png",
-      "/mobi/cutout/vermelha-4.png",
-      "/mobi/cutout/vermelha-5.png",
+      "/mobi/cutout/vermelha-hero.png",
+      "/mobi/cutout/vermelha-a.png",
+      "/mobi/cutout/vermelha-b.png",
+      "/mobi/cutout/vermelha-c.png",
     ],
   },
   {
@@ -80,11 +78,10 @@ const COLORS = [
     badge: null,
     glow: "rgba(220,220,220,0.08)",
     cutouts: [
-      "/mobi/cutout/branca-1.png",
-      "/mobi/cutout/branca-2.png",
-      "/mobi/cutout/branca-3.png",
-      "/mobi/cutout/branca-4.png",
-      "/mobi/cutout/branca-5.png",
+      "/mobi/cutout/branca-hero.png",
+      "/mobi/cutout/branca-a.png",
+      "/mobi/cutout/branca-b.png",
+      "/mobi/cutout/branca-c.png",
     ],
   },
 ];
@@ -296,8 +293,9 @@ export default function LPMobi() {
       <LPNav />
 
       {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
-        {/* Background branded SVG */}
+      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+
+        {/* Background fullscreen */}
         <div className="absolute inset-0">
           <Image
             src="/mobi/bg-hero-ai.jpg"
@@ -307,31 +305,58 @@ export default function LPMobi() {
             priority
             sizes="100vw"
           />
-          {/* Fade inferior para integrar com a próxima seção */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050c1a] to-transparent" />
+          {/* Overlay esquerdo para legibilidade do texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050c1a]/90 via-[#050c1a]/50 to-transparent" />
+          {/* Fade inferior */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050c1a] to-transparent" />
         </div>
 
-        {/* Layout split: texto esquerda, moto direita */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 pt-24 pb-16 grid lg:grid-cols-2 gap-8 items-center">
+        {/* Moto recortada — grande, ancorada direita */}
+        <div className="absolute bottom-0 right-0 lg:right-[2%] w-[85vw] sm:w-[60vw] lg:w-[48vw] max-w-[860px]">
+          {COLORS.map((c) => (
+            <div
+              key={c.id}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
+            >
+              <Image
+                src={`/mobi/cutout/${c.id}-hero.png`}
+                alt={`EVOX Sol Center Mobi ${c.label}`}
+                fill
+                className="object-contain object-bottom"
+                priority={c.id === "preta"}
+                sizes="(max-width: 768px) 85vw, 48vw"
+              />
+            </div>
+          ))}
+          {/* Glow de chão embaixo da moto */}
+          <div
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-12 blur-2xl rounded-full"
+            style={{ background: `radial-gradient(ellipse, ${activeColor.glow.replace(/[\d.]+\)$/, "0.5)")} 0%, transparent 70%)` }}
+          />
+          {/* Espaçador para manter o aspect ratio */}
+          <div className="w-full" style={{ paddingBottom: "120%" }} />
+        </div>
 
-          {/* ESQUERDA — copy */}
-          <div className="flex flex-col items-start">
+        {/* Conteúdo — texto + CTAs */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 pb-14 pt-28">
+          <div className="max-w-xl">
             <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-3">
               Sol Center Mobi · EVOX
             </p>
-            <h1 className="text-[clamp(3.5rem,7vw,7rem)] font-black text-white leading-[0.82] tracking-[-0.04em] mb-4">
+            <h1 className="text-[clamp(4rem,8vw,8rem)] font-black text-white leading-[0.82] tracking-[-0.04em] mb-4">
               EVOX
             </h1>
-            <p className="text-[clamp(1.3rem,2.5vw,2rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
+            <p className="text-[clamp(1.4rem,2.5vw,2rem)] font-black text-[#00a651] leading-none tracking-tight mb-5">
               1000W · 100% Elétrica
             </p>
-            <p className="text-white/60 text-base leading-relaxed mb-6 max-w-lg">
+            <p className="text-white/65 text-base leading-relaxed mb-6 max-w-md">
               A scooter elétrica{" "}
-              <strong className="text-white/85">mais bonita, mais forte e mais completa</strong>{" "}
+              <strong className="text-white/90">mais bonita, mais forte e mais completa</strong>{" "}
               do mercado. Coloque na sua loja e entre no segmento que mais cresce no país.
             </p>
 
-            {/* Badges com brilho */}
+            {/* Badges */}
             <div className="flex flex-wrap gap-2.5 mb-7">
               {[
                 { icon: IdCard, t: "Sem CNH" },
@@ -350,17 +375,18 @@ export default function LPMobi() {
               ))}
             </div>
 
+            {/* CTAs */}
             <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href="#formulario"
-                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-7 py-3.5 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
+                className="inline-flex items-center gap-2 bg-[#00a651] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#00c060] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30 transition-all"
               >
                 Quero ser revendedor
                 <ArrowRight size={15} />
               </a>
               <a
                 href="#galeria"
-                className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-white/15 transition"
+                className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-white/15 transition"
               >
                 Ver o produto
                 <ChevronRight size={15} />
@@ -368,7 +394,7 @@ export default function LPMobi() {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-7">
               {[
                 { v: "1000W", label: "motor brushless" },
                 { v: "40km", label: "autonomia" },
@@ -383,65 +409,35 @@ export default function LPMobi() {
             </div>
           </div>
 
-          {/* DIREITA — moto recortada */}
-          <div className="relative flex flex-col items-center justify-center">
-            {/* Glow sutil embaixo da moto */}
-            <div
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-full blur-2xl"
-              style={{ background: "radial-gradient(ellipse, rgba(0,166,81,0.25) 0%, transparent 70%)" }}
-            />
-
-            {/* Imagens empilhadas com fade */}
-            <div className="relative w-full max-w-lg aspect-square">
-              {COLORS.map((c) => (
+          {/* Color picker — bottom left */}
+          <div className="flex items-center gap-4 mt-10 flex-wrap">
+            <span className="text-white/30 text-xs uppercase tracking-widest font-bold">Cor:</span>
+            {COLORS.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setActiveColor(c)}
+                aria-label={`Ver EVOX ${c.label}`}
+                className="flex flex-col items-center gap-1 min-w-[44px]"
+              >
                 <div
-                  key={c.id}
-                  className="absolute inset-0 transition-opacity duration-700 flex items-center justify-center"
-                  style={{ opacity: activeColor.id === c.id ? 1 : 0 }}
-                >
-                  <Image
-                    src={`/mobi/cutout/${c.id}-1.png`}
-                    alt={`EVOX Sol Center Mobi ${c.label}`}
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                    priority={c.id === "preta"}
-                    sizes="(max-width: 1024px) 80vw, 45vw"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Color picker */}
-            <div className="flex items-center gap-4 mt-4 flex-wrap justify-center">
-              <span className="text-white/30 text-xs uppercase tracking-widest font-bold">Cor:</span>
-              {COLORS.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => setActiveColor(c)}
-                  aria-label={`Ver EVOX ${c.label}`}
-                  className="flex flex-col items-center gap-1 min-w-[44px]"
-                >
-                  <div
-                    className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
-                      activeColor.id === c.id
-                        ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
-                        : "border-white/30 hover:border-white/60 hover:scale-105"
-                    }`}
-                    style={{ backgroundColor: c.hex }}
-                  />
-                  <span className={`text-[9px] font-semibold transition leading-tight text-center max-w-[58px] ${activeColor.id === c.id ? "text-white" : "text-white/30"}`}>
-                    {c.label}
+                  className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
+                    activeColor.id === c.id
+                      ? "border-white scale-110 ring-2 ring-[#00a651] ring-offset-2 ring-offset-[#050c1a]"
+                      : "border-white/30 hover:border-white/60 hover:scale-105"
+                  }`}
+                  style={{ backgroundColor: c.hex }}
+                />
+                <span className={`hidden sm:block text-[10px] font-semibold transition leading-tight text-center max-w-[62px] ${activeColor.id === c.id ? "text-white" : "text-white/30"}`}>
+                  {c.label}
+                </span>
+                {c.badge && (
+                  <span className="hidden sm:block text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
+                    {c.badge}
                   </span>
-                  {c.badge && (
-                    <span className="text-[8px] bg-[#f5c518] text-[#0a1628] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                      {c.badge}
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
+                )}
+              </button>
+            ))}
           </div>
-
         </div>
       </section>
 

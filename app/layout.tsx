@@ -26,6 +26,20 @@ export const metadata: Metadata = {
     siteName: "Solcenter",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "https://www.solcenter.com.br/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Solcenter — Energia Solar no Noroeste Gaúcho",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solcenter — Energia Solar em Santo Cristo e Região | RS",
+    description: "Mais de 1.400 projetos entregues no RS. Economize até 95% na conta de luz. Orçamento grátis.",
+    images: ["https://www.solcenter.com.br/og-home.jpg"],
   },
   alternates: {
     canonical: "https://www.solcenter.com.br",

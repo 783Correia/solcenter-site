@@ -94,7 +94,7 @@ export const site = {
 
   testimonials: [
     {
-      name: "Andrieli e Leonardo Espindola",
+      name: "Daniel e Neide Wermuth",
       text: "Ficamos muito satisfeitos com o resultado. A equipe é dedicada e o retorno que estamos tendo superou as expectativas.",
       location: "Santo Cristo, RS",
     },

@@ -488,10 +488,6 @@ export default function LPEnergia() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[700px] h-[700px] bg-[#FFB100]/6 rounded-full blur-3xl animate-glow-amber" />
         </div>
-        {/* Solar 3D ghost */}
-        <div className="absolute right-0 bottom-0 w-[420px] h-[420px] opacity-[0.07] pointer-events-none hidden lg:block">
-          <Image src="/images/solar-3d.png" alt="" fill className="object-contain object-right-bottom" />
-        </div>
         {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle, rgba(255,177,0,0.06) 1px, transparent 1px)", backgroundSize: "28px 28px" }} />

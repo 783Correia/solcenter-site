@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     canonical: "https://www.solcenter.com.br/lp-energia",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 

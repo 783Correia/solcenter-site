@@ -62,7 +62,7 @@ const schemaOrg = {
       "telephone": "+55-55-98449-1054",
       "email": "atendimento@solcenter.com.br",
       "description": "Empresa especializada em instalação de energia solar residencial, empresarial e agronegócio em Santo Cristo e região noroeste do RS. Mais de 1.400 projetos entregues em mais de 60 municípios gaúchos. Economize até 95% na conta de luz.",
-      "foundingDate": "2014",
+      "foundingDate": "2016",
       "priceRange": "$$",
       "currenciesAccepted": ["BRL"],
       "paymentAccepted": ["Cash", "CreditCard", "DebitCard", "Invoice"],

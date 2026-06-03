@@ -452,15 +452,20 @@ export default function LPEnergia() {
             <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] text-center mb-12 tracking-tight">
               Você investe. A gente garante.
             </h2>
-            <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 ${trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className={`grid md:grid-cols-2 gap-6 items-start transition-all duration-700 ${trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
 
-              {/* Sicredi */}
-              <div className="glass-light rounded-2xl overflow-hidden flex flex-col">
-                <div className="relative h-44 shrink-0">
-                  <Image src="/images/financiamento.jpg" alt="Financiamento junto aos parceiros" fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90" />
+              {/* Financiamento — card horizontal */}
+              <div className="glass-light rounded-2xl overflow-hidden">
+                <div className="relative h-56 w-full">
+                  <Image
+                    src="/images/financiamento.jpg"
+                    alt="Financiamento junto aos parceiros"
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
-                <div className="p-6 flex-1">
+                <div className="p-6">
                   <p className="text-[#FFB100] text-xs font-bold uppercase tracking-widest mb-2">Financiamento</p>
                   <h3 className="text-[#0a1628] font-black text-lg mb-3 leading-tight">Financie junto aos nossos parceiros.</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">Condições especiais para clientes Sol Center. A economia mensal costuma superar a parcela do financiamento.</p>

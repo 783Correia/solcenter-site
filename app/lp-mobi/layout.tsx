@@ -68,7 +68,7 @@ const schemaMobi = {
       "@id": "https://www.solcenter.com.br/lp-mobi#product",
       "name": "EVOX — Scooter Elétrica Sol Center Mobi",
       "description":
-        "Scooter elétrica EVOX com motor 1000W brushless, bateria de lítio 60v/20Ah, autonomia de 40km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Freio a disco dianteiro, iluminação Full LED, suspensão dianteira e traseira. Disponível em Preta, Azul/Prata, Vermelha/Prata e Branca.",
+        "Scooter elétrica EVOX com motor 1000W brushless, bateria de lítio 60v/20Ah, autonomia de 120km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Freio a disco dianteiro, iluminação Full LED, suspensão dianteira e traseira. Disponível em Preta, Azul/Prata, Vermelha/Prata e Branca.",
       "brand": {
         "@type": "Brand",
         "name": "Sol Center Mobi",
@@ -90,7 +90,7 @@ const schemaMobi = {
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Motor", "value": "1000W brushless sem escovas" },
         { "@type": "PropertyValue", "name": "Bateria", "value": "60v / 20Ah de lítio" },
-        { "@type": "PropertyValue", "name": "Autonomia", "value": "Até 40 km" },
+        { "@type": "PropertyValue", "name": "Autonomia", "value": "Até 120 km" },
         { "@type": "PropertyValue", "name": "Velocidade Máxima", "value": "32 km/h" },
         { "@type": "PropertyValue", "name": "Tempo de Carga", "value": "6 a 8 horas" },
         { "@type": "PropertyValue", "name": "Peso Suportado", "value": "200 kg" },
@@ -138,7 +138,7 @@ const schemaMobi = {
           "name": "Qual a autonomia da scooter elétrica EVOX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A EVOX tem autonomia de até 40km por carga completa com bateria de lítio 60v/20Ah. O tempo de recarga é de 6 a 8 horas em tomada 110/220V.",
+            "text": "A EVOX tem autonomia de até 120km por carga completa com bateria de lítio 60v/20Ah. O tempo de recarga é de 6 a 8 horas em tomada 110/220V.",
           },
         },
         {

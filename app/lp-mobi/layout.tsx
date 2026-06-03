@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "EVOX Scooter Elétrica 1000W — Revenda sem CNH e sem IPVA | Sol Center Mobi",
+  title: "EVOX Scooter Elétrica 1000W — Revenda sem CNH e sem IPVA | SolCenter Mobi",
   description:
     "Revenda a EVOX: scooter elétrica 1000W que não exige CNH, não paga IPVA e não precisa de emplacamento. Produto pronto para a sua loja. Atendimento B2B para revendedores no Sul do Brasil.",
   keywords:
-    "scooter elétrica sem CNH, moto elétrica revenda, scooter elétrica revendedor, EVOX elétrica, mobilidade elétrica RS, Sol Center Mobi, distribuidora scooter elétrica Sul Brasil, scooter 1000W sem habilitação",
+    "scooter elétrica sem CNH, moto elétrica revenda, scooter elétrica revendedor, EVOX elétrica, mobilidade elétrica RS, SolCenter Mobi, distribuidora scooter elétrica Sul Brasil, scooter 1000W sem habilitação",
   openGraph: {
-    title: "EVOX Scooter Elétrica 1000W — Qualquer pessoa pode comprar | Sol Center Mobi",
+    title: "EVOX Scooter Elétrica 1000W — Qualquer pessoa pode comprar | SolCenter Mobi",
     description:
       "Scooter elétrica EVOX: 1000W, sem CNH, sem IPVA, sem emplacamento. Abre um mercado que as motos convencionais não alcançam. Seja revendedor — Sul do Brasil.",
     url: "https://www.solcenter.com.br/lp-mobi",
-    siteName: "Sol Center Mobi",
+    siteName: "SolCenter Mobi",
     locale: "pt_BR",
     type: "website",
     images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "https://www.solcenter.com.br/mobi/real/preta-1.jpg",
         width: 1920,
         height: 1440,
-        alt: "EVOX Scooter Elétrica Sol Center Mobi — Preta",
+        alt: "EVOX Scooter Elétrica SolCenter Mobi — Preta",
       },
     ],
   },
@@ -52,13 +52,13 @@ const schemaMobi = {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Sol Center",
+          "name": "SolCenter",
           "item": "https://www.solcenter.com.br",
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Sol Center Mobi — EVOX",
+          "name": "SolCenter Mobi — EVOX",
           "item": "https://www.solcenter.com.br/lp-mobi",
         },
       ],
@@ -66,16 +66,16 @@ const schemaMobi = {
     {
       "@type": "Product",
       "@id": "https://www.solcenter.com.br/lp-mobi#product",
-      "name": "EVOX — Scooter Elétrica Sol Center Mobi",
+      "name": "EVOX — Scooter Elétrica SolCenter Mobi",
       "description":
         "Scooter elétrica EVOX com motor 1000W brushless, bateria de lítio 60v/20Ah, autonomia de 120km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Freio a disco dianteiro, iluminação Full LED, suspensão dianteira e traseira. Disponível em Preta, Azul/Prata, Vermelha/Prata e Branca.",
       "brand": {
         "@type": "Brand",
-        "name": "Sol Center Mobi",
+        "name": "SolCenter Mobi",
       },
       "manufacturer": {
         "@type": "Organization",
-        "name": "Sol Center Mobi",
+        "name": "SolCenter Mobi",
         "url": "https://www.solcenter.com.br/lp-mobi",
       },
       "category": "Scooter Elétrica",
@@ -109,7 +109,7 @@ const schemaMobi = {
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": "Sol Center Mobi",
+          "name": "SolCenter Mobi",
           "url": "https://www.solcenter.com.br/lp-mobi",
         },
       },
@@ -143,10 +143,10 @@ const schemaMobi = {
         },
         {
           "@type": "Question",
-          "name": "Como funciona o modelo de revenda da Sol Center Mobi?",
+          "name": "Como funciona o modelo de revenda da SolCenter Mobi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O revendedor adquire um lote de unidades EVOX da Sol Center Mobi, expõe na sua loja e vende. O produto é entregue na caixa pronto para comercialização. O suporte técnico pós-venda para o consumidor final é responsabilidade da Sol Center Mobi.",
+            "text": "O revendedor adquire um lote de unidades EVOX da SolCenter Mobi, expõe na sua loja e vende. O produto é entregue na caixa pronto para comercialização. O suporte técnico pós-venda para o consumidor final é responsabilidade da SolCenter Mobi.",
           },
         },
         {

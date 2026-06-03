@@ -225,7 +225,7 @@ function LPNav() {
         <a href="#" className="flex items-center">
           <Image
             src="/logo-mobi.svg"
-            alt="Sol Center Mobi"
+            alt="SolCenter Mobi"
             width={140}
             height={34}
             className={`transition-all duration-300 ${scrolled ? "brightness-100" : "brightness-0 invert"}`}
@@ -429,7 +429,7 @@ export default function LPMobi() {
             >
               <Image
                 src={c.hero}
-                alt={`EVOX Sol Center Mobi ${c.label}`}
+                alt={`EVOX SolCenter Mobi ${c.label}`}
                 fill
                 className={`object-cover object-center${c.id === "branca" ? " [transform:scaleX(-1)]" : ""}`}
                 priority={c.id === "preta"}
@@ -447,7 +447,7 @@ export default function LPMobi() {
           <div className="max-w-6xl mx-auto px-6 lg:px-14 flex flex-col items-center lg:items-start text-center lg:text-left">
 
             <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-4">
-              Sol Center Mobi · Revenda
+              SolCenter Mobi · Revenda
             </p>
 
             <h1 className="text-[clamp(2rem,4.8vw,5.5rem)] font-black text-white leading-[0.9] tracking-[-0.03em] mb-6 max-w-3xl">
@@ -710,7 +710,7 @@ export default function LPMobi() {
             {/* ── Painel de info ── */}
             <div className="p-6 sm:p-7 border-t border-white/8 lg:border-t-0 lg:border-l lg:border-white/8 flex flex-col gap-4">
               <div>
-                <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest mb-1">Sol Center Mobi</p>
+                <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest mb-1">SolCenter Mobi</p>
                 <div className="mb-4">
                   <h3 className="text-white font-black text-3xl leading-none mb-1">EVOX</h3>
                   <p
@@ -925,14 +925,14 @@ export default function LPMobi() {
               Você compra, coloca na loja, vende.
             </h2>
             <p className="text-white/40 text-sm mt-3 max-w-lg mx-auto">
-              Modelo simples de revenda: você adquire as unidades, expõe na sua loja e vende. A Sol Center Mobi cuida de tudo o que vem depois.
+              Modelo simples de revenda: você adquire as unidades, expõe na sua loja e vende. A SolCenter Mobi cuida de tudo o que vem depois.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-5 mb-8">
             {[
-              { step: "01", icon: Package, title: "Compre as unidades", desc: "Você adquire um lote de EVOXs da Sol Center Mobi. Produto entregue na caixa, pronto pra vender. Condições e quantidade mínima sob consulta." },
-              { step: "02", icon: Store, title: "Exponha na sua loja", desc: "Coloque em exposição, treine sua equipe com o suporte da Sol Center Mobi e comece a vender. Produto diferenciado chama atenção por si só." },
-              { step: "03", icon: Wrench, title: "Pós-venda com a gente", desc: "Seu cliente comprou — o suporte técnico e o pós-venda são responsabilidade da Sol Center Mobi. Você fecha a venda com respaldo total." },
+              { step: "01", icon: Package, title: "Compre as unidades", desc: "Você adquire um lote de EVOXs da SolCenter Mobi. Produto entregue na caixa, pronto pra vender. Condições e quantidade mínima sob consulta." },
+              { step: "02", icon: Store, title: "Exponha na sua loja", desc: "Coloque em exposição, treine sua equipe com o suporte da SolCenter Mobi e comece a vender. Produto diferenciado chama atenção por si só." },
+              { step: "03", icon: Wrench, title: "Pós-venda com a gente", desc: "Seu cliente comprou — o suporte técnico e o pós-venda são responsabilidade da SolCenter Mobi. Você fecha a venda com respaldo total." },
             ].map(({ step, icon: Icon, title, desc }) => (
               <div key={step} className="glass-card glass-card-green rounded-2xl p-7">
                 <div className="flex items-start gap-4 mb-4">
@@ -950,7 +950,7 @@ export default function LPMobi() {
             {[
               { icon: Users, title: "10 anos em mobilidade elétrica", desc: "Operamos no Sul do Brasil há mais de uma década com produto testado e aprovado." },
               { icon: Wrench, title: "Suporte técnico incluído", desc: "Treinamento da equipe de vendas e suporte pós-venda para o consumidor final." },
-              { icon: Package, title: "Logística gerenciada", desc: "Entrega e reposição gerenciadas pela Sol Center Mobi. Sem dor de cabeça." },
+              { icon: Package, title: "Logística gerenciada", desc: "Entrega e reposição gerenciadas pela SolCenter Mobi. Sem dor de cabeça." },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="glass-card glass-card-green rounded-2xl flex gap-4 p-5">
                 <div className="w-10 h-10 bg-[#00a651]/15 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -1009,7 +1009,7 @@ export default function LPMobi() {
       {/* ── FOOTER ───────────────────────────────────────────── */}
       <footer className="bg-black/30 px-6 py-8 border-t border-white/5">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <Image src="/logo-mobi.svg" alt="Sol Center Mobi" width={110} height={27} className="brightness-0 invert opacity-40" />
+          <Image src="/logo-mobi.svg" alt="SolCenter Mobi" width={110} height={27} className="brightness-0 invert opacity-40" />
           <p className="text-white/20 text-xs text-center">{site.address} · {site.phone}</p>
           <a href={WA} target="_blank" rel="noreferrer" className="text-[#00a651] text-xs font-bold hover:underline">
             WhatsApp comercial →

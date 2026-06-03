@@ -32,7 +32,7 @@ export default function Navbar() {
         <a href="#inicio" className="flex items-center">
           <Image
             src={scrolled ? "/logo-dark.svg" : "/logo.svg"}
-            alt="Sol Center"
+            alt="SolCenter"
             width={130}
             height={27}
             className="transition-all duration-300"

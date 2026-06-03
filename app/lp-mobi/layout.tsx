@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     description: "Revenda a scooter elétrica mais bonita do mercado. Sem CNH, sem IPVA. B2B para o Sul do Brasil.",
     images: ["https://www.solcenter.com.br/mobi/real/preta-1.jpg"],
   },
+  icons: {
+    icon: "/logo-mobi-icon.svg",
+    apple: "/logo-mobi-icon.svg",
+  },
   alternates: {
     canonical: "https://www.solcenter.com.br/lp-mobi",
   },

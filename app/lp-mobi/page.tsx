@@ -372,6 +372,7 @@ export default function LPMobi() {
   const [activeDetailIdx, setActiveDetailIdx] = useState(0);
   const [colorPhotoIdx, setColorPhotoIdx] = useState(0);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [colorLightboxIdx, setColorLightboxIdx] = useState<number | null>(null);
 
   function selectColor(c: (typeof COLORS)[0]) {
     setActiveColor(c);
@@ -393,6 +394,15 @@ export default function LPMobi() {
           onClose={() => setLightboxIdx(null)}
           onPrev={() => setLightboxIdx((i) => (i! - 1 + DETAILS.length) % DETAILS.length)}
           onNext={() => setLightboxIdx((i) => (i! + 1) % DETAILS.length)}
+        />
+      )}
+      {colorLightboxIdx !== null && (
+        <Lightbox
+          images={activeColor.photos}
+          index={colorLightboxIdx}
+          onClose={() => setColorLightboxIdx(null)}
+          onPrev={() => setColorLightboxIdx((i) => (i! - 1 + activeColor.photos.length) % activeColor.photos.length)}
+          onNext={() => setColorLightboxIdx((i) => (i! + 1) % activeColor.photos.length)}
         />
       )}
 
@@ -614,7 +624,8 @@ export default function LPMobi() {
 
             {/* ── Showcase da moto ── */}
             <div
-              className="relative overflow-hidden"
+              className="relative overflow-hidden cursor-zoom-in"
+              onClick={() => setColorLightboxIdx(colorPhotoIdx)}
               style={{ minHeight: "clamp(360px, 55vw, 560px)", background: "#050c1a" }}
             >
               {/* Todas as fotos da cor ativa empilhadas — troca por opacity */}
@@ -656,7 +667,7 @@ export default function LPMobi() {
               {/* Setas de navegação */}
               {colorPhotoIdx > 0 && (
                 <button
-                  onClick={() => setColorPhotoIdx((i) => i - 1)}
+                  onClick={(e) => { e.stopPropagation(); setColorPhotoIdx((i) => i - 1); }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition z-10"
                   aria-label="Foto anterior"
                 >
@@ -665,7 +676,7 @@ export default function LPMobi() {
               )}
               {colorPhotoIdx < activeColor.photos.length - 1 && (
                 <button
-                  onClick={() => setColorPhotoIdx((i) => i + 1)}
+                  onClick={(e) => { e.stopPropagation(); setColorPhotoIdx((i) => i + 1); }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition z-10"
                   aria-label="Próxima foto"
                 >

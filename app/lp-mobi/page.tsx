@@ -631,7 +631,7 @@ export default function LPMobi() {
                     src={src}
                     alt={`EVOX ${activeColor.label} — foto ${i + 1}`}
                     fill
-                    className="object-cover object-center"
+                    className="object-contain"
                     sizes="(max-width: 1024px) 95vw, 60vw"
                     priority={i === 0}
                   />

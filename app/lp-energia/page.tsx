@@ -479,7 +479,7 @@ export default function LPEnergia() {
               </div>
               <div className="p-6 flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-widest mb-2">Financiamento</p>
-                <h3 className="text-white font-black text-lg mb-3 leading-tight">Parcele pelo Sicredi e já economize no 1º mês.</h3>
+                <h3 className="text-white font-black text-lg mb-3 leading-tight">Financie junto aos nossos parceiros.</h3>
                 <p className="text-white/50 text-sm leading-relaxed">
                   Condições especiais para clientes Sol Center. A economia mensal costuma superar a parcela do financiamento.
                 </p>

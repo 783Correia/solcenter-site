@@ -399,7 +399,7 @@ export default function LPMobi() {
       <LPNav />
 
       {/* ── HERO — foto real de fundo (original) ────────────── */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+      <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
         {/* Fotos reais empilhadas com fade */}
         <div className="absolute inset-0">
           {COLORS.map((c) => (
@@ -423,8 +423,11 @@ export default function LPMobi() {
         </div>
 
 
+        {/* Spacer flexível — empurra conteúdo para a metade inferior */}
+        <div className="flex-1 min-h-[28vh]" />
+
         {/* Conteúdo */}
-        <div className="relative z-10 w-full pb-16 pt-32">
+        <div className="relative z-10 w-full pb-24 lg:pb-16 pt-4">
           <div className="max-w-6xl mx-auto px-6 lg:px-14 flex flex-col items-center lg:items-start text-center lg:text-left">
 
             <p className="text-white/30 text-sm font-bold uppercase tracking-[0.3em] mb-4">

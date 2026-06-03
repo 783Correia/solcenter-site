@@ -615,7 +615,7 @@ export default function LPMobi() {
             {/* ── Showcase da moto ── */}
             <div
               className="relative overflow-hidden"
-              style={{ minHeight: "clamp(300px, 50vw, 560px)", background: "#050c1a" }}
+              style={{ minHeight: "clamp(360px, 55vw, 560px)", background: "#050c1a" }}
             >
               {/* Todas as fotos da cor ativa empilhadas — troca por opacity */}
               {activeColor.photos.map((src, i) => (
@@ -628,7 +628,8 @@ export default function LPMobi() {
                     src={src}
                     alt={`EVOX ${activeColor.label} — foto ${i + 1}`}
                     fill
-                    className="object-contain"
+                    className="object-cover"
+                    style={{ objectPosition: "center 20%" }}
                     sizes="(max-width: 1024px) 95vw, 60vw"
                     priority={i === 0}
                   />

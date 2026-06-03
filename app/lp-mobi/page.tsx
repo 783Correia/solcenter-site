@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -384,6 +384,15 @@ export default function LPMobi() {
   const nextDetail = () =>
     setActiveDetailIdx((i) => (i + 1) % DETAILS.length);
 
+  const galleryTouchX = useRef(0);
+  const onGalleryTouchStart = (e: React.TouchEvent) => {
+    galleryTouchX.current = e.touches[0].clientX;
+  };
+  const onGalleryTouchEnd = (e: React.TouchEvent) => {
+    const diff = galleryTouchX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) diff > 0 ? nextDetail() : prevDetail();
+  };
+
   return (
     <div className="lp-dark min-h-screen font-sans antialiased">
 
@@ -586,7 +595,11 @@ export default function LPMobi() {
             </div>
           </div>
 
-          <div className="w-full lg:flex-1 overflow-hidden">
+          <div
+            className="w-full lg:flex-1 overflow-hidden"
+            onTouchStart={onGalleryTouchStart}
+            onTouchEnd={onGalleryTouchEnd}
+          >
             <div
               className="flex gap-4 transition-transform duration-500 ease-in-out pl-4 lg:pl-6"
               style={{

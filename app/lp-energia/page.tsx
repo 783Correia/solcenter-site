@@ -253,7 +253,7 @@ export default function LPEnergia() {
               {[
                 { img: "/images/lp-conta-energia.jpg", stat: "↑ 102%",   label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
                 { img: "/images/lp-economia.jpg",       stat: "R$ 7.500", label: "Economia anual média de um cliente SolCenter" },
-                { img: "/images/lp-retorno.jpg",        stat: "4–5 anos", label: "Retorno do investimento. O sistema dura 25 anos" },
+                { img: "/images/lp-retorno.jpg",        stat: "4–5 anos", label: "Retorno do investimento. Garantia de eficiência de geração por 25 anos" },
               ].map((card) => (
                 <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
                   <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />
@@ -313,7 +313,7 @@ export default function LPEnergia() {
                 </div>
                 <div>
                   <p className="text-3xl font-black text-[#0a1628] mb-1">4–5<span className="text-base font-medium text-gray-400"> anos</span></p>
-                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Sistema gera por 25 anos.</p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Garantia de eficiência de geração por 25 anos.</p>
                 </div>
               </div>
 

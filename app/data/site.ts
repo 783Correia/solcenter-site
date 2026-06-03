@@ -36,7 +36,7 @@ export const site = {
     {
       title: "Mobilidade Elétrica",
       label: "Soluções",
-      image: "/images/mobilidade.jpg",
+      image: "/images/mobilidade-evox.jpg",
       href: "#contato",
     },
     {

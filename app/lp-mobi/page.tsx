@@ -626,7 +626,7 @@ export default function LPMobi() {
             <div
               className="relative overflow-hidden cursor-zoom-in"
               onClick={() => setColorLightboxIdx(colorPhotoIdx)}
-              style={{ minHeight: "clamp(360px, 55vw, 560px)", background: "#050c1a" }}
+              style={{ minHeight: "clamp(400px, 75vw, 600px)", background: "#050c1a" }}
             >
               {/* Todas as fotos da cor ativa empilhadas — troca por opacity */}
               {activeColor.photos.map((src, i) => (
@@ -640,7 +640,7 @@ export default function LPMobi() {
                     alt={`EVOX ${activeColor.label} — foto ${i + 1}`}
                     fill
                     className="object-cover"
-                    style={{ objectPosition: "center 20%" }}
+                    style={{ objectPosition: "center top" }}
                     sizes="(max-width: 1024px) 95vw, 60vw"
                     priority={i === 0}
                   />

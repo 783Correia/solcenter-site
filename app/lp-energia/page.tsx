@@ -111,8 +111,6 @@ function LeadForm() {
 }
 
 export default function LPEnergia() {
-  const { ref: statsRef, inView: statsInView } = useInView(0.3);
-  const cities = useCounter(60, 1300, statsInView);
 
   return (
     <div className="min-h-screen bg-[#060d18] font-sans antialiased">
@@ -235,26 +233,6 @@ export default function LPEnergia() {
         </div>
       </section>
 
-      {/* ─── SOCIAL PROOF STRIP ────────────────────────────────── */}
-      <div ref={statsRef} className="bg-[#0b1628] border-y border-white/5 py-4 px-6 overflow-hidden">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-0 gap-y-2">
-          {[
-            { pre: "Em operação", val: "desde 2013", post: "" },
-            { pre: "Mais de", val: "1.400 sistemas", post: "instalados no RS" },
-            { pre: "Atendemos", val: `${cities}+ cidades`, post: "pelo estado" },
-            { pre: "Nota", val: "5.0 no Google", post: "— sem patrocínio" },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center">
-              <span className="text-white/30 text-xs px-4">
-                {item.pre}{" "}
-                <span className="text-white/70 font-semibold">{item.val}</span>
-                {item.post ? ` ${item.post}` : ""}
-              </span>
-              {i < 3 && <span className="text-white/10 text-lg select-none">·</span>}
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* ─── DEPOIMENTO DESTAQUE ───────────────────────────────── */}
       <section className="bg-white px-6 py-16">

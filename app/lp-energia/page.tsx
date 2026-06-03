@@ -583,41 +583,6 @@ export default function LPEnergia() {
           </div>
         </section>
 
-        {/* ─── 9. CTA FINAL ───────────────────────────── */}
-        <section className="relative px-6 py-24 overflow-hidden">
-          {/* Blob central */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[700px] h-[500px] bg-[#FFB100]/10 rounded-full blur-3xl animate-glow-amber" />
-          </div>
-
-          <div className="relative max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-[#FFB100]/10 border border-[#FFB100]/25 rounded-full px-4 py-1.5 mb-6">
-              <Sun size={13} className="text-[#FFB100]" />
-              <span className="text-[#FFB100] text-xs font-bold">Análise gratuita, sem compromisso</span>
-            </div>
-            <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-5">
-              Pare de pagar pra<br />
-              <span className="text-[#FFB100]">concessionária.</span>
-            </h2>
-            <p className="text-gray-500 text-base mb-10 max-w-md mx-auto leading-relaxed">
-              Fale com um especialista da SolCenter agora. Respondemos em minutos e mostramos quanto você pode economizar.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+uma+simula%C3%A7%C3%A3o+de+energia+solar`}
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-9 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:shadow-xl hover:shadow-[#FFB100]/25 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
-              >
-                Fale com um especialista <ArrowRight size={16} />
-              </a>
-              <a href="#formulario"
-                className="inline-flex items-center gap-2 border border-[#0a1628]/15 text-[#0a1628]/60 font-medium px-9 py-4 rounded-full text-sm hover:bg-[#0a1628]/5 transition cursor-pointer">
-                Preencher formulário
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* SUBFOOTER CTA */}
         <SubFooterCTA
           whatsappHref={`${site.whatsappLinkGiovani}?text=Ol%C3%A1%2C+quero+uma+simula%C3%A7%C3%A3o+de+energia+solar`}

@@ -112,8 +112,6 @@ function LeadForm() {
 
 export default function LPEnergia() {
   const { ref: statsRef, inView: statsInView } = useInView(0.3);
-  const years = useCounter(10, 1400, statsInView);
-  const projects = useCounter(1400, 1800, statsInView);
   const cities = useCounter(60, 1300, statsInView);
 
   return (
@@ -237,22 +235,22 @@ export default function LPEnergia() {
         </div>
       </section>
 
-      {/* ─── STATS ─────────────────────────────────────────────── */}
-      <div
-        ref={statsRef}
-        className="bg-[#0a1628] border-y border-white/5 py-10 px-6"
-        style={{ backgroundImage: "radial-gradient(circle, rgba(255,177,0,0.05) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
-      >
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* ─── SOCIAL PROOF STRIP ────────────────────────────────── */}
+      <div ref={statsRef} className="bg-[#0b1628] border-y border-white/5 py-4 px-6 overflow-hidden">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-0 gap-y-2">
           {[
-            { val: `${years}+`, label: "Anos de mercado" },
-            { val: `${projects.toLocaleString("pt-BR")}+`, label: "Projetos no RS" },
-            { val: `${cities}+`, label: "Cidades atendidas" },
-            { val: "5.0★", label: "Google Reviews" },
-          ].map((s) => (
-            <div key={s.label}>
-              <p className="text-3xl md:text-4xl font-black text-[#FFB100] tabular-nums">{s.val}</p>
-              <p className="text-white/35 text-xs mt-1.5 font-medium">{s.label}</p>
+            { pre: "Em operação", val: "desde 2013", post: "" },
+            { pre: "Mais de", val: "1.400 sistemas", post: "instalados no RS" },
+            { pre: "Atendemos", val: `${cities}+ cidades`, post: "pelo estado" },
+            { pre: "Nota", val: "5.0 no Google", post: "— sem patrocínio" },
+          ].map((item, i) => (
+            <div key={i} className="flex items-center">
+              <span className="text-white/30 text-xs px-4">
+                {item.pre}{" "}
+                <span className="text-white/70 font-semibold">{item.val}</span>
+                {item.post ? ` ${item.post}` : ""}
+              </span>
+              {i < 3 && <span className="text-white/10 text-lg select-none">·</span>}
             </div>
           ))}
         </div>

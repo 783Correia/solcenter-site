@@ -27,7 +27,7 @@ function calcWordCount(content: { heading: string; body: string }[]): number {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const { data: post } = await supabase
+  const { data: post } = await supabase()
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
 
-  const { data: post } = await supabase
+  const { data: post } = await supabase()
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
-  const { data: related } = await supabase
+  const { data: related } = await supabase()
     .from('blog_posts')
     .select('*')
     .eq('published', true)

@@ -236,10 +236,10 @@ export default function LPMonitoramentoPro() {
         className="relative min-h-[100dvh] flex items-center overflow-hidden"
       >
         <Image
-          src="/images/manutencao.jpg"
-          alt="Técnico realizando manutenção em painéis solares"
+          src="/images/hero-monitoramento.jpg"
+          alt="Equipe técnica SolCenter realizando manutenção em painéis solares"
           fill
-          className="object-cover object-center"
+          className="object-cover object-left-top"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />

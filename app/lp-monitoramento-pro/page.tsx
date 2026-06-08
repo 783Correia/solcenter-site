@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -258,9 +258,9 @@ export default function LPMonitoramentoPro() {
               <span className="text-[#FFB100]">o máximo</span> que deveria?
             </h1>
             <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
-              Painel sujo perde até 30% da geração. Falhas no inversor passam
-              despercebidas por meses. O Monitoramento PRO da SolCenter garante
-              que seu investimento funciona 100% — sempre.
+              Você instalou, investiu, e agora confia que está funcionando. O
+              Monitoramento PRO garante que essa confiança seja real — com
+              acompanhamento, limpeza e proteção do seu sistema.
             </p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
               {[
@@ -381,67 +381,72 @@ export default function LPMonitoramentoPro() {
             </div>
 
             <div
-              className={`grid md:grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-700 ${
+              className={`space-y-4 transition-all duration-700 ${
                 servicosInView
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
             >
-              {[
-                {
-                  icon: Activity,
-                  title: "Monitoramento em tempo real",
-                  desc: "Acompanhe sua geração 24/7 via app. Alertas automáticos se o sistema parar ou cair abaixo do esperado. Nenhuma perda passa despercebida.",
-                  highlight: true,
-                },
-                {
-                  icon: Droplets,
-                  title: "Limpeza periódica dos painéis",
-                  desc: "Painéis sujos com poeira, poluição e fezes de pássaro perdem até 30% de eficiência. A limpeza técnica mantém a geração no máximo.",
-                  highlight: false,
-                },
-                {
-                  icon: Wrench,
-                  title: "Visita técnica anual",
-                  desc: "Inspeção completa: fiação, inversor, estrutura de fixação e conectores. Detectamos problemas antes que virem prejuízo.",
-                  highlight: false,
-                },
-                {
-                  icon: Umbrella,
-                  title: "Seguro do equipamento",
-                  desc: "Cobertura contra raio, granizo, furto e defeito elétrico. Painéis e inversores protegidos — sem custo extra na hora do sinistro.",
-                  highlight: false,
-                },
-              ].map(({ icon: Icon, title, desc, highlight }) => (
-                <div
-                  key={title}
-                  className={`glass-light rounded-3xl p-6 flex flex-col gap-4 ${
-                    highlight ? "border-2 border-[#FFB100]/40" : ""
-                  }`}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                      highlight ? "bg-[#FFB100]/15" : "bg-gray-100"
-                    }`}
-                  >
-                    <Icon
-                      size={18}
-                      className={highlight ? "text-[#FFB100]" : "text-gray-500"}
-                    />
+              {/* Card featured — Monitoramento */}
+              <div className="rounded-3xl p-8 flex flex-col md:flex-row gap-8 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 border border-[#FFB100]/30 shadow-sm">
+                <div className="flex-1">
+                  <div className="w-12 h-12 bg-[#FFB100]/20 rounded-2xl flex items-center justify-center mb-4">
+                    <Activity size={24} className="text-[#FFB100]" />
                   </div>
-                  {highlight && (
-                    <span className="text-[10px] font-black text-[#FFB100] uppercase tracking-widest">
-                      Diferencial
-                    </span>
-                  )}
-                  <div>
-                    <h3 className="font-black text-[#0a1628] text-sm mb-2">
-                      {title}
-                    </h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                  <span className="text-[10px] font-black text-[#FFB100] uppercase tracking-widest mb-3 block">
+                    Diferencial principal
+                  </span>
+                  <h3 className="font-black text-[#0a1628] text-xl mb-3 leading-tight">
+                    Monitoramento em tempo real
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed max-w-md">
+                    Você acompanha a geração do seu sistema hora a hora via app.
+                    Se o sistema parar ou cair abaixo do esperado, a gente avisa
+                    antes de você perceber na conta.
+                  </p>
+                </div>
+                <div className="flex md:flex-col gap-3 md:w-44 shrink-0 justify-start md:justify-center">
+                  <div className="flex-1 md:flex-none bg-white/80 rounded-2xl p-4 text-center">
+                    <p className="font-black text-[#0a1628] text-2xl leading-none mb-1">24/7</p>
+                    <p className="text-gray-400 text-xs">geração monitorada</p>
+                  </div>
+                  <div className="flex-1 md:flex-none bg-white/80 rounded-2xl p-4 text-center">
+                    <p className="font-black text-[#FFB100] text-lg leading-none mb-1">Alertas</p>
+                    <p className="text-gray-400 text-xs">em tempo real</p>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* 3 serviços menores */}
+              <div className="grid md:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: Droplets,
+                    title: "Limpeza periódica",
+                    desc: "Poeira, fuligem, fezes de pássaro. A gente agenda e faz — você não precisa lembrar.",
+                  },
+                  {
+                    icon: Wrench,
+                    title: "Visita técnica anual",
+                    desc: "Fiação, inversor, estrutura. Detectamos o problema antes de virar prejuízo.",
+                  },
+                  {
+                    icon: Umbrella,
+                    title: "Seguro do equipamento",
+                    desc: "Raio, granizo, furto, defeito elétrico. Painéis e inversor cobertos.",
+                  },
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="glass-light rounded-3xl p-6 flex flex-col gap-4">
+                    <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                      <Icon size={18} className="text-gray-500" />
+                    </div>
+                    <div>
+                      <h3 className="font-black text-[#0a1628] text-sm mb-2">{title}</h3>
+                      <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="mt-8 text-center">
@@ -475,42 +480,48 @@ export default function LPMonitoramentoPro() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-4">
+            {/* Desktop: flex com setas conectoras */}
+            <div className="hidden md:flex items-start gap-2">
               {[
-                {
-                  n: "01",
-                  icon: Eye,
-                  t: "Diagnóstico gratuito",
-                  d: "Você preenche o formulário. Nossa equipe analisa o histórico do sistema e identifica o plano mais adequado.",
-                },
-                {
-                  n: "02",
-                  icon: CheckCircle,
-                  t: "Contratação do plano",
-                  d: "Você escolhe a cobertura. Ativamos o monitoramento em tempo real imediatamente após a confirmação.",
-                },
-                {
-                  n: "03",
-                  icon: Wrench,
-                  t: "Agendamento das visitas",
-                  d: "Nossa equipe técnica agenda a limpeza e a visita técnica no melhor horário para você. Sem complicação.",
-                },
-                {
-                  n: "04",
-                  icon: Activity,
-                  t: "Relatório mensal",
-                  d: "Você recebe um relatório mensal com a geração real vs. esperada, visitas realizadas e status do seguro.",
-                },
-              ].map(({ n, icon: Icon, t, d }) => (
-                <div key={n} className="glass-light rounded-3xl p-6 relative">
-                  <span className="text-[#FFB100]/20 font-black text-5xl leading-none absolute top-4 right-5 select-none">
-                    {n}
-                  </span>
-                  <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={16} className="text-[#FFB100]" />
+                { n: "01", icon: Eye, t: "Diagnóstico gratuito", d: "Você preenche o formulário. Nossa equipe analisa o histórico do sistema e identifica o plano ideal." },
+                { n: "02", icon: CheckCircle, t: "Plano ativado", d: "Escolhe a cobertura. Monitoramento em tempo real começa no mesmo dia." },
+                { n: "03", icon: Wrench, t: "Visitas agendadas", d: "A gente agenda limpeza e visita técnica no horário que funcionar pra você." },
+                { n: "04", icon: Activity, t: "Você só recebe", d: "Relatório mensal na palma da mão. Geração, visitas e status do seguro." },
+              ].map(({ n, icon: Icon, t, d }, i) => (
+                <Fragment key={n}>
+                  <div className="flex-1 glass-light rounded-3xl p-6 relative">
+                    <span className="text-[#FFB100]/15 font-black text-5xl leading-none absolute top-3 right-4 select-none">
+                      {n}
+                    </span>
+                    <div className="w-10 h-10 bg-[#FFB100]/10 rounded-xl flex items-center justify-center mb-4">
+                      <Icon size={17} className="text-[#FFB100]" />
+                    </div>
+                    <h3 className="font-black text-[#0a1628] text-sm mb-2">{t}</h3>
+                    <p className="text-gray-500 text-xs leading-relaxed">{d}</p>
                   </div>
-                  <h3 className="font-black text-[#0a1628] text-sm mb-2">{t}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{d}</p>
+                  {i < 3 && (
+                    <div className="flex items-center pt-10 shrink-0 text-[#FFB100]/30">
+                      <ArrowRight size={16} />
+                    </div>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+            {/* Mobile: grid 2x2 */}
+            <div className="grid grid-cols-2 gap-3 md:hidden">
+              {[
+                { n: "01", icon: Eye, t: "Diagnóstico gratuito", d: "Formulário → nossa equipe analisa e indica o plano." },
+                { n: "02", icon: CheckCircle, t: "Plano ativado", d: "Monitoramento começa no mesmo dia da confirmação." },
+                { n: "03", icon: Wrench, t: "Visitas agendadas", d: "Limpeza e vistoria no seu horário." },
+                { n: "04", icon: Activity, t: "Você só recebe", d: "Relatório mensal com tudo que aconteceu." },
+              ].map(({ n, icon: Icon, t, d }) => (
+                <div key={n} className="glass-light rounded-2xl p-5 relative">
+                  <span className="text-[#FFB100]/15 font-black text-4xl leading-none absolute top-2 right-3 select-none">{n}</span>
+                  <div className="w-8 h-8 bg-[#FFB100]/10 rounded-lg flex items-center justify-center mb-3">
+                    <Icon size={15} className="text-[#FFB100]" />
+                  </div>
+                  <h3 className="font-black text-[#0a1628] text-xs mb-1">{t}</h3>
+                  <p className="text-gray-500 text-[11px] leading-snug">{d}</p>
                 </div>
               ))}
             </div>
@@ -733,22 +744,22 @@ export default function LPMonitoramentoPro() {
                   {
                     icon: Activity,
                     t: "Monitoramento ativo",
-                    d: "Alertas em tempo real se a geração cair ou parar.",
+                    d: "Alerta imediato se a geração cair ou o sistema parar.",
                   },
                   {
                     icon: Droplets,
-                    t: "Limpeza técnica",
-                    d: "Produto adequado, sem risco de dano à película do painel.",
+                    t: "Limpeza sem risco",
+                    d: "Produto certo pra painel solar. Sem risco de dano à célula.",
                   },
                   {
                     icon: Clock,
-                    t: "SLA de atendimento",
-                    d: "Prazo garantido para retorno em caso de falha identificada.",
+                    t: "Retorno garantido",
+                    d: "Prazo de resposta garantido pra qualquer falha identificada.",
                   },
                   {
                     icon: Umbrella,
-                    t: "Seguro real",
-                    d: "Apólice com cobertura para raio, granizo, furto e defeito.",
+                    t: "Seguro de verdade",
+                    d: "Apólice real. Raio, granizo, furto e defeito — cobertos.",
                   },
                 ].map(({ icon: Icon, t, d }) => (
                   <div
@@ -760,7 +771,7 @@ export default function LPMonitoramentoPro() {
                     </div>
                     <div>
                       <p className="font-black text-[#0a1628] text-xs mb-1">{t}</p>
-                      <p className="text-gray-400 text-[11px] leading-snug">{d}</p>
+                      <p className="text-gray-400 text-xs leading-snug">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -818,20 +829,22 @@ export default function LPMonitoramentoPro() {
         {/* ═══════════════════════════════════════════════ */}
         <section className="relative px-6 py-20">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="glass-light rounded-3xl p-10 border border-[#FFB100]/20 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[#FFB100]/3 pointer-events-none" />
+            <div className="bg-[#0a1628] rounded-3xl p-10 relative overflow-hidden">
+              {/* glow blob âmbar */}
+              <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#FFB100]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-20 -left-10 w-60 h-60 bg-[#FFB100]/6 rounded-full blur-3xl pointer-events-none" />
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-[#FFB100]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-14 h-14 bg-[#FFB100]/15 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Sun size={24} className="text-[#FFB100]" />
                 </div>
-                <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-4">
+                <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-white leading-tight tracking-tight mb-4">
                   Proteja o seu investimento.
                   <br />
                   <span className="text-[#FFB100]">Antes que custe mais caro.</span>
                 </h2>
-                <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-md mx-auto">
+                <p className="text-white/40 text-sm leading-relaxed mb-8 max-w-md mx-auto">
                   Diagnóstico gratuito. Nossa equipe analisa seu sistema e apresenta
-                  o plano ideal para você — sem compromisso.
+                  o plano ideal — sem compromisso.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <a
@@ -842,7 +855,7 @@ export default function LPMonitoramentoPro() {
                         .getElementById("formulario")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="inline-flex items-center justify-center gap-2 bg-[#FFB100] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/25 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#FFB100] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/30 cursor-pointer"
                   >
                     Solicitar diagnóstico grátis <ArrowRight size={14} />
                   </a>
@@ -850,7 +863,7 @@ export default function LPMonitoramentoPro() {
                     href={`${WHATSAPP}?text=Olá! Quero saber mais sobre o Monitoramento PRO da SolCenter.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 border border-gray-200 text-[#0a1628] font-semibold px-8 py-4 rounded-full text-sm hover:border-[#FFB100] hover:text-[#FFB100] transition cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 border border-white/15 text-white/70 font-semibold px-8 py-4 rounded-full text-sm hover:border-[#FFB100] hover:text-[#FFB100] transition cursor-pointer"
                   >
                     <MessageCircle size={14} />
                     Falar no WhatsApp

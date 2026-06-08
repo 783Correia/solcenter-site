@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { FiFileText, FiPlusCircle, FiExternalLink, FiLogOut } from 'react-icons/fi'
+import { FiFileText, FiPlusCircle, FiExternalLink, FiLogOut, FiUsers } from 'react-icons/fi'
 
 export default function AdminSidebar() {
   const pathname = usePathname()
@@ -14,6 +14,7 @@ export default function AdminSidebar() {
   }
 
   const links = [
+    { href: '/seoblog/leads', label: 'Leads', icon: FiUsers },
     { href: '/seoblog/posts', label: 'Posts', icon: FiFileText },
     { href: '/seoblog/posts/new', label: 'Novo Post', icon: FiPlusCircle },
   ]

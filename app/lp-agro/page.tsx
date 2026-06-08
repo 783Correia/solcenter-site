@@ -164,7 +164,7 @@ export default function LPAgro() {
               Corte até <span className="text-[#FFB100]">95%</span> do custo de energia na sua propriedade.
             </h1>
             <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
-              Irrigação, secadores, silos, câmaras frias. Projetos dimensionados para a realidade do campo — com retorno garantido em até 5 anos.
+              Do motor de irrigação ao silo, do secador à câmara fria. Feito pra quem produz — sem burocracia, sem parar a operação.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a href="#formulario"
@@ -300,7 +300,7 @@ export default function LPAgro() {
                 </div>
                 <div>
                   <p className="text-3xl font-black text-[#0a1628] mb-1">4–5<span className="text-base font-medium text-gray-400"> anos</span></p>
-                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Garantia de eficiência de geração por 25 anos.</p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Depois disso, mais de 20 anos de energia praticamente de graça.</p>
                 </div>
               </div>
 
@@ -337,13 +337,13 @@ export default function LPAgro() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Do projeto técnico à homologação — você continua produzindo enquanto a gente instala.
+                Do projeto até o sistema ligar — você continua produzindo enquanto a gente trabalha.
               </p>
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 { n: "1", t: "Análise da propriedade", d: "Analisamos seu consumo de energia (irrigação, motores, silos) e mostramos o retorno exato para o seu caso." },
-                { n: "2", t: "Projeto e aprovação", d: "Projeto técnico dimensionado para o campo e toda a homologação junto à concessionária. Você só assina." },
+                { n: "2", t: "Projeto e aprovação", d: "Fazemos o projeto pro tamanho da sua propriedade e cuidamos de toda a burocracia com a concessionária. Você só assina." },
                 { n: "3", t: "Instalação no campo", d: "Equipe técnica instala sem interromper sua produção, no prazo combinado." },
                 { n: "4", t: "Economizando", d: "No primeiro mês você já vê a diferença na conta. Monitoramento via app disponível." },
               ].map((s, i) => (

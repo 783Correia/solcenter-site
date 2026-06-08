@@ -312,7 +312,7 @@ export default function LPEnergia() {
               <div className="flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">A virada</p>
                 <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
-                  Com solar, você para<br />de pagar pra deles.
+                  Instalou. A conta caiu.<br />E fica assim.
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">

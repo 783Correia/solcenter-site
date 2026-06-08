@@ -299,7 +299,7 @@ export default function LPMonitoramentoPro() {
       <div className="lp-warm">
 
         {/* ═══════════════════════════════════════════════ */}
-        {/* 2. O PROBLEMA                                   */}
+        {/* 2. O PROBLEMA — diagnóstico                     */}
         {/* ═══════════════════════════════════════════════ */}
         <section ref={problemRef} className="relative px-6 py-20">
           <div className="max-w-6xl mx-auto">
@@ -309,16 +309,17 @@ export default function LPMonitoramentoPro() {
                   O problema
                 </p>
                 <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight">
-                  Sistema instalado e esquecido
+                  Sintomas que você
                   <br />
                   <span className="text-gray-400 font-light">
-                    é dinheiro perdido todo mês.
+                    não está percebendo.
                   </span>
                 </h2>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-                A maioria dos proprietários de energia solar nunca faz nenhum
-                tipo de manutenção — e paga caro por isso sem perceber.
+                A maioria dos problemas num sistema solar é silenciosa. Não tem
+                alarme, não tem aviso — você só descobre na conta ou quando o
+                equipamento para.
               </p>
             </div>
 
@@ -331,44 +332,34 @@ export default function LPMonitoramentoPro() {
             >
               {[
                 {
-                  img: "/images/lp-conta-energia.jpg",
-                  stat: "até 30%",
-                  label: "de geração perdida com painéis sujos",
                   icon: TrendingDown,
+                  stat: "↓ 30%",
+                  titulo: "Geração caindo em silêncio",
+                  desc: "Painéis sujos perdem até 30% de eficiência gradualmente. Você não percebe porque não tem referência do que deveria estar gerando.",
                 },
                 {
-                  img: "/images/lp-economia.jpg",
-                  stat: "meses",
-                  label: "sem detectar falha no inversor — prejuízo invisível",
                   icon: AlertTriangle,
+                  stat: "6 meses",
+                  titulo: "Falha que passa meses invisível",
+                  desc: "Tempo médio que um inversor falha antes de o dono perceber, sem monitoramento ativo. Cada mês é prejuízo acumulado na conta.",
                 },
                 {
-                  img: "/images/lp-retorno.jpg",
-                  stat: "garantia",
-                  label: "caduca por falta de manutenção comprovada",
-                  icon: Shield,
+                  icon: ShieldCheck,
+                  stat: "5 anos",
+                  titulo: "Garantia que o fabricante pode negar",
+                  desc: "Fabricantes exigem laudo de manutenção periódica para honrar a garantia. Sem registro, você paga o conserto do próprio bolso.",
                 },
-              ].map(({ img, stat, label, icon: Icon }) => (
-                <div
-                  key={label}
-                  className="relative rounded-3xl overflow-hidden aspect-[4/3]"
-                >
-                  <Image
-                    src={img}
-                    alt={label}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-5">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Icon size={14} className="text-[#FFB100]" />
-                      <span className="text-[#FFB100] font-black text-2xl leading-none">
-                        {stat}
-                      </span>
-                    </div>
-                    <p className="text-white/80 text-xs leading-snug">{label}</p>
+              ].map(({ icon: Icon, stat, titulo, desc }) => (
+                <div key={titulo} className="glass-light rounded-3xl p-7 flex flex-col gap-5">
+                  <div className="w-12 h-12 bg-[#FFB100]/10 rounded-2xl flex items-center justify-center">
+                    <Icon size={22} className="text-[#FFB100]" />
+                  </div>
+                  <div>
+                    <p className="text-[clamp(2.4rem,4vw,3rem)] font-black text-[#0a1628] leading-none tracking-tight mb-2">
+                      {stat}
+                    </p>
+                    <p className="font-bold text-[#0a1628] text-sm mb-2">{titulo}</p>
+                    <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}

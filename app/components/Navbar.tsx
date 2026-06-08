@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { site } from "../data/site";
@@ -16,6 +17,13 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  function resolveHref(href: string) {
+    if (!href.startsWith("#")) return href;
+    return isHome ? href : `/${href}`;
+  }
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -30,7 +38,7 @@ export default function Navbar() {
           ? "bg-white/90 backdrop-blur-md shadow-xl shadow-black/10 border border-gray-100"
           : "bg-white/10 backdrop-blur-sm border border-white/20"
       }`}>
-        <a href="#inicio" className="flex items-center">
+        <a href={resolveHref("#inicio")} className="flex items-center">
           <Image
             src={scrolled ? "/logo-dark.svg" : "/logo.svg"}
             alt="SolCenter"
@@ -42,7 +50,7 @@ export default function Navbar() {
 
         <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
-            <a key={l.href} href={l.href}
+            <a key={l.href} href={resolveHref(l.href)}
               className={`text-[13px] font-medium transition-colors ${scrolled ? "text-gray-500 hover:text-[#0a1628]" : "text-white/80 hover:text-white"}`}>
               {l.label}
             </a>
@@ -62,7 +70,7 @@ export default function Navbar() {
       {open && (
         <div className="absolute top-16 inset-x-0 md:hidden bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 mx-0 px-6 py-5 flex flex-col gap-4">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+            <a key={l.href} href={resolveHref(l.href)} onClick={() => setOpen(false)}
               className="text-gray-600 hover:text-[#0a1628] font-medium transition-colors text-sm">
               {l.label}
             </a>

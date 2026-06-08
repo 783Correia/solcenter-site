@@ -563,7 +563,7 @@ export default function LPEnergia() {
                     src="/images/financiamento.jpg"
                     alt="Financiamento junto aos parceiros"
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>

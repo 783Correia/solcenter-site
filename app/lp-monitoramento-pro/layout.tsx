@@ -20,9 +20,68 @@ export const metadata: Metadata = {
   },
 };
 
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Posso contratar o Monitoramento PRO mesmo que o sistema não tenha sido instalado pela SolCenter?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sim. O Monitoramento PRO está disponível para qualquer sistema solar instalado na região de atendimento da SolCenter. Antes da ativação, a equipe realiza um diagnóstico gratuito para verificar o estado atual do equipamento.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Com que frequência os painéis solares são limpos?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A recomendação é de 2 limpezas por ano. A frequência pode ser ajustada conforme a localização — áreas com mais poeira, fumaça ou presença de aves podem exigir limpeza mais frequente. O plano inclui a limpeza já no calendário anual.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "O que o seguro do Monitoramento PRO cobre?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A apólice cobre danos causados por descarga elétrica (raio), granizo, furto e defeito elétrico nos equipamentos principais — painéis e inversores. Os detalhes de cobertura e franquia são apresentados antes da assinatura do contrato.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Como funciona o monitoramento em tempo real?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Após a ativação, o cliente tem acesso a um app onde acompanha a geração do sistema hora a hora. A SolCenter também monitora remotamente e envia alertas automáticos se a geração cair abaixo do esperado — sem precisar verificar manualmente.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "A SolCenter atende fora de Santo Cristo para manutenção solar?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sim. A SolCenter atende mais de 60 municípios no noroeste gaúcho, incluindo Horizontina, Três de Maio, Santa Rosa, Ijuí, Tucunduva e região. Entre em contato para confirmar a disponibilidade na sua cidade.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "O sistema solar precisa estar funcionando perfeitamente para contratar o plano?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Não. A equipe da SolCenter faz o diagnóstico inicial e, caso identifique algum problema, apresenta o orçamento para correção antes de ativar o plano. Sistemas com falhas ou geração abaixo do esperado também são atendidos.",
+      },
+    },
+  ],
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

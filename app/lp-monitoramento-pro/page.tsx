@@ -657,17 +657,17 @@ export default function LPMonitoramentoPro() {
                 {
                   img: "/images/solar-residencial.jpg",
                   title: "Residencial",
-                  desc: "Para quem investiu na conta de casa e quer garantir que o retorno previsto se concretize por 25 anos.",
+                  desc: "Você investiu pra ter conta baixa por 25 anos. Faz sentido garantir que vai continuar assim.",
                 },
                 {
                   img: "/images/solar-empresarial.jpg",
                   title: "Empresarial",
-                  desc: "Empresas que dependem da geração para cortar custos operacionais não podem se dar ao luxo de ter falhas.",
+                  desc: "Um dia com sistema parado é um dia pagando pra concessionária. Empresa não pode correr esse risco.",
                 },
                 {
                   img: "/images/solar-agro.jpg",
                   title: "Rural / Agronegócio",
-                  desc: "Propriedades com irrigação e motores elétricos que precisam de geração constante e sistema sempre operacional.",
+                  desc: "Irrigação, motor, câmara fria. Se o sistema parar na hora errada, o prejuízo vai além da conta de luz.",
                 },
               ].map(({ img, title, desc }) => (
                 <div
@@ -795,7 +795,7 @@ export default function LPMonitoramentoPro() {
               {[
                 {
                   q: "Posso contratar mesmo que o sistema não tenha sido instalado pela SolCenter?",
-                  a: "Sim. O Monitoramento PRO está disponível para qualquer sistema fotovoltaico instalado na nossa região de atendimento. Antes da ativação, nossa equipe faz um diagnóstico para verificar o estado atual do equipamento.",
+                  a: "Sim. O Monitoramento PRO está disponível para qualquer sistema solar instalado na nossa região de atendimento. Antes de tudo, nossa equipe faz um diagnóstico pra ver como o sistema está — e aí a gente indica o que faz sentido.",
                 },
                 {
                   q: "Com que frequência os painéis são limpos?",

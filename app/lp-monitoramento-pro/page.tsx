@@ -1,0 +1,880 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import {
+  ArrowRight,
+  CheckCircle,
+  MessageCircle,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  Wrench,
+  Shield,
+  AlertTriangle,
+  TrendingDown,
+  Zap,
+  Clock,
+  Star,
+  Plus,
+  Minus,
+  Sun,
+  Eye,
+  Umbrella,
+} from "lucide-react";
+import { site } from "../data/site";
+import SubFooterCTA from "../components/SubFooterCTA";
+
+const WHATSAPP = site.whatsappLinkGiovani;
+
+function useInView(threshold = 0.15) {
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) setInView(true);
+      },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, inView };
+}
+
+function LeadForm() {
+  const [sent, setSent] = useState(false);
+  const router = useRouter();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const f = e.currentTarget;
+    const name = (f.elements.namedItem("name") as HTMLInputElement).value;
+    const phone = (f.elements.namedItem("phone") as HTMLInputElement).value;
+    const city = (f.elements.namedItem("city") as HTMLInputElement).value;
+    const tipo = (f.elements.namedItem("tipo") as HTMLSelectElement).value;
+    const tempo = (f.elements.namedItem("tempo") as HTMLSelectElement).value;
+    const msg = encodeURIComponent(
+      `Olá! Me chamo ${name}, moro em ${city} e tenho interesse no Monitoramento PRO. Tenho um sistema ${tipo} instalado há ${tempo}. WhatsApp: ${phone}`
+    );
+    window.open(`${WHATSAPP}?text=${msg}`, "_blank");
+    setSent(true);
+    router.push("/obrigado");
+  }
+
+  if (sent) {
+    return (
+      <div className="text-center py-6">
+        <div className="w-12 h-12 bg-[#FFB100]/20 rounded-full flex items-center justify-center mx-auto mb-3">
+          <CheckCircle size={24} className="text-[#FFB100]" />
+        </div>
+        <p className="font-bold text-white text-base">Recebido!</p>
+        <p className="text-white/50 text-sm mt-1">
+          Abrimos o WhatsApp. Retornamos em minutos.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        name="name"
+        type="text"
+        required
+        placeholder="Nome completo"
+        className="glass-input"
+      />
+      <input
+        name="phone"
+        type="tel"
+        required
+        placeholder="WhatsApp"
+        className="glass-input"
+      />
+      <input
+        name="city"
+        type="text"
+        required
+        placeholder="Cidade"
+        className="glass-input"
+      />
+      <select name="tipo" required className="glass-input">
+        <option value="">Tipo de instalação</option>
+        <option value="residencial">Residencial</option>
+        <option value="comercial">Comercial / Empresarial</option>
+        <option value="rural">Rural / Agronegócio</option>
+      </select>
+      <select name="tempo" required className="glass-input">
+        <option value="">Há quanto tempo foi instalado?</option>
+        <option value="menos de 1 ano">Menos de 1 ano</option>
+        <option value="1 a 2 anos">1 a 2 anos</option>
+        <option value="2 a 4 anos">2 a 4 anos</option>
+        <option value="mais de 4 anos">Mais de 4 anos</option>
+      </select>
+      <button
+        type="submit"
+        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
+      >
+        Quero proteger meu sistema
+        <ArrowRight size={15} />
+      </button>
+      <p className="text-center text-[11px] text-white/30 flex items-center justify-center gap-1">
+        <ShieldCheck size={11} />
+        Seus dados estão protegidos
+      </p>
+    </form>
+  );
+}
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <button
+      onClick={() => setOpen(!open)}
+      className="w-full text-left glass-light rounded-2xl px-6 py-5 hover:shadow-md transition group cursor-pointer"
+    >
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-semibold text-[#0a1628] text-sm leading-snug">{q}</p>
+        <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-[#FFB100] group-hover:text-[#FFB100] transition text-gray-400">
+          {open ? <Minus size={11} /> : <Plus size={11} />}
+        </div>
+      </div>
+      {open && (
+        <p className="text-gray-500 text-sm leading-relaxed mt-3 pr-8">{a}</p>
+      )}
+    </button>
+  );
+}
+
+export default function LPMonitoramentoPro() {
+  const { ref: problemRef, inView: problemInView } = useInView();
+  const { ref: servicosRef, inView: servicosInView } = useInView();
+  const { ref: proofRef, inView: proofInView } = useInView();
+  const { ref: trustRef, inView: trustInView } = useInView();
+
+  return (
+    <div className="min-h-screen font-sans antialiased">
+
+      {/* ─── NAV DESKTOP ────────────────────────────── */}
+      <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
+        <nav className="pointer-events-auto flex items-center gap-4 bg-white/80 backdrop-blur-md shadow-sm shadow-black/5 border border-white/80 rounded-full px-5 py-2.5">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="cursor-pointer"
+          >
+            <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+          </a>
+          <div className="w-px h-4 bg-gray-200" />
+          <a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-gray-500 hover:text-[#25D366] transition text-xs font-medium cursor-pointer"
+          >
+            <MessageCircle size={14} />
+            WhatsApp
+          </a>
+          <div className="w-px h-4 bg-gray-200" />
+          <a
+            href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-gray-500 hover:text-[#0a1628] transition text-xs font-medium cursor-pointer"
+          >
+            <MapPin size={14} />
+            Santo Cristo, RS
+          </a>
+        </nav>
+      </div>
+
+      {/* ─── NAV MOBILE ─────────────────────────────── */}
+      <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
+        <nav className="flex items-center gap-1 bg-white/90 backdrop-blur-md shadow-lg shadow-black/10 border border-white/80 rounded-full px-3 py-3">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="px-3 cursor-pointer"
+          >
+            <Image src="/logo-dark.svg" alt="SolCenter" width={80} height={17} />
+          </a>
+          <div className="w-px h-5 bg-gray-200 mx-1" />
+          <a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer"
+          >
+            <MessageCircle size={20} className="text-[#25D366]" />
+          </a>
+          <a
+            href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer"
+          >
+            <MapPin size={20} className="text-[#FFB100]" />
+          </a>
+        </nav>
+      </div>
+
+      {/* ═══════════════════════════════════════════════ */}
+      {/* 1. HERO — dark                                  */}
+      {/* ═══════════════════════════════════════════════ */}
+      <section
+        id="formulario"
+        className="relative min-h-[100dvh] flex items-center overflow-hidden"
+      >
+        <Image
+          src="/images/manutencao.jpg"
+          alt="Técnico realizando manutenção em painéis solares"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />
+        <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#FFB100]/5 rounded-full blur-3xl pointer-events-none animate-glow-amber" />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 py-24 lg:py-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 bg-[#FFB100]/10 border border-[#FFB100]/25 rounded-full px-4 py-1.5 mb-6 w-fit">
+              <Activity size={13} className="text-[#FFB100]" />
+              <span className="text-[#FFB100] text-xs font-bold tracking-wide">
+                Proteção completa para o seu investimento
+              </span>
+            </div>
+            <h1 className="text-[clamp(2.2rem,4.5vw,3.6rem)] font-black text-white leading-[1.05] tracking-[-0.02em] mb-5">
+              Seu sistema solar está gerando{" "}
+              <span className="text-[#FFB100]">o máximo</span> que deveria?
+            </h1>
+            <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
+              Painel sujo perde até 30% da geração. Falhas no inversor passam
+              despercebidas por meses. O Monitoramento PRO da SolCenter garante
+              que seu investimento funciona 100% — sempre.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
+              {[
+                { icon: Eye, label: "Monitoramento 24/7" },
+                { icon: Droplets, label: "Limpeza periódica" },
+                { icon: Wrench, label: "Visita técnica anual" },
+                { icon: Shield, label: "Seguro do equipamento" },
+              ].map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-2 text-white/60 text-xs"
+                >
+                  <Icon size={13} className="text-[#FFB100]" />
+                  {label}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="w-full lg:w-[380px] shrink-0">
+            <div className="bg-white/8 backdrop-blur-xl border border-white/12 rounded-3xl p-7 shadow-2xl">
+              <p className="text-white font-black text-lg mb-1">
+                Solicitar diagnóstico gratuito
+              </p>
+              <p className="text-white/40 text-xs mb-5">
+                Nossa equipe analisa seu sistema e apresenta o plano ideal.
+              </p>
+              <LeadForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* fundo claro — todas as seções abaixo */}
+      <div className="lp-warm">
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 2. O PROBLEMA                                   */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section ref={problemRef} className="relative px-6 py-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-12">
+              <div>
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                  O problema
+                </p>
+                <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight">
+                  Sistema instalado e esquecido
+                  <br />
+                  <span className="text-gray-400 font-light">
+                    é dinheiro perdido todo mês.
+                  </span>
+                </h2>
+              </div>
+              <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+                A maioria dos proprietários de energia solar nunca faz nenhum
+                tipo de manutenção — e paga caro por isso sem perceber.
+              </p>
+            </div>
+
+            <div
+              className={`grid md:grid-cols-3 gap-5 transition-all duration-700 ${
+                problemInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              {[
+                {
+                  img: "/images/lp-conta-energia.jpg",
+                  stat: "até 30%",
+                  label: "de geração perdida com painéis sujos",
+                  icon: TrendingDown,
+                },
+                {
+                  img: "/images/lp-economia.jpg",
+                  stat: "meses",
+                  label: "sem detectar falha no inversor — prejuízo invisível",
+                  icon: AlertTriangle,
+                },
+                {
+                  img: "/images/lp-retorno.jpg",
+                  stat: "garantia",
+                  label: "caduca por falta de manutenção comprovada",
+                  icon: Shield,
+                },
+              ].map(({ img, stat, label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="relative rounded-3xl overflow-hidden aspect-[4/3]"
+                >
+                  <Image
+                    src={img}
+                    alt={label}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-5">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Icon size={14} className="text-[#FFB100]" />
+                      <span className="text-[#FFB100] font-black text-2xl leading-none">
+                        {stat}
+                      </span>
+                    </div>
+                    <p className="text-white/80 text-xs leading-snug">{label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 3. OS 4 SERVIÇOS — bento grid                   */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section ref={servicosRef} className="relative px-6 py-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10 text-center">
+              <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+                O que está incluso
+              </p>
+              <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-black text-[#0a1628] leading-tight tracking-tight">
+                Monitoramento PRO — cobertura completa
+              </h2>
+            </div>
+
+            <div
+              className={`grid md:grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-700 ${
+                servicosInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              {[
+                {
+                  icon: Activity,
+                  title: "Monitoramento em tempo real",
+                  desc: "Acompanhe sua geração 24/7 via app. Alertas automáticos se o sistema parar ou cair abaixo do esperado. Nenhuma perda passa despercebida.",
+                  highlight: true,
+                },
+                {
+                  icon: Droplets,
+                  title: "Limpeza periódica dos painéis",
+                  desc: "Painéis sujos com poeira, poluição e fezes de pássaro perdem até 30% de eficiência. A limpeza técnica mantém a geração no máximo.",
+                  highlight: false,
+                },
+                {
+                  icon: Wrench,
+                  title: "Visita técnica anual",
+                  desc: "Inspeção completa: fiação, inversor, estrutura de fixação e conectores. Detectamos problemas antes que virem prejuízo.",
+                  highlight: false,
+                },
+                {
+                  icon: Umbrella,
+                  title: "Seguro do equipamento",
+                  desc: "Cobertura contra raio, granizo, furto e defeito elétrico. Painéis e inversores protegidos — sem custo extra na hora do sinistro.",
+                  highlight: false,
+                },
+              ].map(({ icon: Icon, title, desc, highlight }) => (
+                <div
+                  key={title}
+                  className={`glass-light rounded-3xl p-6 flex flex-col gap-4 ${
+                    highlight ? "border-2 border-[#FFB100]/40" : ""
+                  }`}
+                >
+                  <div
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      highlight ? "bg-[#FFB100]/15" : "bg-gray-100"
+                    }`}
+                  >
+                    <Icon
+                      size={18}
+                      className={highlight ? "text-[#FFB100]" : "text-gray-500"}
+                    />
+                  </div>
+                  {highlight && (
+                    <span className="text-[10px] font-black text-[#FFB100] uppercase tracking-widest">
+                      Diferencial
+                    </span>
+                  )}
+                  <div>
+                    <h3 className="font-black text-[#0a1628] text-sm mb-2">
+                      {title}
+                    </h3>
+                    <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <a
+                href={`${WHATSAPP}?text=Olá! Tenho interesse no Monitoramento PRO da SolCenter. Quero um diagnóstico gratuito.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/25 cursor-pointer"
+              >
+                Quero o Monitoramento PRO <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 4. COMO FUNCIONA — 4 passos                     */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section id="como-funciona" className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10">
+              <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+                Como funciona
+              </p>
+              <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-black text-[#0a1628] leading-tight tracking-tight">
+                Simples. Você não precisa fazer nada.
+              </h2>
+              <p className="text-gray-500 text-sm mt-3 max-w-md">
+                A SolCenter cuida de tudo — do diagnóstico inicial até a
+                manutenção periódica. Você só recebe o relatório.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-4">
+              {[
+                {
+                  n: "01",
+                  icon: Eye,
+                  t: "Diagnóstico gratuito",
+                  d: "Você preenche o formulário. Nossa equipe analisa o histórico do sistema e identifica o plano mais adequado.",
+                },
+                {
+                  n: "02",
+                  icon: CheckCircle,
+                  t: "Contratação do plano",
+                  d: "Você escolhe a cobertura. Ativamos o monitoramento em tempo real imediatamente após a confirmação.",
+                },
+                {
+                  n: "03",
+                  icon: Wrench,
+                  t: "Agendamento das visitas",
+                  d: "Nossa equipe técnica agenda a limpeza e a visita técnica no melhor horário para você. Sem complicação.",
+                },
+                {
+                  n: "04",
+                  icon: Activity,
+                  t: "Relatório mensal",
+                  d: "Você recebe um relatório mensal com a geração real vs. esperada, visitas realizadas e status do seguro.",
+                },
+              ].map(({ n, icon: Icon, t, d }) => (
+                <div key={n} className="glass-light rounded-3xl p-6 relative">
+                  <span className="text-[#FFB100]/20 font-black text-5xl leading-none absolute top-4 right-5 select-none">
+                    {n}
+                  </span>
+                  <div className="w-9 h-9 bg-[#FFB100]/10 rounded-xl flex items-center justify-center mb-4">
+                    <Icon size={16} className="text-[#FFB100]" />
+                  </div>
+                  <h3 className="font-black text-[#0a1628] text-sm mb-2">{t}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 5. PROVA SOCIAL                                  */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section ref={proofRef} className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+              O que dizem nossos clientes
+            </p>
+            <h2 className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-10">
+              Quem protege, não se arrepende.
+            </h2>
+
+            <div
+              className={`transition-all duration-700 ${
+                proofInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
+              }`}
+            >
+              {/* Depoimento destaque */}
+              <div className="glass-light rounded-3xl overflow-hidden mb-4">
+                <div className="bg-[#FFB100] px-6 py-3 flex items-center gap-2">
+                  <Star size={13} className="text-white fill-white" />
+                  <span className="text-white font-black text-xs uppercase tracking-widest">
+                    Depoimento em destaque
+                  </span>
+                </div>
+                <div className="p-7">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={14}
+                        className="text-[#FFB100] fill-[#FFB100]"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-[#0a1628] text-base font-medium leading-relaxed mb-5">
+                    "Instalei o sistema há 3 anos e nunca tinha feito nenhuma
+                    manutenção. Quando a SolCenter fez o diagnóstico, descobrimos
+                    que os painéis estavam gerando 22% menos por causa da sujeira.
+                    Depois da limpeza, a conta voltou ao que deveria ser. Aprendi a
+                    lição."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-[#FFB100]/10 rounded-full flex items-center justify-center font-black text-[#FFB100] text-sm">
+                      A
+                    </div>
+                    <div>
+                      <p className="font-black text-[#0a1628] text-sm">
+                        Antônio Machado
+                      </p>
+                      <p className="text-gray-400 text-xs">Horizontina, RS</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`grid md:grid-cols-2 gap-4 transition-all duration-700 delay-100 ${
+                  proofInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+              >
+                {[
+                  {
+                    name: "Daniel e Neide Wermuth",
+                    city: "Santo Cristo, RS",
+                    text: "O monitoramento via app é fantástico. Num sábado vimos que a geração havia caído à zero — a equipe da SolCenter identificou um problema no inversor e resolveu na segunda de manhã. Sem o monitoramento, só íamos perceber na próxima conta.",
+                  },
+                  {
+                    name: "Patrick Fernandes",
+                    city: "Três de Maio, RS",
+                    text: "O seguro valeu o investimento. Tivemos uma tempestade com granizo e dois painéis quebraram. A SolCenter cuidou de tudo com a seguradora. Em 15 dias estávamos gerando 100% de novo, sem gastar nada extra.",
+                  },
+                ].map(({ name, city, text }) => (
+                  <div key={name} className="glass-light rounded-3xl p-6">
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={12}
+                          className="text-[#FFB100] fill-[#FFB100]"
+                        />
+                      ))}
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-5">
+                      "{text}"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center font-black text-gray-400 text-xs">
+                        {name[0]}
+                      </div>
+                      <div>
+                        <p className="font-bold text-[#0a1628] text-xs">{name}</p>
+                        <p className="text-gray-400 text-[11px]">{city}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 6. PARA QUEM É                                  */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10">
+              <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3">
+                Para quem é
+              </p>
+              <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-black text-[#0a1628] leading-tight tracking-tight">
+                Qualquer sistema solar instalado
+                <br />
+                <span className="text-gray-400 font-light">
+                  merece essa proteção.
+                </span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                {
+                  img: "/images/solar-residencial.jpg",
+                  title: "Residencial",
+                  desc: "Para quem investiu na conta de casa e quer garantir que o retorno previsto se concretize por 25 anos.",
+                },
+                {
+                  img: "/images/solar-empresarial.jpg",
+                  title: "Empresarial",
+                  desc: "Empresas que dependem da geração para cortar custos operacionais não podem se dar ao luxo de ter falhas.",
+                },
+                {
+                  img: "/images/solar-agro.jpg",
+                  title: "Rural / Agronegócio",
+                  desc: "Propriedades com irrigação e motores elétricos que precisam de geração constante e sistema sempre operacional.",
+                },
+              ].map(({ img, title, desc }) => (
+                <div
+                  key={title}
+                  className="relative rounded-3xl overflow-hidden aspect-[4/3] group"
+                >
+                  <Image
+                    src={img}
+                    alt={title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/85 via-[#0a1628]/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-5">
+                    <h3 className="text-white font-black text-base mb-1">
+                      {title}
+                    </h3>
+                    <p className="text-white/65 text-xs leading-snug">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 7. CONFIANÇA / GARANTIAS                        */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section ref={trustRef} className="relative px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5">
+
+              {/* card imagem + texto */}
+              <div
+                className={`relative rounded-3xl overflow-hidden min-h-[280px] transition-all duration-700 ${
+                  trustInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+              >
+                <Image
+                  src="/images/about.jpg"
+                  alt="Equipe técnica SolCenter"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6">
+                  <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+                    Equipe própria
+                  </p>
+                  <h3 className="text-white font-black text-lg leading-snug">
+                    +10 anos de experiência
+                    <br />
+                    em energia solar no RS
+                  </h3>
+                  <p className="text-white/60 text-xs mt-2">
+                    Técnicos certificados. Mesma equipe que instalou, cuida.
+                  </p>
+                </div>
+              </div>
+
+              {/* 4 garantias */}
+              <div
+                className={`grid grid-cols-2 gap-4 transition-all duration-700 delay-100 ${
+                  trustInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+              >
+                {[
+                  {
+                    icon: Activity,
+                    t: "Monitoramento ativo",
+                    d: "Alertas em tempo real se a geração cair ou parar.",
+                  },
+                  {
+                    icon: Droplets,
+                    t: "Limpeza técnica",
+                    d: "Produto adequado, sem risco de dano à película do painel.",
+                  },
+                  {
+                    icon: Clock,
+                    t: "SLA de atendimento",
+                    d: "Prazo garantido para retorno em caso de falha identificada.",
+                  },
+                  {
+                    icon: Umbrella,
+                    t: "Seguro real",
+                    d: "Apólice com cobertura para raio, granizo, furto e defeito.",
+                  },
+                ].map(({ icon: Icon, t, d }) => (
+                  <div
+                    key={t}
+                    className="glass-light rounded-2xl p-5 flex flex-col items-start gap-3"
+                  >
+                    <div className="w-8 h-8 bg-[#FFB100]/10 rounded-lg flex items-center justify-center">
+                      <Icon size={15} className="text-[#FFB100]" />
+                    </div>
+                    <div>
+                      <p className="font-black text-[#0a1628] text-xs mb-1">{t}</p>
+                      <p className="text-gray-400 text-[11px] leading-snug">{d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 8. FAQ                                          */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section className="relative px-6 py-16">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">
+              Perguntas frequentes
+            </p>
+            <h2 className="text-[clamp(1.6rem,2.8vw,2.2rem)] font-black text-[#0a1628] text-center mb-10">
+              Dúvidas sobre o Monitoramento PRO
+            </h2>
+            <div className="space-y-3">
+              {[
+                {
+                  q: "Posso contratar mesmo que o sistema não tenha sido instalado pela SolCenter?",
+                  a: "Sim. O Monitoramento PRO está disponível para qualquer sistema fotovoltaico instalado na nossa região de atendimento. Antes da ativação, nossa equipe faz um diagnóstico para verificar o estado atual do equipamento.",
+                },
+                {
+                  q: "Com que frequência os painéis são limpos?",
+                  a: "A frequência recomendada é de 2 vezes por ano, podendo ser ajustada conforme a localização (áreas com mais poeira, poluição ou aves podem exigir limpeza mais frequente). O plano PRO inclui a limpeza periódica já no calendário anual.",
+                },
+                {
+                  q: "O que exatamente o seguro cobre?",
+                  a: "A apólice cobre danos causados por descarga elétrica (raio), granizo, furto e defeito elétrico nos equipamentos principais (painéis e inversores). Os detalhes exatos de cobertura e franquia são apresentados no contrato antes da assinatura.",
+                },
+                {
+                  q: "Como funciona o monitoramento em tempo real?",
+                  a: "Após a ativação, você tem acesso a um app onde acompanha a geração do sistema hora a hora. A SolCenter também monitora remotamente e envia alertas automáticos caso a geração caia abaixo do esperado — sem você precisar verificar manualmente.",
+                },
+                {
+                  q: "Atendem fora de Santo Cristo?",
+                  a: "Sim. Atendemos mais de 60 municípios no noroeste gaúcho, incluindo Horizontina, Três de Maio, Santa Rosa, Ijuí, Tucunduva e região. Entre em contato para confirmar a disponibilidade na sua cidade.",
+                },
+                {
+                  q: "O sistema precisa estar funcionando perfeitamente para contratar?",
+                  a: "Não obrigatoriamente. Nossa equipe faz o diagnóstico inicial e, caso identifique algum problema, apresenta o orçamento para correção antes de ativar o plano. Queremos garantir que você tenha o máximo desde o início.",
+                },
+              ].map((item) => (
+                <FAQItem key={item.q} {...item} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* 9. CTA FINAL                                    */}
+        {/* ═══════════════════════════════════════════════ */}
+        <section className="relative px-6 py-20">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="glass-light rounded-3xl p-10 border border-[#FFB100]/20 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[#FFB100]/3 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-[#FFB100]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Sun size={24} className="text-[#FFB100]" />
+                </div>
+                <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-black text-[#0a1628] leading-tight tracking-tight mb-4">
+                  Proteja o seu investimento.
+                  <br />
+                  <span className="text-[#FFB100]">Antes que custe mais caro.</span>
+                </h2>
+                <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-md mx-auto">
+                  Diagnóstico gratuito. Nossa equipe analisa seu sistema e apresenta
+                  o plano ideal para você — sem compromisso.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a
+                    href="#formulario"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("formulario")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="inline-flex items-center justify-center gap-2 bg-[#FFB100] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/25 cursor-pointer"
+                  >
+                    Solicitar diagnóstico grátis <ArrowRight size={14} />
+                  </a>
+                  <a
+                    href={`${WHATSAPP}?text=Olá! Quero saber mais sobre o Monitoramento PRO da SolCenter.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border border-gray-200 text-[#0a1628] font-semibold px-8 py-4 rounded-full text-sm hover:border-[#FFB100] hover:text-[#FFB100] transition cursor-pointer"
+                  >
+                    <MessageCircle size={14} />
+                    Falar no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SubFooterCTA
+          whatsappHref={`${WHATSAPP}?text=Olá! Quero o diagnóstico gratuito do Monitoramento PRO.`}
+        />
+      </div>
+    </div>
+  );
+}

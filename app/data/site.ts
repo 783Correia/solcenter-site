@@ -43,7 +43,7 @@ export const site = {
       title: "Monitoramento PRO",
       label: "Soluções",
       image: "/images/manutencao.jpg",
-      href: "/lp-energia",
+      href: "/lp-monitoramento-pro",
     },
     {
       title: "Energia Empresarial",

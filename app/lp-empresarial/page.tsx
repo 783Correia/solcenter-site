@@ -41,6 +41,7 @@ function LeadForm() {
     const msg = encodeURIComponent(
       `Olá! Me chamo ${name}, tenho uma empresa em ${city} e tenho interesse em energia solar empresarial. Nosso custo de energia atual é de ${bill}. WhatsApp: ${phone}`
     );
+    fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, city, source: 'lp-empresarial', 'Custo empresa': bill }) })
     window.open(`${WHATSAPP}?text=${msg}`, "_blank");
     setSent(true);
     router.push("/obrigado");

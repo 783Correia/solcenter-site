@@ -17,8 +17,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true })
   }
 
-  return NextResponse.json({
-    error: 'Senha incorreta',
-    debug: { receivedLen: password.length, expectedLen: envPw.length, match }
-  }, { status: 401 })
+  return NextResponse.json({ error: 'Senha incorreta' }, { status: 401 })
 }

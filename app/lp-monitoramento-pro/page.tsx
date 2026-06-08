@@ -60,6 +60,7 @@ function LeadForm() {
     const msg = encodeURIComponent(
       `Olá! Me chamo ${name}, moro em ${city} e tenho interesse no Monitoramento PRO. Tenho um sistema ${tipo} instalado há ${tempo}. WhatsApp: ${phone}`
     );
+    fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, city, source: 'lp-monitoramento-pro', 'Tipo de sistema': tipo, 'Tempo instalado': tempo }) })
     window.open(`${WHATSAPP}?text=${msg}`, "_blank");
     setSent(true);
     router.push("/obrigado");

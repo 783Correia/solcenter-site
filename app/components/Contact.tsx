@@ -66,7 +66,9 @@ export default function Contact() {
               const name = (f.elements.namedItem("name") as HTMLInputElement).value;
               const city = (f.elements.namedItem("city") as HTMLInputElement).value;
               const type = (f.elements.namedItem("type") as HTMLSelectElement).value;
+              const phone = (f.elements.namedItem("phone") as HTMLInputElement).value;
               const msg = encodeURIComponent(`Olá! Me chamo ${name}, sou de ${city} e tenho interesse em energia solar${type ? ` (${type})` : ""}. Gostaria de um orçamento gratuito.`);
+              fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, city, source: 'site', 'Interesse': type }) })
               window.open(`${site.whatsappLinkGiovani}?text=${msg}`, "_blank");
               router.push("/obrigado");
             }}>

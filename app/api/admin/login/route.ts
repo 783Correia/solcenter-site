@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   const { password } = await request.json()
 
-  if (password === process.env.ADMIN_PASSWORD) {
+  if (password === process.env.ADMIN_PASSWORD?.trim()) {
     const cookieStore = await cookies()
     cookieStore.set('solcenter-admin', process.env.ADMIN_SECRET!, {
       httpOnly: true,

@@ -9,6 +9,7 @@ const links = [
   { label: "A Solcenter", href: "#sobre" },
   { label: "Soluções", href: "#servicos" },
   { label: "Como funciona", href: "#como-funciona" },
+  { label: "Blog", href: "/blog" },
   { label: "Contato", href: "#contato" },
 ];
 

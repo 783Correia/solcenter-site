@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { notFound } from 'next/navigation'
-import { supabaseAdmin } from '@/app/lib/supabase-admin'
+import { supabaseAdmin as getAdmin } from '@/app/lib/supabase-admin'
 import PostForm from '../../../_components/PostForm'
 import Link from 'next/link'
 import { FiArrowLeft } from 'react-icons/fi'
@@ -12,7 +12,7 @@ interface Props {
 
 export default async function EditPostPage({ params }: Props) {
   const { id } = await params
-  const { data: post } = await supabaseAdmin.from('blog_posts').select('*').eq('id', id).single()
+  const { data: post } = await getAdmin().from('blog_posts').select('*').eq('id', id).single()
   if (!post) notFound()
 
   return (

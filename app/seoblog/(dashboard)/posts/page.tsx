@@ -1,11 +1,11 @@
-import { supabaseAdmin } from '@/app/lib/supabase-admin'
+import { supabaseAdmin as getAdmin } from '@/app/lib/supabase-admin'
 import Link from 'next/link'
 import PostActions from './PostActions'
 
 export const dynamic = 'force-dynamic'
 
 export default async function PostsPage() {
-  const { data: posts } = await supabaseAdmin
+  const { data: posts } = await getAdmin()
     .from('blog_posts')
     .select('*')
     .order('created_at', { ascending: false })

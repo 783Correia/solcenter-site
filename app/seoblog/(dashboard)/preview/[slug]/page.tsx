@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { supabaseAdmin } from '@/app/lib/supabase-admin'
+import { supabaseAdmin as getAdmin } from '@/app/lib/supabase-admin'
 import BlogPostContent from '@/app/blog/[slug]/content'
 import Link from 'next/link'
 import { FiArrowLeft, FiEdit2, FiEye } from 'react-icons/fi'
@@ -12,10 +12,10 @@ interface Props {
 
 export default async function PreviewPage({ params }: Props) {
   const { slug } = await params
-  const { data: post } = await supabaseAdmin.from('blog_posts').select('*').eq('slug', slug).single()
+  const { data: post } = await getAdmin().from('blog_posts').select('*').eq('slug', slug).single()
   if (!post) notFound()
 
-  const { data: related } = await supabaseAdmin.from('blog_posts').select('*').eq('published', true).neq('id', post.id).limit(3)
+  const { data: related } = await getAdmin().from('blog_posts').select('*').eq('published', true).neq('id', post.id).limit(3)
 
   return (
     <>

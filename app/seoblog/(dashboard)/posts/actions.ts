@@ -1,7 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { supabaseAdmin } from '@/app/lib/supabase-admin'
+import { supabaseAdmin as getAdmin } from '@/app/lib/supabase-admin'
 
 type PostData = {
   title: string
@@ -19,7 +19,7 @@ type PostData = {
 }
 
 export async function createPost(data: PostData): Promise<{ slug: string }> {
-  const { data: created, error } = await supabaseAdmin.from('blog_posts').insert(data).select('slug').single()
+  const { data: created, error } = await getAdmin().from('blog_posts').insert(data).select('slug').single()
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
   revalidatePath('/seoblog/posts')
@@ -27,7 +27,7 @@ export async function createPost(data: PostData): Promise<{ slug: string }> {
 }
 
 export async function updatePost(id: string, data: Partial<PostData>): Promise<{ slug: string }> {
-  const { data: updated, error } = await supabaseAdmin.from('blog_posts').update(data).eq('id', id).select('slug').single()
+  const { data: updated, error } = await getAdmin().from('blog_posts').update(data).eq('id', id).select('slug').single()
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
   revalidatePath('/seoblog/posts')
@@ -35,14 +35,14 @@ export async function updatePost(id: string, data: Partial<PostData>): Promise<{
 }
 
 export async function deletePost(id: string) {
-  const { error } = await supabaseAdmin.from('blog_posts').delete().eq('id', id)
+  const { error } = await getAdmin().from('blog_posts').delete().eq('id', id)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
   revalidatePath('/seoblog/posts')
 }
 
 export async function togglePublish(id: string, published: boolean) {
-  const { error } = await supabaseAdmin.from('blog_posts').update({ published }).eq('id', id)
+  const { error } = await getAdmin().from('blog_posts').update({ published }).eq('id', id)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
   revalidatePath('/seoblog/posts')

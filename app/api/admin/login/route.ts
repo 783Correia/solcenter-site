@@ -3,10 +3,13 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   const { password } = await request.json()
+  const envPw = process.env.ADMIN_PASSWORD?.trim() ?? ''
+  const envSecret = process.env.ADMIN_SECRET?.trim() ?? ''
+  const match = password.trim() === envPw
 
-  if (password === process.env.ADMIN_PASSWORD?.trim()) {
+  if (match && envPw) {
     const cookieStore = await cookies()
-    cookieStore.set('solcenter-admin', process.env.ADMIN_SECRET!, {
+    cookieStore.set('solcenter-admin', envSecret, {
       httpOnly: true,
       path: '/',
       maxAge: 60 * 60 * 24 * 30,
@@ -14,5 +17,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true })
   }
 
-  return NextResponse.json({ error: 'Senha incorreta' }, { status: 401 })
+  return NextResponse.json({
+    error: 'Senha incorreta',
+    debug: { receivedLen: password.length, expectedLen: envPw.length, match }
+  }, { status: 401 })
 }

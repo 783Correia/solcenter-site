@@ -215,28 +215,45 @@ export default function LPAgro() {
               <div className="flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
                 <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
-                  Energia é um dos maiores<br />custos do agro.
+                  Irrigação, secador, câmara fria.<br />Você sabe quanto cada hora custa?
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Irrigação, motores, câmaras frias, secadores. A conta de luz consome uma fatia enorme da margem — e sobe todo ano.
+                No interior gaúcho, energia já é um dos maiores custos de quem produz. Sobe todo ano — independente do clima.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { img: "/images/lp-conta-energia.jpg", stat: "↑ 102%", label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
-                { img: "/images/lp-economia.jpg", stat: "R$ 25.000", label: "Economia anual média de uma propriedade rural com solar" },
-                { img: "/images/lp-retorno.jpg", stat: "4–5 anos", label: "Retorno do investimento. Sistema gera energia por 25 anos" },
-              ].map((card) => (
-                <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
-                  <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-5">
-                    <p className="text-white text-3xl font-black leading-none mb-1">{card.stat}</p>
-                    <p className="text-white/65 text-xs leading-snug">{card.label}</p>
+              {/* Card grande col-span-2 */}
+              <div className="md:col-span-2 relative rounded-3xl overflow-hidden h-72 md:h-auto min-h-[280px]">
+                <Image src="/images/solar-agro.jpg" alt="Energia solar no agronegócio" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <p className="text-amber-400/80 text-xs font-bold uppercase tracking-widest mb-3">Propriedade rural — Noroeste RS</p>
+                  <p className="text-white text-2xl md:text-3xl font-black leading-tight mb-2">
+                    R$ 0 por hora de irrigação.
+                  </p>
+                  <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+                    Com solar, o pivô central roda sem custo variável de energia. O que era despesa vira margem de volta.
+                  </p>
+                </div>
+              </div>
+              {/* Coluna direita — 2 glass cards */}
+              <div className="flex flex-col gap-4">
+                <div className="glass-light rounded-2xl p-6 flex-1 flex flex-col justify-between min-h-[130px]">
+                  <p className="text-[#FFB100] text-4xl font-black leading-none">R$ 57 mil</p>
+                  <div>
+                    <p className="text-[#0a1628] font-bold text-sm mt-3 leading-snug">Custo médio de energia em uma propriedade com irrigação por safra</p>
+                    <p className="text-gray-400 text-xs mt-1 leading-snug">Pivô central de 50 ha. Tarifa rural média 2024.</p>
                   </div>
                 </div>
-              ))}
+                <div className="glass-light rounded-2xl p-6 flex-1 flex flex-col justify-between min-h-[130px]">
+                  <p className="text-[#FFB100] text-4xl font-black leading-none">3 safras</p>
+                  <div>
+                    <p className="text-[#0a1628] font-bold text-sm mt-3 leading-snug">Retorno do investimento em propriedades rurais</p>
+                    <p className="text-gray-400 text-xs mt-1 leading-snug">Não "anos" — safras. Paga em colheita, não em calendário.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -237,7 +237,6 @@ export default function LPEnergia() {
         {/* ─── 2. PROBLEMA ────────────────────────────── */}
         <section className="relative px-6 py-20">
           <div className="max-w-5xl mx-auto">
-            {/* Heading assimétrico */}
             <div className="flex flex-col md:flex-row md:items-end gap-6 mb-12">
               <div className="flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
@@ -246,26 +245,62 @@ export default function LPEnergia() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Bandeiras tarifárias, inflação energética, taxas escondidas. A concessionária cobra mais a cada ciclo — e você não tem controle sobre isso.
+                Todo ano a concessionária cobra mais. E você paga porque não tem escolha — ainda.
               </p>
             </div>
 
-            {/* Photo stat cards — estilo editorial */}
+            {/* Layout assimétrico: 1 grande + 2 empilhados */}
             <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { img: "/images/lp-conta-energia.jpg", stat: "↑ 102%",   label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
-                { img: "/images/lp-economia.jpg",       stat: "R$ 7.500", label: "Economia anual média de um cliente SolCenter" },
-                { img: "/images/lp-retorno.jpg",        stat: "4–5 anos", label: "Retorno do investimento. Garantia de eficiência de geração por 25 anos" },
-              ].map((card) => (
-                <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
-                  <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-5">
-                    <p className="text-white text-3xl font-black leading-none mb-1">{card.stat}</p>
-                    <p className="text-white/65 text-xs leading-snug">{card.label}</p>
+
+              {/* Card grande — caso real */}
+              <div className="md:col-span-2 relative rounded-3xl overflow-hidden h-72 md:h-auto min-h-[280px]">
+                <Image
+                  src="/images/solar-residencial.jpg"
+                  alt="Casa com painéis solares instalados"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/95 via-[#0a1628]/50 to-[#0a1628]/10" />
+                <div className="absolute top-5 left-5">
+                  <span className="bg-[#FFB100]/20 border border-[#FFB100]/40 text-[#FFB100] text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    Caso real — Santo Cristo, RS
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 p-6">
+                  <div className="flex items-end gap-3 mb-2">
+                    <span className="text-white/40 text-xl font-black line-through">R$ 680</span>
+                    <span className="text-[#FFB100] text-4xl font-black leading-none">R$ 47</span>
+                    <span className="text-white/50 text-sm mb-1">/ mês</span>
+                  </div>
+                  <p className="text-white/60 text-xs leading-snug max-w-xs">
+                    No mesmo telhado. Com o mesmo consumo. A diferença é que agora o sol paga a conta.
+                  </p>
+                </div>
+              </div>
+
+              {/* Coluna direita — 2 stats empilhados */}
+              <div className="flex flex-col gap-4">
+                <div className="flex-1 glass-light rounded-3xl p-6 flex flex-col justify-between">
+                  <p className="text-gray-400 text-xs leading-snug">
+                    A tarifa de energia subiu nos últimos 10 anos.
+                  </p>
+                  <div>
+                    <p className="text-[clamp(2.4rem,4vw,3rem)] font-black text-[#0a1628] leading-none tracking-tight">↑ 102%</p>
+                    <p className="text-gray-500 text-xs mt-1">na conta de quem não tem solar</p>
                   </div>
                 </div>
-              ))}
+                <div className="flex-1 glass-light rounded-3xl p-6 flex flex-col justify-between">
+                  <p className="text-gray-400 text-xs leading-snug">
+                    Economia média anual de quem instalou com a SolCenter.
+                  </p>
+                  <div>
+                    <p className="text-[clamp(2rem,3.5vw,2.6rem)] font-black text-[#0a1628] leading-none tracking-tight">R$ 7.500</p>
+                    <p className="text-gray-500 text-xs mt-1">por ano — que ficam no seu bolso</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

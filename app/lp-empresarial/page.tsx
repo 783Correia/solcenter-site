@@ -215,28 +215,45 @@ export default function LPEmpresarial() {
               <div className="flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">O problema</p>
                 <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
-                  Energia é um custo fixo<br />que corrói a margem.
+                  Energia é o custo que<br />ninguém consegue cortar.
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Bandeiras tarifárias, demanda contratada, taxas de distribuição. Para empresas, a conta de energia é o custo que mais cresce — e o que você menos controla.
+                Folha você negocia. Fornecedor você negocia. A conta de luz chega com bandeira tarifária, demanda contratada, e você paga — sem escolha.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { img: "/images/lp-conta-energia.jpg", stat: "↑ 102%", label: "Aumento na tarifa de energia no Brasil nos últimos 10 anos" },
-                { img: "/images/lp-economia.jpg", stat: "R$ 45.000", label: "Economia anual média de uma empresa média com energia solar" },
-                { img: "/images/lp-retorno.jpg", stat: "3–5 anos", label: "Retorno do investimento. Sistema gera energia por 25 anos" },
-              ].map((card) => (
-                <div key={card.stat} className="group relative rounded-2xl overflow-hidden h-64 shadow-md shadow-black/8 cursor-default">
-                  <Image src={card.img} alt={card.label} fill className="object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-5">
-                    <p className="text-white text-3xl font-black leading-none mb-1">{card.stat}</p>
-                    <p className="text-white/65 text-xs leading-snug">{card.label}</p>
+              {/* Card grande col-span-2 */}
+              <div className="md:col-span-2 relative rounded-3xl overflow-hidden h-72 md:h-auto min-h-[280px]">
+                <Image src="/images/solar-empresarial.jpg" alt="Energia solar empresarial" fill className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <p className="text-amber-400/80 text-xs font-bold uppercase tracking-widest mb-3">Empresa atendida — Santo Cristo, RS</p>
+                  <p className="text-white text-2xl md:text-3xl font-black leading-tight mb-2">
+                    Energia virou ativo,<br />não mais passivo.
+                  </p>
+                  <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+                    O que saía todo mês pra concessionária agora fica no caixa. Custo operacional menor, margem maior.
+                  </p>
+                </div>
+              </div>
+              {/* Coluna direita — 2 glass cards */}
+              <div className="flex flex-col gap-4">
+                <div className="glass-light rounded-2xl p-6 flex-1 flex flex-col justify-between min-h-[130px]">
+                  <p className="text-[#FFB100] text-4xl font-black leading-none">3º lugar</p>
+                  <div>
+                    <p className="text-[#0a1628] font-bold text-sm mt-3 leading-snug">Energia é o 3º maior custo operacional das PMEs brasileiras</p>
+                    <p className="text-gray-400 text-xs mt-1 leading-snug">Atrás só de folha de pagamento e aluguel.</p>
                   </div>
                 </div>
-              ))}
+                <div className="glass-light rounded-2xl p-6 flex-1 flex flex-col justify-between min-h-[130px]">
+                  <p className="text-[#FFB100] text-4xl font-black leading-none">R$ 0</p>
+                  <div>
+                    <p className="text-[#0a1628] font-bold text-sm mt-3 leading-snug">Custo de energia de empresas que instalaram em 2020</p>
+                    <p className="text-gray-400 text-xs mt-1 leading-snug">Investimento pago. Sistema gerando há 5 anos.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

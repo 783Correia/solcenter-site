@@ -111,7 +111,7 @@ const SPECS = [
   { icon: Gauge, label: "Velocidade", value: "32 km/h", sub: "velocidade máxima" },
   { icon: Zap, label: "Recarga", value: "6–8 h", sub: "tomada 110/220V" },
   { icon: Package, label: "Carga", value: "200 kg", sub: "peso suportado" },
-  { icon: MapPin, label: "Autonomia", value: "120 km", sub: "por carga completa" },
+  { icon: MapPin, label: "Autonomia", value: "60 km", sub: "por carga completa" },
 ];
 
 const DETAILS = [
@@ -504,7 +504,7 @@ export default function LPMobi() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-7">
               {[
                 { v: "1000W", label: "motor brushless" },
-                { v: "120km", label: "autonomia" },
+                { v: "60km", label: "autonomia" },
                 { v: "200kg", label: "carga máx." },
                 { v: "4", label: "cores" },
               ].map((s) => (
@@ -764,7 +764,7 @@ export default function LPMobi() {
                   {[
                     { label: "Motor", value: "1000W" },
                     { label: "Bateria", value: "60v / 20Ah" },
-                    { label: "Autonomia", value: "120 km" },
+                    { label: "Autonomia", value: "60 km" },
                     { label: "Velocidade", value: "32 km/h" },
                     { label: "Carga máx.", value: "200 kg" },
                     { label: "Recarga", value: "6–8 h" },
@@ -829,7 +829,7 @@ export default function LPMobi() {
             {[
               { icon: IdCard, title: "Sem carteira de motorista", desc: "Não exige CNH. Qualquer pessoa pode pilotar — o público da sua loja aumenta do dia pra noite.", highlight: true },
               { icon: BadgeDollarSign, title: "Sem IPVA nem emplacamento", desc: "Zero burocracia para o comprador final. Ninguém vai deixar de comprar por causa de documentação.", highlight: true },
-              { icon: Battery, title: "Bateria de lítio 60v/20Ah", desc: "120km por carga completa, recarga em qualquer tomada 110/220V. Serve pra rotina urbana sem adaptação.", highlight: false },
+              { icon: Battery, title: "Bateria de lítio 60v/20Ah", desc: "60km por carga completa, recarga em qualquer tomada 110/220V. Serve pra rotina urbana sem adaptação.", highlight: false },
               { icon: Shield, title: "Freio a disco + Full LED", desc: "Produto completo saindo da caixa. Freio a disco dianteiro e traseiro, iluminação Full LED de série.", highlight: false },
             ].map(({ icon: Icon, title, desc, highlight }) => (
               <div
@@ -855,7 +855,7 @@ export default function LPMobi() {
                 ["Motor", "1000W brushless sem escovas"],
                 ["Bateria", "60v / 20Ah de lítio"],
                 ["Tempo de carga", "6 a 8 horas"],
-                ["Autonomia", "Até 120 km"],
+                ["Autonomia", "Até 60 km"],
                 ["Velocidade máxima", "32 km/h"],
                 ["Transmissão", "3 velocidades"],
                 ["Suspensão", "Dianteira e traseira"],
@@ -948,7 +948,7 @@ export default function LPMobi() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { icon: Users, title: "10 anos em mobilidade elétrica", desc: "Operamos no Sul do Brasil há mais de uma década com produto testado e aprovado." },
+              { icon: Users, title: "2 anos em mobilidade elétrica", desc: "Operamos no Sul do Brasil com produto testado e aprovado no mercado." },
               { icon: Wrench, title: "Suporte técnico incluído", desc: "Treinamento da equipe de vendas e suporte pós-venda para o consumidor final." },
               { icon: Package, title: "Logística gerenciada", desc: "Entrega e reposição gerenciadas pela SolCenter Mobi. Sem dor de cabeça." },
             ].map(({ icon: Icon, title, desc }) => (

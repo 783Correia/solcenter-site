@@ -184,7 +184,7 @@ export default function LPEnergia() {
               Reduza até <span className="text-[#FFB100]">95%</span> da sua conta de energia.
             </h1>
             <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
-              Sistema solar projetado, instalado e homologado do começo ao fim. Sem burocracia, sem surpresa — com garantia real e suporte técnico.
+              A gente cuida de tudo — do projeto até o sistema ligar. Você só espera a conta de luz cair.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a href="#formulario"
@@ -350,7 +350,7 @@ export default function LPEnergia() {
                 </div>
                 <div>
                   <p className="text-3xl font-black text-[#0a1628] mb-1">4–5<span className="text-base font-medium text-gray-400"> anos</span></p>
-                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Garantia de eficiência de geração por 25 anos.</p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Depois disso, mais de 20 anos de energia praticamente de graça.</p>
                 </div>
               </div>
 
@@ -396,7 +396,7 @@ export default function LPEnergia() {
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 { n: "1", t: "Simulação gratuita", d: "Você preenche o formulário. Mostramos o retorno exato no seu caso — sem compromisso." },
-                { n: "2", t: "Projeto e aprovação", d: "Cuidamos do projeto técnico e de toda a homologação junto à concessionária. Você só assina." },
+                { n: "2", t: "Projeto e aprovação", d: "Cuidamos de toda a papelada e aprovações junto à concessionária. Você só assina — o resto é com a gente." },
                 { n: "3", t: "Instalação", d: "Equipe técnica instala em 1 a 2 dias, no prazo combinado. Sem obra, sem surpresa." },
                 { n: "4", t: "Economizando", d: "No primeiro mês você já vê na conta. Monitoramento via app disponível." },
               ].map((s, i) => (
@@ -513,14 +513,14 @@ export default function LPEnergia() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Projetos dimensionados para cada tipo de consumo — residencial, rural ou empresarial.
+                Casa, empresa ou sítio — o sistema é feito pro seu consumo, não um pacote genérico.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. Sistema dimensionado pro seu consumo real." },
-                { img: "/images/solar-empresarial.jpg", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Redução real de custo operacional." },
-                { img: "/images/solar-agro.jpg", icon: Tractor, title: "Agronegócio", desc: "Propriedades rurais, silos e cooperativas. Projetos de grande porte." },
+                { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. A conta cai sem mudar nada no consumo." },
+                { img: "/images/solar-empresarial.jpg", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Menos custo fixo, mais margem." },
+                { img: "/images/solar-agro.jpg", icon: Tractor, title: "Agronegócio", desc: "Sítios, fazendas e cooperativas. Irrigação e secador sem custo variável." },
               ].map((s) => (
                 <a key={s.title} href="#formulario" className="group relative rounded-2xl overflow-hidden cursor-pointer block shadow-md shadow-black/5">
                   <div className="relative h-64">
@@ -579,7 +579,7 @@ export default function LPEnergia() {
                 {[
                   { icon: ShieldCheck, t: "25 anos de garantia de desempenho", d: "Placas garantidas pelo fabricante por 25 anos. Inversores: 5 a 12 anos." },
                   { icon: CheckCircle, t: "Projeto homologado e regularizado", d: "A SolCenter cuida de toda a burocracia com a concessionária. Você não faz nada." },
-                  { icon: TrendingDown, t: "Redução garantida na conta", d: "Sistemas dimensionados para reduzir em até 95% o valor da sua fatura." },
+                  { icon: TrendingDown, t: "Redução garantida na conta", d: "O sistema é projetado pro seu consumo real. A queda na conta é parte do projeto — não promessa." },
                   { icon: Zap, t: "Suporte técnico pós-instalação", d: "Monitoramento contínuo com a Solcenter PRO. Qualquer problema, a gente resolve." },
                 ].map(({ icon: Icon, t, d }) => (
                   <div key={t} className="glass-light rounded-2xl p-5 flex gap-4">

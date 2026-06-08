@@ -164,7 +164,7 @@ export default function LPEmpresarial() {
               Corte até <span className="text-[#FFB100]">95%</span> do custo de energia da sua empresa.
             </h1>
             <p className="text-white/55 text-base leading-relaxed mb-8 max-w-lg">
-              Comércio, indústria, condomínio ou galpão. Sistema projetado para o seu consumo real — com retorno em até 5 anos e geração garantida por 25.
+              A conta de luz da empresa não dá desconto. Com solar, você para de pagar pra ela — e esse dinheiro fica no seu caixa.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a href="#formulario"
@@ -300,7 +300,7 @@ export default function LPEmpresarial() {
                 </div>
                 <div>
                   <p className="text-3xl font-black text-[#0a1628] mb-1">3–5<span className="text-base font-medium text-gray-400"> anos</span></p>
-                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Garantia de eficiência de geração por 25 anos.</p>
+                  <p className="text-gray-400 text-xs leading-relaxed">Retorno do investimento. Depois disso, mais de 20 anos de energia praticamente de graça.</p>
                 </div>
               </div>
 
@@ -342,8 +342,8 @@ export default function LPEmpresarial() {
             </div>
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { n: "1", t: "Análise de consumo", d: "Analisamos as faturas da sua empresa e dimensionamos o sistema para o seu consumo real, incluindo demanda e bandeiras tarifárias." },
-                { n: "2", t: "Projeto e aprovação", d: "Projeto técnico completo e toda a homologação junto à distribuidora. Você revisa e assina — nós fazemos o resto." },
+                { n: "1", t: "Análise de consumo", d: "Analisamos as faturas da sua empresa e calculamos o tamanho certo do sistema — pra cortar o máximo possível, sem sobrar nem faltar." },
+                { n: "2", t: "Projeto e aprovação", d: "Projeto completo e toda a burocracia com a distribuidora. Você revisa e assina — nós fazemos o resto." },
                 { n: "3", t: "Instalação rápida", d: "Equipe técnica instala sem interromper as atividades da empresa. Em 1 a 3 dias o sistema está pronto." },
                 { n: "4", t: "Economia imediata", d: "No primeiro mês já aparece na conta. Monitoramento em tempo real via app disponível." },
               ].map((s, i) => (
@@ -457,7 +457,7 @@ export default function LPEmpresarial() {
                 { q: "A instalação para as atividades da empresa?", a: "Não. Nossa equipe instala sem interromper as operações. A instalação leva de 1 a 3 dias dependendo do porte do projeto." },
                 { q: "E os incentivos fiscais para empresas?", a: "Empresas do Simples Nacional têm isenção de ICMS sobre a energia gerada. Há ainda possibilidade de depreciação acelerada do ativo. Nossos consultores orientam em cada caso." },
                 { q: "Existe financiamento para pessoa jurídica?", a: "Sim. Trabalhamos com linhas de crédito específicas para PJ, incluindo Sicredi e BNDES. Em muitos casos a parcela é menor do que a economia gerada no primeiro mês." },
-                { q: "O sistema aguenta o consumo da minha empresa?", a: "O sistema é dimensionado especificamente para o seu consumo, incluindo os picos de demanda. Garantimos que o sistema atende 100% do que foi projetado." },
+                { q: "O sistema aguenta o consumo da minha empresa?", a: "Sim. O sistema é calculado pro seu consumo real — não é genérico. Cada projeto é feito pra atender 100% do que foi prometido, incluindo os horários de pico." },
               ].map((item) => (
                 <FAQItem key={item.q} q={item.q} a={item.a} />
               ))}

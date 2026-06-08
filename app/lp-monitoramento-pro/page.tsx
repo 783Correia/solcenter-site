@@ -309,17 +309,16 @@ export default function LPMonitoramentoPro() {
                   O problema
                 </p>
                 <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-black text-[#0a1628] leading-tight tracking-tight">
-                  Sintomas que você
+                  Desde que instalou, você olhou
                   <br />
                   <span className="text-gray-400 font-light">
-                    não está percebendo.
+                    pro painel quantas vezes?
                   </span>
                 </h2>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-                A maioria dos problemas num sistema solar é silenciosa. Não tem
-                alarme, não tem aviso — você só descobre na conta ou quando o
-                equipamento para.
+                A maioria das pessoas instala e esquece. O sistema fica no
+                telhado, gerando — ou não — sem dar satisfação pra ninguém.
               </p>
             </div>
 
@@ -333,21 +332,21 @@ export default function LPMonitoramentoPro() {
               {[
                 {
                   icon: TrendingDown,
-                  stat: "↓ 30%",
-                  titulo: "Geração caindo em silêncio",
-                  desc: "Painéis sujos perdem até 30% de eficiência gradualmente. Você não percebe porque não tem referência do que deveria estar gerando.",
+                  stat: "Silencioso",
+                  titulo: "Painel sujo não avisa que tá sujo",
+                  desc: "Poeira e sujeira vão cobrindo os módulos devagar. O sistema continua ligado — só que gerando menos. Você não percebe.",
                 },
                 {
                   icon: AlertTriangle,
-                  stat: "6 meses",
-                  titulo: "Falha que passa meses invisível",
-                  desc: "Tempo médio que um inversor falha antes de o dono perceber, sem monitoramento ativo. Cada mês é prejuízo acumulado na conta.",
+                  stat: "Sem alarme",
+                  titulo: "Inversor com problema não pisca vermelho",
+                  desc: "Quando o inversor falha, ele simplesmente para. Sem barulho, sem sinal. Você só descobre quando a conta de luz sobe.",
                 },
                 {
                   icon: ShieldCheck,
-                  stat: "5 anos",
-                  titulo: "Garantia que o fabricante pode negar",
-                  desc: "Fabricantes exigem laudo de manutenção periódica para honrar a garantia. Sem registro, você paga o conserto do próprio bolso.",
+                  stat: "Letra miúda",
+                  titulo: "A garantia tem condição",
+                  desc: "Fabricante exige comprovante de manutenção pra honrar a garantia. Sem laudo, o conserto sai do seu bolso.",
                 },
               ].map(({ icon: Icon, stat, titulo, desc }) => (
                 <div key={titulo} className="glass-light rounded-3xl p-7 flex flex-col gap-5">
@@ -355,7 +354,7 @@ export default function LPMonitoramentoPro() {
                     <Icon size={22} className="text-[#FFB100]" />
                   </div>
                   <div>
-                    <p className="text-[clamp(2.4rem,4vw,3rem)] font-black text-[#0a1628] leading-none tracking-tight mb-2">
+                    <p className="text-[clamp(1.6rem,3vw,2rem)] font-black text-[#0a1628] leading-none tracking-tight mb-2">
                       {stat}
                     </p>
                     <p className="font-bold text-[#0a1628] text-sm mb-2">{titulo}</p>

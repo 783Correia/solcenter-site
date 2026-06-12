@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Fale com a equipe da Solcenter: orçamento gratuito de energia solar, WhatsApp, telefone e endereço em Santo Cristo / RS.",
   alternates: { canonical: "https://www.solcenter.com.br/contato" },
+  openGraph: { url: "https://www.solcenter.com.br/contato" },
 };
 
 export default function ContatoPage() {
@@ -16,6 +17,7 @@ export default function ContatoPage() {
     <>
       <Navbar />
       <main className="pt-20">
+        <h1 className="sr-only">Contato — Fale com a Solcenter</h1>
         <Contact />
       </main>
       <Footer />

@@ -1,7 +1,7 @@
 import { supabase } from '@/app/lib/supabase'
 import BlogPostsGrid from './posts-grid'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 export default async function BlogPage() {
   const { data: posts } = await supabase()

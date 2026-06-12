@@ -59,6 +59,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: "https://www.solcenter.com.br/lp-monitoramento-pro",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://www.solcenter.com.br/blog",
       lastModified: new Date(),
       changeFrequency: "weekly",

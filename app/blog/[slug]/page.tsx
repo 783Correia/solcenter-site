@@ -4,7 +4,7 @@ import { supabase } from '@/app/lib/supabase'
 import BlogPostContent from './content'
 import Script from 'next/script'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 interface Props {
   params: Promise<{ slug: string }>

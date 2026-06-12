@@ -10,6 +10,14 @@ const navLinks = [
   { label: "Contato", href: "#contato" },
 ];
 
+const solutionLinks = [
+  { label: "Energia Solar Residencial", href: "/lp-energia" },
+  { label: "Energia Solar para Empresas", href: "/lp-empresarial" },
+  { label: "Energia Solar no Agro", href: "/lp-agro" },
+  { label: "Mobilidade Elétrica", href: "/lp-mobi" },
+  { label: "Monitoramento PRO", href: "/lp-monitoramento-pro" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-[#f7f8f9] border-t border-gray-200 pt-16 pb-8">
@@ -33,6 +41,14 @@ export default function Footer() {
             <h4 className="text-[#0a1628] font-bold text-sm mb-5 uppercase tracking-widest">Navegação</h4>
             <ul className="space-y-3">
               {navLinks.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-gray-400 hover:text-[#00a651] transition-colors text-sm">{l.label}</a>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-[#0a1628] font-bold text-sm mb-5 mt-8 uppercase tracking-widest">Soluções</h4>
+            <ul className="space-y-3">
+              {solutionLinks.map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-gray-400 hover:text-[#00a651] transition-colors text-sm">{l.label}</a>
                 </li>

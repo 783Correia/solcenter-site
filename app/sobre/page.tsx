@@ -7,10 +7,11 @@ import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 
 export const metadata: Metadata = {
-  title: "Sobre a Solcenter — 10 anos de energia solar no Noroeste Gaúcho",
+  title: "Sobre a Solcenter — Energia Solar no Noroeste Gaúcho",
   description:
     "Conheça a Solcenter: mais de 1.400 projetos de energia solar entregues em 60+ cidades do Rio Grande do Sul. Sede em Santo Cristo / RS.",
   alternates: { canonical: "https://www.solcenter.com.br/sobre" },
+  openGraph: { url: "https://www.solcenter.com.br/sobre" },
 };
 
 export default function SobrePage() {
@@ -18,6 +19,7 @@ export default function SobrePage() {
     <>
       <Navbar />
       <main>
+        <h1 className="sr-only">Sobre a Solcenter — Energia Solar no Noroeste Gaúcho</h1>
         <div className="pt-20">
           <About />
         </div>

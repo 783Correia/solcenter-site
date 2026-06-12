@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Saiba como a Solcenter coleta, usa e protege seus dados pessoais, em conformidade com a LGPD (Lei Geral de Proteção de Dados).",
   alternates: { canonical: "https://www.solcenter.com.br/politica-de-privacidade" },
+  openGraph: { url: "https://www.solcenter.com.br/politica-de-privacidade" },
 };
 
 const sections = [

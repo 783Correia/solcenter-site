@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
@@ -6,6 +7,7 @@ import { site } from "../data/site";
 
 export default function Contact() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   return (
     <section id="contato" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -62,6 +64,8 @@ export default function Contact() {
             <p className="text-gray-400 text-sm mb-6">Preencha e retornamos em até 24h.</p>
             <form className="space-y-4" onSubmit={(e) => {
               e.preventDefault();
+              if (loading) return;
+              setLoading(true);
               const f = e.currentTarget;
               const name = (f.elements.namedItem("name") as HTMLInputElement).value;
               const city = (f.elements.namedItem("city") as HTMLInputElement).value;
@@ -98,9 +102,9 @@ export default function Contact() {
                   <option value="agronegócio">Agronegócio</option>
                 </select>
               </div>
-              <button type="submit"
-                className="w-full bg-[#00a651] text-white font-bold py-3.5 rounded-xl hover:bg-[#00c060] transition-all text-sm mt-1">
-                Quero meu orçamento grátis
+              <button type="submit" disabled={loading}
+                className="w-full bg-[#00a651] text-white font-bold py-3.5 rounded-xl hover:bg-[#00c060] transition-all text-sm mt-1 disabled:opacity-60 disabled:cursor-not-allowed">
+                {loading ? 'Enviando...' : 'Quero meu orçamento grátis'}
               </button>
             </form>
           </motion.div>

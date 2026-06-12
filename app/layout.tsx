@@ -146,7 +146,7 @@ const schemaOrg = {
         "Mobilidade elétrica",
         "Scooter elétrica EVOX",
         "Redução de conta de luz",
-        "Financiamento solar Sicredi",
+        "Financiamento solar",
         "Homologação junto à distribuidora",
         "Monitoramento de sistema solar"
       ]
@@ -237,7 +237,7 @@ const schemaOrg = {
           "name": "Tem financiamento para energia solar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Trabalhamos com financiamento Sicredi com condições facilitadas. A maioria dos clientes paga parcelas menores do que a economia gerada na conta de luz — ou seja, já economiza desde o primeiro mês mesmo financiando."
+            "text": "Sim. Trabalhamos com financiamento com condições facilitadas. A maioria dos clientes paga parcelas menores do que a economia gerada na conta de luz — ou seja, já economiza desde o primeiro mês mesmo financiando."
           }
         },
         {
@@ -272,9 +272,9 @@ export default function RootLayout({
       {/* Google Analytics 4 */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="ga4-init" strategy="afterInteractive">{`
+      <Script id="ga4-init" strategy="lazyOnload">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());

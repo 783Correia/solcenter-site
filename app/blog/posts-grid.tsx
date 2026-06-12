@@ -14,7 +14,7 @@ export default function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
       {posts.map(post => (
         <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
           <article style={{
@@ -37,7 +37,7 @@ export default function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
             {/* Imagem */}
             <div style={{ position: 'relative', aspectRatio: '16/9', background: '#e5e7eb' }}>
               {post.image_url ? (
-                <Image src={post.image_url} alt={post.title} fill style={{ objectFit: 'cover' }} unoptimized />
+                <Image src={post.image_url} alt={post.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} unoptimized />
               ) : (
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #0a1628, #1a3a6a)' }} />
               )}

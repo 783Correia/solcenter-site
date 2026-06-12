@@ -52,7 +52,7 @@ export const site = {
       href: "/lp-empresarial",
     },
     {
-      title: "Financiamento Sicredi",
+      title: "Financiamento",
       label: "Soluções",
       image: "/images/financiamento.jpg",
       href: "/lp-energia",

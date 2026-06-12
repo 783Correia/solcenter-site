@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Instale energia solar e economize de verdade. Cliente com conta de R$680 passou a pagar R$47/mês. +1.400 projetos entregues em Santo Cristo e região do RS. Orçamento grátis.",
   keywords:
-    "energia solar residencial Santo Cristo, reduzir conta de luz RS, painel solar noroeste gaúcho, instalação solar, financiamento solar Sicredi",
+    "energia solar residencial Santo Cristo, reduzir conta de luz RS, painel solar noroeste gaúcho, instalação solar, financiamento solar",
   openGraph: {
     title: "Reduza até 95% da sua conta de luz com energia solar",
     description:
@@ -80,7 +80,7 @@ const schemaEnergia = {
         "@type": "Offer",
         "priceCurrency": "BRL",
         "availability": "https://schema.org/InStock",
-        "description": "Orçamento gratuito sem compromisso. Financiamento disponível via Sicredi com parcelas menores que a economia gerada.",
+        "description": "Orçamento gratuito sem compromisso. Financiamento disponível com parcelas menores que a economia gerada.",
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -145,7 +145,7 @@ const schemaEnergia = {
           "name": "Tem financiamento para energia solar em Santo Cristo RS?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Trabalhamos com financiamento Sicredi com condições facilitadas. Muitos clientes financiam e já economizam desde o primeiro mês — as parcelas costumam ser menores do que a economia gerada na conta de luz.",
+            "text": "Sim. Trabalhamos com financiamento com condições facilitadas. Muitos clientes financiam e já economizam desde o primeiro mês — as parcelas costumam ser menores do que a economia gerada na conta de luz.",
           },
         },
         {

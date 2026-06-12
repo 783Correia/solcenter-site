@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { useInView } from "@/app/hooks/useInView";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -13,33 +14,23 @@ import SubFooterCTA from "../components/SubFooterCTA";
 
 const WHATSAPP = site.whatsappLinkGiovani;
 
-function useInView(threshold = 0.15) {
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
 
 function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     const f = e.currentTarget;
     const name = (f.elements.namedItem("name") as HTMLInputElement).value;
     const phone = (f.elements.namedItem("phone") as HTMLInputElement).value;
     const city = (f.elements.namedItem("city") as HTMLInputElement).value;
     const bill = (f.elements.namedItem("bill") as HTMLSelectElement).value;
     const msg = encodeURIComponent(
-      `Olá! Me chamo ${name}, tenho uma propriedade rural em ${city} e tenho interesse em energia solar para o campo. Meu custo de energia atual é de ${bill}. WhatsApp: ${phone}`
+      `Olá! Me chamo ${name}, tenho uma propriedade rural em ${city} e tenho interesse em energia solar para o campo. Meu custo de energia atual é ${bill}. WhatsApp: ${phone}`
     );
     fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, city, source: 'lp-agro', 'Custo de energia': bill }) })
     window.open(`${WHATSAPP}?text=${msg}`, "_blank");
@@ -54,7 +45,7 @@ function LeadForm() {
           <CheckCircle size={24} className="text-[#FFB100]" />
         </div>
         <p className="font-bold text-white text-base">Recebido!</p>
-        <p className="text-white/50 text-sm mt-1">Abrimos o WhatsApp. Retornamos em minutos.</p>
+        <p className="text-white/70 text-sm mt-1">Abrimos o WhatsApp. Retornamos em minutos.</p>
       </div>
     );
   }
@@ -73,9 +64,10 @@ function LeadForm() {
       </select>
       <button
         type="submit"
-        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
+        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:animate-none"
+        disabled={loading}
       >
-        Solicitar análise gratuita
+        {loading ? 'Enviando...' : 'Solicitar análise gratuita'}
         <ArrowRight size={15} />
       </button>
       <p className="text-center text-[11px] text-white/30 flex items-center justify-center gap-1">
@@ -458,7 +450,7 @@ export default function LPAgro() {
                 { q: "Funciona para silos e secadores?", a: "Sim. Dimensionamos o sistema para o pico de consumo da safra, garantindo que o custo de energia não impacte sua operação no período crítico." },
                 { q: "E no inverno, gera energia?", a: "O Rio Grande do Sul tem excelente irradiação solar mesmo no inverno. O sistema continua gerando — em dias nublados a geração é menor, mas nunca cessa." },
                 { q: "Precisa parar a produção para instalar?", a: "Não. Nossa equipe instala sem interromper as atividades da propriedade. A instalação leva de 1 a 3 dias dependendo do porte do projeto." },
-                { q: "Tem financiamento para produtor rural?", a: "Sim. Trabalhamos com linhas de crédito específicas para o agronegócio, incluindo Sicredi e BNDES. A parcela costuma ser menor do que a economia gerada." },
+                { q: "Tem financiamento para produtor rural?", a: "Sim. Trabalhamos com linhas de crédito específicas para o agronegócio, com condições especiais. A parcela costuma ser menor do que a economia gerada." },
               ].map((item) => (
                 <FAQItem key={item.q} q={item.q} a={item.a} />
               ))}

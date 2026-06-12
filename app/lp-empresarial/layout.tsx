@@ -84,7 +84,7 @@ const schemaEmpresarial = {
           name: "Existe financiamento para energia solar empresarial?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Sim. A SolCenter trabalha com linhas de crédito específicas para pessoa jurídica, incluindo Sicredi e BNDES. Em muitos casos a parcela é menor do que a economia gerada no primeiro mês.",
+            text: "Sim. A SolCenter trabalha com linhas de crédito específicas para pessoa jurídica, com condições especiais. Em muitos casos a parcela é menor do que a economia gerada no primeiro mês.",
           },
         },
         {

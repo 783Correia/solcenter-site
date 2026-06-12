@@ -71,13 +71,11 @@ export default function Hero() {
         className="relative z-20 w-full -mb-10"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-white rounded-2xl grid grid-cols-2 md:grid-cols-4 shadow-xl">
-            {site.stats.map((stat, i) => (
+          <div className="bg-white rounded-2xl grid grid-cols-2 md:grid-cols-4 shadow-xl divide-x divide-y md:divide-y-0 divide-gray-100">
+            {site.stats.map((stat) => (
               <div
                 key={stat.label}
-                className={`flex flex-col items-center justify-center py-6 px-4 text-center ${
-                  i < site.stats.length - 1 ? "border-r border-gray-100" : ""
-                }`}
+                className="flex flex-col items-center justify-center py-6 px-4 text-center"
               >
                 <span className="text-2xl md:text-3xl font-black text-[#0a1628] tracking-[-0.03em]">
                   {stat.value}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
+import { useInView } from "@/app/hooks/useInView";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -29,28 +30,16 @@ import SubFooterCTA from "../components/SubFooterCTA";
 
 const WHATSAPP = site.whatsappLinkGiovani;
 
-function useInView(threshold = 0.15) {
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) setInView(true);
-      },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
 
 function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     const f = e.currentTarget;
     const name = (f.elements.namedItem("name") as HTMLInputElement).value;
     const phone = (f.elements.namedItem("phone") as HTMLInputElement).value;
@@ -73,7 +62,7 @@ function LeadForm() {
           <CheckCircle size={24} className="text-[#FFB100]" />
         </div>
         <p className="font-bold text-white text-base">Recebido!</p>
-        <p className="text-white/50 text-sm mt-1">
+        <p className="text-white/70 text-sm mt-1">
           Abrimos o WhatsApp. Retornamos em minutos.
         </p>
       </div>
@@ -118,9 +107,10 @@ function LeadForm() {
       </select>
       <button
         type="submit"
-        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
+        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:animate-none"
+        disabled={loading}
       >
-        Quero proteger meu sistema
+        {loading ? 'Enviando...' : 'Quero proteger meu sistema'}
         <ArrowRight size={15} />
       </button>
       <p className="text-center text-[11px] text-white/30 flex items-center justify-center gap-1">

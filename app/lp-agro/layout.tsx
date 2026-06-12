@@ -92,7 +92,7 @@ const schemaAgro = {
           name: "Tem financiamento para energia solar no agronegócio?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Sim. A SolCenter trabalha com linhas de crédito específicas para o agronegócio, incluindo Sicredi e BNDES. A parcela costuma ser menor do que a economia gerada.",
+            text: "Sim. A SolCenter trabalha com linhas de crédito específicas para o agronegócio, com condições especiais. A parcela costuma ser menor do que a economia gerada.",
           },
         },
       ],

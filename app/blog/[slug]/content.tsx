@@ -18,12 +18,12 @@ export default function BlogPostContent({ post, related }: { post: BlogPost; rel
       <section style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%)', paddingTop: '8rem', paddingBottom: '3rem' }}>
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           {/* Breadcrumb */}
-          <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 12, color: 'rgba(255,255,255,.4)', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-            <Link href="/" style={{ color: 'rgba(255,255,255,.4)', textDecoration: 'none' }}>Início</Link>
+          <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 12, color: 'rgba(255,255,255,.65)', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+            <Link href="/" style={{ color: 'rgba(255,255,255,.65)', textDecoration: 'none' }}>Início</Link>
             <span>/</span>
-            <Link href="/blog" style={{ color: 'rgba(255,255,255,.4)', textDecoration: 'none' }}>Blog</Link>
+            <Link href="/blog" style={{ color: 'rgba(255,255,255,.65)', textDecoration: 'none' }}>Blog</Link>
             <span>/</span>
-            <span style={{ color: 'rgba(255,255,255,.6)' }}>{post.category}</span>
+            <span style={{ color: 'rgba(255,255,255,.85)' }}>{post.category}</span>
           </nav>
 
           <span style={{ display: 'inline-block', background: 'rgba(255,177,0,.15)', color: '#FFB100', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.2em', padding: '4px 14px', borderRadius: 999, marginBottom: '1.25rem' }}>

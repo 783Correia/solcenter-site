@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { useInView } from "@/app/hooks/useInView";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -25,33 +26,23 @@ import SubFooterCTA from "../components/SubFooterCTA";
 
 const WHATSAPP = site.whatsappLinkGiovani;
 
-function useInView(threshold = 0.15) {
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
 
 function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     const f = e.currentTarget;
     const name = (f.elements.namedItem("name") as HTMLInputElement).value;
     const phone = (f.elements.namedItem("phone") as HTMLInputElement).value;
     const city = (f.elements.namedItem("city") as HTMLInputElement).value;
     const bill = (f.elements.namedItem("bill") as HTMLSelectElement).value;
     const msg = encodeURIComponent(
-      `Olá! Me chamo ${name}, moro em ${city} e tenho interesse em energia solar. Minha conta de luz atual é de ${bill}. WhatsApp: ${phone}`
+      `Olá! Me chamo ${name}, moro em ${city} e tenho interesse em energia solar. Minha conta de luz atual é ${bill}. WhatsApp: ${phone}`
     );
     fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, city, source: 'lp-energia', 'Conta de luz': bill }) })
     window.open(`${WHATSAPP}?text=${msg}`, "_blank");
@@ -66,7 +57,7 @@ function LeadForm() {
           <CheckCircle size={24} className="text-[#FFB100]" />
         </div>
         <p className="font-bold text-white text-base">Recebido!</p>
-        <p className="text-white/50 text-sm mt-1">Abrimos o WhatsApp. Retornamos em minutos.</p>
+        <p className="text-white/70 text-sm mt-1">Abrimos o WhatsApp. Retornamos em minutos.</p>
       </div>
     );
   }
@@ -85,9 +76,10 @@ function LeadForm() {
       </select>
       <button
         type="submit"
-        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer"
+        className="w-full bg-[#FFB100] text-white font-black py-4 rounded-xl hover:bg-[#e6a000] transition text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FFB100]/30 hover:-translate-y-0.5 animate-pulse-amber cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:animate-none"
+        disabled={loading}
       >
-        Solicitar simulação gratuita
+        {loading ? 'Enviando...' : 'Solicitar simulação gratuita'}
         <ArrowRight size={15} />
       </button>
       <p className="text-center text-[11px] text-white/30 flex items-center justify-center gap-1">
@@ -200,7 +192,7 @@ export default function LPEnergia() {
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {[
                 { icon: ShieldCheck, label: "25 anos de garantia" },
-                { icon: Zap, label: "Instalação em 1–2 dias" },
+                { icon: Zap, label: "Instalação profissional" },
                 { icon: BarChart2, label: "Monitoramento em tempo real" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-1.5 text-white/35 text-xs">
@@ -272,7 +264,7 @@ export default function LPEnergia() {
                   <div className="flex items-end gap-3 mb-2">
                     <span className="text-white/40 text-xl font-black line-through">R$ 680</span>
                     <span className="text-[#FFB100] text-4xl font-black leading-none">R$ 47</span>
-                    <span className="text-white/50 text-sm mb-1">/ mês</span>
+                    <span className="text-white/70 text-sm mb-1">/ mês</span>
                   </div>
                   <p className="text-white/60 text-xs leading-snug max-w-xs">
                     No mesmo telhado. Com o mesmo consumo. A diferença é que agora o sol paga a conta.

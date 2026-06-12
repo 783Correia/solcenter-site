@@ -58,6 +58,12 @@ body {
   animation: heroFade 0.6s ease-in-out forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-float { animation: none; }
+  .animate-hero-fade { animation: none; opacity: 1; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
 /* ── LP Dark background ─────────────────────────────── */
 .lp-dark {
   background:

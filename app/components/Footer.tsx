@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { site } from "../data/site";
 
@@ -15,9 +16,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-1 mb-4">
-              <span className="text-[#f5c518] font-black text-2xl tracking-tight">SOL</span>
-              <span className="text-[#0a1628] font-bold text-2xl tracking-tight">CENTER</span>
+            <div className="mb-4">
+              <Image src="/logo-dark.svg" alt="Solcenter" width={160} height={40} />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Com mais de 10 anos no mercado, a Solcenter tem experiência e compromisso para oferecer as melhores soluções em energia solar no Noroeste Gaúcho.

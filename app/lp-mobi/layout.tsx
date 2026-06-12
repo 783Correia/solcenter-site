@@ -64,57 +64,6 @@ const schemaMobi = {
       ],
     },
     {
-      "@type": "Product",
-      "@id": "https://www.solcenter.com.br/lp-mobi#product",
-      "name": "EVOX — Scooter Elétrica Solcenter Mobi",
-      "description":
-        "Scooter elétrica EVOX com motor 1000W brushless, bateria de lítio 60v/20Ah, autonomia de 120km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Freio a disco dianteiro, iluminação Full LED, suspensão dianteira e traseira. Disponível em Preta, Azul/Prata, Vermelha/Prata e Branca.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Solcenter Mobi",
-      },
-      "manufacturer": {
-        "@type": "Organization",
-        "name": "Solcenter Mobi",
-        "url": "https://www.solcenter.com.br/lp-mobi",
-      },
-      "category": "Scooter Elétrica",
-      "color": ["Preta", "Azul/Prata", "Vermelha/Prata", "Branca"],
-      "url": "https://www.solcenter.com.br/lp-mobi",
-      "image": [
-        "https://www.solcenter.com.br/mobi/real/preta-1.jpg",
-        "https://www.solcenter.com.br/mobi/real/azul-1.jpg",
-        "https://www.solcenter.com.br/mobi/real/vermelha-1.jpg",
-        "https://www.solcenter.com.br/mobi/real/branca-1.jpg",
-      ],
-      "additionalProperty": [
-        { "@type": "PropertyValue", "name": "Motor", "value": "1000W brushless sem escovas" },
-        { "@type": "PropertyValue", "name": "Bateria", "value": "60v / 20Ah de lítio" },
-        { "@type": "PropertyValue", "name": "Autonomia", "value": "Até 120 km" },
-        { "@type": "PropertyValue", "name": "Velocidade Máxima", "value": "32 km/h" },
-        { "@type": "PropertyValue", "name": "Tempo de Carga", "value": "6 a 8 horas" },
-        { "@type": "PropertyValue", "name": "Peso Suportado", "value": "200 kg" },
-        { "@type": "PropertyValue", "name": "Transmissão", "value": "3 velocidades" },
-        { "@type": "PropertyValue", "name": "Pneus", "value": "3.00 – 10 pol." },
-        { "@type": "PropertyValue", "name": "Suspensão", "value": "Dianteira e traseira" },
-        { "@type": "PropertyValue", "name": "Freios", "value": "Disco dianteiro e traseiro" },
-        { "@type": "PropertyValue", "name": "Iluminação", "value": "Full LED" },
-        { "@type": "PropertyValue", "name": "CNH necessária", "value": "Não" },
-        { "@type": "PropertyValue", "name": "IPVA", "value": "Não" },
-        { "@type": "PropertyValue", "name": "Emplacamento", "value": "Não" },
-      ],
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "BRL",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "Solcenter Mobi",
-          "url": "https://www.solcenter.com.br/lp-mobi",
-        },
-      },
-    },
-    {
       "@type": "FAQPage",
       "mainEntity": [
         {

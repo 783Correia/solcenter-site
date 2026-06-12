@@ -36,7 +36,7 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4" style={{ background: 'rgba(255,177,0,.1)' }}>
             <span className="font-black text-xl" style={{ color: '#FFB100' }}>S</span>
           </div>
-          <h1 className="text-white text-xl font-bold">SolCenter Blog Admin</h1>
+          <h1 className="text-white text-xl font-bold">Solcenter Blog Admin</h1>
           <p className="text-gray-500 text-sm mt-1">Entre para gerenciar os posts</p>
         </div>
 

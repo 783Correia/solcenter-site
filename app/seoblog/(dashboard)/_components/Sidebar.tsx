@@ -27,7 +27,7 @@ export default function AdminSidebar() {
             <span className="font-black text-sm" style={{ color: '#FFB100' }}>S</span>
           </div>
           <div>
-            <p className="text-white font-bold text-sm leading-tight">SolCenter Blog</p>
+            <p className="text-white font-bold text-sm leading-tight">Solcenter Blog</p>
             <p className="text-gray-500 text-xs">Admin</p>
           </div>
         </div>

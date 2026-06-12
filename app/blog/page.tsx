@@ -16,7 +16,7 @@ export default async function BlogPage() {
       <section style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%)', paddingTop: '8rem', paddingBottom: '4rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '.65rem', letterSpacing: '.2em', textTransform: 'uppercase', color: '#FFB100', display: 'block', marginBottom: '1rem' }}>
-            Blog · SolCenter
+            Blog · Solcenter
           </span>
           <h1 style={{ fontFamily: 'var(--font-display, sans-serif)', fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 900, color: '#fff', lineHeight: .95, letterSpacing: '-.02em', textTransform: 'uppercase', marginBottom: '1rem' }}>
             Energia solar<br /><span style={{ color: '#FFB100' }}>na prática.</span>

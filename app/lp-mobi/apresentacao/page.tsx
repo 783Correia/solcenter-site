@@ -98,7 +98,7 @@ export default function ApresentacaoMobi() {
         <div className="w-full h-full flex items-center justify-between px-12 md:px-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#060d18] via-[#060d18]/80 to-transparent z-10 pointer-events-none" />
           <div className="relative z-20 max-w-lg">
-            <Image src="/logo-mobi.svg" alt="SolCenter Mobi" width={160} height={40} className="mb-10 brightness-0 invert opacity-70" />
+            <Image src="/logo-mobi.svg" alt="Solcenter Mobi" width={160} height={40} className="mb-10 brightness-0 invert opacity-70" />
             <p className="text-[#00a651] text-xs font-bold uppercase tracking-[0.3em] mb-4">Scooter Elétrica</p>
             <h1 className="text-[clamp(4rem,10vw,8rem)] font-black leading-[0.88] tracking-[-0.04em] mb-6">
               EVOX<br /><span className="text-[#00a651]">1000W</span>
@@ -285,7 +285,7 @@ export default function ApresentacaoMobi() {
             <Image src="/mobi/cutout/preta-hero.png" alt="EVOX" fill className="object-contain object-center opacity-15" sizes="100vw" style={{ transform: 'scale(1.6)', transformOrigin: 'center center' }} />
           </div>
           <div className="relative z-20 text-center">
-            <Image src="/logo-mobi.svg" alt="SolCenter Mobi" width={220} height={56} className="mx-auto mb-8 brightness-0 invert" />
+            <Image src="/logo-mobi.svg" alt="Solcenter Mobi" width={220} height={56} className="mx-auto mb-8 brightness-0 invert" />
             <p className="text-white/40 text-sm uppercase tracking-[0.4em]">Santo Cristo, RS</p>
           </div>
         </div>

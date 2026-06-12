@@ -65,7 +65,12 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-xs">© {new Date().getFullYear()} Solcenter Soluções em Energia. Todos os direitos reservados.</p>
-          <p className="text-gray-300 text-xs">Santo Cristo / RS</p>
+          <div className="flex items-center gap-5">
+            <a href="/sobre" className="text-gray-400 hover:text-[#00a651] transition-colors text-xs">Sobre</a>
+            <a href="/contato" className="text-gray-400 hover:text-[#00a651] transition-colors text-xs">Contato</a>
+            <a href="/politica-de-privacidade" className="text-gray-400 hover:text-[#00a651] transition-colors text-xs">Política de Privacidade</a>
+            <p className="text-gray-300 text-xs">Santo Cristo / RS</p>
+          </div>
         </div>
       </div>
     </footer>

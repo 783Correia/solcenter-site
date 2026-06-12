@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Reduza até 95% da sua conta de luz — Energia Solar | Solcenter",
+  title: "Reduza até 95% da conta de luz — Energia Solar | Solcenter",
   description:
-    "Instale energia solar e economize de verdade. Cliente com conta de R$680 passou a pagar R$47/mês. +1.400 projetos entregues em Santo Cristo e região do RS. Orçamento grátis.",
+    "Cliente com conta de R$680 passou a pagar R$47/mês. +1.400 projetos de energia solar em Santo Cristo e região do RS. Orçamento grátis.",
   keywords:
     "energia solar residencial Santo Cristo, reduzir conta de luz RS, painel solar noroeste gaúcho, instalação solar, financiamento solar",
   openGraph: {

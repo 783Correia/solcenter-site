@@ -52,10 +52,10 @@ function LeadForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <input name="name" type="text" required placeholder="Nome completo" className="glass-input" />
-      <input name="phone" type="tel" required placeholder="WhatsApp" className="glass-input" />
-      <input name="city" type="text" required placeholder="Cidade / Município" className="glass-input" />
-      <select name="bill" required className="glass-input">
+      <input name="name" type="text" required placeholder="Nome completo" aria-label="Nome completo" className="glass-input" />
+      <input name="phone" type="tel" required placeholder="WhatsApp" aria-label="WhatsApp" className="glass-input" />
+      <input name="city" type="text" required placeholder="Cidade / Município" aria-label="Cidade ou município" className="glass-input" />
+      <select name="bill" required aria-label="Valor da conta de luz" className="glass-input">
         <option value="">Custo mensal de energia</option>
         <option value="entre R$500 e R$1.000">R$ 500 – R$ 1.000</option>
         <option value="entre R$1.000 e R$3.000">R$ 1.000 – R$ 3.000</option>
@@ -102,13 +102,13 @@ export default function LPAgro() {
   const { ref: trustRef, inView: trustInView } = useInView();
 
   return (
-    <div className="min-h-screen font-sans antialiased">
+    <main className="min-h-screen font-sans antialiased">
 
       {/* NAV DESKTOP */}
       <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
         <nav className="pointer-events-auto flex items-center gap-4 bg-white/80 backdrop-blur-md shadow-sm shadow-black/5 border border-white/80 rounded-full px-5 py-2.5">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="cursor-pointer">
-            <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={110} height={23} />
           </a>
           <div className="w-px h-4 bg-gray-200" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
@@ -127,15 +127,15 @@ export default function LPAgro() {
       <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
         <nav className="flex items-center gap-1 bg-white/90 backdrop-blur-md shadow-lg shadow-black/10 border border-white/80 rounded-full px-3 py-3">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="px-3 cursor-pointer">
-            <Image src="/logo-dark.svg" alt="SolCenter" width={80} height={17} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={80} height={17} />
           </a>
           <div className="w-px h-5 bg-gray-200 mx-1" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer">
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer" aria-label="Falar no WhatsApp">
             <MessageCircle size={20} className="text-[#25D366]" />
           </a>
           <a href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS" target="_blank" rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer">
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer" aria-label="Ver endereço no Google Maps">
             <MapPin size={20} className="text-[#FFB100]" />
           </a>
         </nav>
@@ -143,7 +143,7 @@ export default function LPAgro() {
 
       {/* 1. HERO */}
       <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
-        <Image src="/images/solar-agro.jpg" alt="Energia solar para agronegócio instalada pela SolCenter no RS" fill className="object-cover object-center" priority />
+        <Image src="/images/solar-agro.jpg" alt="Energia solar para agronegócio instalada pela Solcenter no RS" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />
         <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#FFB100]/5 rounded-full blur-3xl pointer-events-none animate-glow-amber" />
 
@@ -188,7 +188,7 @@ export default function LPAgro() {
                 <Tractor size={16} className="text-[#FFB100]" />
               </div>
               <div>
-                <h3 className="font-black text-white text-base leading-tight">Análise gratuita para o campo</h3>
+                <h2 className="font-black text-white text-base leading-tight">Análise gratuita para o campo</h2>
                 <p className="text-white/35 text-xs">Resposta em minutos</p>
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function LPAgro() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Resultados reais de propriedades rurais atendidas pela SolCenter.
+                Resultados reais de propriedades rurais atendidas pela Solcenter.
               </p>
             </div>
 
@@ -298,7 +298,7 @@ export default function LPAgro() {
               </div>
 
               <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
-                <Image src="/images/solar-agro.jpg" alt="Instalação SolCenter no campo" fill className="object-cover" />
+                <Image src="/images/solar-agro.jpg" alt="Instalação Solcenter no campo" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5">
                   <p className="text-white font-bold text-sm">Projetos para irrigação, silos e cooperativas</p>
@@ -326,7 +326,7 @@ export default function LPAgro() {
               <div className="flex-1">
                 <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Do contato à colheita</p>
                 <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
-                  4 passos.<br />A SolCenter cuida de tudo.
+                  4 passos.<br />A Solcenter cuida de tudo.
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
@@ -362,7 +362,7 @@ export default function LPAgro() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-end gap-6 mb-10">
               <div className="flex-1">
-                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Clientes SolCenter</p>
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Clientes Solcenter</p>
                 <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
                   Do campo para o campo.<br />Resultados reais.
                 </h2>
@@ -389,13 +389,13 @@ export default function LPAgro() {
                 <blockquote className="text-[#0a1628] text-lg md:text-xl font-medium leading-snug mb-3">
                   "Processo simples do começo ao fim. A equipe resolveu tudo, eu não precisei me preocupar com nada."
                 </blockquote>
-                <p className="text-gray-400 text-xs">Sistema instalado pela SolCenter — Três de Maio, RS.</p>
+                <p className="text-gray-400 text-xs">Sistema instalado pela Solcenter — Três de Maio, RS.</p>
               </div>
             </div>
 
             <div className={`grid md:grid-cols-2 gap-4 transition-all duration-700 delay-100 ${proofInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               {[
-                { name: "Patrick Fernandes", city: "Santo Cristo, RS", text: "Atendimento impecável, preço competitivo e pontualidade na instalação. Recomendo a SolCenter sem hesitar." },
+                { name: "Patrick Fernandes", city: "Santo Cristo, RS", text: "Atendimento impecável, preço competitivo e pontualidade na instalação. Recomendo a Solcenter sem hesitar." },
                 { name: "Daniel e Neide Wermuth", city: "Santo Cristo, RS", text: "A equipe é dedicada e o retorno que estamos tendo superou as expectativas. Muito satisfeitos." },
               ].map((t) => (
                 <div key={t.name} className="glass-light rounded-2xl p-6">
@@ -466,10 +466,15 @@ export default function LPAgro() {
 
         <footer className="px-6 py-6 text-center border-t border-black/5">
           <p className="text-gray-400 text-xs">
-            SolCenter Energia · {site.address} · {site.phone}
+            Solcenter Energia · {site.address} · {site.phone}
+          </p>
+          <p className="text-gray-400 text-xs mt-2">
+            <a href="/" className="underline hover:text-[#0a1628] transition-colors">solcenter.com.br</a>
+
+            <a href="/politica-de-privacidade" className="underline hover:text-[#0a1628] transition-colors">Política de Privacidade</a>
           </p>
         </footer>
       </div>
-    </div>
+    </main>
   );
 }

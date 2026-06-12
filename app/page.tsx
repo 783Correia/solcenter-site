@@ -13,12 +13,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <Solutions />
-      <HowItWorks />
-      <Testimonials />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Solutions />
+        <HowItWorks />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppFloat />
     </>

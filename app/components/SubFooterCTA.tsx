@@ -19,7 +19,7 @@ export default function SubFooterCTA({ whatsappHref, formHref = "#contato" }: Su
 
       {/* Ilha 3D — fill + object-cover garante preenchimento total da seção */}
       <Image
-        src="/images/solar-3d.png"
+        src="/images/solar-3d.jpg"
         alt=""
         fill
         className="object-cover"
@@ -98,6 +98,12 @@ export default function SubFooterCTA({ whatsappHref, formHref = "#contato" }: Su
             Preencher formulário
           </a>
         </motion.div>
+
+        <p className="text-center mt-10 text-white/30 text-xs">
+          <a href="/" className="underline hover:text-white/60 transition-colors">solcenter.com.br</a>
+          {" · "}
+          <a href="/politica-de-privacidade" className="underline hover:text-white/60 transition-colors">Política de Privacidade</a>
+        </p>
 
       </div>
     </section>

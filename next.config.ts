@@ -11,6 +11,17 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "solcenter.com.br" }],
+        destination: "https://www.solcenter.com.br/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

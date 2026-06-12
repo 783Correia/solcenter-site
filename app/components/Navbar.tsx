@@ -41,9 +41,10 @@ export default function Navbar() {
         <a href={resolveHref("#inicio")} className="flex items-center">
           <Image
             src={scrolled ? "/logo-dark.svg" : "/logo.svg"}
-            alt="SolCenter"
+            alt="Solcenter"
             width={130}
             height={27}
+            priority
             className="transition-all duration-300"
           />
         </a>
@@ -62,7 +63,7 @@ export default function Navbar() {
           Faça uma simulação
         </a>
 
-        <button className={`md:hidden hover:opacity-70 transition-opacity ${scrolled ? "text-[#0a1628]" : "text-white"}`} onClick={() => setOpen(!open)}>
+        <button aria-label={open ? "Fechar menu" : "Abrir menu"} className={`md:hidden hover:opacity-70 transition-opacity ${scrolled ? "text-[#0a1628]" : "text-white"}`} onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>

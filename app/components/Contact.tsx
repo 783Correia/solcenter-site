@@ -82,19 +82,19 @@ export default function Contact() {
                 { name: "city", label: "Cidade", placeholder: "Sua cidade", type: "text", required: false },
               ].map((field) => (
                 <div key={field.name}>
-                  <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
+                  <label htmlFor={`contact-${field.name}`} className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
                     {field.label}
                   </label>
-                  <input name={field.name} type={field.type} required={field.required}
+                  <input id={`contact-${field.name}`} name={field.name} type={field.type} required={field.required}
                     placeholder={field.placeholder}
                     className="w-full bg-white border border-gray-200 text-[#0a1628] placeholder-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-all" />
                 </div>
               ))}
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
+                <label htmlFor="contact-type" className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
                   Tipo
                 </label>
-                <select name="type"
+                <select id="contact-type" name="type"
                   className="w-full bg-white border border-gray-200 text-gray-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#00a651] transition-all">
                   <option value="">Selecione...</option>
                   <option value="residencial">Residencial</option>

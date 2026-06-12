@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: 'Post não encontrado' }
 
   const ogImage = resolveImageUrl(post.image_url)
-  const keywords = [post.focus_keyword, post.title, post.category, 'energia solar RS', 'SolCenter', 'Santo Cristo'].filter(Boolean).join(', ')
+  const keywords = [post.focus_keyword, post.title, post.category, 'energia solar RS', 'Solcenter', 'Santo Cristo'].filter(Boolean).join(', ')
 
   return {
     title: post.meta_title || post.title,
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       modifiedTime: post.updated_at,
       url: `${BASE_URL}/blog/${post.slug}`,
-      siteName: 'SolCenter',
+      siteName: 'Solcenter',
       locale: 'pt_BR',
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
@@ -100,15 +100,15 @@ export default async function BlogPostPage({ params }: Props) {
     wordCount,
     articleSection: post.category,
     keywords: post.focus_keyword || post.title,
-    author: { '@type': 'Organization', name: 'SolCenter Soluções em Energia', url: BASE_URL },
+    author: { '@type': 'Organization', name: 'Solcenter Soluções em Energia', url: BASE_URL },
     publisher: {
       '@type': 'Organization',
-      name: 'SolCenter Soluções em Energia',
+      name: 'Solcenter Soluções em Energia',
       logo: { '@type': 'ImageObject', url: LOGO_URL, width: 600, height: 60 },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.article-excerpt', 'h2'] },
-    isPartOf: { '@type': 'Blog', '@id': `${BASE_URL}/blog`, name: 'Blog SolCenter' },
+    isPartOf: { '@type': 'Blog', '@id': `${BASE_URL}/blog`, name: 'Blog Solcenter' },
   }
 
   const breadcrumbSchema = {

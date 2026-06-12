@@ -15,7 +15,7 @@ const GA_ID = "G-2HE7N1GQ7Y";
 export const metadata: Metadata = {
   title: "Solcenter — Energia Solar em Santo Cristo e Região | RS",
   description:
-    "Instalação de energia solar residencial, empresarial e agronegócio em Santo Cristo/RS. +1400 projetos entregues. Economize até 95% na sua conta de luz. Orçamento grátis.",
+    "Energia solar residencial, empresarial e agro em Santo Cristo/RS. +1.400 projetos entregues. Economize até 95% na conta de luz. Orçamento grátis.",
   keywords:
     "energia solar Santo Cristo, energia solar RS, instalação solar, sistema fotovoltaico, Solcenter, painel solar, energia fotovoltaica, reduzir conta de luz",
   openGraph: {
@@ -57,7 +57,7 @@ const schemaOrg = {
       "@type": "LocalBusiness",
       "@id": "https://www.solcenter.com.br/#business",
       "name": "Solcenter Energia Solar",
-      "alternateName": "SolCenter",
+      "alternateName": "Solcenter",
       "url": "https://www.solcenter.com.br",
       "telephone": "+55-55-98449-1054",
       "email": "atendimento@solcenter.com.br",
@@ -128,7 +128,7 @@ const schemaOrg = {
       "@type": "Organization",
       "@id": "https://www.solcenter.com.br/#organization",
       "name": "Solcenter Energia Solar",
-      "alternateName": "SolCenter",
+      "alternateName": "Solcenter",
       "url": "https://www.solcenter.com.br",
       "logo": "https://www.solcenter.com.br/logo.svg",
       "description": "Especialistas em energia solar no noroeste gaúcho com mais de 1.400 projetos entregues para residências, empresas e agronegócio em mais de 60 municípios do RS.",
@@ -242,10 +242,10 @@ const schemaOrg = {
         },
         {
           "@type": "Question",
-          "name": "O que é a scooter elétrica EVOX da SolCenter Mobi?",
+          "name": "O que é a scooter elétrica EVOX da Solcenter Mobi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A EVOX é uma scooter elétrica 100% elétrica com motor 1000W brushless, bateria de lítio removível 60v/20Ah, autonomia de até 40km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Disponível em 4 cores: Preta, Azul/Prata, Vermelha/Prata e Branca. Distribuída pela SolCenter Mobi para revendedores no Sul do Brasil."
+            "text": "A EVOX é uma scooter elétrica 100% elétrica com motor 1000W brushless, bateria de lítio removível 60v/20Ah, autonomia de até 40km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Disponível em 4 cores: Preta, Azul/Prata, Vermelha/Prata e Branca. Distribuída pela Solcenter Mobi para revendedores no Sul do Brasil."
           }
         }
       ]

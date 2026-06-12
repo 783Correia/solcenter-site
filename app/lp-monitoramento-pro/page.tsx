@@ -76,6 +76,7 @@ function LeadForm() {
         type="text"
         required
         placeholder="Nome completo"
+        aria-label="Nome completo"
         className="glass-input"
       />
       <input
@@ -83,6 +84,7 @@ function LeadForm() {
         type="tel"
         required
         placeholder="WhatsApp"
+        aria-label="WhatsApp"
         className="glass-input"
       />
       <input
@@ -90,15 +92,16 @@ function LeadForm() {
         type="text"
         required
         placeholder="Cidade"
+        aria-label="Cidade"
         className="glass-input"
       />
-      <select name="tipo" required className="glass-input">
+      <select name="tipo" required aria-label="Tipo de instalação" className="glass-input">
         <option value="">Tipo de instalação</option>
         <option value="residencial">Residencial</option>
         <option value="comercial">Comercial / Empresarial</option>
         <option value="rural">Rural / Agronegócio</option>
       </select>
-      <select name="tempo" required className="glass-input">
+      <select name="tempo" required aria-label="Há quanto tempo foi instalado?" className="glass-input">
         <option value="">Há quanto tempo foi instalado?</option>
         <option value="menos de 1 ano">Menos de 1 ano</option>
         <option value="1 a 2 anos">1 a 2 anos</option>
@@ -148,7 +151,7 @@ export default function LPMonitoramentoPro() {
   const { ref: trustRef, inView: trustInView } = useInView();
 
   return (
-    <div className="min-h-screen font-sans antialiased">
+    <main className="min-h-screen font-sans antialiased">
 
       {/* ─── NAV DESKTOP ────────────────────────────── */}
       <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
@@ -161,7 +164,7 @@ export default function LPMonitoramentoPro() {
             }}
             className="cursor-pointer"
           >
-            <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={110} height={23} />
           </a>
           <div className="w-px h-4 bg-gray-200" />
           <a
@@ -197,7 +200,7 @@ export default function LPMonitoramentoPro() {
             }}
             className="px-3 cursor-pointer"
           >
-            <Image src="/logo-dark.svg" alt="SolCenter" width={80} height={17} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={80} height={17} />
           </a>
           <div className="w-px h-5 bg-gray-200 mx-1" />
           <a
@@ -205,6 +208,7 @@ export default function LPMonitoramentoPro() {
             target="_blank"
             rel="noopener noreferrer"
             className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer"
+          aria-label="Falar no WhatsApp"
           >
             <MessageCircle size={20} className="text-[#25D366]" />
           </a>
@@ -213,6 +217,7 @@ export default function LPMonitoramentoPro() {
             target="_blank"
             rel="noopener noreferrer"
             className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer"
+          aria-label="Ver endereço no Google Maps"
           >
             <MapPin size={20} className="text-[#FFB100]" />
           </a>
@@ -228,7 +233,7 @@ export default function LPMonitoramentoPro() {
       >
         <Image
           src="/images/hero-monitoramento.jpg"
-          alt="Equipe técnica SolCenter realizando manutenção em painéis solares"
+          alt="Equipe técnica Solcenter realizando manutenção em painéis solares"
           fill
           className="object-cover object-left-top"
           priority
@@ -442,7 +447,7 @@ export default function LPMonitoramentoPro() {
 
             <div className="mt-8 text-center">
               <a
-                href={`${WHATSAPP}?text=Olá! Tenho interesse no Monitoramento PRO da SolCenter. Quero um diagnóstico gratuito.`}
+                href={`${WHATSAPP}?text=Olá! Tenho interesse no Monitoramento PRO da Solcenter. Quero um diagnóstico gratuito.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#FFB100] text-white font-black px-8 py-4 rounded-full text-sm hover:bg-[#e6a000] transition hover:-translate-y-0.5 shadow-lg shadow-[#FFB100]/25 cursor-pointer"
@@ -466,7 +471,7 @@ export default function LPMonitoramentoPro() {
                 Simples. Você não precisa fazer nada.
               </h2>
               <p className="text-gray-500 text-sm mt-3 max-w-md">
-                A SolCenter cuida de tudo — do diagnóstico inicial até a
+                A Solcenter cuida de tudo — do diagnóstico inicial até a
                 manutenção periódica. Você só recebe o relatório.
               </p>
             </div>
@@ -558,7 +563,7 @@ export default function LPMonitoramentoPro() {
                   </div>
                   <p className="text-[#0a1628] text-base font-medium leading-relaxed mb-5">
                     "Instalei o sistema há 3 anos e nunca tinha feito nenhuma
-                    manutenção. Quando a SolCenter fez o diagnóstico, descobrimos
+                    manutenção. Quando a Solcenter fez o diagnóstico, descobrimos
                     que os painéis estavam gerando 22% menos por causa da sujeira.
                     Depois da limpeza, a conta voltou ao que deveria ser. Aprendi a
                     lição."
@@ -588,12 +593,12 @@ export default function LPMonitoramentoPro() {
                   {
                     name: "Daniel e Neide Wermuth",
                     city: "Santo Cristo, RS",
-                    text: "O monitoramento via app é fantástico. Num sábado vimos que a geração havia caído à zero — a equipe da SolCenter identificou um problema no inversor e resolveu na segunda de manhã. Sem o monitoramento, só íamos perceber na próxima conta.",
+                    text: "O monitoramento via app é fantástico. Num sábado vimos que a geração havia caído à zero — a equipe da Solcenter identificou um problema no inversor e resolveu na segunda de manhã. Sem o monitoramento, só íamos perceber na próxima conta.",
                   },
                   {
                     name: "Patrick Fernandes",
                     city: "Três de Maio, RS",
-                    text: "O seguro valeu o investimento. Tivemos uma tempestade com granizo e dois painéis quebraram. A SolCenter cuidou de tudo com a seguradora. Em 15 dias estávamos gerando 100% de novo, sem gastar nada extra.",
+                    text: "O seguro valeu o investimento. Tivemos uma tempestade com granizo e dois painéis quebraram. A Solcenter cuidou de tudo com a seguradora. Em 15 dias estávamos gerando 100% de novo, sem gastar nada extra.",
                   },
                 ].map(({ name, city, text }) => (
                   <div key={name} className="glass-light rounded-3xl p-6">
@@ -702,7 +707,7 @@ export default function LPMonitoramentoPro() {
               >
                 <Image
                   src="/images/about.jpg"
-                  alt="Equipe técnica SolCenter"
+                  alt="Equipe técnica Solcenter"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -785,7 +790,7 @@ export default function LPMonitoramentoPro() {
             <div className="space-y-3">
               {[
                 {
-                  q: "Posso contratar mesmo que o sistema não tenha sido instalado pela SolCenter?",
+                  q: "Posso contratar mesmo que o sistema não tenha sido instalado pela Solcenter?",
                   a: "Sim. O Monitoramento PRO está disponível para qualquer sistema solar instalado na nossa região de atendimento. Antes de tudo, nossa equipe faz um diagnóstico pra ver como o sistema está — e aí a gente indica o que faz sentido.",
                 },
                 {
@@ -798,7 +803,7 @@ export default function LPMonitoramentoPro() {
                 },
                 {
                   q: "Como funciona o monitoramento em tempo real?",
-                  a: "Após a ativação, você tem acesso a um app onde acompanha a geração do sistema hora a hora. A SolCenter também monitora remotamente e envia alertas automáticos caso a geração caia abaixo do esperado — sem você precisar verificar manualmente.",
+                  a: "Após a ativação, você tem acesso a um app onde acompanha a geração do sistema hora a hora. A Solcenter também monitora remotamente e envia alertas automáticos caso a geração caia abaixo do esperado — sem você precisar verificar manualmente.",
                 },
                 {
                   q: "Atendem fora de Santo Cristo?",
@@ -851,7 +856,7 @@ export default function LPMonitoramentoPro() {
                     Solicitar diagnóstico grátis <ArrowRight size={14} />
                   </a>
                   <a
-                    href={`${WHATSAPP}?text=Olá! Quero saber mais sobre o Monitoramento PRO da SolCenter.`}
+                    href={`${WHATSAPP}?text=Olá! Quero saber mais sobre o Monitoramento PRO da Solcenter.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 border border-white/15 text-white/70 font-semibold px-8 py-4 rounded-full text-sm hover:border-[#FFB100] hover:text-[#FFB100] transition cursor-pointer"
@@ -869,6 +874,6 @@ export default function LPMonitoramentoPro() {
           whatsappHref={`${WHATSAPP}?text=Olá! Quero o diagnóstico gratuito do Monitoramento PRO.`}
         />
       </div>
-    </div>
+    </main>
   );
 }

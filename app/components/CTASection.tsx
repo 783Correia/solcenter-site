@@ -18,7 +18,7 @@ export default function CTASection() {
           className="w-56 md:w-72 shrink-0 animate-float drop-shadow-2xl"
         >
           <Image
-            src="/images/cta-solar.png"
+            src="/images/cta-solar.webp"
             alt="Sistema solar"
             width={288}
             height={288}

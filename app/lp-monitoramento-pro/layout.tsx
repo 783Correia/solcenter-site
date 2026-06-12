@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Monitoramento PRO — Manutenção, Limpeza e Seguro Solar | SolCenter",
+  title: "Monitoramento PRO — Manutenção e Seguro Solar | Solcenter",
   description:
-    "Painel sujo perde até 30% de geração. O Monitoramento PRO da SolCenter inclui limpeza periódica, visita técnica anual, monitoramento em tempo real e seguro do equipamento. Santo Cristo e região do RS.",
+    "Painel sujo perde até 30% de geração. Limpeza periódica, visita técnica anual, monitoramento em tempo real e seguro do equipamento no RS.",
   keywords:
-    "manutenção sistema solar, limpeza painel solar, monitoramento energia solar, seguro painel solar, assistência técnica solar RS, SolCenter PRO",
+    "manutenção sistema solar, limpeza painel solar, monitoramento energia solar, seguro painel solar, assistência técnica solar RS, Solcenter PRO",
   openGraph: {
     title: "Monitoramento PRO — Manutenção e Proteção do Seu Sistema Solar",
     description:
-      "Seu sistema instalado e esquecido? Painel sujo perde até 30% da geração. Garanta o máximo com o Monitoramento PRO da SolCenter.",
+      "Seu sistema instalado e esquecido? Painel sujo perde até 30% da geração. Garanta o máximo com o Monitoramento PRO da Solcenter.",
     url: "https://www.solcenter.com.br/lp-monitoramento-pro",
-    siteName: "SolCenter",
+    siteName: "Solcenter",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "https://www.solcenter.com.br/images/hero-monitoramento.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Monitoramento PRO — manutenção e proteção do sistema solar",
+      },
+    ],
   },
   alternates: {
     canonical: "https://www.solcenter.com.br/lp-monitoramento-pro",
@@ -26,10 +34,10 @@ const schemaFAQ = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Posso contratar o Monitoramento PRO mesmo que o sistema não tenha sido instalado pela SolCenter?",
+      name: "Posso contratar o Monitoramento PRO mesmo que o sistema não tenha sido instalado pela Solcenter?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sim. O Monitoramento PRO está disponível para qualquer sistema solar instalado na região de atendimento da SolCenter. Antes da ativação, a equipe realiza um diagnóstico gratuito para verificar o estado atual do equipamento.",
+        text: "Sim. O Monitoramento PRO está disponível para qualquer sistema solar instalado na região de atendimento da Solcenter. Antes da ativação, a equipe realiza um diagnóstico gratuito para verificar o estado atual do equipamento.",
       },
     },
     {
@@ -53,15 +61,15 @@ const schemaFAQ = {
       name: "Como funciona o monitoramento em tempo real?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Após a ativação, o cliente tem acesso a um app onde acompanha a geração do sistema hora a hora. A SolCenter também monitora remotamente e envia alertas automáticos se a geração cair abaixo do esperado — sem precisar verificar manualmente.",
+        text: "Após a ativação, o cliente tem acesso a um app onde acompanha a geração do sistema hora a hora. A Solcenter também monitora remotamente e envia alertas automáticos se a geração cair abaixo do esperado — sem precisar verificar manualmente.",
       },
     },
     {
       "@type": "Question",
-      name: "A SolCenter atende fora de Santo Cristo para manutenção solar?",
+      name: "A Solcenter atende fora de Santo Cristo para manutenção solar?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sim. A SolCenter atende mais de 60 municípios no noroeste gaúcho, incluindo Horizontina, Três de Maio, Santa Rosa, Ijuí, Tucunduva e região. Entre em contato para confirmar a disponibilidade na sua cidade.",
+        text: "Sim. A Solcenter atende mais de 60 municípios no noroeste gaúcho, incluindo Horizontina, Três de Maio, Santa Rosa, Ijuí, Tucunduva e região. Entre em contato para confirmar a disponibilidade na sua cidade.",
       },
     },
     {
@@ -69,7 +77,7 @@ const schemaFAQ = {
       name: "O sistema solar precisa estar funcionando perfeitamente para contratar o plano?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Não. A equipe da SolCenter faz o diagnóstico inicial e, caso identifique algum problema, apresenta o orçamento para correção antes de ativar o plano. Sistemas com falhas ou geração abaixo do esperado também são atendidos.",
+        text: "Não. A equipe da Solcenter faz o diagnóstico inicial e, caso identifique algum problema, apresenta o orçamento para correção antes de ativar o plano. Sistemas com falhas ou geração abaixo do esperado também são atendidos.",
       },
     },
   ],
@@ -89,12 +97,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             "@context": "https://schema.org",
             "@type": "Service",
             "@id": "https://www.solcenter.com.br/lp-monitoramento-pro#service",
-            name: "Monitoramento PRO — SolCenter",
+            name: "Monitoramento PRO — Solcenter",
             description:
               "Serviço de monitoramento, manutenção preventiva, limpeza de painéis, visita técnica anual e seguro de equipamento solar para sistemas fotovoltaicos instalados em Santo Cristo e região do RS.",
             provider: {
               "@type": "LocalBusiness",
-              name: "SolCenter Soluções em Energia",
+              name: "Solcenter Soluções em Energia",
               url: "https://www.solcenter.com.br",
               telephone: "+555598449-1054",
               address: {

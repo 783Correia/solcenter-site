@@ -64,10 +64,10 @@ function LeadForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <input name="name" type="text" required placeholder="Nome completo" className="glass-input" />
-      <input name="phone" type="tel" required placeholder="WhatsApp" className="glass-input" />
-      <input name="city" type="text" required placeholder="Cidade" className="glass-input" />
-      <select name="bill" required className="glass-input">
+      <input name="name" type="text" required placeholder="Nome completo" aria-label="Nome completo" className="glass-input" />
+      <input name="phone" type="tel" required placeholder="WhatsApp" aria-label="WhatsApp" className="glass-input" />
+      <input name="city" type="text" required placeholder="Cidade" aria-label="Cidade" className="glass-input" />
+      <select name="bill" required aria-label="Valor da conta de luz" className="glass-input">
         <option value="">Valor da conta de luz</option>
         <option value="entre R$300 e R$500">R$ 300 – R$ 500</option>
         <option value="entre R$500 e R$800">R$ 500 – R$ 800</option>
@@ -116,13 +116,13 @@ export default function LPEnergia() {
   const { ref: trustRef, inView: trustInView } = useInView();
 
   return (
-    <div className="min-h-screen font-sans antialiased">
+    <main className="min-h-screen font-sans antialiased">
 
       {/* ─── NAV DESKTOP ─────────────────────────────── */}
       <div className="hidden md:flex fixed top-4 inset-x-0 z-50 justify-center pointer-events-none">
         <nav className="pointer-events-auto flex items-center gap-4 bg-white/80 backdrop-blur-md shadow-sm shadow-black/5 border border-white/80 rounded-full px-5 py-2.5">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="cursor-pointer">
-            <Image src="/logo-dark.svg" alt="SolCenter" width={110} height={23} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={110} height={23} />
           </a>
           <div className="w-px h-4 bg-gray-200" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
@@ -141,15 +141,15 @@ export default function LPEnergia() {
       <div className="md:hidden fixed bottom-5 inset-x-0 z-50 flex justify-center">
         <nav className="flex items-center gap-1 bg-white/90 backdrop-blur-md shadow-lg shadow-black/10 border border-white/80 rounded-full px-3 py-3">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="px-3 cursor-pointer">
-            <Image src="/logo-dark.svg" alt="SolCenter" width={80} height={17} />
+            <Image src="/logo-dark.svg" alt="Solcenter" width={80} height={17} />
           </a>
           <div className="w-px h-5 bg-gray-200 mx-1" />
           <a href={site.whatsappLinkGiovani} target="_blank" rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer">
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-[#25D366]/10 transition cursor-pointer" aria-label="Falar no WhatsApp">
             <MessageCircle size={20} className="text-[#25D366]" />
           </a>
           <a href="https://maps.google.com/?q=Av.+Dom+Pedro+II,+539+Santo+Cristo+RS" target="_blank" rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer">
+            className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-amber-50 transition cursor-pointer" aria-label="Ver endereço no Google Maps">
             <MapPin size={20} className="text-[#FFB100]" />
           </a>
         </nav>
@@ -161,7 +161,7 @@ export default function LPEnergia() {
       <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
         <Image
           src="/images/solar-residencial.jpg"
-          alt="Casa com painéis solares instalados pela SolCenter"
+          alt="Casa com painéis solares instalados pela Solcenter"
           fill className="object-cover object-center" priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />
@@ -208,7 +208,7 @@ export default function LPEnergia() {
                 <Sun size={16} className="text-[#FFB100]" />
               </div>
               <div>
-                <h3 className="font-black text-white text-base leading-tight">Simulação gratuita</h3>
+                <h2 className="font-black text-white text-base leading-tight">Simulação gratuita</h2>
                 <p className="text-white/35 text-xs">Responda em 1 minuto</p>
               </div>
             </div>
@@ -285,7 +285,7 @@ export default function LPEnergia() {
                 </div>
                 <div className="flex-1 glass-light rounded-3xl p-6 flex flex-col justify-between">
                   <p className="text-gray-400 text-xs leading-snug">
-                    Economia média anual de quem instalou com a SolCenter.
+                    Economia média anual de quem instalou com a Solcenter.
                   </p>
                   <div>
                     <p className="text-[clamp(2rem,3.5vw,2.6rem)] font-black text-[#0a1628] leading-none tracking-tight">R$ 7.500</p>
@@ -309,7 +309,7 @@ export default function LPEnergia() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                Resultados reais de clientes SolCenter — números verificados após a instalação.
+                Resultados reais de clientes Solcenter — números verificados após a instalação.
               </p>
             </div>
 
@@ -349,7 +349,7 @@ export default function LPEnergia() {
 
               {/* Card foto real */}
               <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
-                <Image src="/images/solar-empresarial.jpg" alt="Instalação SolCenter" fill className="object-cover" />
+                <Image src="/images/solar-empresarial.jpg" alt="Instalação Solcenter" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5">
                   <p className="text-white font-bold text-sm">Mais de 1.400 instalações no RS</p>
@@ -383,7 +383,7 @@ export default function LPEnergia() {
                 </h2>
               </div>
               <p className="md:max-w-xs text-gray-500 text-sm leading-relaxed md:mb-1">
-                A SolCenter cuida de tudo — do projeto à homologação. Você só precisa aprovar e esperar a conta cair.
+                A Solcenter cuida de tudo — do projeto à homologação. Você só precisa aprovar e esperar a conta cair.
               </p>
             </div>
             <div className="grid md:grid-cols-4 gap-8">
@@ -419,7 +419,7 @@ export default function LPEnergia() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-end gap-6 mb-10">
               <div className="flex-1">
-                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Clientes SolCenter</p>
+                <p className="text-[#FFB100] text-xs font-bold uppercase tracking-[0.2em] mb-4">Clientes Solcenter</p>
                 <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-[#0a1628] leading-[1.05] tracking-tight">
                   Quem instalou,<br />não voltou atrás.
                 </h2>
@@ -447,7 +447,7 @@ export default function LPEnergia() {
                 <blockquote className="text-[#0a1628] text-lg md:text-xl font-medium leading-snug mb-3">
                   "Antes pagava <span className="font-black text-red-500 line-through">R$ 680/mês</span>. Depois da instalação, a conta caiu pra <span className="font-black text-green-600">R$ 47</span>. São mais de <span className="font-black">R$ 7.500 que ficam na nossa conta todo ano."</span>
                 </blockquote>
-                <p className="text-gray-400 text-xs">Sistema instalado pela SolCenter — Santo Cristo, RS.</p>
+                <p className="text-gray-400 text-xs">Sistema instalado pela Solcenter — Santo Cristo, RS.</p>
               </div>
             </div>
 
@@ -563,7 +563,7 @@ export default function LPEnergia() {
                 <div className="p-6">
                   <p className="text-[#FFB100] text-xs font-bold uppercase tracking-widest mb-2">Financiamento</p>
                   <h3 className="text-[#0a1628] font-black text-lg mb-3 leading-tight">Financie junto aos nossos parceiros.</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">Condições especiais para clientes SolCenter. A economia mensal costuma superar a parcela do financiamento.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">Condições especiais para clientes Solcenter. A economia mensal costuma superar a parcela do financiamento.</p>
                 </div>
               </div>
 
@@ -571,7 +571,7 @@ export default function LPEnergia() {
               <div className="flex flex-col gap-3">
                 {[
                   { icon: ShieldCheck, t: "25 anos de garantia de desempenho", d: "Placas garantidas pelo fabricante por 25 anos. Inversores: 5 a 12 anos." },
-                  { icon: CheckCircle, t: "Projeto homologado e regularizado", d: "A SolCenter cuida de toda a burocracia com a concessionária. Você não faz nada." },
+                  { icon: CheckCircle, t: "Projeto homologado e regularizado", d: "A Solcenter cuida de toda a burocracia com a concessionária. Você não faz nada." },
                   { icon: TrendingDown, t: "Redução garantida na conta", d: "O sistema é projetado pro seu consumo real. A queda na conta é parte do projeto — não promessa." },
                   { icon: Zap, t: "Suporte técnico pós-instalação", d: "Monitoramento contínuo com a Solcenter PRO. Qualquer problema, a gente resolve." },
                 ].map(({ icon: Icon, t, d }) => (
@@ -605,7 +605,7 @@ export default function LPEnergia() {
                 { q: "E se não tiver sol suficiente aqui?", a: "O Rio Grande do Sul tem índice solar muito bom o ano todo — inclusive no inverno. A tecnologia moderna gera mesmo em dias nublados." },
                 { q: "Preciso fazer obra na casa?", a: "Não. A instalação leva 1 a 2 dias e não exige obra. Nossa equipe faz tudo com organização e sem bagunça." },
                 { q: "Tem financiamento disponível?", a: "Sim. Trabalhamos com parceiros financeiros com condições facilitadas. Muitos clientes financiam e já economizam desde o primeiro mês." },
-                { q: "Quanto tempo demora até gerar energia?", a: "A instalação leva 1 a 2 dias. A homologação junto à concessionária pode levar 30 a 60 dias — e a SolCenter cuida de tudo isso pra você." },
+                { q: "Quanto tempo demora até gerar energia?", a: "A instalação leva 1 a 2 dias. A homologação junto à concessionária pode levar 30 a 60 dias — e a Solcenter cuida de tudo isso pra você." },
               ].map((item) => (
                 <FAQItem key={item.q} q={item.q} a={item.a} />
               ))}
@@ -622,11 +622,16 @@ export default function LPEnergia() {
         {/* FOOTER */}
         <footer className="px-6 py-6 text-center border-t border-black/5">
           <p className="text-gray-400 text-xs">
-            SolCenter Energia · {site.address} · {site.phone}
+            Solcenter Energia · {site.address} · {site.phone}
+          </p>
+          <p className="text-gray-400 text-xs mt-2">
+            <a href="/" className="underline hover:text-[#0a1628] transition-colors">solcenter.com.br</a>
+
+            <a href="/politica-de-privacidade" className="underline hover:text-[#0a1628] transition-colors">Política de Privacidade</a>
           </p>
         </footer>
 
       </div>{/* end lp-warm */}
-    </div>
+    </main>
   );
 }

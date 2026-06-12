@@ -104,7 +104,7 @@ export default function BlogPostContent({ post, related }: { post: BlogPost; rel
             Quer saber se vale a pena pra você?
           </h3>
           <p style={{ color: 'rgba(255,255,255,.55)', maxWidth: 420, margin: '0 auto 2rem', lineHeight: 1.6, fontSize: '.95rem' }}>
-            Fale com um consultor da SolCenter e receba uma análise gratuita para a sua situação.
+            Fale com um consultor da Solcenter e receba uma análise gratuita para a sua situação.
           </p>
           <a href={`${WHATSAPP}?text=Olá! Li o artigo "${post.title}" e quero saber mais sobre energia solar.`}
             target="_blank" rel="noopener noreferrer"

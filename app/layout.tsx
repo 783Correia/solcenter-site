@@ -90,13 +90,6 @@ const schemaOrg = {
         { "@type": "City", "name": "Porto Lucena" },
         { "@type": "AdministrativeArea", "name": "Noroeste do Rio Grande do Sul" }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": 5.0,
-        "reviewCount": 6,
-        "bestRating": 5,
-        "worstRating": 1
-      },
       "sameAs": [
         "https://www.google.com/maps/place/Solcenter+Soluções+em+Energia/@-27.8286,-54.3358,17z",
         "https://www.instagram.com/solcenterenergia/",

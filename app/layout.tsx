@@ -196,59 +196,6 @@ const schemaOrg = {
           }
         ]
       }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quanto custa instalar energia solar em Santo Cristo RS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O valor varia conforme o consumo da residência. Para uma conta de R$300/mês, o investimento médio é de R$15.000 a R$20.000, com retorno em 4 a 5 anos e economia de até 95% na conta de luz por 25 anos. A Solcenter oferece orçamento gratuito sem compromisso."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual a economia real com energia solar na Solcenter?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nossos clientes economizam em média 85% a 95% na conta de luz. Um cliente com conta de R$680 passou a pagar R$47 por mês após a instalação — economia de mais de R$7.500 por ano. O sistema se paga em 4 a 6 anos e gera por mais de 25 anos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "A Solcenter atende em quais cidades do RS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Atendemos Santo Cristo e toda a região noroeste do RS, incluindo Horizontina, Três de Maio, Santa Rosa, Ijuí, Tucunduva, Novo Machado, Porto Lucena e mais de 60 municípios gaúchos. Somos referência em energia solar na região com mais de 1.400 projetos entregues."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto tempo leva para instalar energia solar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O processo completo leva de 30 a 60 dias: visita técnica, projeto, aprovação na distribuidora e instalação. A instalação física é feita em 1 a 2 dias. A Solcenter cuida de toda a burocracia com a concessionária."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Tem financiamento para energia solar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. Trabalhamos com financiamento com condições facilitadas. A maioria dos clientes paga parcelas menores do que a economia gerada na conta de luz — ou seja, já economiza desde o primeiro mês mesmo financiando."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O que é a scooter elétrica EVOX da Solcenter Mobi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A EVOX é uma scooter elétrica 100% elétrica com motor 1000W brushless, bateria de lítio removível 60v/20Ah, autonomia de até 40km e velocidade máxima de 32km/h. Não exige CNH, não paga IPVA nem emplacamento. Disponível em 4 cores: Preta, Azul/Prata, Vermelha/Prata e Branca. Distribuída pela Solcenter Mobi para revendedores no Sul do Brasil."
-          }
-        }
-      ]
     }
   ]
 };

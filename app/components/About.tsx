@@ -31,9 +31,10 @@ export default function About() {
               para os nossos clientes.
             </h2>
             <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md font-light">
-              Nascemos em Santo Cristo/RS e hoje atendemos mais de 60 cidades no
-              Noroeste Gaúcho. Cada projeto é tratado com a mesma atenção desde
-              o orçamento até o monitoramento contínuo.
+              Nascemos em 2016 em Campina das Missões/RS e hoje, com sede em
+              Santo Cristo, atendemos mais de 60 cidades no Noroeste Gaúcho.
+              Cada projeto é tratado com a mesma atenção desde o orçamento até
+              o monitoramento contínuo.
             </p>
 
             <div className="grid grid-cols-3 gap-3 mb-8">

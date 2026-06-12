@@ -124,6 +124,15 @@ const schemaOrg = {
       "alternateName": "Solcenter",
       "url": "https://www.solcenter.com.br",
       "logo": "https://www.solcenter.com.br/logo.svg",
+      "foundingDate": "2016-08",
+      "founder": {
+        "@type": "Person",
+        "name": "Cleiton Giorgio Holz"
+      },
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Campina das Missões, RS"
+      },
       "description": "Especialistas em energia solar no noroeste gaúcho com mais de 1.400 projetos entregues para residências, empresas e agronegócio em mais de 60 municípios do RS.",
       "sameAs": [
         "https://www.instagram.com/solcenterenergia/",

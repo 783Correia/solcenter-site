@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
-import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 
@@ -168,7 +167,6 @@ export default function SobrePage() {
         </section>
 
         <Testimonials />
-        <CTASection />
       </main>
       <Footer />
       <WhatsAppFloat />

@@ -7,7 +7,7 @@ import { site } from "../data/site";
 
 const links = [
   { label: "Home", href: "#inicio" },
-  { label: "A Solcenter", href: "#sobre" },
+  { label: "A Solcenter", href: "/sobre" },
   { label: "Soluções", href: "#servicos" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Blog", href: "/blog" },

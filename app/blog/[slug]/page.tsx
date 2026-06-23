@@ -10,6 +10,15 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+export async function generateStaticParams() {
+  const { data: posts } = await supabase()
+    .from('blog_posts')
+    .select('slug')
+    .eq('published', true)
+
+  return (posts ?? []).map((p: { slug: string }) => ({ slug: p.slug }))
+}
+
 const BASE_URL = 'https://www.solcenter.com.br'
 const LOGO_URL = `${BASE_URL}/og-home.jpg`
 

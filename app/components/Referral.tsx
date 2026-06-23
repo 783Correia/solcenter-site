@@ -43,7 +43,7 @@ export default function Referral() {
             className="relative h-[320px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src="/images/referral.jpg"
+              src="/images/referral.webp"
               alt="Programa de indicação Solcenter"
               fill
               className="object-cover"

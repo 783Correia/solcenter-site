@@ -160,7 +160,7 @@ export default function LPEnergia() {
       {/* ═══════════════════════════════════════════════ */}
       <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
         <Image
-          src="/images/solar-residencial.jpg"
+          src="/images/solar-residencial.webp"
           alt="Casa com painéis solares instalados pela Solcenter"
           fill className="object-cover object-center" priority
         />
@@ -248,7 +248,7 @@ export default function LPEnergia() {
               {/* Card grande — caso real */}
               <div className="md:col-span-2 relative rounded-3xl overflow-hidden h-72 md:h-auto min-h-[280px]">
                 <Image
-                  src="/images/solar-residencial.jpg"
+                  src="/images/solar-residencial.webp"
                   alt="Casa com painéis solares instalados"
                   fill
                   className="object-cover"
@@ -349,7 +349,7 @@ export default function LPEnergia() {
 
               {/* Card foto real */}
               <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
-                <Image src="/images/solar-empresarial.jpg" alt="Instalação Solcenter" fill className="object-cover" />
+                <Image src="/images/solar-empresarial.webp" alt="Instalação Solcenter" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5">
                   <p className="text-white font-bold text-sm">Mais de 1.400 instalações no RS</p>
@@ -511,9 +511,9 @@ export default function LPEnergia() {
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { img: "/images/solar-residencial.jpg", icon: Home, title: "Residencial", desc: "Casas e apartamentos. A conta cai sem mudar nada no consumo." },
-                { img: "/images/solar-empresarial.jpg", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Menos custo fixo, mais margem." },
-                { img: "/images/solar-agro.jpg", icon: Tractor, title: "Agronegócio", desc: "Sítios, fazendas e cooperativas. Irrigação e secador sem custo variável." },
+                { img: "/images/solar-residencial.webp", icon: Home, title: "Residencial", desc: "Casas e apartamentos. A conta cai sem mudar nada no consumo." },
+                { img: "/images/solar-empresarial.webp", icon: Building2, title: "Empresarial", desc: "Comércio, indústria e condomínio. Menos custo fixo, mais margem." },
+                { img: "/images/solar-agro.webp", icon: Tractor, title: "Agronegócio", desc: "Sítios, fazendas e cooperativas. Irrigação e secador sem custo variável." },
               ].map((s) => (
                 <a key={s.title} href="#formulario" className="group relative rounded-2xl overflow-hidden cursor-pointer block shadow-md shadow-black/5">
                   <div className="relative h-64">
@@ -553,7 +553,7 @@ export default function LPEnergia() {
               <div className="glass-light rounded-2xl overflow-hidden">
                 <div className="relative h-56 w-full">
                   <Image
-                    src="/images/financiamento.jpg"
+                    src="/images/financiamento.webp"
                     alt="Financiamento junto aos parceiros"
                     fill
                     className="object-cover object-center"

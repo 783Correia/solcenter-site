@@ -143,7 +143,7 @@ export default function LPAgro() {
 
       {/* 1. HERO */}
       <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
-        <Image src="/images/solar-agro.jpg" alt="Energia solar para agronegócio instalada pela Solcenter no RS" fill className="object-cover object-center" priority />
+        <Image src="/images/solar-agro.webp" alt="Energia solar para agronegócio instalada pela Solcenter no RS" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-[#060d18]/96 via-[#060d18]/80 to-[#060d18]/40" />
         <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#FFB100]/5 rounded-full blur-3xl pointer-events-none animate-glow-amber" />
 
@@ -218,7 +218,7 @@ export default function LPAgro() {
             <div className="grid md:grid-cols-3 gap-4">
               {/* Card grande col-span-2 */}
               <div className="md:col-span-2 relative rounded-3xl overflow-hidden h-72 md:h-auto min-h-[280px]">
-                <Image src="/images/solar-agro.jpg" alt="Energia solar no agronegócio" fill className="object-cover" />
+                <Image src="/images/solar-agro.webp" alt="Energia solar no agronegócio" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                   <p className="text-amber-400/80 text-xs font-bold uppercase tracking-widest mb-3">Propriedade rural — Noroeste RS</p>
@@ -298,7 +298,7 @@ export default function LPAgro() {
               </div>
 
               <div className="col-span-2 relative rounded-2xl overflow-hidden h-52">
-                <Image src="/images/solar-agro.jpg" alt="Instalação Solcenter no campo" fill className="object-cover" />
+                <Image src="/images/solar-agro.webp" alt="Instalação Solcenter no campo" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-5">
                   <p className="text-white font-bold text-sm">Projetos para irrigação, silos e cooperativas</p>

@@ -232,7 +232,7 @@ export default function LPMonitoramentoPro() {
         className="relative min-h-[100dvh] flex items-center overflow-hidden"
       >
         <Image
-          src="/images/hero-monitoramento.jpg"
+          src="/images/hero-monitoramento.webp"
           alt="Equipe técnica Solcenter realizando manutenção em painéis solares"
           fill
           className="object-cover object-left-top"
@@ -651,17 +651,17 @@ export default function LPMonitoramentoPro() {
             <div className="grid md:grid-cols-3 gap-4">
               {[
                 {
-                  img: "/images/solar-residencial.jpg",
+                  img: "/images/solar-residencial.webp",
                   title: "Residencial",
                   desc: "Você investiu pra ter conta baixa por 25 anos. Faz sentido garantir que vai continuar assim.",
                 },
                 {
-                  img: "/images/solar-empresarial.jpg",
+                  img: "/images/solar-empresarial.webp",
                   title: "Empresarial",
                   desc: "Um dia com sistema parado é um dia pagando pra concessionária. Empresa não pode correr esse risco.",
                 },
                 {
-                  img: "/images/solar-agro.jpg",
+                  img: "/images/solar-agro.webp",
                   title: "Rural / Agronegócio",
                   desc: "Irrigação, motor, câmara fria. Se o sistema parar na hora errada, o prejuízo vai além da conta de luz.",
                 },
@@ -706,7 +706,7 @@ export default function LPMonitoramentoPro() {
                 }`}
               >
                 <Image
-                  src="/images/about.jpg"
+                  src="/images/about.webp"
                   alt="Equipe técnica Solcenter"
                   fill
                   className="object-cover object-top"

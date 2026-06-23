@@ -65,7 +65,7 @@ export default function About() {
           >
             <div className="absolute inset-0 rounded-t-2xl overflow-hidden">
               <Image
-                src="/images/fachada.jpg"
+                src="/images/fachada.webp"
                 alt="Loja Solcenter"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

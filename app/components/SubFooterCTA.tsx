@@ -19,7 +19,7 @@ export default function SubFooterCTA({ whatsappHref, formHref = "#contato" }: Su
 
       {/* Ilha 3D — fill + object-cover garante preenchimento total da seção */}
       <Image
-        src="/images/solar-3d.jpg"
+        src="/images/solar-3d.webp"
         alt="Ilha 3D com casas e painéis solares Solcenter"
         fill
         className="object-cover"

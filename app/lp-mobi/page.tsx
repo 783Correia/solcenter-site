@@ -639,7 +639,7 @@ export default function LPMobi() {
                   {/* Fundo desfocado — mesma imagem, sem barra preta */}
                   <Image
                     src={src}
-                    alt=""
+                    alt={`EVOX ${activeColor.label}`}
                     fill
                     aria-hidden
                     className="object-cover scale-110 blur-xl opacity-60"

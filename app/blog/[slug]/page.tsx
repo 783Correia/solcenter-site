@@ -11,7 +11,7 @@ interface Props {
 }
 
 const BASE_URL = 'https://www.solcenter.com.br'
-const LOGO_URL = `${BASE_URL}/images/og-home.jpg`
+const LOGO_URL = `${BASE_URL}/og-home.jpg`
 
 function resolveImageUrl(imageUrl: string | null | undefined): string {
   if (!imageUrl) return LOGO_URL

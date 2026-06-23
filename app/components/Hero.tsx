@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#060d18]" />
       <Image
         src="/images/hero-bg.webp"
-        alt=""
+        alt="Painéis de energia solar instalados pela Solcenter no Noroeste Gaúcho"
         fill
         priority
         sizes="100vw"

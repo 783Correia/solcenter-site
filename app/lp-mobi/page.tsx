@@ -39,10 +39,10 @@ const COLORS = [
     glow: "rgba(80,80,80,0.12)",
     hero: "/mobi/hero/preta.png",
     photos: [
-      "/mobi/evox/preta-1.png",
-      "/mobi/evox/preta-2.png",
-      "/mobi/evox/preta-3.png",
-      "/mobi/evox/preta-4.png",
+      "/mobi/evox/preta-1.webp",
+      "/mobi/evox/preta-2.webp",
+      "/mobi/evox/preta-3.webp",
+      "/mobi/evox/preta-4.webp",
     ],
   },
   {
@@ -53,10 +53,10 @@ const COLORS = [
     glow: "rgba(30,77,140,0.18)",
     hero: "/mobi/hero/azul.png",
     photos: [
-      "/mobi/evox/azul-1.png",
-      "/mobi/evox/azul-2.png",
-      "/mobi/evox/azul-3.png",
-      "/mobi/evox/azul-4.png",
+      "/mobi/evox/azul-1.webp",
+      "/mobi/evox/azul-2.webp",
+      "/mobi/evox/azul-3.webp",
+      "/mobi/evox/azul-4.webp",
     ],
   },
   {
@@ -67,10 +67,10 @@ const COLORS = [
     glow: "rgba(192,57,43,0.15)",
     hero: "/mobi/hero/vermelha.png",
     photos: [
-      "/mobi/evox/vermelha-1.png",
-      "/mobi/evox/vermelha-2.png",
-      "/mobi/evox/vermelha-3.png",
-      "/mobi/evox/vermelha-4.png",
+      "/mobi/evox/vermelha-1.webp",
+      "/mobi/evox/vermelha-2.webp",
+      "/mobi/evox/vermelha-3.webp",
+      "/mobi/evox/vermelha-4.webp",
     ],
   },
   {
@@ -81,10 +81,10 @@ const COLORS = [
     glow: "rgba(220,220,220,0.08)",
     hero: "/mobi/hero/branca.png",
     photos: [
-      "/mobi/evox/branca-1.png",
-      "/mobi/evox/branca-2.png",
-      "/mobi/evox/branca-3.png",
-      "/mobi/evox/branca-4.png",
+      "/mobi/evox/branca-1.webp",
+      "/mobi/evox/branca-2.webp",
+      "/mobi/evox/branca-3.webp",
+      "/mobi/evox/branca-4.webp",
     ],
   },
 ];

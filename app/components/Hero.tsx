@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { site } from "../data/site";
 
@@ -7,7 +8,14 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
       <div className="absolute inset-0 bg-[#060d18]" />
-      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-45" />
+      <Image
+        src="/images/hero-bg.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover opacity-45"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
 
       {/* Main content — centered */}

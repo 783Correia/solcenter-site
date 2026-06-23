@@ -10,7 +10,23 @@ export const metadata: Metadata = {
   description:
     "Fundada em 2016, a Solcenter já entregou mais de 1.400 projetos de energia solar no RS. Conheça nossa história, missão, visão e valores.",
   alternates: { canonical: "https://www.solcenter.com.br/sobre" },
-  openGraph: { url: "https://www.solcenter.com.br/sobre" },
+  openGraph: {
+    title: "Sobre a Solcenter — Energia Solar no Noroeste Gaúcho",
+    description:
+      "Fundada em 2016, a Solcenter já entregou mais de 1.400 projetos de energia solar no RS. Conheça nossa história, missão e valores.",
+    url: "https://www.solcenter.com.br/sobre",
+    siteName: "Solcenter",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "https://www.solcenter.com.br/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Solcenter — Energia Solar no Noroeste Gaúcho",
+      },
+    ],
+  },
 };
 
 const timeline = [

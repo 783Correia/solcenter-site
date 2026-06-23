@@ -8,7 +8,23 @@ export const metadata: Metadata = {
   description:
     "Saiba como a Solcenter coleta, usa e protege seus dados pessoais, em conformidade com a LGPD (Lei Geral de Proteção de Dados).",
   alternates: { canonical: "https://www.solcenter.com.br/politica-de-privacidade" },
-  openGraph: { url: "https://www.solcenter.com.br/politica-de-privacidade" },
+  openGraph: {
+    title: "Política de Privacidade | Solcenter",
+    description:
+      "Como a Solcenter coleta, usa e protege seus dados pessoais, em conformidade com a LGPD.",
+    url: "https://www.solcenter.com.br/politica-de-privacidade",
+    siteName: "Solcenter",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "https://www.solcenter.com.br/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Solcenter — Energia Solar no Noroeste Gaúcho",
+      },
+    ],
+  },
 };
 
 const sections = [

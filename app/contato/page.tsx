@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description:
     "Fale com a equipe da Solcenter: orçamento gratuito de energia solar, WhatsApp, telefone e endereço em Santo Cristo / RS.",
   alternates: { canonical: "https://www.solcenter.com.br/contato" },
-  openGraph: { url: "https://www.solcenter.com.br/contato" },
+  openGraph: {
+    title: "Contato — Fale com a Solcenter",
+    description:
+      "Orçamento gratuito de energia solar. WhatsApp, telefone e endereço em Santo Cristo / RS.",
+    url: "https://www.solcenter.com.br/contato",
+    siteName: "Solcenter",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "https://www.solcenter.com.br/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Solcenter — Energia Solar no Noroeste Gaúcho",
+      },
+    ],
+  },
 };
 
 export default function ContatoPage() {

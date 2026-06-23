@@ -55,7 +55,7 @@ function LeadForm() {
       <input name="name" type="text" required placeholder="Nome completo" aria-label="Nome completo" className="glass-input" />
       <input name="phone" type="tel" required placeholder="WhatsApp" aria-label="WhatsApp" className="glass-input" />
       <input name="city" type="text" required placeholder="Cidade / Município" aria-label="Cidade ou município" className="glass-input" />
-      <select name="bill" required aria-label="Valor da conta de luz" className="glass-input">
+      <select name="bill" required aria-label="Custo mensal de energia" className="glass-input">
         <option value="">Custo mensal de energia</option>
         <option value="entre R$500 e R$1.000">R$ 500 – R$ 1.000</option>
         <option value="entre R$1.000 e R$3.000">R$ 1.000 – R$ 3.000</option>

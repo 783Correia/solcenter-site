@@ -37,7 +37,7 @@ const COLORS = [
     hex: "#1a1a1a",
     badge: "Mais vendida" as string | null,
     glow: "rgba(80,80,80,0.12)",
-    hero: "/mobi/real/preta-1.jpg",
+    hero: "/mobi/hero/preta.png",
     photos: [
       "/mobi/real/preta-1.jpg",
       "/mobi/real/preta-2.jpg",
@@ -54,7 +54,7 @@ const COLORS = [
     hex: "#1e4d8c",
     badge: null,
     glow: "rgba(30,77,140,0.18)",
-    hero: "/mobi/real/azul-1.jpg",
+    hero: "/mobi/hero/azul.png",
     photos: [
       "/mobi/real/azul-1.jpg",
       "/mobi/real/azul-2.jpg",
@@ -72,7 +72,7 @@ const COLORS = [
     hex: "#c0392b",
     badge: "Novidade" as string | null,
     glow: "rgba(192,57,43,0.15)",
-    hero: "/mobi/real/vermelha-1.jpg",
+    hero: "/mobi/hero/vermelha.png",
     photos: [
       "/mobi/real/vermelha-1.jpg",
       "/mobi/real/vermelha-2.jpg",
@@ -91,7 +91,7 @@ const COLORS = [
     hex: "#e0e0e0",
     badge: null,
     glow: "rgba(220,220,220,0.08)",
-    hero: "/mobi/real/branca-1.jpg",
+    hero: "/mobi/hero/branca.png",
     photos: [
       "/mobi/real/branca-1.jpg",
       "/mobi/real/branca-2.jpg",
@@ -435,8 +435,8 @@ export default function LPMobi() {
                 src={c.hero}
                 alt={`EVOX Solcenter Mobi ${c.label}`}
                 fill
-                className={`object-cover object-center${c.id === "branca" ? " [transform:scaleX(-1)]" : ""}`}
-                priority={c.id === "preta"}
+                className="object-cover object-[70%_center] lg:object-center"
+                preload={c.id === "preta"}
                 sizes="100vw"
               />
             </div>

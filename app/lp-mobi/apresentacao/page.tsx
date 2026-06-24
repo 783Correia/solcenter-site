@@ -59,6 +59,14 @@ const OPORTUNIDADE = [
   { icon: Zap, title: "Venda facilitada", desc: "Você revende, a gente entrega o argumento — inclusive esta apresentação." },
 ];
 
+// Capa — motos passando em carrossel automático
+const CAPA_IMGS = [
+  "/mobi/evox/branca-3.webp",
+  "/mobi/evox/azul-3.webp",
+  "/mobi/evox/vermelha-3.webp",
+  "/mobi/evox/preta-3.webp",
+];
+
 const TOTAL_SLIDES = 9;
 
 function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
@@ -83,6 +91,12 @@ function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
 export default function ApresentacaoMobi() {
   const [slide, setSlide] = useState(0);
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [capaIdx, setCapaIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setCapaIdx((i) => (i + 1) % CAPA_IMGS.length), 3500);
+    return () => clearInterval(t);
+  }, []);
 
   const prev = useCallback(() => setSlide((s) => Math.max(0, s - 1)), []);
   const next = useCallback(() => setSlide((s) => Math.min(TOTAL_SLIDES - 1, s + 1)), []);
@@ -104,8 +118,28 @@ export default function ApresentacaoMobi() {
       {/* ── Slide 0 — Capa ─────────────────────────── */}
       {slide === 0 && (
         <div className="w-full h-full relative overflow-hidden">
-          <Image src="/mobi/evox/branca-2.webp" alt="EVOX Branca" fill priority className="object-cover" style={{ objectPosition: '62% center' }} sizes="100vw" />
+          {CAPA_IMGS.map((src, i) => (
+            <Image
+              key={src}
+              src={src}
+              alt="EVOX Solcenter Mobi"
+              fill
+              priority={i === 0}
+              className="object-cover transition-opacity duration-1000 ease-in-out"
+              style={{ objectPosition: "58% center", opacity: capaIdx === i ? 1 : 0 }}
+              sizes="100vw"
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-r from-[#060d18] via-[#060d18]/75 to-[#060d18]/25 z-10 pointer-events-none" />
+          {/* indicador de cores da capa */}
+          <div className="absolute bottom-8 right-8 z-20 flex gap-2">
+            {CAPA_IMGS.map((src, i) => (
+              <span
+                key={src}
+                className={`h-1.5 rounded-full transition-all duration-300 ${capaIdx === i ? "w-5 bg-[#00a651]" : "w-1.5 bg-white/30"}`}
+              />
+            ))}
+          </div>
           <div className="absolute inset-0 flex items-center px-12 md:px-24 z-20">
             <div className="max-w-lg">
               <Image src="/logo-mobi.svg" alt="Solcenter Mobi" width={160} height={40} className="mb-10 brightness-0 invert opacity-70" />

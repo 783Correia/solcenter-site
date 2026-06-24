@@ -28,11 +28,13 @@ const SPECS = [
   { icon: MapPin, label: "Autonomia", value: "60 km", sub: "por carga completa" },
 ];
 
+const galeria = (cor: string) => [1, 2, 3, 4].map((n) => `/mobi/evox/${cor}-${n}.webp`);
+
 const CORES = [
-  { label: "Preta", hex: "#1a1a1a", studio: "/mobi/evox/preta-1.webp", badge: "Mais vendida" },
-  { label: "Azul / Prata", hex: "#1e4d8c", studio: "/mobi/evox/azul-1.webp", badge: null },
-  { label: "Vermelha / Prata", hex: "#c0392b", studio: "/mobi/evox/vermelha-1.webp", badge: "Novidade" },
-  { label: "Branca", hex: "#d0d0d0", studio: "/mobi/evox/branca-1.webp", badge: null },
+  { label: "Preta", hex: "#1a1a1a", studio: "/mobi/evox/preta-1.webp", badge: "Mais vendida", fotos: galeria("preta") },
+  { label: "Azul / Prata", hex: "#1e4d8c", studio: "/mobi/evox/azul-1.webp", badge: null, fotos: galeria("azul") },
+  { label: "Vermelha / Prata", hex: "#c0392b", studio: "/mobi/evox/vermelha-1.webp", badge: "Novidade", fotos: galeria("vermelha") },
+  { label: "Branca", hex: "#d0d0d0", studio: "/mobi/evox/branca-1.webp", badge: null, fotos: galeria("branca") },
 ];
 
 // Curadoria dos melhores detalhes reais — variedade + apelo de venda
@@ -69,28 +71,81 @@ const CAPA_IMGS = [
 
 const TOTAL_SLIDES = 9;
 
-function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
+function Lightbox({
+  images,
+  index,
+  onClose,
+  onSelect,
+}: {
+  images: string[];
+  index: number;
+  onClose: () => void;
+  onSelect: (i: number) => void;
+}) {
+  const len = images.length;
+  const multi = len > 1;
+  const prev = useCallback(() => onSelect((index - 1 + len) % len), [index, len, onSelect]);
+  const next = useCallback(() => onSelect((index + 1) % len), [index, len, onSelect]);
+
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
+  }, [onClose, prev, next]);
 
   return (
     <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-sm" onClick={onClose}>
-      <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition" onClick={onClose}>
+      <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition z-10" onClick={onClose} aria-label="Fechar">
         <X size={20} />
       </button>
-      <div className="relative w-[90vw] h-[85vh]" onClick={(e) => e.stopPropagation()}>
-        <Image src={src} alt="Detalhe EVOX" fill className="object-contain" sizes="90vw" />
+
+      {multi && (
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-sm font-bold tabular-nums pointer-events-none">
+          {String(index + 1).padStart(2, "0")} / {String(len).padStart(2, "0")}
+        </div>
+      )}
+
+      {multi && (
+        <button className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition z-10" onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Anterior">
+          <ChevronLeft size={20} />
+        </button>
+      )}
+
+      <div className="relative w-[90vw] h-[78vh]" onClick={(e) => e.stopPropagation()}>
+        <Image src={images[index]} alt="EVOX" fill className="object-contain" sizes="90vw" priority />
       </div>
+
+      {multi && (
+        <button className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition z-10" onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Próxima">
+          <ChevronRight size={20} />
+        </button>
+      )}
+
+      {multi && (
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2" onClick={(e) => e.stopPropagation()}>
+          {images.map((src, i) => (
+            <button
+              key={src}
+              onClick={() => onSelect(i)}
+              className={`relative w-14 h-14 rounded-lg overflow-hidden border-2 transition ${i === index ? "border-[#00a651]" : "border-white/20 hover:border-white/50"}`}
+              aria-label={`Foto ${i + 1}`}
+            >
+              <Image src={src} alt="" fill className="object-cover" sizes="56px" />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function ApresentacaoMobi() {
   const [slide, setSlide] = useState(0);
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [gallery, setGallery] = useState<{ images: string[]; index: number } | null>(null);
   const [capaIdx, setCapaIdx] = useState(0);
 
   useEffect(() => {
@@ -102,18 +157,25 @@ export default function ApresentacaoMobi() {
   const next = useCallback(() => setSlide((s) => Math.min(TOTAL_SLIDES - 1, s + 1)), []);
 
   useEffect(() => {
-    if (lightbox) return;
+    if (gallery) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
       if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [next, prev, lightbox]);
+  }, [next, prev, gallery]);
 
   return (
     <div className="fixed inset-0 bg-[#060d18] text-white overflow-hidden select-none">
-      {lightbox && <Lightbox src={lightbox} onClose={() => setLightbox(null)} />}
+      {gallery && (
+        <Lightbox
+          images={gallery.images}
+          index={gallery.index}
+          onClose={() => setGallery(null)}
+          onSelect={(i) => setGallery((g) => (g ? { ...g, index: i } : g))}
+        />
+      )}
 
       {/* ── Slide 0 — Capa ─────────────────────────── */}
       {slide === 0 && (
@@ -190,7 +252,7 @@ export default function ApresentacaoMobi() {
             {CORES.map((cor) => (
               <button
                 key={cor.label}
-                onClick={() => setLightbox(cor.studio)}
+                onClick={() => setGallery({ images: cor.fotos, index: 0 })}
                 className="group relative flex flex-col items-center rounded-2xl border-2 border-white/10 bg-black/30 pt-3 pb-5 px-3 transition-all duration-200 hover:border-[#00a651] hover:bg-[#00a651]/10"
               >
                 {cor.badge && (
@@ -232,7 +294,7 @@ export default function ApresentacaoMobi() {
             {DETALHES.map(({ src, alt }) => (
               <button
                 key={src}
-                onClick={() => setLightbox(src)}
+                onClick={() => setGallery({ images: DETALHES.map((d) => d.src), index: DETALHES.findIndex((d) => d.src === src) })}
                 className="relative aspect-square rounded-xl overflow-hidden border border-white/10 hover:border-[#00a651]/50 transition-all hover:scale-[1.02]"
               >
                 <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 768px) 33vw, 250px" />
